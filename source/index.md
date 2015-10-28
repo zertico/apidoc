@@ -2,13 +2,7 @@
 title: API Reference
 
 language_tabs:
-  - shell
   - ruby
-  - python
-
-toc_footers:
-  - <a href='#'>Sign Up for a Developer Key</a>
-  - <a href='http://github.com/tripit/slate'>Documentation Powered by Slate</a>
 
 includes:
   - errors
@@ -16,153 +10,204 @@ includes:
 search: true
 ---
 
-# Introduction
+# Horus API
 
-Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.
+Welcome to the Horus API! Horus is an API that enables a Company to distribute and manage Cloud Services more simply, this API is mainly focused on SoftLayer.
+  
+The Horus API does a division of authentication according to the type of user, We can do this division initially in three layers.
+  
+## Distributor (Manager) 
+ 
+ Distributor is the responsible for distribute products and services Softlayer (initially) to Companies.
 
-We have language bindings in Shell, Ruby, and Python! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
+ Authentication as Distributor allows the user to list and update information about yourself account.
 
-This example API documentation page was created with [Slate](http://github.com/tripit/slate). Feel free to edit it and use it as a base for your own API's documentation.
+ Authentication as Distributor allows the user to list, create and update informations about Companies.
 
-# Authentication
+## Reseller (Admin)
 
-> To authorize, use this code:
+ Reseller is the responsible for sell products and services Softlayer (initially) to Clients.
 
-```ruby
-require 'kittn'
+ Authentication as Reseller allows the user to list and update information about yourself account.
 
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-```
+ Authentication as Reseler allows the user to list, create and update informations about Users.
 
-```python
-import kittn
+## End Customer (User)
 
-api = kittn.authorize('meowmeowmeow')
-```
+ End Customer is last layer in this API, it is the responsible only for consume the products and services  Softlayer (initially).
 
-```shell
-# With shell, you can just pass the correct header with each request
-curl "api_endpoint_here"
-  -H "Authorization: meowmeowmeow"
-```
+ Authentication as User allows the user to list and update information about yourself account.
 
-> Make sure to replace `meowmeowmeow` with your API key.
+# Version
 
-Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our [developer portal](http://example.com/developers).
+ You will be able to discover the version of the Horus API that is used by the command line below.
 
-Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:
+ `ruby bin/horus-cli version`
 
-`Authorization: meowmeowmeow`
+ Currently the API is in version 0.1.0. 
 
-<aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
-</aside>
+# Installation
 
-# Kittens
+# Usage
 
-## Get All Kittens
+## Login
 
-```ruby
-require 'kittn'
+ First of all, you should do the login using an email and a password already registered, along with the login you must specify which is your level of authenticating. The System Horus API currently has three types of authenticating how already explained above.
 
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get
-```
+ Rota: `POST "/oauth/token"`
 
-```python
-import kittn
+* Manager
 
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get()
-```
+ `ruby bin/horus-cli login --manager`
+ 
+ `Login: `manager@example.com`
+ 
+ `Password: pass1234`
 
-```shell
-curl "http://example.com/api/kittens"
-  -H "Authorization: meowmeowmeow"
-```
+* Admin
 
-> The above command returns JSON structured like this:
+ `ruby bin/horus-cli login --admin --domain smart.lvh.me:3000`
+ 
+ `Login: `admin@smart.com`
+ 
+ `Password: pass1234`
 
-```json
-[
-  {
-    "id": 1,
-    "name": "Fluffums",
-    "breed": "calico",
-    "fluffiness": 6,
-    "cuteness": 7
-  },
-  {
-    "id": 2,
-    "name": "Isis",
-    "breed": "unknown",
-    "fluffiness": 5,
-    "cuteness": 10
-  }
-]
-```
+* User
 
-This endpoint retrieves all kittens.
+ `ruby bin/horus-cli login --user --domain smart.lvh.me:3000`
+ 
+ `Login: `user@smart.com`
+ 
+ `Password: pass1234`
+ 
+## Profile
 
-### HTTP Request
+ Once authenticated, you will have the option of show and update you profile through the following command lines.
 
-`GET http://example.com/api/kittens`
+* Show
 
-### Query Parameters
+ You can show your profile using a command line or accessing a route, both cases are described below. In this example we use the manager.
 
-Parameter | Default | Description
---------- | ------- | -----------
-include_cats | false | If set to true, the result will also include cats.
-available | true | If set to false, the result will include kittens that have already been adopted.
+ Route: `GET "/api/v1/manager/profile"`
 
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
+ Command Line: `ruby bin/horus-cli profile show`
 
-## Get a Specific Kitten
+* Update
 
-```ruby
-require 'kittn'
+ You also can updatet your profile using a command line or accessing a route, both cases are described below. In this exeample we use the manager.
 
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get(2)
-```
+ Route: `GET "/api/v1/manager/profile"`
 
-```python
-import kittn
+ Command Line: `ruby bin/horus-cli profile update '"first-name"=>"Company","last-name" => "LTDA"`
 
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get(2)
-```
+## Resource
 
-```shell
-curl "http://example.com/api/kittens/2"
-  -H "Authorization: meowmeowmeow"
-```
+ Once authenticated, except a user, you can create new resources, edit, list and show it through the following command lines.
 
-> The above command returns JSON structured like this:
+* Create
 
-```json
-{
-  "id": 2,
-  "name": "Isis",
-  "breed": "unknown",
-  "fluffiness": 5,
-  "cuteness": 10
-}
-```
+ You can create a resource using a command line or accessing a route, both cases are described below. In this example we use the manager.
 
-This endpoint retrieves a specific kitten.
+ Route: `POST "/api/v1/manager/clients"`
 
-<aside class="warning">If you're not using an administrator API key, note that some kittens will return 403 Forbidden if they are hidden for admins only.</aside>
+ Command Line: `ruby bin/horus-cli create clients '"corporate-name":"Corporate_name", "trade-name":"Trade_name", "key-name":"key", "email":"client@example.com"'`
 
-### HTTP Request
+* Update
 
-`GET http://example.com/kittens/<ID>`
+ You also can update a resource using a command line, with the id of the resource, or accessing a route, both cases are described below. In this exeample we use the manager.
 
-### URL Parameters
+ Route: `PATCH "/api/v1/manager/clients/:id"`
 
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to retrieve
+ Command Line: `ruby bin/horus-cli update clients "id" '"corporate-name":"Corporate", "trade-name":"Trade", "key-name":"key", "email":"client_01@example.com"'``
 
+* List
+
+ You also can list your resources using a command line or accessing a route, both cases are described below. In this exeample we use the manager.
+
+ Route: `GET "/api/v1/manager/clients"`
+
+ Command Line: `ruby bin/horus-cli list clients`
+
+* Show
+
+ You also can show a resource using a command line, with the id of the resource, or accessing a route, both cases are described below. In this exeample we use the manager.
+
+ Route: `GET "/api/v1/manager/clients/:id"`
+
+ Command Line: `ruby bin/horus-cli show clients "id"`
+
+## Telephone
+
+ Once authenticated, except a user, you can create new telephone for a specific resource, edit, list and show it through the following command lines.
+
+* Create
+
+ You can create a telephone using a command line, with the id of the resource to which it belongs, or accessing a route, both cases are described below.
+
+ Route: `POST "/api/v1/manager/client-telephones"`
+
+ Command Line: `ruby bin/horus-cli create telephones '"country-code" => "55", "number" =>  "7578889890"' clients "id"`
+    
+* Update
+
+ You also can update a telephone using a command line, with the id of the telephone, or accessing a route, both cases are described below.
+
+ Route: `PATCH "/api/v1/manager/client-telephones/:id"`
+
+ Command Line: `ruby bin/horus-cli update telephones "id" '"country-code":"1", "number":"789890888"'`
+
+* List
+
+ You also can list your telephones using a command line or accessing a route, both cases are described below.
+
+ Route: `GET "/api/v1/manager/client-telephones"`
+
+ Command Line: `ruby bin/horus-cli list telephones`
+
+* Show
+
+ You also can show a telephone using a command line, with the id of the telephone, or accessing a route, both cases are described below.
+
+ Route: `GET "/api/v1/manager/client-telephones/:id"`
+
+ Command Line: `ruby bin/horus-cli show telephones "id"`
+
+## Address
+
+ Once authenticated, except a user, you can create new address for a specific resource, edit, list and show it through the following command lines. A resource can only have an address.
+
+* Create
+
+ You can create an address using a command line, with the id of the resource to which it belongs, or accessing a route, both cases are described below.
+
+ Route: `POST "/api/v1/manager/client-addresses"`
+
+ Command Line: `ruby bin/horus-cli create addresses '"street" => "Rua", "number" =>  "55", "complement" => "Casa", "zipcode" => "37500344", "neighborhood" => "Bairro", "city" => "Cidade", "state" => "Estado", "country" => "Pais"' clients "id"`
+
+* Update
+
+ You also can update an address using a command line, with the id of the assress, or accessing a route, both cases are described below.
+
+ Route: `PATCH "/api/v1/manager/client-addresses/:id"`
+
+ Command Line: `ruby bin/horus-cli update addresses "id" '"street" => "Av.", "number" =>  "7", "complement" => "Predio", "zipcode" => "37500oo", "neighborhood" => "Vila", "city" => "City", "state" => "State", "country" => "Country"'`
+
+* List
+
+ You also can list your addresses using a command line or accessing a route, both cases are described below.
+
+ Route: `GET "/api/v1/manager/client-addresses"`
+
+ Command Line: `ruby bin/horus-cli list addresses`
+
+* Show
+
+ You also can show an address using a command line, with the id of the address, or accessing a route, both cases are described below.
+
+ Route: `GET "/api/v1/manager/client-addresses/:id"`
+
+ Command Line: `ruby bin/horus-cli show addresses "id"`
+
+# License
+
+ Copyright 2015 Zertico Tecnologias de Internet LTDA
