@@ -2,7 +2,7 @@
 title: API Reference
 
 language_tabs:
-  - ruby
+  - shell
 
 includes:
   - errors
@@ -42,9 +42,9 @@ The Horus API does a division of authentication according to the type of user, W
 
  You will be able to discover the version of the Horus API that is used by the command line below.
 
- `ruby bin/horus-cli version`
+ `horus-cli version`
 
- Currently the API is in version 0.1.0. 
+ Currently the API is in version V1. 
 
 # Installation
 
@@ -54,11 +54,11 @@ The Horus API does a division of authentication according to the type of user, W
 
  First of all, you should do the login using an email and a password already registered, along with the login you must specify which is your level of authenticating. The System Horus API currently has three types of authenticating how already explained above.
 
- Rota: `POST "/oauth/token"`
+ Route: `POST "/oauth/token"`
 
 * Manager
 
- `ruby bin/horus-cli login --manager`
+ `horus-cli login --manager`
  
  `Login: `manager@example.com`
  
@@ -66,7 +66,7 @@ The Horus API does a division of authentication according to the type of user, W
 
 * Admin
 
- `ruby bin/horus-cli login --admin --domain smart.lvh.me:3000`
+ `horus-cli login --admin --domain smart.lvh.me:3000`
  
  `Login: `admin@smart.com`
  
@@ -74,7 +74,7 @@ The Horus API does a division of authentication according to the type of user, W
 
 * User
 
- `ruby bin/horus-cli login --user --domain smart.lvh.me:3000`
+ `horus-cli login --user --domain smart.lvh.me:3000`
  
  `Login: `user@smart.com`
  
@@ -90,7 +90,7 @@ The Horus API does a division of authentication according to the type of user, W
 
  Route: `GET "/api/v1/manager/profile"`
 
- Command Line: `ruby bin/horus-cli profile show`
+ Command Line: `horus-cli profile show`
 
 * Update
 
@@ -98,7 +98,7 @@ The Horus API does a division of authentication according to the type of user, W
 
  Route: `GET "/api/v1/manager/profile"`
 
- Command Line: `ruby bin/horus-cli profile update '"first-name"=>"Company","last-name" => "LTDA"`
+ Command Line: `horus-cli profile update '"first-name"=>"Company","last-name" => "LTDA"`
 
 ## Resource
 
@@ -110,7 +110,7 @@ The Horus API does a division of authentication according to the type of user, W
 
  Route: `POST "/api/v1/manager/clients"`
 
- Command Line: `ruby bin/horus-cli create clients '"corporate-name":"Corporate_name", "trade-name":"Trade_name", "key-name":"key", "email":"client@example.com"'`
+ Command Line: `horus-cli create clients '"corporate-name":"Corporate_name", "trade-name":"Trade_name", "key-name":"key", "email":"client@example.com"'`
 
 * Update
 
@@ -118,7 +118,7 @@ The Horus API does a division of authentication according to the type of user, W
 
  Route: `PATCH "/api/v1/manager/clients/:id"`
 
- Command Line: `ruby bin/horus-cli update clients "id" '"corporate-name":"Corporate", "trade-name":"Trade", "key-name":"key", "email":"client_01@example.com"'``
+ Command Line: `horus-cli update clients "id" '"corporate-name":"Corporate", "trade-name":"Trade", "key-name":"key", "email":"client_01@example.com"'``
 
 * List
 
@@ -126,7 +126,7 @@ The Horus API does a division of authentication according to the type of user, W
 
  Route: `GET "/api/v1/manager/clients"`
 
- Command Line: `ruby bin/horus-cli list clients`
+ Command Line: `horus-cli list clients`
 
 * Show
 
@@ -134,7 +134,7 @@ The Horus API does a division of authentication according to the type of user, W
 
  Route: `GET "/api/v1/manager/clients/:id"`
 
- Command Line: `ruby bin/horus-cli show clients "id"`
+ Command Line: `horus-cli show clients "id"`
 
 ## Telephone
 
@@ -146,7 +146,7 @@ The Horus API does a division of authentication according to the type of user, W
 
  Route: `POST "/api/v1/manager/client-telephones"`
 
- Command Line: `ruby bin/horus-cli create telephones '"country-code" => "55", "number" =>  "7578889890"' clients "id"`
+ Command Line: `horus-cli create telephones '"country-code" => "55", "number" =>  "7578889890"' clients "id"`
     
 * Update
 
@@ -154,7 +154,7 @@ The Horus API does a division of authentication according to the type of user, W
 
  Route: `PATCH "/api/v1/manager/client-telephones/:id"`
 
- Command Line: `ruby bin/horus-cli update telephones "id" '"country-code":"1", "number":"789890888"'`
+ Command Line: `horus-cli update telephones "id" '"country-code":"1", "number":"789890888"'`
 
 * List
 
@@ -162,7 +162,7 @@ The Horus API does a division of authentication according to the type of user, W
 
  Route: `GET "/api/v1/manager/client-telephones"`
 
- Command Line: `ruby bin/horus-cli list telephones`
+ Command Line: `horus-cli list telephones`
 
 * Show
 
@@ -170,7 +170,7 @@ The Horus API does a division of authentication according to the type of user, W
 
  Route: `GET "/api/v1/manager/client-telephones/:id"`
 
- Command Line: `ruby bin/horus-cli show telephones "id"`
+ Command Line: `horus-cli show telephones "id"`
 
 ## Address
 
@@ -182,7 +182,7 @@ The Horus API does a division of authentication according to the type of user, W
 
  Route: `POST "/api/v1/manager/client-addresses"`
 
- Command Line: `ruby bin/horus-cli create addresses '"street" => "Rua", "number" =>  "55", "complement" => "Casa", "zipcode" => "37500344", "neighborhood" => "Bairro", "city" => "Cidade", "state" => "Estado", "country" => "Pais"' clients "id"`
+ Command Line: `horus-cli create addresses '"street" => "Rua", "number" =>  "55", "complement" => "Casa", "zipcode" => "37500344", "neighborhood" => "Bairro", "city" => "Cidade", "state" => "Estado", "country" => "Pais"' clients "id"`
 
 * Update
 
@@ -190,7 +190,7 @@ The Horus API does a division of authentication according to the type of user, W
 
  Route: `PATCH "/api/v1/manager/client-addresses/:id"`
 
- Command Line: `ruby bin/horus-cli update addresses "id" '"street" => "Av.", "number" =>  "7", "complement" => "Predio", "zipcode" => "37500oo", "neighborhood" => "Vila", "city" => "City", "state" => "State", "country" => "Country"'`
+ Command Line: `horus-cli update addresses "id" '"street" => "Av.", "number" =>  "7", "complement" => "Predio", "zipcode" => "37500oo", "neighborhood" => "Vila", "city" => "City", "state" => "State", "country" => "Country"'`
 
 * List
 
@@ -198,7 +198,7 @@ The Horus API does a division of authentication according to the type of user, W
 
  Route: `GET "/api/v1/manager/client-addresses"`
 
- Command Line: `ruby bin/horus-cli list addresses`
+ Command Line: `horus-cli list addresses`
 
 * Show
 
@@ -206,7 +206,7 @@ The Horus API does a division of authentication according to the type of user, W
 
  Route: `GET "/api/v1/manager/client-addresses/:id"`
 
- Command Line: `ruby bin/horus-cli show addresses "id"`
+ Command Line: `horus-cli show addresses "id"`
 
 # License
 
