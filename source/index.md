@@ -186,7 +186,7 @@ The Horus API does a division of authentication according to the type of user, W
 
 * Update
 
- You also can update an address using a command line, with the id of the assress, or accessing a route, both cases are described below.
+ You also can update an address using a command line, with the id of the address, or accessing a route, both cases are described below.
 
  Route: `PATCH "/api/v1/manager/client-addresses/:id"`
 
