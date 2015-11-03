@@ -31,7 +31,7 @@ Reseller is the responsible for sell products and services Softlayer (initially)
 
 Authentication as Reseller allows the user to list and update information about yourself account.
 
-Authentication as Reseler allows the user to list, create and update informations about Users.
+Authentication as Reseller allows the user to list, create and update informations about Users.
 
 ## End Customer (User)
 
@@ -200,7 +200,7 @@ http://localhost:3000/api/v1/manager/profile
 
 ### Update
 
-You also can updatet your profile using a command line or accessing a route, both cases are described below. In this exeample we use the manager.
+You also can updatet your profile using a command line or accessing a route, both cases are described below. In this example we use the manager.
 
 Route: `GET "/api/v1/manager/profile"`
 
@@ -349,7 +349,7 @@ http://localhost:3000/api/v1/manager/clients
 
 ### Update
 
-You also can update a resource using a command line, with the id of the resource, or accessing a route, both cases are described below. In this exeample we use the manager.
+You also can update a resource using a command line, with the id of the resource, or accessing a route, both cases are described below. In this example we use the manager.
 
 Route: `PATCH "/api/v1/manager/clients/:id"`
 
@@ -436,7 +436,7 @@ http://192.168.2.15:3000/api/v1/manager/clients/client_id
 
 ### List
 
-You also can list your resources using a command line or accessing a route, both cases are described below. In this exeample we use the manager.
+You also can list your resources using a command line or accessing a route, both cases are described below. In this example we use the manager.
 
 Route: `GET "/api/v1/manager/clients"`
 
@@ -564,7 +564,7 @@ http://localhost:3000/api/v1/manager/clients
 ```
 ### Show
 
-You also can show a resource using a command line, with the id of the resource, or accessing a route, both cases are described below. In this exeample we use the manager.
+You also can show a resource using a command line, with the id of the resource, or accessing a route, both cases are described below. In this example we use the manager.
 
 Route: `GET "/api/v1/manager/clients/:id"`
 
