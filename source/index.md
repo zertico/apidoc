@@ -1,9 +1,9 @@
 ---
-title: API Reference
+title: Horus API
 
 language_tabs:
-  - ruby: cli
-  - shell
+  - ruby: CLI
+  - shell: cURL
 
 includes:
   - errors
@@ -13,37 +13,41 @@ search: true
 
 # Horus API
 
-Welcome to the Horus API! Horus is an API that enables a Company to distribute and manage Cloud Services more simply, this API is mainly focused on SoftLayer.
+Welcome to the Horus API! 
 
-The Horus API does a division of authentication according to the type of user, We can do this division initially in three layers.
+Horus is an API that enables a Company to distribute and manage Cloud Services more simply, this API is mainly focused on SoftLayer.
+
+The Horus API simplifies the manage of resources and give liberty to integrate with your internal infrastructure.
+
+Depending on the level of involvement with a system, users can be categorized as manager, reseller or user.
 
 ## Distributor (Manager)
 
-Distributor is the responsible for distribute products and services Softlayer (initially) to Companies.
+Distributor is responsible for distributing product and services SoftLayer to Companies.
 
-Authentication as Distributor allows the user to list and update information about yourself account.
+Authentication as manager allows a Distributor to list, create and update information about Companies.
 
-Authentication as Distributor allows the user to list, create and update informations about Companies.
+Authentication as manager allows a Distributor list and update your own information.
 
 ## Reseller (Admin)
 
-Reseller is the responsible for sell products and services Softlayer (initially) to Clients.
+Reseller is responsible for selling product and services SoftLayer to Users.
 
-Authentication as Reseller allows the user to list and update information about yourself account.
+Authentication as admin allows a Reseller to list, create and update information about Users.
 
-Authentication as Reseller allows the user to list, create and update informations about Users.
+Authentication as sdmin allows a Reseller list and update your own information.
 
 ## End Customer (User)
 
-End Customer is last layer in this API, it is the responsible only for consume the products and services  Softlayer (initially).
+End Customer is the last layer in this API, it is responsible only for consume products and services Softlayer.
 
-Authentication as User allows the user to list and update information about yourself account
+Authentication as User allows an End Customer to list and update information about his account.
 
-# Version
+# Current Version
 
-You will be able to discover the version of the Horus API that is used by the command line below.
+By default, all requests receive the v1 version of the API.
 
-> Version
+> Current Version
 
 ```ruby
 horus-cli version
@@ -53,53 +57,31 @@ horus-cli version
 Not implemented
 ```
 
-Currently the API is in version V1.
-
 # Installation
 
-# Usage
+# Login
 
-## Login
+The user is authenticated via a username, a password and your level of involvement with a system.
 
-First of all, you should do the login using an email and a password already registered, along with the login you must specify which is your level of authenticating. The System Horus API currently has three types of authenticating how already explained above.
+There are three ways to authenticate through Horus API, how already explained above.
 
-Route: `POST "/oauth/token"`
+Route: *`POST "/oauth/token"`*
+
+## Manager
 
 > Authentication
 
 ```ruby
-# Manager
-
 horus-cli login --manager
- 
+
 Login: manager@example.com
- 
-Password: pass1234
-
-# Admin
-
-horus-cli login --admin --domain smart.lvh.me:3000
- 
-Login: admin@smart.com
- 
-Password: pass1234
-
-# User
-
-horus-cli login --user --domain smart.lvh.me:3000
- 
-Login: user@smart.com
- 
 Password: pass1234
 
 # Return
-
 You are logged!
 ```
 
 ```shell
-# Manager
-
 curl -X POST -H "Content-Type: application/json" -d
 '{
   "username":"manager@example.com", 
@@ -108,8 +90,36 @@ curl -X POST -H "Content-Type: application/json" -d
 }'
 http://localhost:3000/oauth/token
 
-# Admin
+# Return
+{
+  "access_token":"id_access_token", 
+  "token_type":"bearer", 
+  "expires_in":6166, 
+  "refresh_token":"id_refresh_token", 
+  "created_at":1446428109
+}
+```
+Variable | Type | Value
+---------- | ---- | ----- 
+login | String | manager@example.com
+password | String | pass1234
+authentication | String | manager
 
+## Admin
+
+> Authentication
+
+```ruby
+horus-cli login --admin --domain smart.lvh.me:3000
+ 
+Login: admin@smart.com
+Password: pass1234
+
+# Return
+You are logged!
+```
+
+```shell
 curl -X POST -H "Content-Type: application/json" -d 
 '{
   "username":"admin@smart.com", 
@@ -118,8 +128,38 @@ curl -X POST -H "Content-Type: application/json" -d
 }' 
 http://smart.lvh.me:3000/oauth/token
 
-# User
+# Return
+{
+  "access_token":"id_access_token", 
+  "token_type":"bearer", 
+  "expires_in":6166, 
+  "refresh_token":"id_refresh_token", 
+  "created_at":1446428109
+}
+```
 
+Variable | Type | Value
+---------- | ---- | ----- 
+login | String | admin@smart.com
+password | String | pass1234
+authentication | String | admin
+domain | String | smart.lvh.me:3000
+
+## User
+
+> Authentication
+
+```ruby
+horus-cli login --user --domain smart.lvh.me:3000
+ 
+Login: user@smart.com 
+Password: pass1234
+
+# Return
+You are logged!
+```
+
+```shell
 curl -X POST -H "Content-Type: application/json" -d 
 '{
   "username":"user@smart.com", 
@@ -129,25 +169,233 @@ curl -X POST -H "Content-Type: application/json" -d
 http://smart.lvh.me:3000/oauth/token
 
 # Return
-
 {
-  "access_token":"4444141e89f4793327f6614ad8619f4242c49077f7c62a6b742dee5967cb0ae8", 
+  "access_token":"id_access_token", 
   "token_type":"bearer", 
   "expires_in":6166, 
-  "refresh_token":"444488ecd358b48773d1c1bab1d79f9fae22251e01f0a63b5722c0f26d04f314", 
+  "refresh_token":"id_refresh_token", 
   "created_at":1446428109
 }
 ```
 
-## Profile
+Variable | Type | Value
+---------- | ---- | ----- 
+login | String | user@smart.com
+password | String | pass1234
+authentication | String | user
+domain | String | smart.lvh.me:3000
 
-Once authenticated, you will have the option of show and update you profile through the following command lines.
+# User-Profile
 
-### Show
+When logged in, the user can access his own profile, it allows him to show and update information about himself.
 
-You can show your profile using a command line or accessing a route, both cases are described below. In this example we use the manager.
+## Show
 
-Route: `GET "/api/v1/manager/profile"`
+> Show Profile
+
+```ruby
+Not implemented
+```
+
+```shell
+# The access_token is obtained in the login (id_access_token).
+
+curl --header "Content-Type: application/vnd.api+json" 
+  -H "Authorization: Bearer access_token" -X GET -d 
+'{ 
+  "data": 
+  { 
+    "type":"profile" 
+  } 
+}' http://smart.lvh.me:3000/api/v1/profile
+
+# Return
+{
+  "data":
+  {
+    "id":"id_profile", 
+    "type":"profiles", 
+    "links":
+    {
+      "self":"http://smart.lvh.me:3000/api/v1/profiles/id_profile"
+    },
+    "attributes":
+    {
+      "email":"user@smart.com", 
+      "first-name":"Cool", 
+      "last-name":"User"
+    }
+  }
+}
+```
+
+The user can visualize your own profile accessing the route described below.
+
+Route: *`GET "api/v1/profile"`*
+
+## Update
+
+> Update Profile
+
+```ruby
+Not implemented
+```
+
+```shell
+# The access_token is obtained in the login (id_access_token).
+
+curl --header "Content-Type: application/vnd.api+json" 
+  -H "Authorization: Bearer access_token" -X PATCH -d
+'{ 
+  "data": 
+  { 
+    "type":"profiles", 
+    "id":"id_profile", 
+    "attributes":
+    { 
+      "first-name":"Super", 
+      "last-name":"User" 
+    } 
+  } 
+}' http://smart.lvh.me:3000/api/v1/profile
+
+# Return
+{
+  "data":
+  {
+    "id":"id_profile", 
+    "type":"profiles", 
+    "links":
+    {
+      "self":"http://smart.lvh.me:3000/api/v1/profiles/id_profile"
+    },
+    "attributes":
+    {
+      "email":"user@smart.com",
+      "first-name":"Super",
+      "last-name":"User"
+    }
+  }
+} 
+```
+
+The user can edit the information contained in your own profile accessing the route described below.
+
+Route: *`GET "api/v1/profile"`*
+
+Variable | Type | Value
+---------- | ---- | ----- 
+first-name | String | Super
+last-name  | String | User
+
+# Admin-Profile
+
+When logged in, the admin can access his own profile, it allows him to show and update information about himself.
+
+## Show
+
+> Show Profile
+
+```ruby
+Not implemented
+```
+
+```shell
+# The access_token is obtained in the login (id_access_token).
+
+curl --header "Content-Type: application/vnd.api+json" 
+  -H "Authorization: Bearer access_token" -X GET -d 
+'{ 
+  "data":
+  { 
+    "type":"profile" 
+  }
+}' http://smart.lvh.me:3000/api/v1/admin/profile
+
+# Return
+{
+  "data":
+  {
+    "id":"id_profile",
+    "type":"profiles",
+    "links":
+    {
+      "self":"http://smart.lvh.me:3000/api/v1/admin/profiles/id_profile"
+    },
+    "attributes":
+    {
+      "email":"admin@smart.com",
+      "first-name":"Power",
+      "last-name":"Admin"
+    }
+  }
+} 
+```
+
+The admin can visualize your own profile accessing the route described below.
+
+Route: *`GET "api/v1/admin/profile"`*
+
+## Update
+
+> Update Profile
+
+```ruby
+Not implemented
+```
+
+```shell
+# The access_token is obtained in the login (id_access_token).
+
+curl --header "Content-Type: application/vnd.api+json" 
+  -H "Authorization: Bearer access_token" -X PATCH -d 
+'{ 
+  "data":
+  { 
+    "type":"profiles", 
+    "id":"id_profile", 
+    "attributes":
+    { 
+      "first-name":"Admin", 
+      "last-name":"Nice"
+    }
+  }
+}' http://smart.lvh.me:3000/api/v1/admin/profile
+
+# Return
+{
+  "data":
+  {
+    "id":"id_profile",
+    "type":"profiles",
+    "links":
+    {
+      "self":"http://smart.lvh.me:3000/api/v1/admin/profiles/id_profile"
+    },
+    "attributes":
+    {
+      "email":"admin@smart.com",
+      "first-name":"Admin",
+      "last-name":"Nice"
+    }
+  }
+}
+```
+
+The admin can edit the information contained in your own profile accessing the route described below.
+
+Route: *`GET "api/v1/admin/profile"`*
+
+Variable | Type | Value
+---------- | ---- | ----- 
+first-name | String | Admin
+last-name  | String | Nice
+
+# Manager-Profile
+
+When logged in, the manager can access his own profile, it allows him to show and update information about himself.
+
+## Show
 
 > Show Profile
 
@@ -155,9 +403,8 @@ Route: `GET "/api/v1/manager/profile"`
 horus-cli profile show
 
 # Return
-
 {
-  "id":"1c9dcbb4-758d-55c0-874a-da7a8285a814", 
+  "id":"id_profile", 
   "type":"profile", 
   "email":"manager@example.com", 
   "first-name":"Godlike", 
@@ -166,9 +413,10 @@ horus-cli profile show
 ```
 
 ```shell
-# The access_token is obtained in the login.
+# The access_token is obtained in the login (id_access_token).
 
-curl --header "Content-Type: application/vnd.api+json" -H "Authorization: Bearer 'access_token'" -X GET -d 
+curl --header "Content-Type: application/vnd.api+json" 
+  -H "Authorization: Bearer access_token" -X GET -d 
 '{
   "data":
     {
@@ -178,15 +426,14 @@ curl --header "Content-Type: application/vnd.api+json" -H "Authorization: Bearer
 http://localhost:3000/api/v1/manager/profile
 
 # Return
-
 {
   "data":
   {
-    "id":"1c9dcbb4-758d-55c0-874a-da7a8285a814",
+    "id":"id_profile",
     "type":"profiles", 
     "links":
     {
-      "self":"http://localhost:3000/api/v1/manager/profiles/1c9dcbb4-758d-55c0-874a-da7a8285a814"
+      "self":"http://localhost:3000/api/v1/manager/profiles/id_profile"
     }, 
     "attributes":
     {
@@ -198,32 +445,32 @@ http://localhost:3000/api/v1/manager/profile
 }
 ```
 
-### Update
+The user can visualize your own profile accessing the route described below.
 
-You also can updatet your profile using a command line or accessing a route, both cases are described below. In this example we use the manager.
+Route: *`GET "api/v1/manager/profile"`*
 
-Route: `GET "/api/v1/manager/profile"`
+## Update
 
 > Update Profile
 
 ```ruby
-horus-cli profile update '"first-name":"Company","last-name":"LTDA"'
+horus-cli profile update '"first-name":"New Company","last-name":"Corp"'
 
 # Return
-
 {
-  "id":"1c9dcbb4-758d-55c0-874a-da7a8285a814", 
+  "id":"id_profile", 
   "type":"profile", 
   "email":"manager@example.com", 
-  "first-name":"Company", 
-  "last-name":"LTDA"
+  "first-name":"New Company", 
+  "last-name":"Corp"
 }
 ```
 
 ```shell
-# The access_token is obtained in the login.
+# The access_token is obtained in the login (id_access_token).
 
-curl --header "Content-Type: application/vnd.api+json" -H "Authorization: Bearer 'access_token'" -X PATCH -d 
+curl --header "Content-Type: application/vnd.api+json" 
+  -H "Authorization: Bearer access_token" -X PATCH -d 
 '{
   "data":
   {
@@ -231,73 +478,77 @@ curl --header "Content-Type: application/vnd.api+json" -H "Authorization: Bearer
     "id":"profile_id", 
     "attributes":
     {
-      "first-name":"New_Company", 
-      "last-name":"CIA"
+      "first-name":"New Company", 
+      "last-name":"Corp"
     }
   }
 }' 
-http://192.168.2.15:3000/api/v1/manager/profile
+http://localhost:3000/api/v1/manager/profile
 
 # Return
-
 {
   "data":
   {
-    "id":"1c9dcbb4-758d-55c0-874a-da7a8285a814", 
+    "id":"id_profile", 
     "type":"profiles", 
     "links":
     {
-      "self":"http://192.168.2.15:3000/api/v1/manager/profiles/1c9dcbb4-758d-55c0-874a-da7a8285a814"
+      "self":"http://localhost:3000/api/v1/manager/profiles/id_profile"
     },
     "attributes":
     {
       "email":"manager@example.com",
-      "first-name":"New_Company",
-      "last-name":"CIA"
+      "first-name":"New Company",
+      "last-name":"Corp"
     }
   }
-} 
+}
 ```
 
-## Resource
+The user can edit the information contained in your own profile accessing the route described below.
 
-Once authenticated, except a user, you can create new resources, edit, list and show it through the following command lines.
+Route: *`GET "api/v1/manager/profile"`*
 
-### Create
+Variable | Type | Value
+---------- | ---- | ----- 
+first-name | String | New Company 
+last-name  | String | Corp
 
-You can create a resource using a command line or accessing a route, both cases are described below. In this example we use the manager.
+# Manager-Company
 
-Route: `POST "/api/v1/manager/clients"`
+When logged in, the manager can access information about your Companies, it allows him to create, update, show and list them.
 
-> Create Resource
+## Create
+
+> Create Company
 
 ```ruby
 horus-cli create clients '"corporate-name":"Corporate_name", "trade-name":"Trade_name", "key-name":"key", "email":"client@example.com"'
 
 # Return
-
 {
-  "corporate-name":"Corporate_name", 
-  "trade-name":"Trade_name", 
+  "corporate-name":"Corporate", 
+  "trade-name":"Trade", 
   "key-name":"key", 
   "email":"client@example.com", 
   "type":"clients", 
-  "id":"497cec48-f018-4382-a5ea-f9e0afbec09a"
+  "id":"id_client"
 }
 ```
 
 ```shell
-# The access_token is obtained in the login.
+# The access_token is obtained in the login (id_access_token).
 
-curl --header "Content-Type: application/vnd.api+json" -H "Authorization: Bearer 'access_token'" -X POST -d  
+curl --header "Content-Type: application/vnd.api+json" 
+  -H "Authorization: Bearer 'access_token'" -X POST -d  
 '{
   "data":
   {
     "type":"clients", 
     "attributes":
     {
-      "corporate-name":"Corporate_name", 
-      "trade-name":"Trade_name", 
+      "corporate-name":"Corporate", 
+      "trade-name":"Trade", 
       "key-name":"key", 
       "email":"client@example.com"
     }
@@ -306,20 +557,19 @@ curl --header "Content-Type: application/vnd.api+json" -H "Authorization: Bearer
 http://localhost:3000/api/v1/manager/clients
 
 # Return
-
 {
   "data":
   {
-    "id":"fec0f2a6-ac7c-4e51-94e3-9ba222b0e467", 
+    "id":"id_client", 
     "type":"clients", 
     "links":
     {
-      "self":"http://localhost:3000/api/v1/manager/clients/fec0f2a6-ac7c-4e51-94e3-9ba222b0e467"
+      "self":"http://localhost:3000/api/v1/manager/clients/id_client"
     }, 
     "attributes":
     {
-      "corporate-name":"Corporate_name", 
-      "trade-name":"Trade_name", 
+      "corporate-name":"Corporate", 
+      "trade-name":"Trade", 
       "key-name":"key", 
       "email":"client@example.com"
     }, 
@@ -329,8 +579,8 @@ http://localhost:3000/api/v1/manager/clients
       {
         "links":
         {
-          "self":"http://localhost:3000/api/v1/manager/clients/fec0f2a6-ac7c-4e51-94e3-9ba222b0e467/relationships/client-address", 
-          "related":"http://localhost:3000/api/v1/manager/clients/fec0f2a6-ac7c-4e51-94e3-9ba222b0e467/client-address"
+          "self":"http://localhost:3000/api/v1/manager/clients/id_client/relationships/client-address", 
+          "related":"http://localhost:3000/api/v1/manager/clients/id_client/client-address"
         }, 
         "data":null
       }, 
@@ -338,8 +588,8 @@ http://localhost:3000/api/v1/manager/clients
       {
         "links":
         {
-          "self":"http://localhost:3000/api/v1/manager/clients/fec0f2a6-ac7c-4e51-94e3-9ba222b0e467/relationships/client-telephones", 
-          "related":"http://localhost:3000/api/v1/manager/clients/fec0f2a6-ac7c-4e51-94e3-9ba222b0e467/client-telephones"
+          "self":"http://localhost:3000/api/v1/manager/clients/id_client/relationships/client-telephones", 
+          "related":"http://localhost:3000/api/v1/manager/clients/id_client/client-telephones"
         }
       }
     }
@@ -347,33 +597,40 @@ http://localhost:3000/api/v1/manager/clients
 }
 ```
 
-### Update
+The manager can create a Company accessing the route described below.
 
-You also can update a resource using a command line, with the id of the resource, or accessing a route, both cases are described below. In this example we use the manager.
+Route: *`POST "/api/v1/manager/clients"`*
 
-Route: `PATCH "/api/v1/manager/clients/:id"`
+Variable | Type | Value
+---------- | ---- | ----- 
+corporate-name | String | Corporate 
+trade-name | String | Trade
+key-name | String | key 
+email | String | client@example.com
 
-> Update Resource
+## Update
+
+> Update Company
 
 ```ruby
-horus-cli update clients "id_client" '"corporate-name":"Corporate_01", "trade-name":"Trade_01", "key-name":"key", "email":"client_01@example.com"'
+horus-cli update clients "id_client" '"corporate-name":"New Corporate", "New Trade":"Trade_01", "key-name":"key", "email":"client_02@example.com"'
 
 # Return
-
 {
-  "id":"690c7235-59b3-5a4e-9c04-e1aa98cc6e38", 
+  "id":"id_client", 
   "type":"clients", 
-  "corporate-name":"Corporate_01", 
-  "trade-name":"Trade_01", 
+  "corporate-name":"New Corporate", 
+  "trade-name":"New Trade", 
   "key-name":"key", 
-  "email":"client_01@example.com"
+  "email":"client_02@example.com"
 }
 ```
 
 ```shell
-# The access_token is obtained in the login.
+# The access_token is obtained in the login (id_access_token).
 
-curl --header "Content-Type: application/vnd.api+json" -H "Authorization: Bearer 'access_token'" -X PATCH -d 
+curl --header "Content-Type: application/vnd.api+json" 
+  -H "Authorization: Bearer 'access_token'" -X PATCH -d 
 '{
   "data":
   {
@@ -381,31 +638,30 @@ curl --header "Content-Type: application/vnd.api+json" -H "Authorization: Bearer
     "type":"clients", 
     "attributes":
     { 
-      "corporate-name":"Corporate_03", 
-      "trade-name":"Trade_03", 
-      "email":"client_03@example.com"
+      "corporate-name":"New Corporate", 
+      "trade-name":"New Trade", 
+      "email":"client_02@example.com"
     }
   }
 }' 
-http://192.168.2.15:3000/api/v1/manager/clients/client_id
+http://localhost:3000/api/v1/manager/clients/client_id
 
 # Return
-
 {
   "data":
   {
-    "id":"918ba9c6-bde4-543a-a280-afbc1bf698ad", 
+    "id":"id_client", 
     "type":"clients", 
     "links":
     {
-      "self":"http://192.168.2.15:3000/api/v1/manager/clients/918ba9c6-bde4-543a-a280-afbc1bf698ad"
+      "self":"http://localhost:3000/api/v1/manager/clients/id_client"
     },
     "attributes":
     {
-      "corporate-name":"Corporate_03",
-      "trade-name":"Trade_03",
-      "key-name":"smart",
-      "email":"client_03@example.com"
+      "corporate-name":"New Corporate",
+      "trade-name":"New Trade",
+      "key-name":"key",
+      "email":"client_02@example.com"
     },
     "relationships":
     {
@@ -413,20 +669,20 @@ http://192.168.2.15:3000/api/v1/manager/clients/client_id
       {
         "links":
         {
-          "self":"http://192.168.2.15:3000/api/v1/manager/clients/918ba9c6-bde4-543a-a280-afbc1bf698ad/relationships/client-address", 
-          "related":"http://192.168.2.15:3000/api/v1/manager/clients/918ba9c6-bde4-543a-a280-afbc1bf698ad/client-address"
+          "self":"http://localhost:3000/api/v1/manager/clients/id_client/relationships/client-address", 
+          "related":"http://localhost:3000/api/v1/manager/clients/id_client/client-address"
         },
         "data":
         {
-          "type":"client-addresses","id":"918ba9c6-bde4-543a-a280-afbc1bf698ad"
+          "type":"client-addresses","id":"id_client"
         }
       },
       "client-telephones":
       {
         "links":
         {
-          "self":"http://192.168.2.15:3000/api/v1/manager/clients/918ba9c6-bde4-543a-a280-afbc1bf698ad/relationships/client-telephones", 
-          "related":"http://192.168.2.15:3000/api/v1/manager/clients/918ba9c6-bde4-543a-a280-afbc1bf698ad/client-telephones"
+          "self":"http://localhost:3000/api/v1/manager/clients/id_client/relationships/client-telephones", 
+          "related":"http://localhost:3000/api/v1/manager/clients/id_client/client-telephones"
         }
       }
     }
@@ -434,30 +690,36 @@ http://192.168.2.15:3000/api/v1/manager/clients/client_id
 }
 ```
 
-### List
+The manager can edit the information contained in a Company accessing the route described below.
 
-You also can list your resources using a command line or accessing a route, both cases are described below. In this example we use the manager.
+Route: *`PATCH "/api/v1/manager/clients/:id`*
 
-Route: `GET "/api/v1/manager/clients"`
+Variable | Type | Value
+---------- | ---- | ----- 
+corporate-name | String | New Corporate 
+trade-name | String | New Trade
+key-name | String | key 
+email | String | client_02@example.com
 
-> List Resources
+## List
+
+> List Company
 
 ```ruby
 horus-cli list clients
 
 # Return
-
 [
   {
-    "id":"1fb9488a-e632-4536-a321-0107f0ea15f8", 
+    "id":"id_client_01", 
     "type":"clients", 
-    "corporate-name":"Corporate_name", 
-    "trade-name":"Trade_name", 
+    "corporate-name":"Corporate", 
+    "trade-name":"Trade", 
     "key-name":"key", 
     "email":"client@example.com"
   },
   {
-    "id":"690c7235-59b3-5a4e-9c04-e1aa98cc6e38", 
+    "id":"id_client_02", 
     "type":"clients", 
     "corporate-name":"Acme Inc.", 
     "trade-name":"Acme", 
@@ -468,9 +730,10 @@ horus-cli list clients
 ```
 
 ```shell
-# The access_token is obtained in the login.
+# The access_token is obtained in the login (id_access_token).
 
-curl --header "Content-Type: application/vnd.api+json" -H "Authorization: Bearer 'access_token'" -X GET -d 
+curl --header "Content-Type: application/vnd.api+json" 
+  -H "Authorization: Bearer 'access_token'" -X GET -d 
 '{
   "data":
   {
@@ -480,21 +743,20 @@ curl --header "Content-Type: application/vnd.api+json" -H "Authorization: Bearer
 http://localhost:3000/api/v1/manager/clients
 
 # Return
-
 {
   "data":
   [
     {
-      "id":"1fb9488a-e632-4536-a321-0107f0ea15f8", 
+      "id":"id_client_01", 
       "type":"clients", 
       "links":
       {
-        "self":"http://localhost:3000/api/v1/manager/clients/1fb9488a-e632-4536-a321-0107f0ea15f8"
+        "self":"http://localhost:3000/api/v1/manager/clients/id_client_01"
       }, 
       "attributes": 
       {
-        "corporate-name":"Corporate_name", 
-        "trade-name":"Trade_name", 
+        "corporate-name":"Corporate", 
+        "trade-name":"Trade", 
         "key-name":"key", 
         "email":"client@example.com"
         }, 
@@ -504,8 +766,8 @@ http://localhost:3000/api/v1/manager/clients
           {
             "links":
             {
-              "self":"http://localhost:3000/api/v1/manager/clients/1fb9488a-e632-4536-a321-0107f0ea15f8/relationships/client-address", 
-              "related":"http://localhost:3000/api/v1/manager/clients/1fb9488a-e632-4536-a321-0107f0ea15f8/client-address"
+              "self":"http://localhost:3000/api/v1/manager/clients/id_client_01/relationships/client-address", 
+              "related":"http://localhost:3000/api/v1/manager/clients/id_client_01/client-address"
             },
             "data":null
           },
@@ -513,25 +775,25 @@ http://localhost:3000/api/v1/manager/clients
           {
             "links":
             {
-              "self":"http://localhost:3000/api/v1/manager/clients/1fb9488a-e632-4536-a321-0107f0ea15f8/relationships/client-telephones", 
-              "related":"http://localhost:3000/api/v1/manager/clients/1fb9488a-e632-4536-a321-0107f0ea15f8/client-telephones"
+              "self":"http://localhost:3000/api/v1/manager/clients/id_client_01/relationships/client-telephones", 
+              "related":"http://localhost:3000/api/v1/manager/clients/id_client_01/client-telephones"
             }
           }
         }
       },
       {
-        "id":"507129fd-38d2-4ec4-9caf-d12fd779ce08",
+        "id":"id_client_02",
         "type":"clients", 
         "links": 
         {
-          "self":"http://localhost:3000/api/v1/manager/clients/507129fd-38d2-4ec4-9caf-d12fd779ce08"
+          "self":"http://localhost:3000/api/v1/manager/clients/id_client_02"
         }, 
         "attributes":
         {
-          "corporate-name":"Corporate_name", 
-          "trade-name":"Trade_name", 
-          "key-name":"key", 
-          "email":"client@example.com"
+          "corporate-name":"Acme Inc.", 
+          "trade-name":"Acme", 
+          "key-name":"acme", 
+          "email":"contact@acme.com"
         }, 
         "relationships":
         {
@@ -539,21 +801,21 @@ http://localhost:3000/api/v1/manager/clients
           {
             "links":
             {
-              "self":"http://localhost:3000/api/v1/manager/clients/507129fd-38d2-4ec4-9caf-d12fd779ce08/relationships/client-address", 
-              "related":"http://localhost:3000/api/v1/manager/clients/507129fd-38d2-4ec4-9caf-d12fd779ce08/client-address"
+              "self":"http://localhost:3000/api/v1/manager/clients/id_client_02/relationships/client-address", 
+              "related":"http://localhost:3000/api/v1/manager/clients/id_client_02/client-address"
             },
             "data":
             {
               "type":"client-addresses", 
-              "id":"749df322-3d8e-4b75-bd99-0922986b0876"
+              "id":"id_address"
             }
           }, 
           "client-telephones":
           {
             "links": 
             {
-              "self":"http://localhost:3000/api/v1/manager/clients/507129fd-38d2-4ec4-9caf-d12fd779ce08/relationships/client-telephones", 
-              "related":"http://localhost:3000/api/v1/manager/clients/507129fd-38d2-4ec4-9caf-d12fd779ce08/client-telephones"
+              "self":"http://localhost:3000/api/v1/manager/clients/id_client_02/relationships/client-telephones", 
+              "related":"http://localhost:3000/api/v1/manager/clients/id_client_02/client-telephones"
             }
           }
         }
@@ -562,31 +824,31 @@ http://localhost:3000/api/v1/manager/clients
   ]
 }
 ```
-### Show
 
-You also can show a resource using a command line, with the id of the resource, or accessing a route, both cases are described below. In this example we use the manager.
+The manager can visualize all Companies created for him accessing the route described below.
 
-Route: `GET "/api/v1/manager/clients/:id"`
+Route: *`GET "/api/v1/manager/clients"`*
 
-> Show Resource
+## Show
+
+> Show Company
 
 ```ruby
 horus-cli show clients "id_client"
 
 # Return
-
 {
-  "id":"1fb9488a-e632-4536-a321-0107f0ea15f8", 
+  "id":"id_client", 
   "type":"clients", 
-  "corporate-name":"Corporate_name", 
-  "trade-name":"Trade_name", 
+  "corporate-name":"Corporate", 
+  "trade-name":"Trade", 
   "key-name":"key", 
   "email":"client@example.com"
 }
 ```
 
 ```shell
-# The access_token is obtained in the login.
+# The access_token is obtained in the login (id_access_token).
 
 curl --header "Content-Type: application/vnd.api+json" -H "Authorization: Bearer 'access_token'" -X GET -d 
 '{
@@ -598,20 +860,19 @@ curl --header "Content-Type: application/vnd.api+json" -H "Authorization: Bearer
 http://localhost:3000/api/v1/manager/clients/'id_client'
 
 # Return
-
 {
   "data":
   {
-    "id":"05c96f99-1fc1-4f1a-83eb-1b02366e4f2b",
+    "id":"id_client",
     "type":"clients",
     "links":
     {
-      "self":"http://localhost:3000/api/v1/manager/clients/05c96f99-1fc1-4f1a-83eb-1b02366e4f2b"
+      "self":"http://localhost:3000/api/v1/manager/clients/id_client"
     },
     "attributes":
     {
-      "corporate-name":"Corporate_name",
-      "trade-name":"Trade_name",
+      "corporate-name":"Corporate",
+      "trade-name":"Trade",
       "key-name":"key",
       "email":"client@example.com"
     },
@@ -621,21 +882,21 @@ http://localhost:3000/api/v1/manager/clients/'id_client'
       {
         "links":
         {
-          "self":"http://localhost:3000/api/v1/manager/clients/05c96f99-1fc1-4f1a-83eb-1b02366e4f2b/relationships/client-address",
-          "related":"http://localhost:3000/api/v1/manager/clients/05c96f99-1fc1-4f1a-83eb-1b02366e4f2b/client-address"
+          "self":"http://localhost:3000/api/v1/manager/clients/id_client/relationships/client-address",
+          "related":"http://localhost:3000/api/v1/manager/clients/id_client/client-address"
         },
         "data":
         {
           "type":"client-addresses",
-          "id":"3c13bf0d-bd60-4f6d-8a45-32b733243ef4"
+          "id":"id_address"
         }
       },
       "client-telephones":
       {
         "links":
         {
-          "self":"http://localhost:3000/api/v1/manager/clients/05c96f99-1fc1-4f1a-83eb-1b02366e4f2b/relationships/client-telephones",
-          "related":http://localhost:3000/api/v1/manager/clients/05c96f99-1fc1-4f1a-83eb-1b02366e4f2b/client-telephones"
+          "self":"http://localhost:3000/api/v1/manager/clients/id_client/relationships/client-telephones",
+          "related":http://localhost:3000/api/v1/manager/clients/id_client/client-telephones"
         }
       }
     }
@@ -643,33 +904,35 @@ http://localhost:3000/api/v1/manager/clients/'id_client'
 }
 ```
 
-## Telephone
+The manager can visualize a specific Company created for him accessing the route described below.
 
-Once authenticated, except a user, you can create new telephone for a specific resource, edit, list and show it through the following command lines.
+Route: *`GET "/api/v1/manager/clients/:id"`*
 
-### Create
+# Manager-Company-Telephone
 
-You can create a telephone using a command line, with the id of the resource to which it belongs, or accessing a route, both cases are described below.
+When logged in, the manager can access information about Company's telephones, it allows him to create, update, show and list them
+
+## Create
 
 > Create Telephone
 
 ```ruby
-horus-cli create telephones '"country-code" => "55", "number" =>  "7578889890"' clients "id_client"
+horus-cli create telephones '"country-code":"55", "number":"7578889890"' clients "id_client"
 
 # Return
-
 {
   "country-code":"55", 
   "number":"7578889890", 
   "type":"client-telephones", 
-  "id":"c9e166cd-d523-447a-84e3-5d5802487698"
+  "id":"id_telephone"
 }
 ```
 
 ```shell
-# The access_token is obtained in the login.
+# The access_token is obtained in the login (id_access_token).
 
-curl --header "Content-Type: application/vnd.api+json" -H "Authorization: Bearer 'access_token'" -X POST -d  
+curl --header "Content-Type: application/vnd.api+json" 
+  -H "Authorization: Bearer 'access_token'" -X POST -d  
 '{
   "data":
   {
@@ -681,7 +944,7 @@ curl --header "Content-Type: application/vnd.api+json" -H "Authorization: Bearer
         "data":
         {
           "type":"clients", 
-          "id":"507129fd-38d2-4ec4-9caf-d12fd779ce08"
+          "id":"id_client"
         }
       }
     }, 
@@ -699,11 +962,11 @@ http://localhost:3000/api/v1/manager/client-telephones
 {
   "data":
   {
-    "id":"0a347ff7-026f-4e43-8bf1-6d1cbc351dd8", 
+    "id":"id_telephone", 
     "type":"client-telephones", 
     "links":
     {
-      "self":"http://localhost:3000/api/v1/manager/client-telephones/0a347ff7-026f-4e43-8bf1-6d1cbc351dd8"
+      "self":"http://localhost:3000/api/v1/manager/client-telephones/id_telephone"
     }, 
     "attributes":
     {
@@ -716,8 +979,8 @@ http://localhost:3000/api/v1/manager/client-telephones
       {
         "links":
         {
-          "self":"http://localhost:3000/api/v1/manager/client-telephones/0a347ff7-026f-4e43-8bf1-6d1cbc351dd8/relationships/client", 
-          "related":"http://localhost:3000/api/v1/manager/client-telephones/0a347ff7-026f-4e43-8bf1-6d1cbc351dd8/client"
+          "self":"http://localhost:3000/api/v1/manager/client-telephones/id_telephone/relationships/client", 
+          "related":"http://localhost:3000/api/v1/manager/client-telephones/id_telephone/client"
         }
       }
     }
@@ -725,11 +988,16 @@ http://localhost:3000/api/v1/manager/client-telephones
 } 
 ```
 
-### Update
+The manager can create a telephone accessing the route described below.
 
-You also can update a telephone using a command line, with the id of the telephone, or accessing a route, both cases are described below.
+Route: *`POST "/api/v1/manager/client-telephones"`*
 
-Route: `PATCH "/api/v1/manager/client-telephones/:id"`
+Variable | Type | Value
+---------- | ---- | ----- 
+country-code | String | 55 
+number | String | 7578889890
+
+## Update
 
 > Update Telephone
 
@@ -739,7 +1007,7 @@ horus-cli update telephones "id_telephone" '"country-code":"12", "number":"78989
 # Return
 
 {
-  "id":"918ba9c6-bde4-543a-a280-afbc1bf698ad", 
+  "id":"id_telephone", 
   "type":"client-telephones", 
   "country-code":"12", 
   "number":"789890888"
@@ -747,9 +1015,10 @@ horus-cli update telephones "id_telephone" '"country-code":"12", "number":"78989
 ```
 
 ```shell
-# The access_token is obtained in the login.
+# The access_token is obtained in the login (id_access_token).
 
-curl --header "Content-Type: application/vnd.api+json" -H "Authorization: Bearer 'access_token'" -X PATCH -d 
+curl --header "Content-Type: application/vnd.api+json" 
+  -H "Authorization: Bearer 'access_token'" -X PATCH -d 
 '{ 
   "data":
   {
@@ -762,18 +1031,17 @@ curl --header "Content-Type: application/vnd.api+json" -H "Authorization: Bearer
     }
   }
 }' 
-http://192.168.2.15:3000/api/v1/manager/client-telephones/telephone_id
+http://localhost:3000/api/v1/manager/client-telephones/telephone_id
 
 # Return
-
 {
   "data":
   {
-    "id":"690c7235-59b3-5a4e-9c04-e1aa98cc6e38",
+    "id":"id_telephone",
     "type":"client-telephones",
     "links":
     {
-      "self":"http://192.168.2.15:3000/api/v1/manager/client-telephones/690c7235-59b3-5a4e-9c04-e1aa98cc6e38"
+      "self":"http://localhost:3000/api/v1/manager/client-telephones/id_telephone"
     },
     "attributes":
     {
@@ -786,8 +1054,8 @@ http://192.168.2.15:3000/api/v1/manager/client-telephones/telephone_id
       {
         "links":
         {
-          "self":"http://192.168.2.15:3000/api/v1/manager/client-telephones/690c7235-59b3-5a4e-9c04-e1aa98cc6e38/relationships/client",
-          "related":"http://192.168.2.15:3000/api/v1/manager/client-telephones/690c7235-59b3-5a4e-9c04-e1aa98cc6e38/client"
+          "self":"http://localhost:3000/api/v1/manager/client-telephones/id_telephone/relationships/client",
+          "related":"http://localhost:3000/api/v1/manager/client-telephones/id_telephone/client"
         }
       }
     }
@@ -795,28 +1063,32 @@ http://192.168.2.15:3000/api/v1/manager/client-telephones/telephone_id
 }
 ```
 
-### List
+The manager can edit the information contained in telephone accessing the route described below.
 
-You also can list your telephones using a command line or accessing a route, both cases are described below.
+Route: *`PATCH "/api/v1/manager/client-telephones/:id"`*
 
-Route: `GET "/api/v1/manager/client-telephones"`
+Variable | Type | Value
+---------- | ---- | ----- 
+country-code | String | 12 
+number | String | 789890888
 
-> List Telephones
+## List
+
+> List Telephone
 
 ```ruby
 horus-cli list telephones
 
 # Return
-
 [
   {
-    "id":"0de8d725-16a0-49ae-9389-010df0ca0996", 
+    "id":"id_telephone_01", 
     "type":"client-telephones", 
     "country-code":"55", 
     "number":"7578889890"
   }, 
   {
-    "id":"ca4dffcc-a23c-4d2a-918b-615196e2c615", 
+    "id":"id_telephone_02", 
     "type":"client-telephones", 
     "country-code":"34", 
     "number":"7777777777"
@@ -825,9 +1097,10 @@ horus-cli list telephones
 ```
 
 ```shell
-# The access_token is obtained in the login.
+# The access_token is obtained in the login (id_access_token).
 
-curl --header "Content-Type: application/vnd.api+json" -H "Authorization: Bearer 'access_token'" -X GET -d 
+curl --header "Content-Type: application/vnd.api+json" 
+  -H "Authorization: Bearer 'access_token'" -X GET -d 
 '{
   "data":
   {
@@ -837,16 +1110,15 @@ curl --header "Content-Type: application/vnd.api+json" -H "Authorization: Bearer
 http://localhost:3000/api/v1/manager/client-telephones
 
 # Return
-
 {
   "data":
   [
     {
-      "id":"0a347ff7-026f-4e43-8bf1-6d1cbc351dd8", 
+      "id":"id_telephone_01", 
       "type":"client-telephones", 
       "links":
       {
-        "self":"http://localhost:3000/api/v1/manager/client-telephones/0a347ff7-026f-4e43-8bf1-6d1cbc351dd8"
+        "self":"http://localhost:3000/api/v1/manager/client-telephones/id_telephone_01"
       }, 
       "attributes":
       {
@@ -859,18 +1131,18 @@ http://localhost:3000/api/v1/manager/client-telephones
         {
           "links":
           {
-            "self":"http://localhost:3000/api/v1/manager/client-telephones/0a347ff7-026f-4e43-8bf1-6d1cbc351dd8/relationships/client", 
-            "related":"http://localhost:3000/api/v1/manager/client-telephones/0a347ff7-026f-4e43-8bf1-6d1cbc351dd8/client"
+            "self":"http://localhost:3000/api/v1/manager/client-telephones/id_telephone_01/relationships/client", 
+            "related":"http://localhost:3000/api/v1/manager/client-telephones/id_telephone_01/client"
           }
         }
       }
     }, 
     {
-      "id":"0de8d725-16a0-49ae-9389-010df0ca0996", 
+      "id":"id_telephone_02", 
       "type":"client-telephones", 
       "links":
       {
-        "self":"http://localhost:3000/api/v1/manager/client-telephones/0de8d725-16a0-49ae-9389-010df0ca0996"
+        "self":"http://localhost:3000/api/v1/manager/client-telephones/id_telephone_02"
       }, 
       "attributes":
       {
@@ -883,8 +1155,8 @@ http://localhost:3000/api/v1/manager/client-telephones
         {
           "links":
           {
-            "self":"http://localhost:3000/api/v1/manager/client-telephones/0de8d725-16a0-49ae-9389-010df0ca0996/relationships/client", 
-            "related":"http://localhost:3000/api/v1/manager/client-telephones/0de8d725-16a0-49ae-9389-010df0ca0996/client"
+            "self":"http://localhost:3000/api/v1/manager/client-telephones/id_telephone_02/relationships/client", 
+            "related":"http://localhost:3000/api/v1/manager/client-telephones/id_telephone_02/client"
           }
         }
       }
@@ -893,11 +1165,11 @@ http://localhost:3000/api/v1/manager/client-telephones
 }
 ```
 
-### Show
+The manager can visualize all telephones created for him accessing the route described below.
 
-You also can show a telephone using a command line, with the id of the telephone, or accessing a route, both cases are described below.
+Route: *`GET "/api/v1/manager/client-telephones"`*
 
-Route: `GET "/api/v1/manager/client-telephones/:id"`
+## Show
 
 > Show Telephone
 
@@ -905,9 +1177,8 @@ Route: `GET "/api/v1/manager/client-telephones/:id"`
 horus-cli show telephones "id_telefone"
 
 # Return
-
 {
-  "id":"c9e166cd-d523-447a-84e3-5d5802487698", 
+  "id":"id_telephone", 
   "type":"client-telephones", 
   "country-code":"55", 
   "number":"7578889890"
@@ -915,9 +1186,10 @@ horus-cli show telephones "id_telefone"
 ```
 
 ```shell
-# The access_token is obtained in the login.
+# The access_token is obtained in the login (id_access_token).
 
-curl --header "Content-Type: application/vnd.api+json" -H "Authorization: Bearer 'access_token'" -X GET -d 
+curl --header "Content-Type: application/vnd.api+json" 
+  -H "Authorization: Bearer 'access_token'" -X GET -d 
 '{
   "data":
   {
@@ -927,20 +1199,19 @@ curl --header "Content-Type: application/vnd.api+json" -H "Authorization: Bearer
 http://localhost:3000/api/v1/manager/client-telephones/id_telefone
 
 # Return
-
 {
   "data":
   {
-    "id":"0a347ff7-026f-4e43-8bf1-6d1cbc351dd8", 
+    "id":"id_telefone", 
     "type":"client-telephones", 
     "links":
     {
-      "self":"http://localhost:3000/api/v1/manager/client-telephones/0a347ff7-026f-4e43-8bf1-6d1cbc351dd8"
+      "self":"http://localhost:3000/api/v1/manager/client-telephones/id_telefone"
     },
     "attributes":
     {
-      "country-code":"34", 
-      "number":"7777777777"
+      "country-code":"55", 
+      "number":"7578889890"
     },
     "relationships":
     {
@@ -948,8 +1219,8 @@ http://localhost:3000/api/v1/manager/client-telephones/id_telefone
       {
         "links":
         {
-          "self":"http://localhost:3000/api/v1/manager/client-telephones/0a347ff7-026f-4e43-8bf1-6d1cbc351dd8/relationships/client", 
-          "related":"http://localhost:3000/api/v1/manager/client-telephones/0a347ff7-026f-4e43-8bf1-6d1cbc351dd8/client"
+          "self":"http://localhost:3000/api/v1/manager/client-telephones/id_telefone/relationships/client", 
+          "related":"http://localhost:3000/api/v1/manager/client-telephones/id_telefone/client"
         }
       }
     }
@@ -957,41 +1228,41 @@ http://localhost:3000/api/v1/manager/client-telephones/id_telefone
 } 
 ```
 
-## Address
+The manager can visualize a specific telephone created for him accessing the route described below.
 
-Once authenticated, except a user, you can create new address for a specific resource, edit, list and show it through the following command lines. A resource can only have an address.
+Route: *`GET "/api/v1/manager/client-telephones/:id"`*
 
-### Create
+# Manager-Company-Address
 
-You can create an address using a command line, with the id of the resource to which it belongs, or accessing a route, both cases are described below.
+When logged in, the manager can access information about Company's address, it allows him to create, update, show and list them.
 
-Route: `POST "/api/v1/manager/client-addresses"`
+## Create
 
 > Create Address
 
 ```ruby
-horus-cli create addresses '"street" => "Rua", "number" =>  "55", "complement" => "Casa", "zipcode" => "37500344", "neighborhood" => "Bairro", "city" => "Cidade", "state" => "Estado", "country" => "Pais"' clients "id_client"
+horus-cli create addresses '"street":"Jericho Tpke Suite 344", "number":"2417", "complement":"Apartment", "zipcode":"11040", "neighborhood":"Commack", "city":"Cidade", "state":"Estado", "country":"Pais"' clients "id_client"
 
 # Return
-
 {
-  "street":"Rua", 
-  "number":"55", 
-  "complement":"Casa", 
-  "zipcode":"37500344", 
-  "neighborhood":"Bairro", 
-  "city":"Cidade", 
-  "state":"Estado", 
-  "country":"Pais", 
+  "street":"Jericho Tpke Suite 344", 
+  "number":"2417", 
+  "complement":"Apartment", 
+  "zipcode":"11040", 
+  "neighborhood":"Commack", 
+  "city":"Garden City Park", 
+  "state":"NY", 
+  "country":"US", 
   "type":"client-addresses", 
-  "id":"3c13bf0d-bd60-4f6d-8a45-32b733243ef4"
+  "id":"id_address"
 }
 ```
 
 ```shell
-# The access_token is obtained in the login.
+# The access_token is obtained in the login (id_access_token).
 
-curl --header "Content-Type: application/vnd.api+json" -H "Authorization: Bearer 'access_token'" -X POST -d  
+curl --header "Content-Type: application/vnd.api+json" 
+  -H "Authorization: Bearer 'access_token'" -X POST -d  
 '{
   "data":
   {
@@ -1003,55 +1274,54 @@ curl --header "Content-Type: application/vnd.api+json" -H "Authorization: Bearer
         "data":
         {
           "type":"clients", 
-          "id":"507129fd-38d2-4ec4-9caf-d12fd779ce08"
+          "id":"id_address"
         }
       }
     }, 
     "attributes":
     {
-      "street":"Rua", 
-      "number":"55", 
-      "complement":"Casa", 
-      "zipcode":"37500344", 
-      "neighborhood":"Bairro", 
-      "city":"Cidade", 
-      "state":"Estado", 
-      "country":"Pais"
+      "street":"Jericho Tpke Suite 344", 
+      "number":"2417", 
+      "complement":"Apartment", 
+      "zipcode":"11040", 
+      "neighborhood":"Commack", 
+      "city":"Garden City Park", 
+      "state":"NY", 
+      "country":"US"
     }
   }
 }'  
 http://localhost:3000/api/v1/manager/client-addresses
 
 # Return
-
 {
   "data":
   {
-    "id":"41f848fd-a072-4f2a-aed9-fd1b3419c128",
+    "id":"id_address",
     "type":"client-addresses",
     "links":
     {
-      "self":"http://localhost:3000/api/v1/manager/client-addresses/41f848fd-a072-4f2a-aed9-fd1b3419c128"}, 
-      "attributes":
+      "self":"http://localhost:3000/api/v1/manager/client-addresses/id_address"
+    }, 
+    "attributes":
+    {
+      "street":"Jericho Tpke Suite 344",
+      "number":"2417",
+      "complement":"Apartment",
+      "zipcode":"11040",
+      "neighborhood":"Commack",
+      "city":"Garden City Park",
+      "state":"NY",
+      "country":"US"
+    },
+    "relationships":
+    {
+      "client":
       {
-        "street":"Rua",
-        "number":"55",
-        "complement":"Casa",
-        "zipcode":"37500344",
-        "neighborhood":"Bairro",
-        "city":"Cidade",
-        "state":"Estado",
-        "country":"Pais"
-      },
-      "relationships":
-      {
-        "client":
+        "links":
         {
-          "links":
-          {
-            "self":"http://localhost:3000/api/v1/manager/client-addresses/41f848fd-a072-4f2a-aed9-fd1b3419c128/relationships/client",
-            "related":"http://localhost:3000/api/v1/manager/client-addresses/41f848fd-a072-4f2a-aed9-fd1b3419c128/client"
-          }
+          "self":"http://localhost:3000/api/v1/manager/client-addresses/id_address/relationships/client",
+          "related":"http://localhost:3000/api/v1/manager/client-addresses/id_address/client"
         }
       }
     }
@@ -1059,37 +1329,48 @@ http://localhost:3000/api/v1/manager/client-addresses
 }
 ```
 
-### Update
+The user manager create a address accessing the route described below.
 
-You also can update an address using a command line, with the id of the address, or accessing a route, both cases are described below.
+Route: *`POST "/api/v1/manager/client-addresses"`*
 
-Route: `PATCH "/api/v1/manager/client-addresses/:id"`
+Variable | Type | Value
+---------- | ---- | ----- 
+street | String | Jericho Tpke Suite 344 
+number | String | 2417
+complement | String | Apartment
+zipcode | String | 11040 
+neighborhood | String | Commack
+city | String | Garden City Park
+state | String | NY  
+country | String | US
+
+## Update
 
 > Update Address
 
 ```ruby
-horus-cli update addresses "id_address" '"street" => "Av.", "number" =>  "7", "complement" => "Predio", "zipcode" => "3750000", "neighborhood" => "Vila", "city" => "City", "state" => "State", "country" => "Country"'
+horus-cli update addresses "id_address" '"street":"Baker Street", "number":"221B", "complement":"Apartment", "zipcode":"5150117", "neighborhood":"unknown", "city":"Westminster", "state":"London", "country":"UK"'
 
 # Return
-
 {
-  "id":"a688f3e8-bfea-5ee1-853a-9c5ee614de18", 
+  "id":"id_address", 
   "type":"client-addresses", 
-  "street":"Av.", 
-  "number":"7", 
-  "complement":"Predio", 
-  "zipcode":"3750000, 
-  "neighborhood":"Vila", 
-  "city":"City", 
-  "state":"State", 
-  "country":"Country"
+  "street":"Baker Street", 
+  "number":"221B", 
+  "complement":"Apartment", 
+  "zipcode":"5150117", 
+  "neighborhood":"unknown", 
+  "city":"Westminster", 
+  "state":"London", 
+  "country":"UK"
 }
 ```
 
 ```shell
-# The access_token is obtained in the login.
+# The access_token is obtained in the login (id_access_token).
 
-curl --header "Content-Type: application/vnd.api+json" -H "Authorization: Bearer 'access_token'" -X PATCH -d 
+curl --header "Content-Type: application/vnd.api+json" 
+  -H "Authorization: Bearer 'access_token'" -X PATCH -d 
 '{ 
   "data":
   {
@@ -1099,35 +1380,34 @@ curl --header "Content-Type: application/vnd.api+json" -H "Authorization: Bearer
     {
       "street":"Baker Street", 
       "number":"221B", 
-      "complement":"nil", 
+      "complement":"Apartament", 
       "zipcode":"5150117", 
-      "neighborhood":"nil", 
+      "neighborhood":"unknown", 
       "city":"Westminster", 
       "state":"London", 
       "country":"UK"
     }
   }
 }' 
-http://192.168.2.15:3000/api/v1/manager/client-addresses/address_id
+http://localhost:3000/api/v1/manager/client-addresses/address_id
 
 # Return
-
 {
   "data":
   {
-    "id":"918ba9c6-bde4-543a-a280-afbc1bf698ad",
+    "id":"address_id",
     "type":"client-addresses",
     "links":
     {
-      "self":"http://192.168.2.15:3000/api/v1/manager/client-addresses/918ba9c6-bde4-543a-a280-afbc1bf698ad"
+      "self":"http://localhost:3000/api/v1/manager/client-addresses/address_id"
     },
     "attributes":
     {
       "street":"Baker Street",
       "number":"221B",
-      "complement":"nil",
+      "complement":"Apartment",
       "zipcode":"5150117",
-      "neighborhood":"nil",
+      "neighborhood":"unknown",
       "city":"Westminster",
       "state":"London",
       "country":"UK"
@@ -1138,8 +1418,8 @@ http://192.168.2.15:3000/api/v1/manager/client-addresses/address_id
       {
         "links":
         {
-          "self":"http://192.168.2.15:3000/api/v1/manager/client-addresses/918ba9c6-bde4-543a-a280-afbc1bf698ad/relationships/client",
-          "related":"http://192.168.2.15:3000/api/v1/manager/client-addresses/918ba9c6-bde4-543a-a280-afbc1bf698ad/client"
+          "self":"http://localhost:3000/api/v1/manager/client-addresses/address_id/relationships/client",
+          "related":"http://localhost:3000/api/v1/manager/client-addresses/address_id/client"
         }
       }
     }
@@ -1147,11 +1427,22 @@ http://192.168.2.15:3000/api/v1/manager/client-addresses/address_id
 } 
 ```
 
-### List
+The manager can edit the information contained in address accessing the route described below.
 
-You also can list your addresses using a command line or accessing a route, both cases are described below.
+Route: *`PATCH "/api/v1/manager/client-addresses/:id"`*
 
-Route: `GET "/api/v1/manager/client-addresses"`
+Variable | Type | Value
+---------- | ---- | ----- 
+street | String | Baker Street
+number | String | 221B
+complement | String | Apartment
+zipcode | String | 5150117
+neighborhood | String | unknown
+city | String | Westminster
+state | String | London
+country | String | UK
+
+## List
 
 > List Addresses
 
@@ -1159,69 +1450,68 @@ Route: `GET "/api/v1/manager/client-addresses"`
 horus-cli list addresses
 
 # Return
-
 [
-  {
-    "id":"a688f3e8-bfea-5ee1-853a-9c5ee614de18", 
+  {, 
+    "id":"id_address_01", 
     "type":"client-addresses", 
-    "street":"R. Almiro Gomes de Lima", 
-    "number":"70", 
-    "complement":nil, 
-    "zipcode":"37502530", 
-    "neighborhood":"Nossa Senhora de Fatima", 
-    "city":"Itajubá", 
-    "state":"MG", 
-    "country":"BR"
+    "street":"Baker Street", 
+    "number":"221B", 
+    "complement":"Apartment", 
+    "zipcode":"5150117", 
+    "neighborhood":"unknown", 
+    "city":"Westminster", 
+    "state":"London", 
+    "country":"UK"
   },
   {
-    "id":"f0f8fbe4-4003-472f-a3f2-177d898206ab", 
-    "type":"client-addresses", 
-    "street":"Rua", 
-    "number":"55", 
-    "complement":"Casa", 
-    "zipcode":"37500344", 
-    "neighborhood":"Bairro", 
-    "city":"Cidade", 
-    "state":"Estado", 
-    "country":"Pais"
+    "id":"id_address_02", 
+    "type":"client-addresses",  
+    "street":"Jericho Tpke Suite 344", 
+    "number":"2417", 
+    "complement":"Apartment", 
+    "zipcode":"11040", 
+    "neighborhood":"Commack", 
+    "city":"Garden City Park", 
+    "state":"NY", 
+    "country":"US"
   }
 ]
 ```
 
 ```shell
-# The access_token is obtained in the login.
+# The access_token is obtained in the login (id_access_token).
 
-curl --header "Content-Type: application/vnd.api+json" -H "Authorization: Bearer 'access_token'" -X GET -d 
+curl --header "Content-Type: application/vnd.api+json" 
+-H "Authorization: Bearer 'access_token'" -X GET -d 
 '{
   "data":
   {
     "type":"client-addresses"
   }
 }' 
-http://localhost:3000/api/v1/manager/client-addr
+http://localhost:3000/api/v1/manager/client-addresses
 
 # Return
-
 {
   "data":
   [
     {
-      "id":"3c13bf0d-bd60-4f6d-8a45-32b733243ef4",
+      "id":"id_address_01",
       "type":"client-addresses",
       "links":
       {"
-        self":"http://localhost:3000/api/v1/manager/client-addresses/3c13bf0d-bd60-4f6d-8a45-32b733243ef4"
+        self":"http://localhost:3000/api/v1/manager/client-addresses/id_address_01"
       },
       "attributes":
       {
-        "street":"Rua",
-        "number":"55",
-        "complement":"Casa",
-        "zipcode":"37500344",
-        "neighborhood":"Bairro",
-        "city":"Cidade",
-        "state":"Estado",
-        "country":"Pais"
+        "street":"Baker Street", 
+        "number":"221B", 
+        "complement":"Apartment", 
+        "zipcode":"5150117", 
+        "neighborhood":"unknown", 
+        "city":"Westminster", 
+        "state":"London", 
+        "country":"UK"
       },
       "relationships":
       {
@@ -1229,29 +1519,29 @@ http://localhost:3000/api/v1/manager/client-addr
         {
           "links":
           {
-            "self":"http://localhost:3000/api/v1/manager/client-addresses/3c13bf0d-bd60-4f6d-8a45-32b733243ef4/relationships/client",
-            "related":"http://localhost:3000/api/v1/manager/client-addresses/3c13bf0d-bd60-4f6d-8a45-32b733243ef4/client"
+            "self":"http://localhost:3000/api/v1/manager/client-addresses/id_address_01/relationships/client",
+            "related":"http://localhost:3000/api/v1/manager/client-addresses/id_address_01/client"
           }
         }
       }
     }, 
     {
-      "id":"f0f8fbe4-4003-472f-a3f2-177d898206ab",
+      "id":"id_address_02",
       "type":"client-addresses",
       "links":
       {
-        "self":"http://localhost:3000/api/v1/manager/client-addresses/f0f8fbe4-4003-472f-a3f2-177d898206ab"
+        "self":"http://localhost:3000/api/v1/manager/client-addresses/id_address_02"
       },
       "attributes":
       {
-        "street":"Rua",
-        "number":"55",
-        "complement":"Casa",
-        "zipcode":"37500344",
-        "neighborhood":"Bairro",
-        "city":"Cidade",
-        "state":"Estado",
-        "country":"Pais"
+        "street":"Jericho Tpke Suite 344", 
+        "number":"2417", 
+        "complement":"Apartment", 
+        "zipcode":"11040", 
+        "neighborhood":"Commack", 
+        "city":"Garden City Park", 
+        "state":"NY", 
+        "country":"US"
       },
       "relationships":
       {
@@ -1259,8 +1549,8 @@ http://localhost:3000/api/v1/manager/client-addr
         {
           "links":
           {
-            "self":"http://localhost:3000/api/v1/manager/client-addresses/f0f8fbe4-4003-472f-a3f2-177d898206ab/relationships/client",
-            "related":"http://localhost:3000/api/v1/manager/client-addresses/f0f8fbe4-4003-472f-a3f2-177d898206ab/client"
+            "self":"http://localhost:3000/api/v1/manager/client-addresses/id_address_02/relationships/client",
+            "related":"http://localhost:3000/api/v1/manager/client-addresses/id_address_02/client"
           }
         }
       }
@@ -1269,11 +1559,11 @@ http://localhost:3000/api/v1/manager/client-addr
 } 
 ```
 
-### Show
+The manager can visualize all addresses created for him accessing the route described below.
 
-You also can show an address using a command line, with the id of the address, or accessing a route, both cases are described below.
+Route: *`GET "/api/v1/manager/client-addresses"`*
 
-Route: `GET "/api/v1/manager/client-addresses/:id"`
+## Show
 
 > Show Address
 
@@ -1281,25 +1571,25 @@ Route: `GET "/api/v1/manager/client-addresses/:id"`
 horus-cli show addresses "id_address"
 
 # Return
-
 {
-  "id":"3c13bf0d-bd60-4f6d-8a45-32b733243ef4", 
-  "type":"client-addresses", 
-  "street":"Rua", 
-  "number":"55", 
-  "complement":"Casa", 
-  "zipcode":"37500344", 
-  "neighborhood":"Bairro", 
-  "city":"Cidade", 
-  "state":"Estado", 
-  "country":"Pais"
+  "id":"id_address", 
+  "type":"client-addresses",  
+  "street":"Jericho Tpke Suite 344", 
+  "number":"2417", 
+  "complement":"Apartment", 
+  "zipcode":"11040", 
+  "neighborhood":"Commack", 
+  "city":"Garden City Park", 
+  "state":"NY", 
+  "country":"US"
 }
 ```
 
 ```shell
-  
+# The access_token is obtained in the login (id_access_token).
 
-curl --header "Content-Type: application/vnd.api+json" -H "Authorization: Bearer 'access_token'" -X GET -d 
+curl --header "Content-Type: application/vnd.api+json" 
+  -H "Authorization: Bearer 'access_token'" -X GET -d 
 '{
   "data":
   {
@@ -1309,26 +1599,25 @@ curl --header "Content-Type: application/vnd.api+json" -H "Authorization: Bearer
 http://localhost:3000/api/v1/manager/client-addresses/id_address
 
 # Return
-
 {
   "data":
    {
-    "id":"41f848fd-a072-4f2a-aed9-fd1b3419c128",
+    "id":"id_address",
     "type":"client-addresses",
     "links":
     {
-      "self":"http://localhost:3000/api/v1/manager/client-addresses/41f848fd-a072-4f2a-aed9-fd1b3419c128"
+      "self":"http://localhost:3000/api/v1/manager/client-addresses/id_address"
     },
     "attributes":
     {
-      "street":"Rua",
-      "number":"55",
-      "complement":"Casa",
-      "zipcode":"37500344",
-      "neighborhood":"Bairro",
-      "city":"Cidade",
-      "state":"Estado",
-      "country":"Pais"
+      "street":"Jericho Tpke Suite 344", 
+      "number":"2417", 
+      "complement":"Apartment", 
+      "zipcode":"11040", 
+      "neighborhood":"Commack", 
+      "city":"Garden City Park", 
+      "state":"NY", 
+      "country":"US"
     },
     "relationships":
     {
@@ -1336,13 +1625,17 @@ http://localhost:3000/api/v1/manager/client-addresses/id_address
       {
         "links":
         {
-          "self":"http://localhost:3000/api/v1/manager/client-addresses/41f848fd-a072-4f2a-aed9-fd1b3419c128/relationships/client",
-          "related":"http://localhost:3000/api/v1/manager/client-addresses/41f848fd-a072-4f2a-aed9-fd1b3419c128client"
+          "self":"http://localhost:3000/api/v1/manager/client-addresses/id_address/relationships/client",
+          "related":"http://localhost:3000/api/v1/manager/client-addresses/id_address/client"
         }
       }
     }
   }
 ```
+
+The manager can visualize a specific address created for him accessing the route described below.
+
+Route: *`GET "/api/v1/manager/client-addresses/:id"`*
 
 # License
 
