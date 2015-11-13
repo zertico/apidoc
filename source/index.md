@@ -2246,6 +2246,306 @@ The admin can visualize all addresses created for him accessing the route descri
 
 Route: *`GET "/api/v1/admin/client-addresses"`*
 
+# Admin - Shop Category
+
+When logged in, the admin can access information about the shop, it allows him to create, update, show and list your categories.
+
+## Create
+
+> Create Shop Category
+
+```shell
+curl --header "Content-Type: application/vnd.api+json" 
+  -H "Authorization: Bearer id-access-token" -X POST -d 
+'{ 
+  "data":
+  { 
+    "type":"shop-categories", 
+    "attributes":
+    { 
+      "name":"Category",
+      "enabled":"true",
+      "description":"My New Category is Nice",
+      "long-description":"My New Category is Very Nice",
+      "slug":"new-category",
+      "icon":"fa fa-cloud"
+    }
+  }
+}' 
+http://smart.lvh.me:3000/api/v1/admin/shop-categories
+
+# Return
+{
+  "data":
+  {
+    "id":"id-admin-shop-category",
+    "type":"shop-categories",
+    "links":
+    {
+      "self":"http://smart.lvh.me:3000/api/v1/admin/shop-categories/
+      id-admin-shop-category"
+    },
+    "attributes":
+    {
+      "name":"Category",
+      "enabled":true,
+      "description":"My New Category is Nice",
+      "long-description":My New Category is Very Nice,
+      "slug":"new-category",
+      "icon":"fa fa-cloud"
+    },
+    "relationships":
+    {
+      "shop-groups":
+      {
+        "links":
+        {
+          "self":"http://smart.lvh.me:3000/api/v1/admin/shop-categories/id-admin-shop-category/relationships/shop-groups",
+          "related":"http://smart.lvh.me:3000/api/v1/admin/shop-categories/id-admin-shop-category/shop-groups"
+        }
+      }
+    }
+  }
+} 
+```
+
+```ruby
+Not implemented
+```
+
+The admin can create a category accessing the route described below.
+
+Route: *`POST "/api/v1/admin/shop-categories"`*
+
+Variable | Type | Value
+-------- | ---- | ----- 
+name | String | Category
+enabled | String | true
+description | String | My New Category is Nice"
+long-description | String | My New Category is Very Nice"
+slug | String | new-category
+icon | String | fa fa-cloud
+
+## Update
+
+> Update Shop Category
+
+```shell
+curl --header "Content-Type: application/vnd.api+json" 
+  -H "Authorization: Bearer id-access-token" -X PATCH -d 
+'{
+  "data":
+  {
+    "id":"id-admin-shop-category", 
+    "type":"shop-categories", 
+    "attributes":
+    { 
+      "name":"New Category",
+      "enabled":true,
+      "description":"My New Category is Bad",
+      "long-description":"Lie, My Category is Very Nice",
+      "slug":"new-category",
+      "icon":"fa fa-cloud"
+    }
+  }
+}' 
+http://smart.lvh.me:3000/api/v1/admin/shop-categories/id-admin-shop-category
+
+# Return
+{
+  "data":
+  {
+    "id":"id-admin-shop-category",
+    "type":"shop-categories",
+    "links":
+    {
+      "self":"http://smart.lvh.me:3000/api/v1/admin/shop-categories/id-admin-shop-category"
+    },
+    "attributes":
+    {
+      "name":"New Category",
+      "enabled":true,
+      "description":"My New Category is Bad",
+      "long-description":"Lie, My Category is Very Nice",
+      "slug":"new-category",
+      "icon":"fa fa-cloud"
+    },
+    "relationships":
+    {
+      "shop-groups":
+      {
+        "links":
+        {
+          "self":"http://smart.lvh.me:3000/api/v1/admin/shop-categories/id-admin-shop-category/relationships/shop-groups",
+          "related":"http://smart.lvh.me:3000/api/v1/admin/shop-categories/id-admin-shop-category/shop-groups"
+        }
+      }
+    }
+  }
+}
+```
+
+```ruby
+Not implemented
+```
+
+The admin can edit a category accessing the route described below.
+
+Route: *`PATCH "/api/v1/admin/shop-categories/:id`*
+
+Variable | Type | Value
+-------- | ---- | ----- 
+name | String | New Category
+enabled | String | true
+description | String | My New Category is Bad
+long-description | String | Lie, My Category is Very Nice
+slug | String | new-category
+icon | String | fa fa-cloud
+
+## Show
+
+> Show Shop Category
+
+```shell
+curl --header "Content-Type: application/vnd.api+json" 
+  -H "Authorization: Bearer id-access-token" -X GET -d 
+'{
+  "data":
+  {
+    "type":"clients"
+  }
+}' 
+http://smart.lvh.me:3000/api/v1/admin/shop-categories/id-admin-shop-category 
+
+# Return
+{
+  "data":
+  {
+    "id":"id-admin-shop-category",
+    "type":"shop-categories",
+    "links":
+    {
+      "self":"http://smart.lvh.me:3000/api/v1/admin/shop-categories/id-admin-shop-category"
+    },
+    "attributes":
+    {
+      "name":"New Category",
+      "enabled":true,
+      "description":"My New Category is Bad",
+      "long-description":null,
+      "slug":"new-category",
+      "icon":"fa fa-cloud"
+    },
+    "relationships":
+    {
+      "shop-groups":
+      {
+        "links":
+        {
+          "self":"http://smart.lvh.me:3000/api/v1/admin/shop-categories/id-admin-shop-category/relationships/shop-groups",
+          "related":"http://smart.lvh.me:3000/api/v1/admin/shop-categories/id-admin-shop-category/shop-groups"
+        }
+      }
+    }
+  }
+}
+```
+
+```ruby
+Not implemented
+```
+
+The admin can visualize a specific category created for him accessing the route described below.
+
+Route: *`GET "/api/v1/admin/shop-categories/:id"`*
+
+## List
+
+> List Shop Category
+
+```shell
+curl --header "Content-Type: application/vnd.api+json" 
+  -H "Authorization: Bearer id-access-token" -X GET -d 
+'{
+  "data":
+  {
+    "type":"shop-categories"
+  }
+}' 
+http://smart.lvh.me:3000/api/v1/admin/shop-categories
+
+# Return
+{
+  "data":
+  [
+    {
+      "id":"id-admin-shop-category",
+      "type":"shop-categories",
+      "links":
+      {
+        "self":"http://smart.lvh.me:3000/api/v1/admin/shop-categories/id-admin-shop-category"
+      },
+      "attributes":
+      {
+        "name":"Smart Email",
+        "enabled":true,
+        "description":"Smart Email",
+        "long-description":"Smart Email Description",
+        "slug":"email",
+        "icon":"fa fa-envelope-o"
+      },
+      "relationships":
+      {
+        "shop-groups":
+        {
+          "links":
+          {
+            "self":"http://smart.lvh.me:3000/api/v1/admin/shop-categories/id-admin-shop-category5/relationships/shop-groups",
+            "related":"http://smart.lvh.me:3000/api/v1/admin/shop-categories/id-admin-shop-category/shop-groups"
+          }
+        }
+      }
+    },
+    {
+      "id":"id-admin-shop-category",
+      "type":"shop-categories",
+      "links":
+      {
+        "self":"http://smart.lvh.me:3000/api/v1/admin/shop-categories/id-admin-shop-category"
+      },
+      "attributes":
+      {
+        "name":"New Category",
+        "enabled":true,
+        "description":"My New Category is Bad",
+        "long-description":null,
+        "slug":"new-category",
+        "icon":"fa fa-cloud"
+      },
+      "relationships":
+      {
+        "shop-groups":
+        {
+          "links":
+          {
+            "self":"http://smart.lvh.me:3000/api/v1/admin/shop-categories/id-admin-shop-category/relationships/shop-groups",
+            "related":"http://smart.lvh.me:3000/api/v1/admin/shop-categories/id-admin-shop-category/shop-groups"
+          }
+        }
+      }
+    }
+  ]
+} 
+```
+
+```ruby
+Not implemented
+```
+
+The admin can visualize all Categories created for him accessing the route described below.
+
+Route: *`GET "/api/v1/admin/shop-categories"`*
+
 # Manager - Profile Account
 
 When logged in, the manager can access his own profile, it allows him to show and update information about yout account.
