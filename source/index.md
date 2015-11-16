@@ -83,6 +83,7 @@ id-manager-clint-user | 03b829d7-bbe6-5556-ae91-e480c27a28ee
 id-manager-clint-user-telephone | 690c7235-59b3-5a4e-9c04-e1aa98cc6e38
 id-manager-clint-user-address | 0778b605-36ca-4a4e-8f54-d38f830d226c
 id-admin-shop-category | baedf1c1-cc00-454d-8cb7-fcc8319498fa
+id-admin-shop-group | 40c6d92b-4185-4a3d-bdfc-853da1f90f3d
 
 # Login
 
