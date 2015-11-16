@@ -82,6 +82,7 @@ id-manager-clint-user-profile | 1b5c1105-360c-418c-8362-385749ec5746
 id-manager-clint-user | 03b829d7-bbe6-5556-ae91-e480c27a28ee
 id-manager-clint-user-telephone | 690c7235-59b3-5a4e-9c04-e1aa98cc6e38
 id-manager-clint-user-address | 0778b605-36ca-4a4e-8f54-d38f830d226c
+id-admin-shop-category | baedf1c1-cc00-454d-8cb7-fcc8319498fa
 
 # Login
 
@@ -2545,6 +2546,340 @@ Not implemented
 The admin can visualize all Categories created for him accessing the route described below.
 
 Route: *`GET "/api/v1/admin/shop-categories"`*
+
+# Admin - Shop Group
+
+When logged in, the admin can access information about the shop, it allows him to create, update, show and list your groups.
+
+## Create
+
+> Create Shop Group
+
+```shell
+curl --header "Content-Type: application/vnd.api+json" 
+  -H "Authorization: Bearer id-access-token" -X POST -d  
+'{
+  "data":
+  {
+    "type":"shop-groups", 
+    "relationships":
+    {
+      "shop-category":
+      {
+        "data":
+        {
+          "type":"shop-categories", 
+          "id":"id-admin-shop-category"
+        }
+      }
+    }, 
+    "attributes":
+    {
+        "name":"My New Group",
+        "enabled":true,
+        "description":"My New Group Description",
+        "long-description":"My New Group is Very Nice",
+        "slug":"new-group",
+        "icon":"fa fa-cloud"
+    }
+  }
+}'  
+http://smart.lvh.me:3000/api/v1/admin/shop-groups
+
+# Return
+{
+  "data":
+  {
+    "id":"id-admin-shop-group",
+    "type":"shop-groups",
+    "links":
+    {
+      "self":"http://smart.lvh.me:3000/api/v1/admin/shop-groups/id-admin-shop-group"
+    },
+    "attributes":
+    {
+      "name":"My New Group",
+      "enabled":true,
+      "description":"My New Group Description",
+      "long-description":"My New Group is Very Nice",
+      "slug":"new-group",
+      "icon":"fa fa-cloud"
+    },
+    "relationships":
+    {
+      "shop-category":
+      {
+        "links":
+        {
+          "self":"http://smart.lvh.me:3000/api/v1/admin/shop-groups/id-admin-shop-group/relationships/shop-category",
+          "related":"http://smart.lvh.me:3000/api/v1/admin/shop-groups/id-admin-shop-group/shop-category"
+        },
+        "data":
+        {
+          "type":"shop-categories",
+          "id":"id-admin-shop-category"
+        }
+      }
+    }
+  }
+}
+```
+
+```ruby
+Not implemented
+```
+
+The admin can create a group accessing the route described below.
+
+Route: *`POST "/api/v1/admin/shop-groups"`*
+
+Variable | Type | Value
+-------- | ---- | ----- 
+name | String | My new Group
+enabled | String | true
+description | String | My New Group Description"
+long-description | String | My New Group is Very Nice"
+slug | String | new-group
+icon | String | fa fa-cloud
+
+## Update
+
+> Update Shop Group
+
+```shell
+curl --header "Content-Type: application/vnd.api+json" 
+  -H "Authorization: Bearer id-access-token" -X PATCH -d 
+'{ 
+  "data":
+  {
+    "id":"id-admin-shop-group",
+    "type":"shop-groups",
+    "attributes":
+    {
+      "name":"Group",
+      "enabled":true,
+      "description":"My Group Description",
+      "long-description":"My Group Long Description",
+      "slug":"new-group",
+      "icon":"fa fa-cloud"
+    }
+  }
+}' 
+http://smart.lvh.me:3000/api/v1/admin/shop-groups/id-admin-shop-group
+
+# Return
+{
+  "data":
+  {
+    "id":"id-admin-shop-group",
+    "type":"shop-groups",
+    "links":
+    {
+      "self":"http://smart.lvh.me:3000/api/v1/admin/shop-groups/id-admin-shop-group"
+    },
+    "attributes":
+    {
+      "name":"Group",
+      "enabled":true,
+      "description":"My Group Description",
+      "long-description":"My Group Long Description",
+      "slug":"new-group",
+      "icon":"fa fa-cloud"
+    },
+    "relationships":
+    {
+      "shop-category":
+      {
+        "links":
+        {
+          "self":"http://smart.lvh.me:3000/api/v1/admin/shop-groups/id-admin-shop-group/relationships/shop-category",
+          "related":"http://smart.lvh.me:3000/api/v1/admin/shop-groups/id-admin-shop-group/shop-category"
+        },
+        "data":
+        {
+          "type":"shop-categories","id":"id-admin-shop-category"
+        }
+      }
+    }
+  }
+}
+```
+
+```ruby
+Not implemented
+```
+
+The admin can edit a group accessing the route described below.
+
+Route: *`PATCH "/api/v1/admin/shop-groups/:id`*
+
+Variable | Type | Value
+-------- | ---- | ----- 
+name | String | Group
+enabled | String | true
+description | String | My Group Description
+long-description | String | My Group Long Description
+slug | String | new-group
+icon | String | fa fa-cloud
+
+## Show
+
+> Show Shop Group
+
+```shell
+curl --header "Content-Type: application/vnd.api+json" 
+  -H "Authorization: Bearer id-access-token" -X GET -d 
+'{
+  "data":
+  {
+    "type":"shop-groups"
+  }
+}' 
+http://smart.lvh.me:3000/api/v1/admin/shop-groups/id-admin-shop-group
+
+# Return
+{
+  "data":
+  {
+    "id":"id-admin-shop-group","
+    type":"shop-groups",
+    "links":
+    {
+      "self":"http://smart.lvh.me:3000/api/v1/admin/shop-groups/id-admin-shop-group"
+    },
+    "attributes":
+    {
+      "name":"Group",
+      "enabled":true,
+      "description":"My Group Description",
+      "long-description":"My Group Long Description",
+      "slug":"new-group",
+      "icon":"fa fa-cloud"
+    },
+    "relationships":
+    {
+      "shop-category":
+      {
+        "links":
+        {
+          "self":"http://smart.lvh.me:3000/api/v1/admin/shop-groups/id-admin-shop-group/relationships/shop-category",
+          "related":"http://smart.lvh.me:3000/api/v1/admin/shop-groups/4id-admin-shop-group/shop-category"
+        },
+        "data":
+        {
+          "type":"shop-categories",
+          "id":"id-admin-shop-category"
+        }
+      }
+    }
+  }
+}
+```
+
+```ruby
+Not implemented
+```
+
+The admin can visualize a specific group created for him accessing the route described below.
+
+Route: *`GET "/api/v1/admin/shop-groups/:id"`*
+
+## List
+
+> List Shop Group
+
+```shell
+curl --header "Content-Type: application/vnd.api+json" 
+  -H "Authorization: Bearer id-access-token" -X GET -d 
+'{
+  "data":
+  {
+    "type":"shop-groups"
+  }
+}' 
+http://smart.lvh.me:3000/api/v1/admin/shop-groups
+
+# Return
+{
+  "data":
+  [
+    {
+      "id":"id-admin-shop-group",
+      "type":"shop-groups",
+      "links":
+      {
+        "self":"http://smart.lvh.me:3000/api/v1/admin/shop-groups/id-admin-shop-group"
+      },
+      "attributes":
+      {
+        "name":"Smart Cloud Servers",
+        "enabled":true,
+        "description":"Smart Cloud Servers Desc",
+        "long-description":"Smart Cloud Servers Long Desc",
+        "slug":"cloud-server",
+        "icon":"fa fa-cloud"
+      },
+      "relationships":
+      {
+        "shop-category":
+        {
+          "links":
+          {
+            "self":"http://smart.lvh.me:3000/api/v1/admin/shop-groups/id-admin-shop-group/relationships/shop-category",
+            "related":"http://smart.lvh.me:3000/api/v1/admin/shop-groups/id-admin-shop-group/shop-category"
+          },
+          "data":
+          {
+            "type":"shop-categories",
+            "id":"id-admin-shop-category"
+          }
+        }
+      }
+    },
+    {
+      "id":"id-admin-shop-group",
+      "type":"shop-groups",
+      "links":
+      {
+        "self":"http://smart.lvh.me:3000/api/v1/admin/shop-groups/id-admin-shop-group"
+      },
+      "attributes":
+      {
+        "name":"Smart Email Google",
+        "enabled":true,
+        "description":"Smart Email Google Desc",
+        "long-description":"Smart Email Google Long Desc",
+        "slug":"email-google",
+        "icon":"fa fa-google"
+      },
+      "relationships":
+      {
+        "shop-category":
+        {
+          "links":
+          {
+            "self":"http://smart.lvh.me:3000/api/v1/admin/shop-groups/id-admin-shop-group/relationships/shop-category",
+            "related":"http://smart.lvh.me:3000/api/v1/admin/shop-groups/id-admin-shop-group/shop-category"
+          },
+          "data":
+          {
+            "type":"shop-categories",
+            "id":"id-admin-shop-category"
+          }
+        }
+      }
+    }
+  ]
+} 
+```
+
+```ruby
+Not implemented
+```
+
+The admin can visualize all Groups created for him accessing the route described below.
+
+Route: *`GET "/api/v1/admin/shop-groups"`*
 
 # Manager - Profile Account
 
