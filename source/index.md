@@ -70,20 +70,24 @@ id-admin-profile | dab41f5f-a40c-54d8-a2f3
 id-admin-company | 918ba9c6-bde4-543a-a280-afbc1bf698ad
 id-admin-company-telephone | 924e8f38-369f-41e6-92f3-71d2f9e83884
 id-admin-company-address | c4f5337b-bd74-4e60-9f90-7ce5c4cba782
-id-admin-clint-user-profile | 56facbbe-a59d-4743-99fd-ff9936411efd
-id-admin-clint-user | 4be57074-5fc6-5942-bb62-c882fb2b4eff
-id-admin-clint-user-telephone | 87d3c3a2-0cd2-4667-8fc9-3c3487133061
-id-admin-clint-user-address | 0778b605-36ca-4a4e-8f54-d38f830d226c
+id-admin-client-user-profile | 56facbbe-a59d-4743-99fd-ff9936411efd
+id-admin-client-user | 4be57074-5fc6-5942-bb62-c882fb2b4eff
+id-admin-client-user-telephone | 87d3c3a2-0cd2-4667-8fc9-3c3487133061
+id-admin-client-user-address | 0778b605-36ca-4a4e-8f54-d38f830d226c
 id-manager-profile | 1c9dcbb4-758d-55c0-874a-da7a8285a814
 id-manager-company | 78473988-b021-4864-aa48-f3b7bc4a06f6
 id-manager-company-telephone | 7915969d-e949-4066-b264-8d5bdcdf2d5c
 id-manager-company-address | 1906c99a-8d54-42e1-a035-cc425553f1fd
-id-manager-clint-user-profile | 1b5c1105-360c-418c-8362-385749ec5746
-id-manager-clint-user | 03b829d7-bbe6-5556-ae91-e480c27a28ee
-id-manager-clint-user-telephone | 690c7235-59b3-5a4e-9c04-e1aa98cc6e38
-id-manager-clint-user-address | 0778b605-36ca-4a4e-8f54-d38f830d226c
+id-manager-client-user-profile | 1b5c1105-360c-418c-8362-385749ec5746
+id-manager-client-user | 03b829d7-bbe6-5556-ae91-e480c27a28ee
+id-manager-client-user-telephone | 690c7235-59b3-5a4e-9c04-e1aa98cc6e38
+id-manager-client-user-address | 0778b605-36ca-4a4e-8f54-d38f830d226c
 id-admin-shop-category | baedf1c1-cc00-454d-8cb7-fcc8319498fa
 id-admin-shop-group | 40c6d92b-4185-4a3d-bdfc-853da1f90f3d
+id-catalog-providers | c2928f65-4ba6-59ba-b8d3-abec6a44fb23
+id-catalog-provider-product | 2e646490-eeb2-5fbe-bbf3-a7d8b1d6a2e3
+id-catalog-provider-product-attribute | 3082f9b2-6ba5-5808-8db7-25f25dc7ff70
+id-catalog-provider-product-option | 37098c00-7215-5752-8c65-738d04ea4a02
 
 # Login
 
@@ -1108,11 +1112,11 @@ http://smart.lvh.me:3000/api/v1/admin/client-users
 {
   "data":
   {
-    "id":"id-admin-clint-user-profile",
+    "id":"id-admin-client-user-profile",
     "type":"client-users",
     "links":
     {
-      "self":"http://smart.lvh.me:3000/api/v1/admin/client-users/id-admin-clint-user-profile"
+      "self":"http://smart.lvh.me:3000/api/v1/admin/client-users/id-admin-client-user-profile"
     },
     "attributes":
     {
@@ -1151,7 +1155,7 @@ curl --header "Content-Type: application/vnd.api+json"
   "data":
   { 
     "type":"client-users", 
-    "id":"id-admin-clint-user-profile", 
+    "id":"id-admin-client-user-profile", 
     "attributes":
     { 
       "first-name":"Admin", 
@@ -1159,17 +1163,17 @@ curl --header "Content-Type: application/vnd.api+json"
     }
   }
 }' 
-http://smart.lvh.me:3000/api/v1/admin/client-users/id-admin-clint-user-profile
+http://smart.lvh.me:3000/api/v1/admin/client-users/id-admin-client-user-profile
 
 # Return
 {
   "data":
   {
-    "id":"id-admin-clint-user-profile",
+    "id":"id-admin-client-user-profile",
     "type":"client-users",
     "links":
     {
-      "self":"http://smart.lvh.me:3000/api/v1/admin/client-users/id-admin-clint-user-profile"
+      "self":"http://smart.lvh.me:3000/api/v1/admin/client-users/id-admin-client-user-profile"
     },
     "attributes":
     {
@@ -1207,17 +1211,17 @@ curl --header "Content-Type: application/vnd.api+json"
     "type":"client-users"
   }
 }' 
-http://smart.lvh.me:3000/api/v1/admin/client-users/id-admin-clint-user-profile
+http://smart.lvh.me:3000/api/v1/admin/client-users/id-admin-client-user-profile
 
 # Return
 {
   "data":
   {
-    "id":"id-admin-clint-user-profile",
+    "id":"id-admin-client-user-profile",
     "type":"client-users",
     "links":
     {
-      "self":"http://smart.lvh.me:3000/api/v1/admin/client-users/id-admin-clint-user-profile"
+      "self":"http://smart.lvh.me:3000/api/v1/admin/client-users/id-admin-client-user-profile"
     },
     "attributes":
     {
@@ -1257,11 +1261,11 @@ http://smart.lvh.me:3000/api/v1/admin/client-users
   "data":
   [
     {
-      "id":"id-admin-clint-user-profile",
+      "id":"id-admin-client-user-profile",
       "type":"client-users",
       "links":
       {
-        "self":"http://smart.lvh.me:3000/api/v1/admin/client-users/id-admin-clint-user-profile"
+        "self":"http://smart.lvh.me:3000/api/v1/admin/client-users/id-admin-client-user-profile"
       },
       "attributes":
       {
@@ -1271,11 +1275,11 @@ http://smart.lvh.me:3000/api/v1/admin/client-users
       }
     },
     {
-      "id":"id-admin-clint-user-profile",
+      "id":"id-admin-client-user-profile",
       "type":"client-users",
       "links":
       {
-        "self":"http://smart.lvh.me:3000/api/v1/admin/client-users/id-admin-clint-user-profile"
+        "self":"http://smart.lvh.me:3000/api/v1/admin/client-users/id-admin-client-user-profile"
       },
       "attributes":
       {
@@ -1327,11 +1331,11 @@ http://smart.lvh.me:3000//api/v1/admin/clients
 {
   "data":
   {
-    "id":"id-admin-clint-user",
+    "id":"id-admin-client-user",
     "type":"clients",
     "links":
     {
-      "self":"http://smart.lvh.me:3000/api/v1/admin/clients/id-admin-clint-user"
+      "self":"http://smart.lvh.me:3000/api/v1/admin/clients/id-admin-client-user"
     },
     "attributes":
     {
@@ -1348,8 +1352,8 @@ http://smart.lvh.me:3000//api/v1/admin/clients
       {
         "links":
         {
-          "self":"http://smart.lvh.me:3000/api/v1/admin/clients/id-admin-clint-user/relationships/client-address",
-          "related":"http://smart.lvh.me:3000/api/v1/admin/clients/id-admin-clint-user/client-address"
+          "self":"http://smart.lvh.me:3000/api/v1/admin/clients/id-admin-client-user/relationships/client-address",
+          "related":"http://smart.lvh.me:3000/api/v1/admin/clients/id-admin-client-user/client-address"
         },
         "data":null
       },
@@ -1357,8 +1361,8 @@ http://smart.lvh.me:3000//api/v1/admin/clients
       {
         "links":
         {
-          "self":"http://smart.lvh.me:3000/api/v1/admin/clients/id-admin-clint-user/relationships/client-telephones",
-          "related":"http://smart.lvh.me:3000/api/v1/admin/clients/id-admin-clint-user/client-telephones"
+          "self":"http://smart.lvh.me:3000/api/v1/admin/clients/id-admin-client-user/relationships/client-telephones",
+          "related":"http://smart.lvh.me:3000/api/v1/admin/clients/id-admin-client-user/client-telephones"
         }
       }
     }
@@ -1392,7 +1396,7 @@ curl --header "Content-Type: application/vnd.api+json"
 '{
   "data":
   {
-    "id":"id-admin-clint-user", 
+    "id":"id-admin-client-user", 
     "type":"clients", 
     "attributes":
     { 
@@ -1401,17 +1405,17 @@ curl --header "Content-Type: application/vnd.api+json"
     }
   }
 }' 
-http://smart.lvh.me:3000/api/v1/admin/clients/id-admin-clint-user
+http://smart.lvh.me:3000/api/v1/admin/clients/id-admin-client-user
 
 # Return
 {
   "data":
   {
-    "id":"id-admin-clint-user",
+    "id":"id-admin-client-user",
     "type":"clients",
     "links":
     {
-      "self":"http://smart.lvh.me:3000/api/v1/admin/clients/id-admin-clint-user"
+      "self":"http://smart.lvh.me:3000/api/v1/admin/clients/id-admin-client-user"
     },
     "attributes":
     {
@@ -1428,21 +1432,21 @@ http://smart.lvh.me:3000/api/v1/admin/clients/id-admin-clint-user
       {
         "links":
         {
-          "self":"http://smart.lvh.me:3000/api/v1/admin/clients/id-admin-clint-user/relationships/client-address",
-          "related":"http://smart.lvh.me:3000/api/v1/admin/clients/id-admin-clint-user/client-address"
+          "self":"http://smart.lvh.me:3000/api/v1/admin/clients/id-admin-client-user/relationships/client-address",
+          "related":"http://smart.lvh.me:3000/api/v1/admin/clients/id-admin-client-user/client-address"
         },
         "data":
         {
           "type":"client-addresses",
-          "id":"id-admin-clint-user"
+          "id":"id-admin-client-user"
         }
       },
       "client-telephones":
       {
         "links":
         {
-          "self":"http://smart.lvh.me:3000/api/v1/admin/clients/id-admin-clint-user/relationships/client-telephones",
-          "related":"http://smart.lvh.me:3000/api/v1/admin/clients/id-admin-clint-user/client-telephones"
+          "self":"http://smart.lvh.me:3000/api/v1/admin/clients/id-admin-client-user/relationships/client-telephones",
+          "related":"http://smart.lvh.me:3000/api/v1/admin/clients/id-admin-client-user/client-telephones"
         }
       }
     }
@@ -1476,17 +1480,17 @@ curl --header "Content-Type: application/vnd.api+json"
     "type":"clients"
   }
 }' 
-http://smart.lvh.me:3000/api/v1/admin/clients/id-admin-clint-user
+http://smart.lvh.me:3000/api/v1/admin/clients/id-admin-client-user
 
 # Return
 {
   "data":
   {
-    "id":"id-admin-clint-user",
+    "id":"id-admin-client-user",
     "type":"clients",
     "links":
     {
-      "self":"http://smart.lvh.me:3000/api/v1/admin/clients/id-admin-clint-user"
+      "self":"http://smart.lvh.me:3000/api/v1/admin/clients/id-admin-client-user"
     },
     "attributes":
     {
@@ -1503,21 +1507,21 @@ http://smart.lvh.me:3000/api/v1/admin/clients/id-admin-clint-user
       {
         "links":
         {
-          "self":"http://smart.lvh.me:3000/api/v1/admin/clients/id-admin-clint-user/relationships/client-address",
-          "related":"http://smart.lvh.me:3000/api/v1/admin/clients/id-admin-clint-user/client-address"
+          "self":"http://smart.lvh.me:3000/api/v1/admin/clients/id-admin-client-user/relationships/client-address",
+          "related":"http://smart.lvh.me:3000/api/v1/admin/clients/id-admin-client-user/client-address"
         },
         "data":
         {
           "type":"client-addresses",
-          "id":"id-admin-clint-user"
+          "id":"id-admin-client-user"
         }
       },
       "client-telephones":
       {
         "links":
         {
-          "self":"http://smart.lvh.me:3000/api/v1/admin/clients/id-admin-clint-user/relationships/client-telephones",
-          "related":"http://smart.lvh.me:3000/api/v1/admin/clients/id-admin-clint-user/client-telephones"
+          "self":"http://smart.lvh.me:3000/api/v1/admin/clients/id-admin-client-user/relationships/client-telephones",
+          "related":"http://smart.lvh.me:3000/api/v1/admin/clients/id-admin-client-user/client-telephones"
         }
       }
     }
@@ -1668,7 +1672,7 @@ curl --header "Content-Type: application/vnd.api+json"
         "data":
         {
           "type":"clients", 
-          "id":"id-admin-clint-user"
+          "id":"id-admin-client-user"
         }
       }
     }, 
@@ -1685,11 +1689,11 @@ http://smart.lvh.me:3000/api/v1/admin/client-telephones
 {
   "data":
   {
-    "id":"id-admin-clint-user-telephone",
+    "id":"id-admin-client-user-telephone",
     "type":"client-telephones",
     "links":
     {
-      "self":"http://smart.lvh.me:3000/api/v1/admin/client-telephones/id-admin-clint-user-telephone"
+      "self":"http://smart.lvh.me:3000/api/v1/admin/client-telephones/id-admin-client-user-telephone"
     },
     "attributes":
     {
@@ -1702,8 +1706,8 @@ http://smart.lvh.me:3000/api/v1/admin/client-telephones
       {
         "links":
         {
-          "self":"http://smart.lvh.me:3000/api/v1/admin/client-telephones/id-admin-clint-user-telephone/relationships/client",
-          "related":"http://smart.lvh.me:3000/api/v1/admin/client-telephones/id-admin-clint-user-telephone/client"
+          "self":"http://smart.lvh.me:3000/api/v1/admin/client-telephones/id-admin-client-user-telephone/relationships/client",
+          "related":"http://smart.lvh.me:3000/api/v1/admin/client-telephones/id-admin-client-user-telephone/client"
         }
       }
     }
@@ -1734,7 +1738,7 @@ curl --header "Content-Type: application/vnd.api+json"
 '{ 
   "data":
   {
-    "id":"id-admin-clint-user-telephone",
+    "id":"id-admin-client-user-telephone",
     "type":"client-telephones",
     "attributes":
     {
@@ -1743,17 +1747,17 @@ curl --header "Content-Type: application/vnd.api+json"
     }
   }
 }' 
-http://smart.lvh.me:3000/api/v1/admin/client-telephones/id-admin-clint-user-telephone
+http://smart.lvh.me:3000/api/v1/admin/client-telephones/id-admin-client-user-telephone
 
 # Return
 {
   "data":
   {
-    "id":"id-admin-clint-user-telephone",
+    "id":"id-admin-client-user-telephone",
     "type":"client-telephones",
     "links":
     {
-      "self":"http://smart.lvh.me:3000/api/v1/admin/client-telephones/id-admin-clint-user-telephone"
+      "self":"http://smart.lvh.me:3000/api/v1/admin/client-telephones/id-admin-client-user-telephone"
     },
     "attributes":
     {
@@ -1766,8 +1770,8 @@ http://smart.lvh.me:3000/api/v1/admin/client-telephones/id-admin-clint-user-tele
       {
         "links":
         {
-          "self":"http://smart.lvh.me:3000/api/v1/admin/client-telephones/id-admin-clint-user-telephone/relationships/client",
-          "related":"http://smart.lvh.me:3000/api/v1/admin/client-telephones/id-admin-clint-user-telephone/client"
+          "self":"http://smart.lvh.me:3000/api/v1/admin/client-telephones/id-admin-client-user-telephone/relationships/client",
+          "related":"http://smart.lvh.me:3000/api/v1/admin/client-telephones/id-admin-client-user-telephone/client"
         }
       }
     }
@@ -1801,17 +1805,17 @@ curl --header "Content-Type: application/vnd.api+json"
     "type":"client-telephones"
   }
 }' 
-http://smart.lvh.me:3000/api/v1/admin/client-telephones/id-admin-clint-user-telephone
+http://smart.lvh.me:3000/api/v1/admin/client-telephones/id-admin-client-user-telephone
 
 # Return
 {
   "data":
   {
-    "id":"id-admin-clint-user-telephone",
+    "id":"id-admin-client-user-telephone",
     "type":"client-telephones",
     "links":
     {
-      "self":"http://smart.lvh.me:3000/api/v1/admin/client-telephones/id-admin-clint-user-telephone"
+      "self":"http://smart.lvh.me:3000/api/v1/admin/client-telephones/id-admin-client-user-telephone"
     },
     "attributes":
     {
@@ -1824,8 +1828,8 @@ http://smart.lvh.me:3000/api/v1/admin/client-telephones/id-admin-clint-user-tele
       {
         "links":
         {
-          "self":"http://smart.lvh.me:3000/api/v1/admin/client-telephones/id-admin-clint-user-telephone/relationships/client",
-          "related":"http://smart.lvh.me:3000/api/v1/admin/client-telephones/id-admin-clint-user-telephone/client"
+          "self":"http://smart.lvh.me:3000/api/v1/admin/client-telephones/id-admin-client-user-telephone/relationships/client",
+          "related":"http://smart.lvh.me:3000/api/v1/admin/client-telephones/id-admin-client-user-telephone/client"
         }
       }
     }
@@ -1861,11 +1865,11 @@ http://smart.lvh.me:3000/api/v1/admin/client-telephones
   "data":
   [
     {
-      "id":"id-admin-clint-user-telephone",
+      "id":"id-admin-client-user-telephone",
       "type":"client-telephones",
       "links":
       {
-        "self":"http://smart.lvh.me:3000/api/v1/admin/client-telephones/id-admin-clint-user-telephone"
+        "self":"http://smart.lvh.me:3000/api/v1/admin/client-telephones/id-admin-client-user-telephone"
       },
       "attributes":
       {
@@ -1878,18 +1882,18 @@ http://smart.lvh.me:3000/api/v1/admin/client-telephones
         {
           "links":
           {
-            "self":"http://smart.lvh.me:3000/api/v1/admin/client-telephones/id-admin-clint-user-telephone/relationships/client",
-            "related":"http://smart.lvh.me:3000/api/v1/admin/client-telephones/id-admin-clint-user-telephone/client"
+            "self":"http://smart.lvh.me:3000/api/v1/admin/client-telephones/id-admin-client-user-telephone/relationships/client",
+            "related":"http://smart.lvh.me:3000/api/v1/admin/client-telephones/id-admin-client-user-telephone/client"
           }
         }
       }
     },
     {
-      "id":"id-admin-clint-user-telephone",
+      "id":"id-admin-client-user-telephone",
       "type":"client-telephones",
       "links":
       {
-        "self":"http://smart.lvh.me:3000/api/v1/admin/client-telephones/id-admin-clint-user-telephone"
+        "self":"http://smart.lvh.me:3000/api/v1/admin/client-telephones/id-admin-client-user-telephone"
       },
       "attributes":
       {
@@ -1902,8 +1906,8 @@ http://smart.lvh.me:3000/api/v1/admin/client-telephones
         {
           "links":
           {
-            "self":"http://smart.lvh.me:3000/api/v1/admin/client-telephones/id-admin-clint-user-telephone/relationships/client",
-            "related":"http://smart.lvh.me:3000/api/v1/admin/client-telephones/id-admin-clint-user-telephone/client"
+            "self":"http://smart.lvh.me:3000/api/v1/admin/client-telephones/id-admin-client-user-telephone/relationships/client",
+            "related":"http://smart.lvh.me:3000/api/v1/admin/client-telephones/id-admin-client-user-telephone/client"
           }
         }
       }
@@ -1942,7 +1946,7 @@ curl --header "Content-Type: application/vnd.api+json"
         "data":
         {
           "type":"clients", 
-          "id":"id-admin-clint-user"
+          "id":"id-admin-client-user"
         }
       }
     }, 
@@ -1965,11 +1969,11 @@ http://smart.lvh.me:3000/api/v1/admin/client-addresses
 {
   "data":
   {
-    "id":"id-admin-clint-user-address",
+    "id":"id-admin-client-user-address",
     "type":"client-addresses",
     "links":
     {
-      "self":"http://smart.lvh.me:3000/api/v1/admin/client-addresses/id-admin-clint-user-address"
+      "self":"http://smart.lvh.me:3000/api/v1/admin/client-addresses/id-admin-client-user-address"
     },
     "attributes":
     {
@@ -1988,8 +1992,8 @@ http://smart.lvh.me:3000/api/v1/admin/client-addresses
       {
         "links":
         {
-          "self":"http://smart.lvh.me:3000/api/v1/admin/client-addresses/id-admin-clint-user-address/relationships/client",
-          "related":"http://smart.lvh.me:3000/api/v1/admin/client-addresses/id-admin-clint-user-address/client"
+          "self":"http://smart.lvh.me:3000/api/v1/admin/client-addresses/id-admin-client-user-address/relationships/client",
+          "related":"http://smart.lvh.me:3000/api/v1/admin/client-addresses/id-admin-client-user-address/client"
         }
       }
     }
@@ -2026,7 +2030,7 @@ curl --header "Content-Type: application/vnd.api+json"
 '{ 
   "data":
   {
-    "id":"id-admin-clint-user-address",
+    "id":"id-admin-client-user-address",
     "type":"client-addresses",
     "attributes":
     {
@@ -2041,17 +2045,17 @@ curl --header "Content-Type: application/vnd.api+json"
     }
   }
 }' 
-http://smart.lvh.me:3000/api/v1/admin/client-addresses/id-admin-clint-user-address
+http://smart.lvh.me:3000/api/v1/admin/client-addresses/id-admin-client-user-address
 
 # Return
 {
   "data":
   {
-    "id":"id-admin-clint-user-address",
+    "id":"id-admin-client-user-address",
     "type":"client-addresses",
     "links":
     {
-      "self":"http://smart.lvh.me:3000/api/v1/admin/client-addresses/id-admin-clint-user-address"
+      "self":"http://smart.lvh.me:3000/api/v1/admin/client-addresses/id-admin-client-user-address"
     },
     "attributes":
     {
@@ -2070,8 +2074,8 @@ http://smart.lvh.me:3000/api/v1/admin/client-addresses/id-admin-clint-user-addre
       {
         "links":
         {
-          "self":"http://smart.lvh.me:3000/api/v1/admin/client-addresses/id-admin-clint-user-address/relationships/client",
-          "related":"http://smart.lvh.me:3000/api/v1/admin/client-addresses/id-admin-clint-user-address/client"
+          "self":"http://smart.lvh.me:3000/api/v1/admin/client-addresses/id-admin-client-user-address/relationships/client",
+          "related":"http://smart.lvh.me:3000/api/v1/admin/client-addresses/id-admin-client-user-address/client"
         }
       }
     }
@@ -2111,17 +2115,17 @@ curl --header "Content-Type: application/vnd.api+json"
     "type":"client-addresses"
   }
 }' 
-http://smart.lvh.me:3000/api/v1/admin/client-addresses/id-admin-clint-user-address
+http://smart.lvh.me:3000/api/v1/admin/client-addresses/id-admin-client-user-address
 
 # Return
 {
   "data":
   {
-    "id":"id-admin-clint-user-address",
+    "id":"id-admin-client-user-address",
     "type":"client-addresses",
     "links":
     {
-      "self":"http://smart.lvh.me:3000/api/v1/admin/client-addresses/id-admin-clint-user-address"
+      "self":"http://smart.lvh.me:3000/api/v1/admin/client-addresses/id-admin-client-user-address"
     },
     "attributes":
     {
@@ -2140,8 +2144,8 @@ http://smart.lvh.me:3000/api/v1/admin/client-addresses/id-admin-clint-user-addre
       {
         "links":
         {
-          "self":"http://smart.lvh.me:3000/api/v1/admin/client-addresses/id-admin-clint-user-address/relationships/client",
-          "related":"http://smart.lvh.me:3000/api/v1/admin/client-addresses/id-admin-clint-user-address/client"
+          "self":"http://smart.lvh.me:3000/api/v1/admin/client-addresses/id-admin-client-user-address/relationships/client",
+          "related":"http://smart.lvh.me:3000/api/v1/admin/client-addresses/id-admin-client-user-address/client"
         }
       }
     }
@@ -2177,11 +2181,11 @@ http://smart.lvh.me:3000/api/v1/admin/client-addresses
   "data":
   [
     {
-      "id":"id-admin-clint-user-address",
+      "id":"id-admin-client-user-address",
       "type":"client-addresses",
       "links":
       {
-        "self":"http://smart.lvh.me:3000/api/v1/admin/client-addresses/id-admin-clint-user-address"
+        "self":"http://smart.lvh.me:3000/api/v1/admin/client-addresses/id-admin-client-user-address"
       },
       "attributes":
       {
@@ -2200,18 +2204,18 @@ http://smart.lvh.me:3000/api/v1/admin/client-addresses
         {
           "links":
           {
-            "self":"http://smart.lvh.me:3000/api/v1/admin/client-addresses/id-admin-clint-user-address/relationships/client",
-            "related":"http://smart.lvh.me:3000/api/v1/admin/client-addresses/id-admin-clint-user-address/client"
+            "self":"http://smart.lvh.me:3000/api/v1/admin/client-addresses/id-admin-client-user-address/relationships/client",
+            "related":"http://smart.lvh.me:3000/api/v1/admin/client-addresses/id-admin-client-user-address/client"
           }
         }
       }
     },
     {
-      "id":"id-admin-clint-user-address",
+      "id":"id-admin-client-user-address",
       "type":"client-addresses",
       "links":
       {
-        "self":"http://smart.lvh.me:3000/api/v1/admin/client-addresses/4id-admin-clint-user-address"
+        "self":"http://smart.lvh.me:3000/api/v1/admin/client-addresses/4id-admin-client-user-address"
       },
       "attributes":
       {
@@ -2230,8 +2234,8 @@ http://smart.lvh.me:3000/api/v1/admin/client-addresses
         {
           "links":
           {
-            "self":"http://smart.lvh.me:3000/api/v1/admin/client-addresses/id-admin-clint-user-address/relationships/client",
-            "related":"http://smart.lvh.me:3000/api/v1/admin/client-addresses/id-admin-clint-user-address/client"
+            "self":"http://smart.lvh.me:3000/api/v1/admin/client-addresses/id-admin-client-user-address/relationships/client",
+            "related":"http://smart.lvh.me:3000/api/v1/admin/client-addresses/id-admin-client-user-address/client"
           }
         }
       }
@@ -2881,6 +2885,351 @@ Not implemented
 The admin can visualize all Groups created for him accessing the route described below.
 
 Route: *`GET "/api/v1/admin/shop-groups"`*
+
+# Admin - Shop Catalog Provider
+
+When logged in, the admin can access information about the catalog, it allows him to list your provider availables.
+
+## List
+
+> List Shop Catalog Provider
+
+```shell
+curl --header "Content-Type: application/vnd.api+json" 
+  -H "Authorization: Bearer id-access-token" -X GET -d 
+'{ 
+  "data":
+  { 
+    "type":"catalog-providers" 
+  }
+}' 
+http://smart.lvh.me:3000/api/v1/admin/catalog-providers
+
+# Return
+{
+  "data":
+  [
+    {
+      "id":"id-catalog-providers",
+      "type":"catalog-providers",
+      "links":
+      {
+        "self":"http://smart.lvh.me:3000/api/v1/admin/catalog-providers/id-catalog-providers"
+      },
+      "attributes":
+      {
+        "name":"SoftLayer"
+      },
+      "relationships":
+      {
+        "catalog-products":
+        {
+          "links":
+          {
+            "self":"http://smart.lvh.me:3000/api/v1/admin/catalog-providers/id-catalog-providers/relationships/catalog-products",
+            "related":"http://smart.lvh.me:3000/api/v1/admin/catalog-providers/id-catalog-providers/catalog-products"
+          }
+        }
+      }
+    }
+  ]
+}
+```
+
+```ruby
+Not implemented
+```
+
+The admin can visualize all Providers availables accessing the route described below.
+
+route: *`GET "/api/v1/admin/catalog-providers"`*
+
+# Admin - Shop Catalog Provider Product
+
+When logged in, the admin can access information about the catalog, it allows him to list your provider products.
+
+## List
+
+> List Shop Catalog Provider Product
+
+```shell
+curl --header "Content-Type: application/vnd.api+json" 
+  -H "Authorization: Bearer id-access-token" -X GET -d 
+'{ 
+  "data":
+  { 
+    "type":"catalog-products" 
+  }
+}' 
+http://smart.lvh.me:3000/api/v1/admin/catalog-products
+
+# Return
+{
+  "data":
+  [
+    {
+      "id":"id-catalog-provider-product",
+      "type":"catalog-products",
+      "links":{"self":"http://smart.lvh.me:3000/api/v1/admin/catalog-products/id-catalog-provider-product"
+    },
+    "attributes":
+    {
+      "name":"Bare Metal",
+      "slug":"bare-metal",
+      "dynamic":true,
+      "hourly":true,
+      "version":1,
+      "allow-custom":true
+    },
+    "relationships":
+    {
+      "catalog-provider":
+      {
+        "links":
+        {
+          "self":"http://smart.lvh.me:3000/api/v1/admin/catalog-products/id-catalog-provider-product/relationships/catalog-provider",
+          "related":"http://smart.lvh.me:3000/api/v1/admin/catalog-products/id-catalog-provider-product/catalog-provider"
+        },
+        "data":
+        {
+          "type":"catalog-providers",
+          "id":"id-catalog-providers"
+        }
+      },
+      "catalog-components":
+      {
+        "links":
+        {
+          "self":"http://smart.lvh.me:3000/api/v1/admin/catalog-products/id-catalog-provider-product/relationships/catalog-components",
+          "related":"http://smart.lvh.me:3000/api/v1/admin/catalog-products/id-catalog-provider-product/catalog-components"
+        }
+      }
+    }
+  ]
+}
+```
+
+```ruby
+Not implemented
+```
+
+The admin can visualize all Providers products accessing the route described below.
+
+route: *`GET "/api/v1/admin/catalog-products"`*
+
+# Admin - Shop Catalog Provider Product Attribute
+
+When logged in, the admin can access information about the catalog, it allows him to list your products attributes.
+
+## List
+
+> List Shop Catalog Provider Product Attributes
+
+```shell
+curl --header "Content-Type: application/vnd.api+json" 
+  -H "Authorization: Bearer id-access-token" -X GET -d 
+'{ 
+  "data":
+  { 
+    "type":"catalog-components" 
+  }
+}' 
+http://smart.lvh.me:3000/api/v1/admin/catalog-components
+
+# Return
+{
+  "data":
+  [
+    {
+      "id":"id-catalog-provider-product-attribute",
+      "type":"catalog-components",
+      "links":
+      {
+        "self":"http://smart.lvh.me:3000/api/v1/admin/catalog-components/id-catalog-provider-product-attribute"
+      },
+      "attributes":
+      {
+        "name":"Disk 1 (Local)",
+        "system":false,
+        "allow-upgrade":true,
+        "allow-downgrade":false
+      },
+      "relationships":
+      {
+        "catalog-product":
+        {
+          "links":
+          {
+            "self":"http://smart.lvh.me:3000/api/v1/admin/catalog-components/id-catalog-provider-product-attribute/relationships/catalog-product",
+            "related":"http://smart.lvh.me:3000/api/v1/admin/catalog-components/id-catalog-provider-product-attribute/catalog-product"
+          },
+          "data":
+          {
+            "type":"catalog-products",
+            "id":"id-catalog-provider-product"
+          }
+        },
+        "catalog-component-options":
+        {
+          "links":
+          {
+            "self":"http://smart.lvh.me:3000/api/v1/admin/catalog-components/id-catalog-provider-product-attribute/relationships/catalog-component-options",
+            "related":"http://smart.lvh.me:3000/api/v1/admin/catalog-components/id-catalog-provider-product-attribute/catalog-component-options"
+          }
+        }
+      }
+    },
+    {
+      "id":"id-catalog-provider-product-attribute",
+      "type":"catalog-components",
+      "links":
+      {
+        "self":"http://smart.lvh.me:3000/api/v1/admin/catalog-components/id-catalog-provider-product-attribute"
+      },
+      "attributes":
+      {
+        "name":"Disk 2 (Local)",
+        "system":false,
+        "allow-upgrade":true,
+        "allow-downgrade":false
+      },
+      "relationships":
+      {
+        "catalog-product":
+        {
+          "links":
+          {
+            "self":"http://smart.lvh.me:3000/api/v1/admin/catalog-components/id-catalog-provider-product-attribute/relationships/catalog-product",
+            "related":"http://smart.lvh.me:3000/api/v1/admin/catalog-components/id-catalog-provider-product-attribute/catalog-product"
+          },
+          "data":
+          {
+            "type":"catalog-products",
+            "id":"id-catalog-provider-product"
+          }
+        },
+        "catalog-component-options":
+        {
+          "links":
+          {
+            "self":"http://smart.lvh.me:3000/api/v1/admin/catalog-components/id-catalog-provider-product-attribute/relationships/catalog-component-options",
+            "related":"http://smart.lvh.me:3000/api/v1/admin/catalog-components/id-catalog-provider-product-attribute/catalog-component-options"
+          }
+        }
+      }
+    }
+  ]
+}
+```
+
+```ruby
+Not implemented
+```
+
+The admin can visualize all Providers Products Attributes accessing the route described below.
+
+route: *`GET "/api/v1/admin/catalog-components"`*
+
+# Admin - Shop Catalog Provider Product Option
+
+When logged in, the admin can access information about the catalog, it allows him to list your products options.
+
+## List
+
+> List Shop Catalog Provider Product Options
+
+```shell
+curl --header "Content-Type: application/vnd.api+json" 
+  -H "Authorization: Bearer id-access-token" -X GET -d 
+'{ 
+  "data":
+  { 
+    "type":"catalog-component-options" 
+  }
+}' 
+http://smart.lvh.me:3000/api/v1/admin/catalog-components/id-catalog-provider-product-attribute/catalog-component-options
+
+# Return
+{
+  "data":
+  [
+    {
+      "id":"id-catalog-provider-product-option",
+      "type":"catalog-component-options",
+      "links":
+      {
+        "self":"http://smart.lvh.me:3000/api/v1/admin/catalog-component-options/id-catalog-provider-product-option"
+      },
+      "attributes":
+      {
+        "name":"25 GB (LOCAL)",
+        "value":"25 GB (LOCAL)",
+        "hourly-price":null,
+        "monthly-price":null,
+        "dynamic-hourly-price":"0.0",
+        "dynamic-monthly-price":"0.0"
+      },
+      "relationships":
+      {
+        "catalog-component":
+        {
+          "links":
+          {
+            "self":"http://smart.lvh.me:3000/api/v1/admin/catalog-component-options/id-catalog-provider-product-option/relationships/catalog-component",
+            "related":"http://smart.lvh.me:3000/api/v1/admin/catalog-component-options/id-catalog-provider-product-option/catalog-component"
+          },
+          "data":
+          {
+            "type":"catalog-components",
+            "id":"id-catalog-provider-product-attribute"
+          }
+        }
+      }
+    },
+    {
+      "id":"id-catalog-provider-product-option",
+      "type":"catalog-component-options",
+      "links":
+      {
+        "self":"http://smart.lvh.me:3000/api/v1/admin/catalog-component-options/id-catalog-provider-product-option"
+      },
+      "attributes":
+      {
+        "name":"100 GB (LOCAL)",
+        "value":"100 GB (LOCAL)",
+        "hourly-price":null,
+        "monthly-price":null,
+        "dynamic-hourly-price":"0.006",
+        "dynamic-monthly-price":"4.0"
+      },
+      "relationships":
+      {
+        "catalog-component":
+        {
+          "links":
+          {
+            "self":"http://smart.lvh.me:3000/api/v1/admin/catalog-component-options/id-catalog-provider-product-option/relationships/catalog-component",
+            "related":"http://smart.lvh.me:3000/api/v1/admin/catalog-component-options/id-catalog-provider-product-option/catalog-component"
+          },
+          "data":
+          {
+            "type":"catalog-components",
+            "id":"id-catalog-provider-product-attribute"
+          }
+        }
+      }
+    }
+  ]
+}
+```
+
+```ruby
+Not implemented
+```
+
+The admin can visualize all Providers Products Options accessing the route described below.
+
+route: *`GET "/api/v1/admin/catalog-components/id-catalog-provider-product-attribute/catalog-component-options"`*
 
 # Manager - Profile Account
 
@@ -3770,11 +4119,11 @@ http://localhost:3000/api/v1/manager/client-users
 {
   "data":
   {
-    "id":"id-manager-clint-user-profile",
+    "id":"id-manager-client-user-profile",
     "type":"client-users",
     "links":
     {
-      "self":"http://localhost:3000/api/v1/manager/client-users/id-manager-clint-user-profile"
+      "self":"http://localhost:3000/api/v1/manager/client-users/id-manager-client-user-profile"
     },
     "attributes":
     {
@@ -3813,7 +4162,7 @@ curl --header "Content-Type: application/vnd.api+json"
   "data":
   { 
     "type":"client-users", 
-    "id":"id-manager-clint-user-profile", 
+    "id":"id-manager-client-user-profile", 
     "attributes":
     { 
       "first-name":"Manager", 
@@ -3821,17 +4170,17 @@ curl --header "Content-Type: application/vnd.api+json"
     }
   }
 }' 
-http://localhost:3000/api/v1/manager/client-users/id-manager-clint-user-profile 
+http://localhost:3000/api/v1/manager/client-users/id-manager-client-user-profile 
 
 # Return
 {
   "data":
   {
-    "id":"id-manager-clint-user-profile",
+    "id":"id-manager-client-user-profile",
     "type":"client-users",
     "links":
     {
-      "self":"http://localhost:3000/api/v1/manager/client-users/id-manager-clint-user-profile"
+      "self":"http://localhost:3000/api/v1/manager/client-users/id-manager-client-user-profile"
     },
     "attributes":
     {
@@ -3867,17 +4216,17 @@ curl --header "Content-Type: application/vnd.api+json"
     "type":"client-users"
   }
 }' 
-http://localhost:3000/api/v1/manager/client-users/id-manager-clint-user-profile
+http://localhost:3000/api/v1/manager/client-users/id-manager-client-user-profile
 
 # Return
 {
   "data":
   {
-    "id":"id-manager-clint-user-profile",
+    "id":"id-manager-client-user-profile",
     "type":"client-users",
     "links":
     {
-      "self":"http://localhost:3000/api/v1/manager/client-users/id-manager-clint-user-profile"
+      "self":"http://localhost:3000/api/v1/manager/client-users/id-manager-client-user-profile"
     },
     "attributes":
     {
@@ -3917,11 +4266,11 @@ http://localhost:3000/api/v1/manager/client-users
   "data":
   [
     {
-      "id":"id-manager-clint-user-profile",
+      "id":"id-manager-client-user-profile",
       "type":"client-users",
       "links":
       {
-        "self":"http://localhost:3000/api/v1/manager/client-users/id-manager-clint-user-profile"
+        "self":"http://localhost:3000/api/v1/manager/client-users/id-manager-client-user-profile"
       },
       "attributes":
       {
@@ -3931,11 +4280,11 @@ http://localhost:3000/api/v1/manager/client-users
       }
     },
     {
-      "id":"id-manager-clint-user-profile",
+      "id":"id-manager-client-user-profile",
       "type":"client-users",
       "links":
       {
-        "self":"http://localhost:3000/api/v1/manager/client-users/id-manager-clint-user-profile"
+        "self":"http://localhost:3000/api/v1/manager/client-users/id-manager-client-user-profile"
       },
       "attributes":
       {
@@ -3987,11 +4336,11 @@ http://localhost:3000/api/v1/manager/clients
 {
   "data":
   {
-    "id":"id-manager-clint-user",
+    "id":"id-manager-client-user",
     "type":"clients",
     "links":
     {
-      "self":"http://localhost:3000/api/v1/manager/clients/id-manager-clint-user"
+      "self":"http://localhost:3000/api/v1/manager/clients/id-manager-client-user"
     },
     "attributes":
     {
@@ -4008,8 +4357,8 @@ http://localhost:3000/api/v1/manager/clients
       {
         "links":
         {
-          "self":"http://localhost:3000/api/v1/manager/clients/id-manager-clint-user/relationships/client-address",
-          "related":"http://localhost:3000/api/v1/manager/clients/id-manager-clint-user/client-address"
+          "self":"http://localhost:3000/api/v1/manager/clients/id-manager-client-user/relationships/client-address",
+          "related":"http://localhost:3000/api/v1/manager/clients/id-manager-client-user/client-address"
         },
         "data":null
       },
@@ -4017,8 +4366,8 @@ http://localhost:3000/api/v1/manager/clients
       {
         "links":
         {
-          "self":"http://localhost:3000/api/v1/manager/clients/id-manager-clint-user/relationships/provider-softlayer-profile-client",
-          "related":"http://localhost:3000/api/v1/manager/clients/id-manager-clint-user/provider-softlayer-profile-client"
+          "self":"http://localhost:3000/api/v1/manager/clients/id-manager-client-user/relationships/provider-softlayer-profile-client",
+          "related":"http://localhost:3000/api/v1/manager/clients/id-manager-client-user/provider-softlayer-profile-client"
         },
         "data":null
       },
@@ -4026,8 +4375,8 @@ http://localhost:3000/api/v1/manager/clients
       {
         "links":
         {
-          "self":"http://localhost:3000/api/v1/manager/clients/id-manager-clint-user/relationships/client-telephones",
-          "related":"http://localhost:3000/api/v1/manager/clients/id-manager-clint-user/client-telephones"
+          "self":"http://localhost:3000/api/v1/manager/clients/id-manager-client-user/relationships/client-telephones",
+          "related":"http://localhost:3000/api/v1/manager/clients/id-manager-client-user/client-telephones"
         }
       }
     }
@@ -4060,7 +4409,7 @@ curl --header "Content-Type: application/vnd.api+json"
 '{
   "data":
   {
-    "id":"id-manager-clint-user", 
+    "id":"id-manager-client-user", 
     "type":"clients", 
     "attributes":
     { 
@@ -4076,11 +4425,11 @@ http://localhost:3000/api/v1/manager/clients/client-id
 {
   "data":
   {
-    "id":"id-manager-clint-user",
+    "id":"id-manager-client-user",
     "type":"clients",
     "links":
     {
-      "self":"http://localhost:3000/api/v1/manager/clients/id-manager-clint-user"
+      "self":"http://localhost:3000/api/v1/manager/clients/id-manager-client-user"
     },
     "attributes":
     {
@@ -4097,21 +4446,21 @@ http://localhost:3000/api/v1/manager/clients/client-id
       {
         "links":
         {
-          "self":"http://localhost:3000/api/v1/manager/clients/id-manager-clint-user/relationships/client-address",
-          "related":"http://localhost:3000/api/v1/manager/clients/id-manager-clint-user/client-address"
+          "self":"http://localhost:3000/api/v1/manager/clients/id-manager-client-user/relationships/client-address",
+          "related":"http://localhost:3000/api/v1/manager/clients/id-manager-client-user/client-address"
         },
         "data":
         {
           "type":"client-addresses",
-          "id":"id-manager-clint-user"
+          "id":"id-manager-client-user"
         }
       },
       "provider-softlayer-profile-client":
       {
         "links":
         {
-          "self":"http://localhost:3000/api/v1/manager/clients/id-manager-clint-user/relationships/provider-softlayer-profile-client",
-          "related":"http://localhost:3000/api/v1/manager/clients/id-manager-clint-user/provider-softlayer-profile-client"
+          "self":"http://localhost:3000/api/v1/manager/clients/id-manager-client-user/relationships/provider-softlayer-profile-client",
+          "related":"http://localhost:3000/api/v1/manager/clients/id-manager-client-user/provider-softlayer-profile-client"
         },
         "data":
         {
@@ -4123,8 +4472,8 @@ http://localhost:3000/api/v1/manager/clients/client-id
       {
         "links":
         {
-          "self":"http://localhost:3000/api/v1/manager/clients/id-manager-clint-user/relationships/client-telephones",
-          "related":"http://localhost:3000/api/v1/manager/clients/id-manager-clint-user/client-telephones"
+          "self":"http://localhost:3000/api/v1/manager/clients/id-manager-client-user/relationships/client-telephones",
+          "related":"http://localhost:3000/api/v1/manager/clients/id-manager-client-user/client-telephones"
         }
       }
     }
@@ -4133,11 +4482,11 @@ http://localhost:3000/api/v1/manager/clients/client-id
 ```
 
 ```ruby
-horus-cli update clients "id-manager-clint-user" '"corporate-name":"New Corporate", "trade-name":"New Trade", "key-name":"key", "email":"client_02@example.com"'
+horus-cli update clients "id-manager-client-user" '"corporate-name":"New Corporate", "trade-name":"New Trade", "key-name":"key", "email":"client_02@example.com"'
 
 # Return
 {
-  "id":"id-manager-clint-user", 
+  "id":"id-manager-client-user", 
   "type":"clients", 
   "corporate-name":"New Corporate", 
   "trade-name":"New Trade", 
@@ -4172,17 +4521,17 @@ curl --header "Content-Type: application/vnd.api+json"
     "type":"clients"
   }
 }' 
-http://localhost:3000/api/v1/manager/clients/id-manager-clint-user
+http://localhost:3000/api/v1/manager/clients/id-manager-client-user
 
 # Return
 {
   "data":
   {
-    "id":"id-manager-clint-user",
+    "id":"id-manager-client-user",
     "type":"clients",
     "links":
     {
-      "self":"http://localhost:3000/api/v1/manager/clients/id-manager-clint-user"
+      "self":"http://localhost:3000/api/v1/manager/clients/id-manager-client-user"
     },
     "attributes":
     {
@@ -4199,21 +4548,21 @@ http://localhost:3000/api/v1/manager/clients/id-manager-clint-user
       {
         "links":
         {
-          "self":"http://localhost:3000/api/v1/manager/clients/id-manager-clint-user/relationships/client-address",
-          "related":"http://localhost:3000/api/v1/manager/clients/id-manager-clint-user/client-address"
+          "self":"http://localhost:3000/api/v1/manager/clients/id-manager-client-user/relationships/client-address",
+          "related":"http://localhost:3000/api/v1/manager/clients/id-manager-client-user/client-address"
         },
         "data":
         {
           "type":"client-addresses",
-          "id":"id-manager-clint-user"
+          "id":"id-manager-client-user"
         }
       },
       "provider-softlayer-profile-client":
       {
         "links":
         {
-          "self":"http://localhost:3000/api/v1/manager/clients/id-manager-clint-user/relationships/provider-softlayer-profile-client",
-          "related":"http://localhost:3000/api/v1/manager/clients/id-manager-clint-user/provider-softlayer-profile-client"
+          "self":"http://localhost:3000/api/v1/manager/clients/id-manager-client-user/relationships/provider-softlayer-profile-client",
+          "related":"http://localhost:3000/api/v1/manager/clients/id-manager-client-user/provider-softlayer-profile-client"
         },
         "data":
         {
@@ -4225,8 +4574,8 @@ http://localhost:3000/api/v1/manager/clients/id-manager-clint-user
       {
         "links":
         {
-          "self":"http://localhost:3000/api/v1/manager/clients/id-manager-clint-user/relationships/client-telephones",
-          "related":"http://localhost:3000/api/v1/manager/clients/id-manager-clint-user/client-telephones"
+          "self":"http://localhost:3000/api/v1/manager/clients/id-manager-client-user/relationships/client-telephones",
+          "related":"http://localhost:3000/api/v1/manager/clients/id-manager-client-user/client-telephones"
         }
       }
     }
@@ -4235,11 +4584,11 @@ http://localhost:3000/api/v1/manager/clients/id-manager-clint-user
 ```
 
 ```ruby
-horus-cli show clients "id-manager-clint-user"
+horus-cli show clients "id-manager-client-user"
 
 # Return
 {
-  "id":"id-manager-clint-user", 
+  "id":"id-manager-client-user", 
   "type":"clients", 
   "corporate-name":"Acme Inc.", 
   "trade-name":"Acme", 
@@ -4274,11 +4623,11 @@ http://localhost:3000/api/v1/manager/clients
   "data":
   [
     {
-      "id":"id-manager-clint-user",
+      "id":"id-manager-client-user",
       "type":"clients",
       "links":
       {
-        "self":"http://localhost:3000/api/v1/manager/clients/id-manager-clint-user"
+        "self":"http://localhost:3000/api/v1/manager/clients/id-manager-client-user"
       },
       "attributes":
       {
@@ -4295,21 +4644,21 @@ http://localhost:3000/api/v1/manager/clients
         {
           "links":
           {
-            "self":"http://localhost:3000/api/v1/manager/clients/id-manager-clint-user/relationships/client-address",
-            "related":"http://localhost:3000/api/v1/manager/clients/id-manager-clint-user/client-address"
+            "self":"http://localhost:3000/api/v1/manager/clients/id-manager-client-user/relationships/client-address",
+            "related":"http://localhost:3000/api/v1/manager/clients/id-manager-client-user/client-address"
           },
           "data":
           {
             "type":"client-addresses",
-            "id":"id-manager-clint-user"
+            "id":"id-manager-client-user"
           }
         },
         "provider-softlayer-profile-client":
         {
           "links":
           {
-            "self":"http://localhost:3000/api/v1/manager/clients/id-manager-clint-user/relationships/provider-softlayer-profile-client",
-            "related":"http://localhost:3000/api/v1/manager/clients/id-manager-clint-user/provider-softlayer-profile-client"
+            "self":"http://localhost:3000/api/v1/manager/clients/id-manager-client-user/relationships/provider-softlayer-profile-client",
+            "related":"http://localhost:3000/api/v1/manager/clients/id-manager-client-user/provider-softlayer-profile-client"
           },
           "data":
           {
@@ -4321,18 +4670,18 @@ http://localhost:3000/api/v1/manager/clients
         {
           "links":
           {
-            "self":"http://localhost:3000/api/v1/manager/clients/id-manager-clint-user/relationships/client-telephones",
-            "related":"http://localhost:3000/api/v1/manager/clients/id-manager-clint-user/client-telephones"
+            "self":"http://localhost:3000/api/v1/manager/clients/id-manager-client-user/relationships/client-telephones",
+            "related":"http://localhost:3000/api/v1/manager/clients/id-manager-client-user/client-telephones"
           }
         }
       }
     },
     {
-      "id":"id-manager-clint-user",
+      "id":"id-manager-client-user",
       "type":"clients",
       "links":
       {
-        "self":"http://localhost:3000/api/v1/manager/clients/id-manager-clint-user"
+        "self":"http://localhost:3000/api/v1/manager/clients/id-manager-client-user"
       },
       "attributes":
       {
@@ -4349,21 +4698,21 @@ http://localhost:3000/api/v1/manager/clients
         {
           "links":
           {
-            "self":"http://localhost:3000/api/v1/manager/clients/id-manager-clint-user/relationships/client-address",
-            "related":"http://localhost:3000/api/v1/manager/clients/id-manager-clint-usert/client-address"
+            "self":"http://localhost:3000/api/v1/manager/clients/id-manager-client-user/relationships/client-address",
+            "related":"http://localhost:3000/api/v1/manager/clients/id-manager-client-usert/client-address"
           },
           "data":
           {
             "type":"client-addresses",
-            "id":"id-manager-clint-user"
+            "id":"id-manager-client-user"
           }
         },
         "provider-softlayer-profile-client":
         {
           "links":
           {
-            "self":"http://localhost:3000/api/v1/manager/clients/id-manager-clint-user/relationships/provider-softlayer-profile-client",
-            "related":"http://localhost:3000/api/v1/manager/clients/id-manager-clint-user/provider-softlayer-profile-client"
+            "self":"http://localhost:3000/api/v1/manager/clients/id-manager-client-user/relationships/provider-softlayer-profile-client",
+            "related":"http://localhost:3000/api/v1/manager/clients/id-manager-client-user/provider-softlayer-profile-client"
           },
           "data":null
         },
@@ -4371,8 +4720,8 @@ http://localhost:3000/api/v1/manager/clients
         {
           "links":
           {
-            "self":"http://localhost:3000/api/v1/manager/clients/id-manager-clint-user/relationships/client-telephones",
-            "related":"http://localhost:3000/api/v1/manager/clients/id-manager-clint-user/client-telephones"
+            "self":"http://localhost:3000/api/v1/manager/clients/id-manager-client-user/relationships/client-telephones",
+            "related":"http://localhost:3000/api/v1/manager/clients/id-manager-client-user/client-telephones"
           }
         }
       }
@@ -4387,7 +4736,7 @@ horus-cli list clients
 # Return
 [
   {
-    "id":"id-manager-clint-user", 
+    "id":"id-manager-client-user", 
     "type":"clients", 
     "corporate-name":"Acme Inc.", 
     "trade-name":"Acme", 
@@ -4397,7 +4746,7 @@ horus-cli list clients
     "updated-at":"2015-11-12T11:37:30.899Z"
   },
   {
-    "id":"id-manager-clint-user", 
+    "id":"id-manager-client-user", 
     "type":"clients", 
     "corporate-name":"Smart Inc.", 
     "trade-name":"Smart", 
@@ -4435,7 +4784,7 @@ curl --header "Content-Type: application/vnd.api+json"
         "data":
         {
           "type":"clients", 
-          "id":"id-manager-clint-user"
+          "id":"id-manager-client-user"
         }
       }
     }, 
@@ -4452,11 +4801,11 @@ http://localhost:3000/api/v1/manager/client-telephones
 {
   "data":
   {
-    "id":"id-manager-clint-user-telephone",
+    "id":"id-manager-client-user-telephone",
     "type":"client-telephones",
     "links":
     {
-      "self":"http://localhost:3000/api/v1/manager/client-telephones/id-manager-clint-user-telephone"
+      "self":"http://localhost:3000/api/v1/manager/client-telephones/id-manager-client-user-telephone"
     },
     "attributes":
     {
@@ -4469,8 +4818,8 @@ http://localhost:3000/api/v1/manager/client-telephones
       {
         "links":
         {
-          "self":"http://localhost:3000/api/v1/manager/client-telephones/id-manager-clint-user-telephone/relationships/client",
-          "related":"http://localhost:3000/api/v1/manager/client-telephones/id-manager-clint-user-telephone/client"
+          "self":"http://localhost:3000/api/v1/manager/client-telephones/id-manager-client-user-telephone/relationships/client",
+          "related":"http://localhost:3000/api/v1/manager/client-telephones/id-manager-client-user-telephone/client"
         }
       }
     }
@@ -4479,14 +4828,14 @@ http://localhost:3000/api/v1/manager/client-telephones
 ```
 
 ```ruby
-horus-cli create telephones '"country-code":"55", "number":"7578889890"' clients "id-manager-clint-user"
+horus-cli create telephones '"country-code":"55", "number":"7578889890"' clients "id-manager-client-user"
 
 # Return
 {
   "country-code":"55", 
   "number":"7578889890", 
   "type":"client-telephones", 
-  "id":"id-manager-clint-user-telephone"
+  "id":"id-manager-client-user-telephone"
 }
 ```
 
@@ -4509,7 +4858,7 @@ curl --header "Content-Type: application/vnd.api+json"
 '{ 
   "data":
   {
-    "id":"id-manager-clint-user-telephone",
+    "id":"id-manager-client-user-telephone",
     "type":"client-telephones",
     "attributes":
     {
@@ -4518,17 +4867,17 @@ curl --header "Content-Type: application/vnd.api+json"
     }
   }
 }' 
-http://localhost:3000/api/v1/manager/client-telephones/id-manager-clint-user-telephone
+http://localhost:3000/api/v1/manager/client-telephones/id-manager-client-user-telephone
 
 # Return
 {
   "data":
   {
-    "id":"id-manager-clint-user-telephone",
+    "id":"id-manager-client-user-telephone",
     "type":"client-telephones",
     "links":
     {
-      "self":"http://localhost:3000/api/v1/manager/client-telephones/id-manager-clint-user-telephone"
+      "self":"http://localhost:3000/api/v1/manager/client-telephones/id-manager-client-user-telephone"
     },
     "attributes":
     {
@@ -4541,8 +4890,8 @@ http://localhost:3000/api/v1/manager/client-telephones/id-manager-clint-user-tel
       {
         "links":
         {
-          "self":"http://localhost:3000/api/v1/manager/client-telephones/id-manager-clint-user-telephone/relationships/client",
-          "related":"http://localhost:3000/api/v1/manager/client-telephones/id-manager-clint-user-telephone/client"
+          "self":"http://localhost:3000/api/v1/manager/client-telephones/id-manager-client-user-telephone/relationships/client",
+          "related":"http://localhost:3000/api/v1/manager/client-telephones/id-manager-client-user-telephone/client"
         }
       }
     }
@@ -4551,11 +4900,11 @@ http://localhost:3000/api/v1/manager/client-telephones/id-manager-clint-user-tel
 ```
 
 ```ruby
-horus-cli update telephones "id-manager-clint-user-telephone" '"country-code":"12", "number":"789890888"'
+horus-cli update telephones "id-manager-client-user-telephone" '"country-code":"12", "number":"789890888"'
 
 # Return
 {
-  "id":"id-manager-clint-user-telephone", 
+  "id":"id-manager-client-user-telephone", 
   "type":"client-telephones", 
   "country-code":"21", 
   "number":"899890888"
@@ -4584,17 +4933,17 @@ curl --header "Content-Type: application/vnd.api+json"
     "type":"client-telephones"
   }
 }' 
-http://localhost:3000/api/v1/manager/client-telephones/id-manager-clint-user-telephone
+http://localhost:3000/api/v1/manager/client-telephones/id-manager-client-user-telephone
 
 # Return
 {
   "data":
   {
-    "id":"id-manager-clint-user-telephone",
+    "id":"id-manager-client-user-telephone",
     "type":"client-telephones",
     "links":
     {
-      "self":"http://localhost:3000/api/v1/manager/client-telephones/id-manager-clint-user-telephone"
+      "self":"http://localhost:3000/api/v1/manager/client-telephones/id-manager-client-user-telephone"
     },
     "attributes":
     {
@@ -4607,8 +4956,8 @@ http://localhost:3000/api/v1/manager/client-telephones/id-manager-clint-user-tel
       {
         "links":
         {
-          "self":"http://localhost:3000/api/v1/manager/client-telephones/id-manager-clint-user-telephone/relationships/client",
-          "related":"http://localhost:3000/api/v1/manager/client-telephones/id-manager-clint-user-telephone/client"
+          "self":"http://localhost:3000/api/v1/manager/client-telephones/id-manager-client-user-telephone/relationships/client",
+          "related":"http://localhost:3000/api/v1/manager/client-telephones/id-manager-client-user-telephone/client"
         }
       }
     }
@@ -4617,11 +4966,11 @@ http://localhost:3000/api/v1/manager/client-telephones/id-manager-clint-user-tel
 ```
 
 ```ruby
-horus-cli show telephones "id-manager-clint-user-telephone"
+horus-cli show telephones "id-manager-client-user-telephone"
 
 # Return
 {
-  "id":"id-manager-clint-user-telephone", 
+  "id":"id-manager-client-user-telephone", 
   "type":"client-telephones", 
   "country-code":"55", 
   "number":"7578889890"
@@ -4652,11 +5001,11 @@ http://localhost:3000/api/v1/manager/client-telephones
   "data":
   [
     {
-      "id":"id-manager-clint-user-telephone",
+      "id":"id-manager-client-user-telephone",
       "type":"client-telephones",
       "links":
       {
-        "self":"http://localhost:3000/api/v1/manager/client-telephones/id-manager-clint-user-telephone"
+        "self":"http://localhost:3000/api/v1/manager/client-telephones/id-manager-client-user-telephone"
       },
       "attributes":
       {
@@ -4669,18 +5018,18 @@ http://localhost:3000/api/v1/manager/client-telephones
         {
           "links":
           {
-            "self":"http://localhost:3000/api/v1/manager/client-telephones/id-manager-clint-user-telephone/relationships/client",
-            "related":"http://localhost:3000/api/v1/manager/client-telephones/id-manager-clint-user-telephone/client"
+            "self":"http://localhost:3000/api/v1/manager/client-telephones/id-manager-client-user-telephone/relationships/client",
+            "related":"http://localhost:3000/api/v1/manager/client-telephones/id-manager-client-user-telephone/client"
           }
         }
       }
     },
     {
-      "id":"id-manager-clint-user-telephone",
+      "id":"id-manager-client-user-telephone",
       "type":"client-telephones",
       "links":
       {
-        "self":"http://localhost:3000/api/v1/manager/client-telephones/id-manager-clint-user-telephone"
+        "self":"http://localhost:3000/api/v1/manager/client-telephones/id-manager-client-user-telephone"
       },
       "attributes":
       {
@@ -4693,8 +5042,8 @@ http://localhost:3000/api/v1/manager/client-telephones
         {
           "links":
           {
-            "self":"http://localhost:3000/api/v1/manager/client-telephones/id-manager-clint-user-telephone/relationships/client",
-            "related":"http://localhost:3000/api/v1/manager/client-telephones/id-manager-clint-user-telephone/client"
+            "self":"http://localhost:3000/api/v1/manager/client-telephones/id-manager-client-user-telephone/relationships/client",
+            "related":"http://localhost:3000/api/v1/manager/client-telephones/id-manager-client-user-telephone/client"
           }
         }
       }
@@ -4709,13 +5058,13 @@ horus-cli list telephones
 # Return
 [
   {
-    "id":"id-manager-clint-user-telephone", 
+    "id":"id-manager-client-user-telephone", 
     "type":"client-telephones", 
     "country-code":"55", 
     "number":"7578889890"
   }, 
   {
-    "id":"id-manager-clint-user-telephone", 
+    "id":"id-manager-client-user-telephone", 
     "type":"client-telephones", 
     "country-code":"34", 
     "number":"7777777777"
@@ -4749,7 +5098,7 @@ curl --header "Content-Type: application/vnd.api+json"
         "data":
         {
           "type":"clients", 
-          "id":"id-manager-clint-user-address"
+          "id":"id-manager-client-user-address"
         }
       }
     }, 
@@ -4772,11 +5121,11 @@ http://localhost:3000/api/v1/manager/client-addresses
 {
   "data":
   {
-    "id":"id-manager-clint-user-address",
+    "id":"id-manager-client-user-address",
     "type":"client-addresses",
     "links":
     {
-      "self":"http://localhost:3000/api/v1/manager/client-addresses/id-manager-clint-user-address"
+      "self":"http://localhost:3000/api/v1/manager/client-addresses/id-manager-client-user-address"
     },
     "attributes":
     {
@@ -4795,8 +5144,8 @@ http://localhost:3000/api/v1/manager/client-addresses
       {
         "links":
         {
-          "self":"http://localhost:3000/api/v1/manager/client-addresses/id-manager-clint-user-address/relationships/client",
-          "related":"http://localhost:3000/api/v1/manager/client-addresses/id-manager-clint-user-address/client"
+          "self":"http://localhost:3000/api/v1/manager/client-addresses/id-manager-client-user-address/relationships/client",
+          "related":"http://localhost:3000/api/v1/manager/client-addresses/id-manager-client-user-address/client"
         }
       }
     }
@@ -4805,7 +5154,7 @@ http://localhost:3000/api/v1/manager/client-addresses
 ```
 
 ```ruby
-horus-cli create addresses '"street":"Jericho Tpke Suite 344", "number":"2417", "complement":"Apartment", "zipcode":"11040", "neighborhood":"Commack", "city":"Cidade", "state":"Estado", "country":"Pais"' clients "id-manager-clint-user"
+horus-cli create addresses '"street":"Jericho Tpke Suite 344", "number":"2417", "complement":"Apartment", "zipcode":"11040", "neighborhood":"Commack", "city":"Cidade", "state":"Estado", "country":"Pais"' clients "id-manager-client-user"
 
 # Return
 {
@@ -4818,7 +5167,7 @@ horus-cli create addresses '"street":"Jericho Tpke Suite 344", "number":"2417", 
   "state":"NY", 
   "country":"US", 
   "type":"client-addresses", 
-  "id":"id-manager-clint-user-address"
+  "id":"id-manager-client-user-address"
 }
 ```
 
@@ -4847,7 +5196,7 @@ curl --header "Content-Type: application/vnd.api+json"
 '{ 
   "data":
   {
-    "id":"id-manager-clint-user-address",
+    "id":"id-manager-client-user-address",
     "type":"client-addresses",
     "attributes":
     {
@@ -4862,17 +5211,17 @@ curl --header "Content-Type: application/vnd.api+json"
     }
   }
 }' 
-http://localhost:3000/api/v1/manager/client-addresses/id-manager-clint-user-address
+http://localhost:3000/api/v1/manager/client-addresses/id-manager-client-user-address
 
 # Return
 {
   "data":
   {
-    "id":"id-manager-clint-user-address",
+    "id":"id-manager-client-user-address",
     "type":"client-addresses",
     "links":
     {
-      "self":"http://localhost:3000/api/v1/manager/client-addresses/id-manager-clint-user-address"
+      "self":"http://localhost:3000/api/v1/manager/client-addresses/id-manager-client-user-address"
     },
     "attributes":
     {
@@ -4891,8 +5240,8 @@ http://localhost:3000/api/v1/manager/client-addresses/id-manager-clint-user-addr
       {
         "links":
         {
-          "self":"http://localhost:3000/api/v1/manager/client-addresses/id-manager-clint-user-address/relationships/client",
-          "related":"http://localhost:3000/api/v1/manager/client-addresses/id-manager-clint-user-address/client"
+          "self":"http://localhost:3000/api/v1/manager/client-addresses/id-manager-client-user-address/relationships/client",
+          "related":"http://localhost:3000/api/v1/manager/client-addresses/id-manager-client-user-address/client"
         }
       }
     }
@@ -4901,11 +5250,11 @@ http://localhost:3000/api/v1/manager/client-addresses/id-manager-clint-user-addr
 ```
 
 ```ruby
-horus-cli update addresses "id-manager-clint-user-address" '"street":"Baker Street", "number":"221B", "complement":"Apartment", "zipcode":"5150117", "neighborhood":"unknown", "city":"Westminster", "state":"London", "country":"UK"'
+horus-cli update addresses "id-manager-client-user-address" '"street":"Baker Street", "number":"221B", "complement":"Apartment", "zipcode":"5150117", "neighborhood":"unknown", "city":"Westminster", "state":"London", "country":"UK"'
 
 # Return
 {
-  "id":"id-manager-clint-user-address", 
+  "id":"id-manager-client-user-address", 
   "type":"client-addresses", 
   "street":"Baker Street", 
   "number":"221B", 
@@ -4946,17 +5295,17 @@ curl --header "Content-Type: application/vnd.api+json"
     "type":"client-addresses"
   }
 }' 
-http://localhost:3000/api/v1/manager/client-addresses/id-manager-clint-user-address
+http://localhost:3000/api/v1/manager/client-addresses/id-manager-client-user-address
 
 # Return
 {
   "data":
   {
-    "id":"id-manager-clint-user-address",
+    "id":"id-manager-client-user-address",
     "type":"client-addresses",
     "links":
     {
-      "self":"http://localhost:3000/api/v1/manager/client-addresses/id-manager-clint-user-address"
+      "self":"http://localhost:3000/api/v1/manager/client-addresses/id-manager-client-user-address"
     },
     "attributes":
     {
@@ -4975,8 +5324,8 @@ http://localhost:3000/api/v1/manager/client-addresses/id-manager-clint-user-addr
       {
         "links":
         {
-          "self":"http://localhost:3000/api/v1/manager/client-addresses/id-manager-clint-user-address/relationships/client",
-          "related":"http://localhost:3000/api/v1/manager/client-addresses/id-manager-clint-user-address/client"
+          "self":"http://localhost:3000/api/v1/manager/client-addresses/id-manager-client-user-address/relationships/client",
+          "related":"http://localhost:3000/api/v1/manager/client-addresses/id-manager-client-user-address/client"
         }
       }
     }
@@ -4985,11 +5334,11 @@ http://localhost:3000/api/v1/manager/client-addresses/id-manager-clint-user-addr
 ```
 
 ```ruby
-horus-cli show addresses "id-manager-clint-user-address"
+horus-cli show addresses "id-manager-client-user-address"
 
 # Return
 {
-  "id":"id-manager-clint-user-address", 
+  "id":"id-manager-client-user-address", 
   "type":"client-addresses",  
   "street":"Jericho Tpke Suite 344", 
   "number":"2417", 
@@ -5026,11 +5375,11 @@ http://localhost:3000/api/v1/manager/client-addresses
   "data":
   [
     {
-      "id":"id-manager-clint-user-address",
+      "id":"id-manager-client-user-address",
       "type":"client-addresses",
       "links":
       {
-        "self":"http://localhost:3000/api/v1/manager/client-addresses/id-manager-clint-user-address"
+        "self":"http://localhost:3000/api/v1/manager/client-addresses/id-manager-client-user-address"
       },
       "attributes":
       {
@@ -5049,18 +5398,18 @@ http://localhost:3000/api/v1/manager/client-addresses
         {
           "links":
           {
-            "self":"http://localhost:3000/api/v1/manager/client-addresses/id-manager-clint-user-address/relationships/client",
-            "related":"http://localhost:3000/api/v1/manager/client-addresses/id-manager-clint-user-address/client"
+            "self":"http://localhost:3000/api/v1/manager/client-addresses/id-manager-client-user-address/relationships/client",
+            "related":"http://localhost:3000/api/v1/manager/client-addresses/id-manager-client-user-address/client"
           }
         }
       }
     },
     {
-      "id":"id-manager-clint-user-address",
+      "id":"id-manager-client-user-address",
       "type":"client-addresses",
       "links":
       {
-        "self":"http://localhost:3000/api/v1/manager/client-addresses/id-manager-clint-user-address"
+        "self":"http://localhost:3000/api/v1/manager/client-addresses/id-manager-client-user-address"
       },
       "attributes":
       {
@@ -5079,8 +5428,8 @@ http://localhost:3000/api/v1/manager/client-addresses
         {
           "links":
           {
-            "self":"http://localhost:3000/api/v1/manager/client-addresses/id-manager-clint-user-address/relationships/client",
-            "related":"http://localhost:3000/api/v1/manager/client-addresses/id-manager-clint-user-address/client"
+            "self":"http://localhost:3000/api/v1/manager/client-addresses/id-manager-client-user-address/relationships/client",
+            "related":"http://localhost:3000/api/v1/manager/client-addresses/id-manager-client-user-address/client"
           }
         }
       }
@@ -5095,7 +5444,7 @@ horus-cli list addresses
 # Return
 [
   {, 
-    "id":"id-manager-clint-user-address", 
+    "id":"id-manager-client-user-address", 
     "type":"client-addresses", 
     "street":"Baker Street", 
     "number":"221B", 
@@ -5107,7 +5456,7 @@ horus-cli list addresses
     "country":"UK"
   },
   {
-    "id":"id-manager-clint-user-address", 
+    "id":"id-manager-client-user-address", 
     "type":"client-addresses",  
     "street":"Jericho Tpke Suite 344", 
     "number":"2417", 
