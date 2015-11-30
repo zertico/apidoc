@@ -31,7 +31,7 @@ Authentication as user allows an End Customer to list and update information abo
 
 Reseller is responsible for selling product and services SoftLayer to users.
 
-Authentication as admin allows a Reseller list and update your own information.
+Authentication as admin allows a Reseller list and update his own information.
 
 Authentication as admin allows a Reseller to list, create and update information about users.
 
@@ -39,7 +39,7 @@ Authentication as admin allows a Reseller to list, create and update information
 
 Distributor is responsible for distributing product and services SoftLayer to Companies.
 
-Authentication as manager allows a Distributor list and update your own information.
+Authentication as manager allows a Distributor list and update his own information.
 
 Authentication as manager allows a Distributor to list, create and update information about Companies.
 
@@ -218,7 +218,7 @@ authentication | String | manager
 
 # User Profile Account
 
-When logged in, the user can access his own profile, it allows him to show and update information about his account.
+When logged in, the user can access his own profile. This access allows him to show and update information about his account.
 
 ## Show
 
@@ -260,7 +260,7 @@ http://smart.lvh.me:3000/api/v1/profile
 Not implemented
 ```
 
-The user can visualize your his profile account accessing a route described below.
+The user can visualize his profile account by accessing the route below.
 
 Route: *`GET "api/v1/profile"`*
 
@@ -310,7 +310,7 @@ http://smart.lvh.me:3000/api/v1/profile
 Not implemented
 ```
 
-The user can edit the information contained in his own profile account by accessing a route described below.
+The user can edit the information contained in his own profile account by accessing the route below.
 
 Route: *`GET "api/v1/profile"`*
 
@@ -322,7 +322,7 @@ email | String | user@smart.com
 
 # Admin Profile Account
 
-When logged in, the user admin access his own profile, it allows him to show and update information about his account.
+When logged in, the user admin access his own profile. This access allows him to show and update information about his account.
 
 ## Show
 
@@ -364,7 +364,7 @@ http://smart.lvh.me:3000/api/v1/admin/profile
 Not implemented
 ```
 
-The admin can visualize your his profile account by accessing a route described below.
+The admin can visualize his profile account by accessing the route below.
 
 Route: *`GET "api/v1/admin/profile"`*
 
@@ -414,7 +414,7 @@ http://smart.lvh.me:3000/api/v1/admin/profile
 Not implemented
 ```
 
-The admin can edit the information contained in his own profile account accessing a route described below.
+The admin can edit the information contained in his own profile account by accessing the route below.
 
 Route: *`GET "api/v1/admin/profile"`*
 
@@ -426,7 +426,7 @@ email | String | admin@smart.com
 
 # Admin Company Profile
 
-When logged in, the admin can access his own profile, it allows him to update and show information about himself.
+When logged in, the admin can access his own profile. This access allows him to show and update information about his account.
 
 ## Show
 
@@ -492,7 +492,7 @@ http://smart.lvh.me:3000/api/v1/admin/company-profile
 Not implemented
 ```
 
-The admin can visualize his own profile by accessing a route described below.
+The admin can visualize his own profile by accessing the route below.
 
 Route: *`GET "api/v1/admin/company-profile"`*
 
@@ -566,7 +566,7 @@ http://smart.lvh.me:3000/api/v1/admin/company-profile
 Not implemented
 ```
 
-The admin can edit the information contained in his own profile by accessing a route described below
+The admin can edit the information contained in his own profile by accessing the route below
 
 Route: *`PATCH "/api/v1/admin/company-profile"`*
 
@@ -578,7 +578,7 @@ email | String | umbrella@corp.com
 
 # Admin Company Profile Telephone
 
-When logged in, the admin can access information about your telephones, it allows him to create, update, show and list them.
+When logged in, the admin can access information about his telephones. This access allows him to create, update, show and list them.
 
 ## Create
 
@@ -646,7 +646,7 @@ http://smart.lvh.me:3000/api/v1/admin/company-profile-telephones
 Not implemented
 ```
 
-The admin can create a telephone by accessing a route described below.
+The admin can create a telephone by accessing the route below.
 
 Route: *`POST "/api/v1/admin/company-profile-telephones"`*
 
@@ -712,7 +712,7 @@ http://smart.lvh.me:3000/api/v1/admin/company-profile-telephones/id-admin-compan
 Not implemented
 ```
 
-The admin can edit the information contained in telephone by accessing the route described below.
+The admin can edit the information contained in telephone by accessing the route below.
 
 Route: *`PATCH "api/v1/admin/company-profile-telephones/:id"`*
 
@@ -771,7 +771,7 @@ http://smart.lvh.me:3000/api/v1/admin/company-profile-telephones/id-admin-compan
 Not implemented
 ```
 
-The admin can visualize a specific telephone by accessing a route described below.
+The admin can visualize a specific telephone by accessing the route below.
 
 Route: *`GET "/api/v1/admin/company-profile-telephones/:id"`*
 
@@ -851,13 +851,13 @@ http://localhost:3000/api/v1/manager/company-profile-telephones
 Not implemented
 ```
 
-The admin can visualize all telephones by accessing a route described below.
+The admin can visualize all telephones by accessing the route below.
 
 Route: *`GET "/api/v1/manager/company-profile-telephones"`*
 
 # Admin Company Profile Address
 
-When logged in, the admin can access information about his address, it allows him to create, update and show them.
+When logged in, the admin can access information about his address. This access allows him to create, update and show them.
 
 ## Create
 
@@ -937,7 +937,7 @@ http://smart.lvh.me:3000/api/v1/admin/company-profile-address
 Not implemented
 ```
 
-The admin can create an address by accessing the route described below.
+The admin can create an address by accessing the route below.
 
 Route: *`POST "/api/v1/admin/company-profile-address"`*
 
@@ -1020,7 +1020,7 @@ http://smart.lvh.me:3000/api/v1/admin/company-profile-address
 Not implemented
 ```
 
-The admin can edit the information contained in address by accessing the route described below.
+The admin can edit the information contained in address by accessing the route below.
 
 Route: *`PATCH "/api/v1/admin/company-profile-address"`*
 
@@ -1091,13 +1091,13 @@ http://smart.lvh.me:3000/api/v1/admin/company-profile-address
 Not implemented
 ```
 
-The admin can visualize a specific address by accessing a route described below.
+The admin can visualize a specific address by accessing the route below.
 
 Route: *`GET "/api/v1/admin/company-profile-address"`*
 
 # Admin Client User Account
 
-When logged in, the admin can access information about users account, it allows him to create, update, show and list them.
+When logged in, the admin can access information about users account. This access allows him to create, update, show and list them.
 
 ## Create
 
@@ -1147,7 +1147,7 @@ http://smart.lvh.me:3000/api/v1/admin/client-users
 Not implemented
 ```
 
-The admin can create an user account by accessing a route described below.
+The admin can create an user account by accessing the route below.
 
 Route: *`POST "/api/v1/admin/client-users"`*
 
@@ -1205,7 +1205,7 @@ http://smart.lvh.me:3000/api/v1/admin/client-users/id-admin-client-user-profile
 Not implemented
 ```
 
-The admin can edit information contained in an user account by accessing a route described below.
+The admin can edit information contained in an user account by accessing the route below.
 
 Route: *`GET "/api/v1/admin/client-users/:id"`*
 
@@ -1254,7 +1254,7 @@ http://smart.lvh.me:3000/api/v1/admin/client-users/id-admin-client-user-profile
 Not implemented
 ```
 
-The admin can visualize a specific user account by accessing a route described below.
+The admin can visualize a specific user account by accessing the route below.
 
 Route: *`GET "/api/v1/admin/client-users/:id"`*
 
@@ -1314,13 +1314,13 @@ http://smart.lvh.me:3000/api/v1/admin/client-users
 Not implemented
 ```
 
-The admin can visualize all users accounts by accessing a route described below.
+The admin can visualize all users accounts by accessing the route below.
 
 Route: *`GET "/api/v1/admin/client-users"`*
 
 # Admin Client User
 
-When logged in, the admin can access information about Users, it allows him to create, update, show and list them.
+When logged in, the admin can access information about Users. This access allows him to create, update, show and list them.
 
 ## Create
 
@@ -1393,7 +1393,7 @@ http://smart.lvh.me:3000//api/v1/admin/clients
 Not implemented
 ```
 
-The admin can create a User by accessing the route described below.
+The admin can create a User by accessing the route below.
 
 Route: *`POST "/api/v1/admin/clients"`*
 
@@ -1478,7 +1478,7 @@ http://smart.lvh.me:3000/api/v1/admin/clients/id-admin-client-user
 Not implemented
 ```
 
-The admin can edit an information contained in an user by accessing the route described below.
+The admin can edit an information contained in an user by accessing the route below.
 
 Route: *`PATCH "/api/v1/admin/clients/:id`*
 
@@ -1554,7 +1554,7 @@ http://smart.lvh.me:3000/api/v1/admin/clients/id-admin-client-user
 Not implemented
 ```
 
-The admin can visualize a specific User by accessing the route described below.
+The admin can visualize a specific User by accessing the route below.
 
 Route: *`GET "/api/v1/admin/clients/:id"`*
 
@@ -1668,13 +1668,13 @@ http://smart.lvh.me:3000//api/v1/admin/clients
 Not implemented
 ```
 
-The admin can visualize all Users by accessing the route described below.
+The admin can visualize all Users by accessing the route below.
 
 Route: *`GET "/api/v1/admin/clients"`*
 
 # Admin Client User Telephone
 
-When logged in, the admin can access information about users' telephones, it allows him to create, update, show and list them.
+When logged in, the admin can access information about users' telephones. This access allows him to create, update, show and list them.
 
 ## Create
 
@@ -1742,7 +1742,7 @@ http://smart.lvh.me:3000/api/v1/admin/client-telephones
 Not implemented
 ```
 
-The admin can create a telephone by accessing a route described below.
+The admin can create a telephone by accessing the route below.
 
 Route: *`POST "/api/v1/admin/client-telephones"`*
 
@@ -1807,7 +1807,7 @@ http://smart.lvh.me:3000/api/v1/admin/client-telephones/id-admin-client-user-tel
 Not implemented
 ```
 
-The admin can edit the information contained in telephone by accessing the route described below.
+The admin can edit the information contained in telephone by accessing the route below.
 
 Route: *`PATCH "/api/v1/admin/client-telephones/:id"`*
 
@@ -1866,7 +1866,7 @@ http://smart.lvh.me:3000/api/v1/admin/client-telephones/id-admin-client-user-tel
 Not implemented
 ```
 
-The admin can visualize a specific telephone by accessing a route described below.
+The admin can visualize a specific telephone by accessing the route below.
 
 Route: *`GET "/api/v1/admin/client-telephones/:id"`*
 
@@ -1946,13 +1946,13 @@ http://smart.lvh.me:3000/api/v1/admin/client-telephones
 Not implemented
 ```
 
-The admin can visualize all telephones by accessing a route described below.
+The admin can visualize all telephones by accessing the route below.
 
 Route: *`GET "/api/v1/admin/client-telephones"`*
 
 # Admin Client User Address
 
-When logged in, the admin can access information about users' address, it allows him to create, update, show and list them.
+When logged in, the admin can access information about users' address. This access allows him to create, update, show and list them.
 
 ## Create
 
@@ -2032,7 +2032,7 @@ http://smart.lvh.me:3000/api/v1/admin/client-addresses
 Not implemented
 ```
 
-The admin can create an address by accessing the route described below.
+The admin can create an address by accessing the route below.
 
 Route: *`POST "/api/v1/admin/client-addresses"`*
 
@@ -2115,7 +2115,7 @@ http://smart.lvh.me:3000/api/v1/admin/client-addresses/id-admin-client-user-addr
 Not implemented
 ```
 
-The admin can edit the information contained in address by accessing the route described below.
+The admin can edit the information contained in address by accessing the route below.
 
 Route: *`PATCH "/api/v1/admin/client-addresses/:id"`*
 
@@ -2186,7 +2186,7 @@ http://smart.lvh.me:3000/api/v1/admin/client-addresses/id-admin-client-user-addr
 Not implemented
 ```
 
-The admin can visualize a specific address by accessing a route described below.
+The admin can visualize a specific address by accessing the route below.
 
 Route: *`GET "/api/v1/admin/client-addresses/:id"`*
 
@@ -2278,13 +2278,13 @@ http://smart.lvh.me:3000/api/v1/admin/client-addresses
 Not implemented
 ```
 
-The admin can visualize all addresses by accessing a route described below.
+The admin can visualize all addresses by accessing the route below.
 
 Route: *`GET "/api/v1/admin/client-addresses"`*
 
 # Admin Shop Category
 
-When logged in, the admin can access information about the shop, it allows him to create, update, show and list your categories.
+When logged in, the admin can access information about the shop. This access allows him to create, update, show and list shop categories.
 
 ## Create
 
@@ -2350,7 +2350,7 @@ http://smart.lvh.me:3000/api/v1/admin/shop-categories
 Not implemented
 ```
 
-The admin can create a category by accessing the route described below.
+The admin can create a category by accessing the route below.
 
 Route: *`POST "/api/v1/admin/shop-categories"`*
 
@@ -2427,7 +2427,7 @@ http://smart.lvh.me:3000/api/v1/admin/shop-categories/id-admin-shop-category
 Not implemented
 ```
 
-The admin can edit a category by accessing the route described below.
+The admin can edit a category by accessing the route below.
 
 Route: *`PATCH "/api/v1/admin/shop-categories/:id`*
 
@@ -2494,7 +2494,7 @@ http://smart.lvh.me:3000/api/v1/admin/shop-categories/id-admin-shop-category
 Not implemented
 ```
 
-The admin can visualize a specific category created for him by accessing the route described below.
+The admin can visualize a specific category created by accessing the route below.
 
 Route: *`GET "/api/v1/admin/shop-categories/:id"`*
 
@@ -2582,13 +2582,13 @@ http://smart.lvh.me:3000/api/v1/admin/shop-categories
 Not implemented
 ```
 
-The admin can visualize all categories created for him by accessing the route described below.
+The admin can visualize all categories created by accessing the route below.
 
 Route: *`GET "/api/v1/admin/shop-categories"`*
 
 # Admin Shop Group
 
-When logged in, the admin can access information about the shop, it allows him to create, update, show and list your groups.
+When logged in, the admin can access information about the shop. This access allows him to create, update, show and list shop groups.
 
 ## Create
 
@@ -2669,7 +2669,7 @@ http://smart.lvh.me:3000/api/v1/admin/shop-groups
 Not implemented
 ```
 
-The admin can create a group by accessing the route described below.
+The admin can create a group by accessing the route below.
 
 Route: *`POST "/api/v1/admin/shop-groups"`*
 
@@ -2750,7 +2750,7 @@ http://smart.lvh.me:3000/api/v1/admin/shop-groups/id-admin-shop-group
 Not implemented
 ```
 
-The admin can edit a group by accessing the route described below.
+The admin can edit a group by accessing the route below.
 
 Route: *`PATCH "/api/v1/admin/shop-groups/:id`*
 
@@ -2822,7 +2822,7 @@ http://smart.lvh.me:3000/api/v1/admin/shop-groups/id-admin-shop-group
 Not implemented
 ```
 
-The admin can visualize a specific group created for him by accessing the route described below.
+The admin can visualize a specific group created by accessing the route below.
 
 Route: *`GET "/api/v1/admin/shop-groups/:id"`*
 
@@ -2920,13 +2920,13 @@ http://smart.lvh.me:3000/api/v1/admin/shop-groups
 Not implemented
 ```
 
-The admin can visualize all groups created for him by accessing the route described below.
+The admin can visualize all shop groups created by accessing the route below.
 
 Route: *`GET "/api/v1/admin/shop-groups"`*
 
 # Admin Shop Catalog Provider
 
-When logged in, the admin can access information about the catalog, it allows him to list your provider availables.
+When logged in, the admin can access information about the catalog. This access allows him to list his catalog provider availables.
 
 ## List
 
@@ -2979,13 +2979,13 @@ http://smart.lvh.me:3000/api/v1/admin/catalog-providers
 Not implemented
 ```
 
-When logged in, the admin can access information about the catalog, it allows him to list your provider availables.
+When logged in, the admin can access information about the catalog. This access allows him to list catalog provider availables.
 
 route: *`GET "/api/v1/admin/catalog-providers"`*
 
 # Admin Shop Catalog Provider Product
 
-When logged in, the admin can access information about the catalog, it allows him to list your provider products.
+When logged in, the admin can access information about the catalog. This access allows him to list catalog provider products.
 
 ## List
 
@@ -3053,13 +3053,13 @@ http://smart.lvh.me:3000/api/v1/admin/catalog-products
 Not implemented
 ```
 
-The admin can visualize all providers products by accessing the route described below.
+The admin can visualize all providers products by accessing the route below.
 
 route: *`GET "/api/v1/admin/catalog-products"`*
 
 # Admin Shop Catalog Provider Product Attribute
 
-When logged in, the admin can access information about the catalog, it allows him to list your products attributes.
+When logged in, the admin can access information about the catalog. This access allows him to list catalog products attributes.
 
 ## List
 
@@ -3167,13 +3167,13 @@ http://smart.lvh.me:3000/api/v1/admin/catalog-components
 Not implemented
 ```
 
-The admin can visualize all providers products attributes by accessing the route described below.
+The admin can visualize all providers products attributes by accessing the route below.
 
 route: *`GET "/api/v1/admin/catalog-components"`*
 
 # Admin Shop Catalog Provider Product Option
 
-When logged in, the admin can access information about the catalog, it allows him to list your products options.
+When logged in, the admin can access information about the catalog. This access allows him to list catalog products options.
 
 ## List
 
@@ -3269,13 +3269,13 @@ http://smart.lvh.me:3000/api/v1/admin/catalog-components/id-admin-catalog-provid
 Not implemented
 ```
 
-The admin can visualize all providers products options by accessing the route described below.
+The admin can visualize all providers products options by accessing the route below.
 
 route: *`GET "/api/v1/admin/catalog-components/id-admin-catalog-provider-product-attribute/catalog-component-options"`*
 
 # Manager Profile Account
 
-When logged in, the user admin access his own profile, it allows him to show and update information about his account.
+When logged in, the user admin access his own profile. This access allows him to show and update information about his account.
 
 ## Show
 
@@ -3327,7 +3327,7 @@ horus-cli profile show
 }
 ```
 
-The manager can visualize your his profile account by accessing a route described below.
+The manager can visualize his profile account by accessing the route below.
 
 Route: *`GET "api/v1/manager/profile"`*
 
@@ -3387,7 +3387,7 @@ horus-cli profile update '"first-name":"New Company","last-name":"Corp"'
 }
 ```
 
-The manager can edit the information contained in his own profile account accessing a route described below.
+The manager can edit the information contained in his own profile account by accessing the route below.
 
 Route: *`PATCH "api/v1/manager/profile"`*
 
@@ -3398,7 +3398,7 @@ last-name  | String | Corp
 
 # Manager Company Profile
 
-When logged in, the manager can access his own profile, it allows him to create, update and show information about himself.
+When logged in, the manager can access his own profile. This access allows him to create, update and show information about himself.
 
 ## Create
 
@@ -3465,8 +3465,7 @@ http://localhost:3000/api/v1/manager/company-profile
 ```ruby
 Not implemented
 ```
-
-Always that a manager is logged by first again is necessary that he create a profile accessing the route described below.
+When the manager connects for the first time, he has to create a profile by accessing the route below.
 
 Route: *`POST "/api/v1/manager/company-profile"`*
 
@@ -3547,7 +3546,7 @@ http://localhost:3000/api/v1/manager/company-profile
 Not implemented
 ```
 
-The manager can edit the information contained in your own profile accessing the route described below.
+The manager can edit the information contained in his own profile accessing the route below.
 
 Route: *`PATCH "/api/v1/manager/company-profile"`*
 
@@ -3621,13 +3620,13 @@ http://localhost:3000/api/v1/manager/company-profile
 Not implemented
 ```
 
-The manager can visualize his own profile account by accessing the route described below.
+The manager can visualize his own profile account by accessing the route below.
 
 Route: *`GET "api/v1/manager/company-profile"`*
 
 # Manager Company Profile Telephone
 
-When logged in, the manager can access information about your telephones, it allows him to create, update, show and list them.
+When logged in, the manager can access information about his telephones. This access allows him to create, update, show and list them.
 
 ## Create
 
@@ -3695,7 +3694,7 @@ http://localhost:3000/api/v1/manager/company-profile-telephones
 Not implemented
 ```
 
-The amanager can create a telephone by accessing a route described below.
+The manager can create a telephone by accessing the route below.
 
 Route: *`POST "/api/v1/manager/company-profile-telephones"`*
 
@@ -3760,7 +3759,7 @@ http://localhost:3000/api/v1/manager/company-profile-telephones/id-manager-compa
 Not implemented
 ```
 
-The manager can edit the information contained in telephone by accessing the route described below.
+The manager can edit the information contained in a telephone by accessing the route below.
 
 Route: *`PATCH "api/v1/manager/company-profile-telephones/:id"`*
 
@@ -3819,7 +3818,7 @@ http://localhost:3000/api/v1/manager/company-profile-telephones/id-manager-compa
 Not implemented
 ```
 
-The manager can visualize a specific telephone by accessing a route described below.
+The manager can visualize a specific telephone by accessing the route below.
 
 Route: *`GET "/api/v1/manager/company-profile-telephones/:id"`*
 
@@ -3873,13 +3872,13 @@ http://localhost:3000/api/v1/manager/company-profile-telephones/id-manager-compa
 Not implemented
 ```
 
-The manager can visualize all telephones by accessing a route described below.
+The manager can visualize all telephones by accessing the route below.
 
 Route: *`GET "/api/v1/manager/company-profile-telephones/:id"`*
 
 # Manager Company Profile Address
 
-When logged in, the manager can access information about his address, it allows him to create, update and show them.
+When logged in, the manager can access information about his on address. This access allows him to create, update and show them.
 
 ## Create
 
@@ -3959,7 +3958,7 @@ http://localhost:3000/api/v1/manager/company-profile-address
 Not implemented
 ```
 
-The manager can create an address by accessing the route described below.
+The manager can create an address by accessing the route below.
 
 Route: *`POST "/api/v1/manager/company-profile-address"`*
 
@@ -4042,7 +4041,7 @@ http://localhost:3000/api/v1/manager/company-profile-address
 Not implemented
 ```
 
-The manager can edit the information contained in address by accessing the route described below.
+The manager can edit the information contained his own address by accessing the route below.
 
 Route: *`PATCH "/api/v1/manager/company-profile-address"`*
 
@@ -4113,13 +4112,13 @@ http://localhost:3000/api/v1/manager/company-profile-address
 Not implemented
 ```
 
-The manager can visualize a specific address by accessing a route described below.
+The manager can visualize a specific address by accessing the route below.
 
 Route: *`GET "/api/v1/manager/company-profile-address"`*
 
 # Manager Client Company Account
 
-When logged in, the manager can access information about companies account, it allows him to create, update, show and list them.
+When logged in, the manager can access information about companies account. This access allows him to create, update, show and list them.
 
 ## Create
 
@@ -4169,7 +4168,7 @@ http://localhost:3000/api/v1/manager/client-users
 Not implemented
 ```
 
-The manager can create an company account by accessing a route described below.
+The manager can create a company account by accessing the route below.
 
 Route: *`POST "/api/v1/manager/client-users"`*
 
@@ -4225,7 +4224,7 @@ http://localhost:3000/api/v1/manager/client-users/id-manager-client-user-profile
 Not implemented
 ```
 
-The manager can edit information contained in an user account by accessing a route described below.
+The manager can edit information contained in an user account by accessing the route below.
 
 Route: *`GET "/api/v1/manager/client-users/:id"`*
 
@@ -4274,7 +4273,7 @@ http://localhost:3000/api/v1/manager/client-users/id-manager-client-user-profile
 Not implemented
 ```
 
-The manager can visualize a specific company account by accessing a route described below.
+The manager can visualize a specific company account by accessing the route below.
 
 Route: *`GET "/api/v1/manager/client-users/:id"`*
 
@@ -4334,13 +4333,13 @@ http://localhost:3000/api/v1/manager/client-users
 Not implemented
 ```
 
-The admin can visualize all companies accounts by accessing a route described below.
+The admin can visualize all companies accounts by accessing the route below.
 
 Route: *`GET "/api/v1/manager/client-users"`*
 
 # Manager Client Company
 
-When logged in, the manager can access information about companies, it allows him to create, update, show and list them.
+When logged in, the manager can access information about companies. This access allows him to create, update, show and list them.
 
 ## Create
 
@@ -4422,7 +4421,7 @@ http://localhost:3000/api/v1/manager/clients
 Not implemented
 ```
 
-The manager can create a company by accessing the route described below.
+The manager can create a company by accessing the route below.
 
 Route: *`POST "/api/v1/manager/clients"`*
 
@@ -4533,7 +4532,7 @@ horus-cli update clients "id-manager-client-user" '"corporate-name":"New Corpora
 }
 ```
 
-The manager can edit an information contained in an company by accessing the route described below.
+The manager can edit an information contained in a company by accessing the route below.
 
 Route: *`PATCH "/api/v1/manager/clients/:id`*
 
@@ -4637,7 +4636,7 @@ horus-cli show clients "id-manager-client-user"
 }
 ```
 
-The manager can visualize a specific company by accessing the route described below.
+The manager can visualize a specific company by accessing the route below.
 
 Route: *`GET "/api/v1/manager/clients/:id"`*
 
@@ -4798,13 +4797,13 @@ horus-cli list clients
 ]
 ```
 
-The manager can visualize all companies by accessing the route described below.
+The manager can visualize all companies by accessing the route below.
 
 Route: *`GET "/api/v1/manager/clients"`*
 
 # Manager Client Company Telephone
 
-When logged in, the manager can access information about company's telephones, it allows him to create, update, show and list them.
+When logged in, the manager can access information about company's telephones. This access allows him to create, update, show and list them.
 
 ## Create
 
@@ -4881,7 +4880,7 @@ horus-cli create telephones '"country-code":"55", "number":"7578889890"' clients
 }
 ```
 
-The manager can create a telephone by accessing a route described below.
+The manager can create a telephone by accessing the route below.
 
 Route: *`POST "/api/v1/manager/client-telephones"`*
 
@@ -4955,7 +4954,7 @@ horus-cli update telephones "id-manager-client-user-telephone" '"country-code":"
 }
 ```
 
-The manager can edit the information contained in telephone by accessing the route described below.
+The manager can edit the information contained in a telephone by accessing the route below.
 
 Route: *`PATCH "/api/v1/manager/client-telephones/:id"`*
 
@@ -5023,7 +5022,7 @@ horus-cli show telephones "id-manager-client-user-telephone"
 }
 ```
 
-The manager can visualize a specific telephone by accessing a route described below.
+The manager can visualize a specific telephone by accessing the route below.
 
 Route: *`GET "/api/v1/manager/client-telephones/:id"`*
 
@@ -5120,13 +5119,13 @@ horus-cli list telephones
 }
 ```
 
-The manager can visualize all telephones by accessing a route described below.
+The manager can visualize all telephones by accessing the route below.
 
 Route: *`GET "/api/v1/manager/client-telephones"`*
 
 # Manager Client Company Address
 
-When logged in, the manager can access information about company's address, it allows him to create, update, show and list them.
+When logged in, the manager can access information about company's address. This access allows him to create, update, show and list them.
 
 ## Create
 
@@ -5221,7 +5220,7 @@ horus-cli create addresses '"street":"Jericho Tpke Suite 344", "number":"2417", 
 }
 ```
 
-The manager can create an address by accessing the route described below.
+The manager can create an address by accessing the route below.
 
 Route: *`POST "/api/v1/manager/client-addresses"`*
 
@@ -5238,7 +5237,7 @@ country | String | US
 
 ## Update
 
-Update Client Company Address
+> Update Client Company Address
 
 ```shell
 # INPUT
@@ -5319,7 +5318,7 @@ horus-cli update addresses "id-manager-client-user-address" '"street":"Baker Str
 }
 ```
 
-The manager can edit the information contained in address by accessing the route described below.
+The manager can edit the information contained in address by accessing the route below.
 
 Route: *`PATCH "/api/v1/manager/client-addresses/:id"`*
 
@@ -5336,7 +5335,7 @@ country | String | UK
 
 ## Show
 
-Show Client Company Address
+> Show Client Company Address
 
 ```shell
 # INPUT
@@ -5405,13 +5404,13 @@ horus-cli show addresses "id-manager-client-user-address"
 }
 ```
 
-The manager can visualize a specific address by accessing a route described below.
+The manager can visualize a specific address by accessing the route below.
 
 Route: *`GET "/api/v1/manager/client-addresses/:id"`*
 
 ## List
 
-List Client Company Address
+> List Client Company Address
 
 ```shell
 # INPUT
@@ -5526,7 +5525,7 @@ horus-cli list addresses
 ]
 ```
 
-The manager can visualize all addresses by accessing a route described below.
+The manager can visualize all addresses by accessing the route below.
 
 Route: *`GET "/api/v1/manager/client-addresses"`*
 
