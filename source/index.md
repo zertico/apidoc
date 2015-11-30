@@ -13,35 +13,35 @@ search: true
 
 # Horus API
 
-Welcome to the Horus API! 
+Welcome to the Horus API!
 
-Horus is an API that enables a Company to distribute and manage Cloud Services more simply, this API is mainly focused on SoftLayer.
+Horus is an API that enables a Company to distribute and manage Cloud Services more simply, this API is mainly focused on Softlayer.
 
 The Horus API simplifies the manage of resources and give liberty to integrate with your internal infrastructure.
 
-Depending on the level of involvement with a system, users can be categorized as manager, reseller or user.
+Depending on the level of involvement with the system, users can be categorized as manager, admin or user.
 
-## Distributor (Manager)
-
-Distributor is responsible for distributing product and services SoftLayer to Companies.
-
-Authentication as manager allows a Distributor to list, create and update information about Companies.
-
-Authentication as manager allows a Distributor list and update your own information.
-
-## Reseller (Admin)
-
-Reseller is responsible for selling product and services SoftLayer to Users.
-
-Authentication as admin allows a Reseller to list, create and update information about Users.
-
-Authentication as sdmin allows a Reseller list and update your own information.
-
-## End Customer (User)
+## User (End Customer)
 
 End Customer is the last layer in this API, it is responsible only for consume products and services Softlayer.
 
-Authentication as User allows an End Customer to list and update information about his account.
+Authentication as user allows an End Customer to list and update information about his account.
+
+## Admin (Reseller)
+
+Reseller is responsible for selling product and services SoftLayer to users.
+
+Authentication as admin allows a Reseller list and update your own information.
+
+Authentication as admin allows a Reseller to list, create and update information about users.
+
+## Manager (Distributor)
+
+Distributor is responsible for distributing product and services SoftLayer to Companies.
+
+Authentication as manager allows a Distributor list and update your own information.
+
+Authentication as manager allows a Distributor to list, create and update information about Companies.
 
 # Current Version
 
@@ -74,6 +74,12 @@ id-admin-client-user-profile | 56facbbe-a59d-4743-99fd-ff9936411efd
 id-admin-client-user | 4be57074-5fc6-5942-bb62-c882fb2b4eff
 id-admin-client-user-telephone | 87d3c3a2-0cd2-4667-8fc9-3c3487133061
 id-admin-client-user-address | 0778b605-36ca-4a4e-8f54-d38f830d226c
+id-admin-shop-category | baedf1c1-cc00-454d-8cb7-fcc8319498fa
+id-admin-shop-group | 40c6d92b-4185-4a3d-bdfc-853da1f90f3d
+id-admin-catalog-provider | c2928f65-4ba6-59ba-b8d3-abec6a44fb23
+id-admin-catalog-provider-product | 2e646490-eeb2-5fbe-bbf3-a7d8b1d6a2e3
+id-admin-catalog-provider-product-attribute | 3082f9b2-6ba5-5808-8db7-25f25dc7ff70
+id-admin-catalog-provider-product-option | 37098c00-7215-5752-8c65-738d04ea4a02
 id-manager-profile | 1c9dcbb4-758d-55c0-874a-da7a8285a814
 id-manager-company | 78473988-b021-4864-aa48-f3b7bc4a06f6
 id-manager-company-telephone | 7915969d-e949-4066-b264-8d5bdcdf2d5c
@@ -82,18 +88,12 @@ id-manager-client-user-profile | 1b5c1105-360c-418c-8362-385749ec5746
 id-manager-client-user | 03b829d7-bbe6-5556-ae91-e480c27a28ee
 id-manager-client-user-telephone | 690c7235-59b3-5a4e-9c04-e1aa98cc6e38
 id-manager-client-user-address | 0778b605-36ca-4a4e-8f54-d38f830d226c
-id-admin-shop-category | baedf1c1-cc00-454d-8cb7-fcc8319498fa
-id-admin-shop-group | 40c6d92b-4185-4a3d-bdfc-853da1f90f3d
-id-catalog-providers | c2928f65-4ba6-59ba-b8d3-abec6a44fb23
-id-catalog-provider-product | 2e646490-eeb2-5fbe-bbf3-a7d8b1d6a2e3
-id-catalog-provider-product-attribute | 3082f9b2-6ba5-5808-8db7-25f25dc7ff70
-id-catalog-provider-product-option | 37098c00-7215-5752-8c65-738d04ea4a02
 
 # Login
 
 The user is authenticated using a username, a password and your level of involvement with a system.
 
-There are three ways to authenticate through Horus API, how already explained above.
+There are three ways to authenticate through Horus API, like explained above.
 
 Route: *`POST "/oauth/token"`*
 
@@ -131,7 +131,7 @@ You are logged!
 ```
 
 Variable | Type | Value
----------- | ---- | ----- 
+-------- | ---- | ----- 
 login | String | user@smart.com
 password | String | pass1234
 authentication | String | user
@@ -216,15 +216,16 @@ login | String | manager@example.com
 password | String | pass1234
 authentication | String | manager
 
-# User - Profile Account
+# User Profile Account
 
-When logged in, the user can access his own profile, it allows him to show and update information about yout account.
+When logged in, the user can access his own profile, it allows him to show and update information about his account.
 
 ## Show
 
 > Show Profile Account
 
 ```shell
+# INPUT
 curl --header "Content-Type: application/vnd.api+json" 
   -H "Authorization: Bearer id-access-token" -X GET -d 
 '{ 
@@ -235,7 +236,7 @@ curl --header "Content-Type: application/vnd.api+json"
 }' 
 http://smart.lvh.me:3000/api/v1/profile
 
-# Return
+# OUTPUT
 {
   "data":
   {
@@ -259,7 +260,7 @@ http://smart.lvh.me:3000/api/v1/profile
 Not implemented
 ```
 
-The user can visualize your own profile account accessing the route described below.
+The user can visualize your his profile account accessing a route described below.
 
 Route: *`GET "api/v1/profile"`*
 
@@ -268,6 +269,7 @@ Route: *`GET "api/v1/profile"`*
 > Update Profile Account
 
 ```shell
+# INPUT
 curl --header "Content-Type: application/vnd.api+json" 
   -H "Authorization: Bearer id-access-token" -X PATCH -d 
 '{ 
@@ -284,7 +286,7 @@ curl --header "Content-Type: application/vnd.api+json"
 }' 
 http://smart.lvh.me:3000/api/v1/profile
 
-# Return
+# OUTPUT
 {
   "data":
   {
@@ -308,7 +310,7 @@ http://smart.lvh.me:3000/api/v1/profile
 Not implemented
 ```
 
-The user can edit the information contained in your own profile account accessing the route described below.
+The user can edit the information contained in his own profile account by accessing a route described below.
 
 Route: *`GET "api/v1/profile"`*
 
@@ -318,15 +320,16 @@ first-name | String | Super
 last-name | String | User
 email | String | user@smart.com
 
-# Admin - Profile Account
+# Admin Profile Account
 
-When logged in, the user admin access his own profile, it allows him to show and update information about yout account.
+When logged in, the user admin access his own profile, it allows him to show and update information about his account.
 
 ## Show
 
 > Show Profile Account
 
 ```shell
+# INPUT
 curl --header "Content-Type: application/vnd.api+json" 
   -H "Authorization: Bearer id-access-token" -X GET -d 
 '{ 
@@ -337,7 +340,7 @@ curl --header "Content-Type: application/vnd.api+json"
 }' 
 http://smart.lvh.me:3000/api/v1/admin/profile
 
-# Return
+# OUTPUT
 {
   "data":
   {
@@ -361,7 +364,7 @@ http://smart.lvh.me:3000/api/v1/admin/profile
 Not implemented
 ```
 
-The admin can visualize your own profile account accessing the route described below.
+The admin can visualize your his profile account by accessing a route described below.
 
 Route: *`GET "api/v1/admin/profile"`*
 
@@ -370,6 +373,7 @@ Route: *`GET "api/v1/admin/profile"`*
 > Update Profile Account
 
 ```shell
+# INPUT
 curl --header "Content-Type: application/vnd.api+json" 
   -H "Authorization: Bearer id-access-token" -X PATCH -d 
 '{ 
@@ -386,7 +390,7 @@ curl --header "Content-Type: application/vnd.api+json"
 }' 
 http://smart.lvh.me:3000/api/v1/admin/profile
 
-# Return
+# OUTPUT
 {
   "data":
   {
@@ -410,7 +414,7 @@ http://smart.lvh.me:3000/api/v1/admin/profile
 Not implemented
 ```
 
-The admin can edit the information contained in your own profile account accessing the route described below.
+The admin can edit the information contained in his own profile account accessing a route described below.
 
 Route: *`GET "api/v1/admin/profile"`*
 
@@ -420,7 +424,7 @@ first-name | String | Admin
 last-name  | String | Nice
 email | String | admin@smart.com
 
-# Admin - Company Profile
+# Admin Company Profile
 
 When logged in, the admin can access his own profile, it allows him to update and show information about himself.
 
@@ -429,6 +433,7 @@ When logged in, the admin can access his own profile, it allows him to update an
 > Show Company Profile
 
 ```shell
+# INPUT
 curl --header "Content-Type: application/vnd.api+json" 
   -H "Authorization: Bearer id-access-token" -X GET -d 
 '{
@@ -439,7 +444,7 @@ curl --header "Content-Type: application/vnd.api+json"
 }' 
 http://smart.lvh.me:3000/api/v1/admin/company-profile
 
-# Return
+# OUTPUT
 {
   "data":
   {
@@ -487,7 +492,7 @@ http://smart.lvh.me:3000/api/v1/admin/company-profile
 Not implemented
 ```
 
-The admin can visualize your own profile accessing the route described below.
+The admin can visualize his own profile by accessing a route described below.
 
 Route: *`GET "api/v1/admin/company-profile"`*
 
@@ -496,6 +501,7 @@ Route: *`GET "api/v1/admin/company-profile"`*
 > Update Company Profile
 
 ```shell
+# INPUT
 curl --header "Content-Type: application/vnd.api+json" 
   -H "Authorization: Bearer id-access-token" -X PATCH -d 
 '{
@@ -513,7 +519,7 @@ curl --header "Content-Type: application/vnd.api+json"
 }' 
 http://smart.lvh.me:3000/api/v1/admin/company-profile
 
-# Return
+# OUTPUT
 {
   "data":
   {
@@ -560,17 +566,17 @@ http://smart.lvh.me:3000/api/v1/admin/company-profile
 Not implemented
 ```
 
-The admin can edit the information contained in your own profile accessing the route described below.
+The admin can edit the information contained in his own profile by accessing a route described below
 
 Route: *`PATCH "/api/v1/admin/company-profile"`*
 
 Variable | Type | Value
----------- | ---- | ----- 
+-------- | ---- | ----- 
 corporate-name | String | Umbrella Corporation
 trade-name | String | Umbrella
 email | String | umbrella@corp.com
 
-# Admin - Company Profile Telephone
+# Admin Company Profile Telephone
 
 When logged in, the admin can access information about your telephones, it allows him to create, update, show and list them.
 
@@ -579,6 +585,7 @@ When logged in, the admin can access information about your telephones, it allow
 > Create Company Profile Telephone
 
 ```shell
+# INPUT
 curl --header "Content-Type: application/vnd.api+json" 
   -H "Authorization: Bearer id-access-token" -X POST -d  
 '{
@@ -605,7 +612,7 @@ curl --header "Content-Type: application/vnd.api+json"
 }'  
 http://smart.lvh.me:3000/api/v1/admin/company-profile-telephones
 
-# Return
+# OUTPUT
 {
   "data":
   {
@@ -639,12 +646,13 @@ http://smart.lvh.me:3000/api/v1/admin/company-profile-telephones
 Not implemented
 ```
 
-The admin can create a telephone accessing the route described below.
+The admin can create a telephone by accessing a route described below.
 
 Route: *`POST "/api/v1/admin/company-profile-telephones"`*
 
+
 Variable | Type | Value
----------- | ---- | ----- 
+-------- | ---- | ----- 
 country-code | String | 55 
 number | String | 1112223334
 
@@ -653,6 +661,7 @@ number | String | 1112223334
 > Update Company Profile Telephone
 
 ```shell
+# INPUT
 curl --header "Content-Type: application/vnd.api+json" 
   -H "Authorization: Bearer id-access-token" -X PATCH -d 
 '{ 
@@ -669,7 +678,7 @@ curl --header "Content-Type: application/vnd.api+json"
 }' 
 http://smart.lvh.me:3000/api/v1/admin/company-profile-telephones/id-admin-company-telephone
 
-# Return
+# OUTPUT
 {
   "data":
   {
@@ -703,12 +712,12 @@ http://smart.lvh.me:3000/api/v1/admin/company-profile-telephones/id-admin-compan
 Not implemented
 ```
 
-The admin can edit the information contained in telephone accessing the route described below.
+The admin can edit the information contained in telephone by accessing the route described below.
 
 Route: *`PATCH "api/v1/admin/company-profile-telephones/:id"`*
 
 Variable | Type | Value
----------- | ---- | ----- 
+-------- | ---- | ----- 
 country-code | String | 12 
 number | String | 789890888
 
@@ -717,6 +726,7 @@ number | String | 789890888
 > Show Company Profile Telephone
 
 ```shell
+# INPUT
 curl --header "Content-Type: application/vnd.api+json" 
   -H "Authorization: Bearer id-access-token" -X GET -d 
 '{
@@ -727,7 +737,7 @@ curl --header "Content-Type: application/vnd.api+json"
 }' 
 http://smart.lvh.me:3000/api/v1/admin/company-profile-telephones/id-admin-company-telephone
 
-# Return
+# OUTPUT
 {
   "data":
   {
@@ -761,7 +771,7 @@ http://smart.lvh.me:3000/api/v1/admin/company-profile-telephones/id-admin-compan
 Not implemented
 ```
 
-The admin can visualize a specific telephone created for him accessing the route described below.
+The admin can visualize a specific telephone by accessing a route described below.
 
 Route: *`GET "/api/v1/admin/company-profile-telephones/:id"`*
 
@@ -770,6 +780,7 @@ Route: *`GET "/api/v1/admin/company-profile-telephones/:id"`*
 > List Company Profile Telephone
 
 ```shell
+# INPUT
 curl --header "Content-Type: application/vnd.api+json" 
   -H "Authorization: Bearer id-access-token" -X GET -d 
 '{
@@ -778,23 +789,23 @@ curl --header "Content-Type: application/vnd.api+json"
     "type":"company-profile-telephones"
   }
 }' 
-http://smart.lvh.me:3000/api/v1/admin/company-profile-telephones
+http://localhost:3000/api/v1/manager/company-profile-telephones
 
-# Return
+# OUTPUT
 {
   "data":
   [
     {
-      "id":"id-admin-company-telephone",
+      "id":"id-manager-company-telephone",
       "type":"company-profile-telephones",
       "links":
       {
-        "self":"http://smart.lvh.me:3000/api/v1/admin/company-profile-telephones/id-admin-company-telephone"
+        "self":"http://localhost:3000/api/v1/manager/company-profile-telephones/id-manager-company-telephone"
       },
       "attributes":
       {
-        "country-code":"1",
-        "number":"18889473627"
+        "country-code":"55",
+        "number":"1112223334"
       },
       "relationships":
       {
@@ -802,23 +813,23 @@ http://smart.lvh.me:3000/api/v1/admin/company-profile-telephones
         {
           "links":
           {
-            "self":"http://smart.lvh.me:3000/api/v1/admin/company-profile-telephones/id-admin-company-telephone/relationships/company-profile",
-            "related":"http://smart.lvh.me:3000/api/v1/admin/company-profile-telephones/id-admin-company-telephone/company-profile"
+            "self":"http://localhost:3000/api/v1/manager/company-profile-telephones/id-manager-company-telephone/relationships/company-profile",
+            "related":"http://localhost:3000/api/v1/manager/company-profile-telephones/id-manager-company-telephone/company-profile"
           }
         }
       }
     },
     {
-      "id":"id-admin-company-telephone",
+      "id":"id-manager-company-telephone",
       "type":"company-profile-telephones",
       "links":
       {
-        "self":"http://smart.lvh.me:3000/api/v1/admin/company-profile-telephones/id-admin-company-telephone"
+        "self":"http://localhost:3000/api/v1/manager/company-profile-telephones/id-manager-company-telephone"
       },
       "attributes":
       {
-        "country-code":"12",
-        "number":"789890888"
+        "country-code":"89",
+        "number":"1222333444"
       },
       "relationships":
       {
@@ -826,8 +837,8 @@ http://smart.lvh.me:3000/api/v1/admin/company-profile-telephones
         {
           "links":
           {
-            "self":"http://smart.lvh.me:3000/api/v1/admin/company-profile-telephones/id-admin-company-telephone/relationships/company-profile",
-            "related":"http://smart.lvh.me:3000/api/v1/admin/company-profile-telephones/id-admin-company-telephone/company-profile"
+            "self":"http://localhost:3000/api/v1/manager/company-profile-telephones/id-manager-company-telephone/relationships/company-profile",
+            "related":"http://localhost:3000/api/v1/manager/company-profile-telephones/id-manager-company-telephone/company-profile"
           }
         }
       }
@@ -840,19 +851,20 @@ http://smart.lvh.me:3000/api/v1/admin/company-profile-telephones
 Not implemented
 ```
 
-The admin can visualize all telephones created for him accessing the route described below.
+The admin can visualize all telephones by accessing a route described below.
 
-Route: *`GET "/api/v1/admin/company-profile-telephones"`*
+Route: *`GET "/api/v1/manager/company-profile-telephones"`*
 
-# Admin - Company Profile Address
+# Admin Company Profile Address
 
-When logged in, the admin can access information about your address, it allows him to create, update and show them.
+When logged in, the admin can access information about his address, it allows him to create, update and show them.
 
 ## Create
 
 > Create Company Profile Address
 
 ```shell
+# INPUT
 curl --header "Content-Type: application/vnd.api+json" 
   -H "Authorization: Bearer id-access-token" -X POST -d  
 '{
@@ -885,7 +897,7 @@ curl --header "Content-Type: application/vnd.api+json"
 }'  
 http://smart.lvh.me:3000/api/v1/admin/company-profile-address
 
-# Return
+# OUTPUT
 {
   "data":
   {
@@ -925,26 +937,27 @@ http://smart.lvh.me:3000/api/v1/admin/company-profile-address
 Not implemented
 ```
 
-The admin can create a address accessing the route described below.
+The admin can create an address by accessing the route described below.
 
 Route: *`POST "/api/v1/admin/company-profile-address"`*
 
 Variable | Type | Value
----------- | ---- | ----- 
-street | String | Jericho Tpke Suite 344 
-number | String | 2417
+-------- | ---- | ----- 
+street | String | Baker Street
+number | String | 221B
 complement | String | Apartment
-zipcode | String | 11040 
-neighborhood | String | Commack
-city | String | Garden City Park
-state | String | NY  
-country | String | US
+zipcode | String | 5150117
+neighborhood | String | unknown
+city | String | Westminster
+state | String | London
+country | String | UK
 
 ## Update
 
 > Update Company Profile Address
 
 ```shell
+# INPUT
 curl --header "Content-Type: application/vnd.api+json" 
   -H "Authorization: Bearer id-access-token" -X PATCH -d 
 '{ 
@@ -967,7 +980,7 @@ curl --header "Content-Type: application/vnd.api+json"
 }' 
 http://smart.lvh.me:3000/api/v1/admin/company-profile-address
 
-# Return
+# OUTPUT
 {
   "data":
   {
@@ -1007,26 +1020,27 @@ http://smart.lvh.me:3000/api/v1/admin/company-profile-address
 Not implemented
 ```
 
-The admin can edit the information contained in your address accessing the route described below.
+The admin can edit the information contained in address by accessing the route described below.
 
 Route: *`PATCH "/api/v1/admin/company-profile-address"`*
 
 Variable | Type | Value
 ---------- | ---- | ----- 
-street | String | Baker Street
-number | String | 221B
+street | String | Jericho Tpke Suite 344 
+number | String | 2417
 complement | String | Apartment
-zipcode | String | 5150117
-neighborhood | String | unknown
-city | String | Westminster
-state | String | London
-country | String | UK
+zipcode | String | 11040 
+neighborhood | String | Commack
+city | String | Garden City Park
+state | String | NY  
+country | String | US
 
 ## Show
 
 > Show Company Profile Address
 
 ```shell
+# INPUT
 curl --header "Content-Type: application/vnd.api+json" 
   -H "Authorization: Bearer id-access-token" -X GET -d 
 '{ 
@@ -1037,7 +1051,7 @@ curl --header "Content-Type: application/vnd.api+json"
 }' 
 http://smart.lvh.me:3000/api/v1/admin/company-profile-address
 
-# Return
+# OUTPUT
 {
   "data":
   {
@@ -1070,26 +1084,27 @@ http://smart.lvh.me:3000/api/v1/admin/company-profile-address
       }
     }
   }
-} 
+}
 ```
 
 ```ruby
 Not implemented
 ```
 
-The admin can visualize your address accessing the route described below.
+The admin can visualize a specific address by accessing a route described below.
 
 Route: *`GET "/api/v1/admin/company-profile-address"`*
 
-# Admin - Client User Account
+# Admin Client User Account
 
-When logged in, the admin can access information about your users account, it allows him to create, update, show and list them.
+When logged in, the admin can access information about users account, it allows him to create, update, show and list them.
 
 ## Create
 
 > Create Client User Account
 
 ```shell
+# INPUT
 curl --header "Content-Type: application/vnd.api+json" 
   -H "Authorization: Bearer id-access-token" -X POST -d 
 '{ 
@@ -1108,7 +1123,7 @@ curl --header "Content-Type: application/vnd.api+json"
 }' 
 http://smart.lvh.me:3000/api/v1/admin/client-users
 
-# Return
+# OUTPUT
 {
   "data":
   {
@@ -1132,7 +1147,7 @@ http://smart.lvh.me:3000/api/v1/admin/client-users
 Not implemented
 ```
 
-The admin can create a user account accessing the route described below.
+The admin can create an user account by accessing a route described below.
 
 Route: *`POST "/api/v1/admin/client-users"`*
 
@@ -1142,13 +1157,14 @@ first-name | String | My
 last-name | String | User
 email | String | my@user.com
 password | String | pass1234
-password-confirmation | String | pass1234 
+password-confirmation | String | pass1234
 
 ## Update
 
 > Update Client User Account
 
 ```shell
+# INPUT
 curl --header "Content-Type: application/vnd.api+json" 
   -H "Authorization: Bearer id-access-token" -X PATCH -d 
 '{ 
@@ -1165,7 +1181,7 @@ curl --header "Content-Type: application/vnd.api+json"
 }' 
 http://smart.lvh.me:3000/api/v1/admin/client-users/id-admin-client-user-profile
 
-# Return
+# OUTPUT
 {
   "data":
   {
@@ -1189,7 +1205,7 @@ http://smart.lvh.me:3000/api/v1/admin/client-users/id-admin-client-user-profile
 Not implemented
 ```
 
-The admin can edit the information contained in a user account accessing the route described below.
+The admin can edit information contained in an user account by accessing a route described below.
 
 Route: *`GET "/api/v1/admin/client-users/:id"`*
 
@@ -1203,6 +1219,7 @@ last-name | String | Nice
 > Show Client User Account
 
 ```shell
+# INPUT
 curl --header "Content-Type: application/vnd.api+json" 
   -H "Authorization: Bearer id-access-token" -X GET -d 
 '{
@@ -1213,7 +1230,7 @@ curl --header "Content-Type: application/vnd.api+json"
 }' 
 http://smart.lvh.me:3000/api/v1/admin/client-users/id-admin-client-user-profile
 
-# Return
+# OUTPUT
 {
   "data":
   {
@@ -1237,7 +1254,7 @@ http://smart.lvh.me:3000/api/v1/admin/client-users/id-admin-client-user-profile
 Not implemented
 ```
 
-The admin can visualize a specific user account created for him accessing the route described below.
+The admin can visualize a specific user account by accessing a route described below.
 
 Route: *`GET "/api/v1/admin/client-users/:id"`*
 
@@ -1246,6 +1263,7 @@ Route: *`GET "/api/v1/admin/client-users/:id"`*
 > List Client User Account
 
 ```shell
+# INPUT
 curl --header "Content-Type: application/vnd.api+json" 
   -H "Authorization: Bearer id-access-token" -X GET -d 
 '{
@@ -1256,7 +1274,7 @@ curl --header "Content-Type: application/vnd.api+json"
 }' 
 http://smart.lvh.me:3000/api/v1/admin/client-users
 
-# Return
+# OUTPUT
 {
   "data":
   [
@@ -1296,19 +1314,20 @@ http://smart.lvh.me:3000/api/v1/admin/client-users
 Not implemented
 ```
 
-The admin can visualize all users account created for him accessing the route described below.
+The admin can visualize all users accounts by accessing a route described below.
 
 Route: *`GET "/api/v1/admin/client-users"`*
 
-# Admin - Client User
+# Admin Client User
 
-When logged in, the admin can access information about your Users, it allows him to create, update, show and list them.
+When logged in, the admin can access information about Users, it allows him to create, update, show and list them.
 
 ## Create
 
 > Show Client User
 
 ```shell
+# INPUT
 curl --header "Content-Type: application/vnd.api+json" 
   -H "Authorization: Bearer id-access-token" -X POST -d 
 '{ 
@@ -1327,7 +1346,7 @@ curl --header "Content-Type: application/vnd.api+json"
 }' 
 http://smart.lvh.me:3000//api/v1/admin/clients
 
-# Return
+# OUTPUT
 {
   "data":
   {
@@ -1367,19 +1386,19 @@ http://smart.lvh.me:3000//api/v1/admin/clients
       }
     }
   }
-} 
+}
 ```
 
 ```ruby
 Not implemented
 ```
 
-The admin can create a User accessing the route described below.
+The admin can create a User by accessing the route described below.
 
 Route: *`POST "/api/v1/admin/clients"`*
 
 Variable | Type | Value
----------- | ---- | ----- 
+-------- | ---- | ----- 
 name | String | Apple Inc
 nickname | String | Apple
 organization-type | String | company
@@ -1391,6 +1410,7 @@ owner-id | UUID | id-admin-profile
 > Update Client User
 
 ```shell
+# INPUT
 curl --header "Content-Type: application/vnd.api+json" 
   -H "Authorization: Bearer id-access-token" -X PATCH -d 
 '{
@@ -1407,82 +1427,7 @@ curl --header "Content-Type: application/vnd.api+json"
 }' 
 http://smart.lvh.me:3000/api/v1/admin/clients/id-admin-client-user
 
-# Return
-{
-  "data":
-  {
-    "id":"id-admin-client-user",
-    "type":"clients",
-    "links":
-    {
-      "self":"http://smart.lvh.me:3000/api/v1/admin/clients/id-admin-client-user"
-    },
-    "attributes":
-    {
-      "name":"Wayne Enterprise",
-      "nickname":"Wayne",
-      "organization-type":"company",
-      "email":"contato@empresasmart.com.br",
-      "created-at":"2015-11-13T01:05:31.000Z",
-      "updated-at":"2015-11-13T13:33:47.644Z"
-    },
-    "relationships":
-    {
-      "client-address":
-      {
-        "links":
-        {
-          "self":"http://smart.lvh.me:3000/api/v1/admin/clients/id-admin-client-user/relationships/client-address",
-          "related":"http://smart.lvh.me:3000/api/v1/admin/clients/id-admin-client-user/client-address"
-        },
-        "data":
-        {
-          "type":"client-addresses",
-          "id":"id-admin-client-user"
-        }
-      },
-      "client-telephones":
-      {
-        "links":
-        {
-          "self":"http://smart.lvh.me:3000/api/v1/admin/clients/id-admin-client-user/relationships/client-telephones",
-          "related":"http://smart.lvh.me:3000/api/v1/admin/clients/id-admin-client-user/client-telephones"
-        }
-      }
-    }
-  }
-} 
-```
-
-```ruby
-Not implemented
-```
-
-The admin can edit the information contained in a User accessing the route described below.
-
-Route: *`PATCH "/api/v1/admin/clients/:id`*
-
-Variable | Type | Value
--------- | ---- | ----- 
-name | String |Wayne Enterprise
-nickname | String | Wayne
-
-## Show
-
-> Show Client User
-
-```shell
-curl --header "Content-Type: application/vnd.api+json" 
-  -H "Authorization: Bearer id-access-token" -X GET -d 
-'{
-  "data":
-  {
-    "type":"clients"
-  }
-}' 
-http://smart.lvh.me:3000/api/v1/admin/clients/id-admin-client-user
-
-# Return
+# OUTPUT
 {
   "data":
   {
@@ -1533,7 +1478,83 @@ http://smart.lvh.me:3000/api/v1/admin/clients/id-admin-client-user
 Not implemented
 ```
 
-The admin can visualize a specific User created for him accessing the route described below.
+The admin can edit an information contained in an user by accessing the route described below.
+
+Route: *`PATCH "/api/v1/admin/clients/:id`*
+
+Variable | Type | Value
+-------- | ---- | ----- 
+name | String |Wayne Enterprise
+nickname | String | Wayne
+
+## Show
+
+> Show Client User
+
+```shell
+# INPUT
+curl --header "Content-Type: application/vnd.api+json" 
+  -H "Authorization: Bearer id-access-token" -X GET -d 
+'{
+  "data":
+  {
+    "type":"clients"
+  }
+}' 
+http://smart.lvh.me:3000/api/v1/admin/clients/id-admin-client-user
+
+# OUTPUT
+{
+  "data":
+  {
+    "id":"id-admin-client-user",
+    "type":"clients",
+    "links":
+    {
+      "self":"http://smart.lvh.me:3000/api/v1/admin/clients/id-admin-client-user"
+    },
+    "attributes":
+    {
+      "name":"Wayne Enterprise",
+      "nickname":"Wayne",
+      "organization-type":"company",
+      "email":"contato@empresasmart.com.br",
+      "created-at":"2015-11-13T01:05:31.000Z",
+      "updated-at":"2015-11-13T13:33:47.644Z"
+    },
+    "relationships":
+    {
+      "client-address":
+      {
+        "links":
+        {
+          "self":"http://smart.lvh.me:3000/api/v1/admin/clients/id-admin-client-user/relationships/client-address",
+          "related":"http://smart.lvh.me:3000/api/v1/admin/clients/id-admin-client-user/client-address"
+        },
+        "data":
+        {
+          "type":"client-addresses",
+          "id":"id-admin-client-user"
+        }
+      },
+      "client-telephones":
+      {
+        "links":
+        {
+          "self":"http://smart.lvh.me:3000/api/v1/admin/clients/id-admin-client-user/relationships/client-telephones",
+          "related":"http://smart.lvh.me:3000/api/v1/admin/clients/id-admin-client-user/client-telephones"
+        }
+      }
+    }
+  }
+}
+```
+
+```ruby
+Not implemented
+```
+
+The admin can visualize a specific User by accessing the route described below.
 
 Route: *`GET "/api/v1/admin/clients/:id"`*
 
@@ -1542,6 +1563,7 @@ Route: *`GET "/api/v1/admin/clients/:id"`*
 > List Client User
 
 ```shell
+# INPUT
 curl --header "Content-Type: application/vnd.api+json" 
   -H "Authorization: Bearer id-access-token" -X GET -d 
 '{
@@ -1552,7 +1574,7 @@ curl --header "Content-Type: application/vnd.api+json"
 }' 
 http://smart.lvh.me:3000//api/v1/admin/clients
 
-# Return
+# OUTPUT
 {
   "data":
   [
@@ -1646,19 +1668,20 @@ http://smart.lvh.me:3000//api/v1/admin/clients
 Not implemented
 ```
 
-The admin can visualize all Users created for him accessing the route described below.
+The admin can visualize all Users by accessing the route described below.
 
 Route: *`GET "/api/v1/admin/clients"`*
 
 # Admin Client User Telephone
 
-When logged in, the admin can access information about Users' telephones, it allows him to create, update, show and list them.
+When logged in, the admin can access information about users' telephones, it allows him to create, update, show and list them.
 
 ## Create
 
 > Create Client User Telephone
 
 ```shell
+# INPUT
 curl --header "Content-Type: application/vnd.api+json" 
   -H "Authorization: Bearer id-access-token" -X POST -d  
 '{
@@ -1685,7 +1708,7 @@ curl --header "Content-Type: application/vnd.api+json"
 }'  
 http://smart.lvh.me:3000/api/v1/admin/client-telephones
 
-# Return
+# OUTPUT
 {
   "data":
   {
@@ -1712,14 +1735,14 @@ http://smart.lvh.me:3000/api/v1/admin/client-telephones
       }
     }
   }
-} 
+}
 ```
 
 ```ruby
 Not implemented
 ```
 
-The admin can create a telephone accessing the route described below.
+The admin can create a telephone by accessing a route described below.
 
 Route: *`POST "/api/v1/admin/client-telephones"`*
 
@@ -1733,6 +1756,7 @@ number | String | 7777777777
 > Update Client User Telephone
 
 ```shell
+# INPUT
 curl --header "Content-Type: application/vnd.api+json" 
   -H "Authorization: Bearer id-access-token" -X PATCH -d 
 '{ 
@@ -1749,7 +1773,7 @@ curl --header "Content-Type: application/vnd.api+json"
 }' 
 http://smart.lvh.me:3000/api/v1/admin/client-telephones/id-admin-client-user-telephone
 
-# Return
+# OUTPUT
 {
   "data":
   {
@@ -1783,12 +1807,12 @@ http://smart.lvh.me:3000/api/v1/admin/client-telephones/id-admin-client-user-tel
 Not implemented
 ```
 
-The admin can edit the information contained in telephone accessing the route described below.
+The admin can edit the information contained in telephone by accessing the route described below.
 
 Route: *`PATCH "/api/v1/admin/client-telephones/:id"`*
 
 Variable | Type | Value
----------- | ---- | ----- 
+-------- | ---- | ----- 
 country-code | String | 12 
 number | String | 789890888
 
@@ -1797,6 +1821,7 @@ number | String | 789890888
 > Show Client User Telephone
 
 ```shell
+# INPUT
 curl --header "Content-Type: application/vnd.api+json" 
   -H "Authorization: Bearer id-access-token" -X GET -d 
 '{
@@ -1807,7 +1832,7 @@ curl --header "Content-Type: application/vnd.api+json"
 }' 
 http://smart.lvh.me:3000/api/v1/admin/client-telephones/id-admin-client-user-telephone
 
-# Return
+# OUTPUT
 {
   "data":
   {
@@ -1834,14 +1859,14 @@ http://smart.lvh.me:3000/api/v1/admin/client-telephones/id-admin-client-user-tel
       }
     }
   }
-} 
+}
 ```
 
 ```ruby
 Not implemented
 ```
 
-The user can visualize a specific telephone created for him accessing the route described below.
+The admin can visualize a specific telephone by accessing a route described below.
 
 Route: *`GET "/api/v1/admin/client-telephones/:id"`*
 
@@ -1850,6 +1875,7 @@ Route: *`GET "/api/v1/admin/client-telephones/:id"`*
 > List Client User Telephone
 
 ```shell
+# INPUT
 curl --header "Content-Type: application/vnd.api+json" 
   -H "Authorization: Bearer id-access-token" -X GET -d 
 '{
@@ -1860,7 +1886,7 @@ curl --header "Content-Type: application/vnd.api+json"
 }' 
 http://smart.lvh.me:3000/api/v1/admin/client-telephones
 
-# Return
+# OUTPUT
 {
   "data":
   [
@@ -1920,19 +1946,20 @@ http://smart.lvh.me:3000/api/v1/admin/client-telephones
 Not implemented
 ```
 
-The user can visualize all telephones created for him accessing the route described below.
+The admin can visualize all telephones by accessing a route described below.
 
 Route: *`GET "/api/v1/admin/client-telephones"`*
 
 # Admin Client User Address
 
-When logged in, the admin can access information about Users' address, it allows him to create, update, show and list them.
+When logged in, the admin can access information about users' address, it allows him to create, update, show and list them.
 
 ## Create
 
 > Create Client User Address
 
 ```shell
+# INPUT
 curl --header "Content-Type: application/vnd.api+json" 
   -H "Authorization: Bearer id-access-token" -X POST -d  
 '{
@@ -1965,7 +1992,7 @@ curl --header "Content-Type: application/vnd.api+json"
 }'  
 http://smart.lvh.me:3000/api/v1/admin/client-addresses
 
-# Return
+# OUTPUT
 {
   "data":
   {
@@ -2005,7 +2032,7 @@ http://smart.lvh.me:3000/api/v1/admin/client-addresses
 Not implemented
 ```
 
-The user user create a address accessing the route described below.
+The admin can create an address by accessing the route described below.
 
 Route: *`POST "/api/v1/admin/client-addresses"`*
 
@@ -2025,6 +2052,7 @@ country | String | US
 > Update Client User Address
 
 ```shell
+# INPUT
 curl --header "Content-Type: application/vnd.api+json" 
   -H "Authorization: Bearer id-access-token" -X PATCH -d 
 '{ 
@@ -2047,7 +2075,7 @@ curl --header "Content-Type: application/vnd.api+json"
 }' 
 http://smart.lvh.me:3000/api/v1/admin/client-addresses/id-admin-client-user-address
 
-# Return
+# OUTPUT
 {
   "data":
   {
@@ -2087,7 +2115,7 @@ http://smart.lvh.me:3000/api/v1/admin/client-addresses/id-admin-client-user-addr
 Not implemented
 ```
 
-The user can edit the information contained in address accessing the route described below.
+The admin can edit the information contained in address by accessing the route described below.
 
 Route: *`PATCH "/api/v1/admin/client-addresses/:id"`*
 
@@ -2107,6 +2135,7 @@ country | String | UK
 > Show Client User Address
 
 ```shell
+# INPUT
 curl --header "Content-Type: application/vnd.api+json" 
   -H "Authorization: Bearer id-access-token" -X GET -d 
 '{
@@ -2117,7 +2146,7 @@ curl --header "Content-Type: application/vnd.api+json"
 }' 
 http://smart.lvh.me:3000/api/v1/admin/client-addresses/id-admin-client-user-address
 
-# Return
+# OUTPUT
 {
   "data":
   {
@@ -2157,7 +2186,7 @@ http://smart.lvh.me:3000/api/v1/admin/client-addresses/id-admin-client-user-addr
 Not implemented
 ```
 
-The admin can visualize a specific address created for him accessing the route described below.
+The admin can visualize a specific address by accessing a route described below.
 
 Route: *`GET "/api/v1/admin/client-addresses/:id"`*
 
@@ -2166,6 +2195,7 @@ Route: *`GET "/api/v1/admin/client-addresses/:id"`*
 > List Client User Address
 
 ```shell
+# INPUT
 curl --header "Content-Type: application/vnd.api+json" 
   -H "Authorization: Bearer id-access-token" -X GET -d 
 '{
@@ -2176,7 +2206,7 @@ curl --header "Content-Type: application/vnd.api+json"
 }' 
 http://smart.lvh.me:3000/api/v1/admin/client-addresses
 
-# Return
+# OUTPUT
 {
   "data":
   [
@@ -2248,11 +2278,11 @@ http://smart.lvh.me:3000/api/v1/admin/client-addresses
 Not implemented
 ```
 
-The admin can visualize all addresses created for him accessing the route described below.
+The admin can visualize all addresses by accessing a route described below.
 
 Route: *`GET "/api/v1/admin/client-addresses"`*
 
-# Admin - Shop Category
+# Admin Shop Category
 
 When logged in, the admin can access information about the shop, it allows him to create, update, show and list your categories.
 
@@ -2261,6 +2291,7 @@ When logged in, the admin can access information about the shop, it allows him t
 > Create Shop Category
 
 ```shell
+# INPUT
 curl --header "Content-Type: application/vnd.api+json" 
   -H "Authorization: Bearer id-access-token" -X POST -d 
 '{ 
@@ -2280,7 +2311,7 @@ curl --header "Content-Type: application/vnd.api+json"
 }' 
 http://smart.lvh.me:3000/api/v1/admin/shop-categories
 
-# Return
+# OUTPUT
 {
   "data":
   {
@@ -2312,14 +2343,14 @@ http://smart.lvh.me:3000/api/v1/admin/shop-categories
       }
     }
   }
-} 
+}
 ```
 
 ```ruby
 Not implemented
 ```
 
-The admin can create a category accessing the route described below.
+The admin can create a category by accessing the route described below.
 
 Route: *`POST "/api/v1/admin/shop-categories"`*
 
@@ -2337,6 +2368,7 @@ icon | String | fa fa-cloud
 > Update Shop Category
 
 ```shell
+# INPUT
 curl --header "Content-Type: application/vnd.api+json" 
   -H "Authorization: Bearer id-access-token" -X PATCH -d 
 '{
@@ -2357,7 +2389,7 @@ curl --header "Content-Type: application/vnd.api+json"
 }' 
 http://smart.lvh.me:3000/api/v1/admin/shop-categories/id-admin-shop-category
 
-# Return
+# OUTPUT
 {
   "data":
   {
@@ -2395,7 +2427,7 @@ http://smart.lvh.me:3000/api/v1/admin/shop-categories/id-admin-shop-category
 Not implemented
 ```
 
-The admin can edit a category accessing the route described below.
+The admin can edit a category by accessing the route described below.
 
 Route: *`PATCH "/api/v1/admin/shop-categories/:id`*
 
@@ -2413,6 +2445,7 @@ icon | String | fa fa-cloud
 > Show Shop Category
 
 ```shell
+# INPUT
 curl --header "Content-Type: application/vnd.api+json" 
   -H "Authorization: Bearer id-access-token" -X GET -d 
 '{
@@ -2423,7 +2456,7 @@ curl --header "Content-Type: application/vnd.api+json"
 }' 
 http://smart.lvh.me:3000/api/v1/admin/shop-categories/id-admin-shop-category 
 
-# Return
+# OUTPUT
 {
   "data":
   {
@@ -2461,7 +2494,7 @@ http://smart.lvh.me:3000/api/v1/admin/shop-categories/id-admin-shop-category
 Not implemented
 ```
 
-The admin can visualize a specific category created for him accessing the route described below.
+The admin can visualize a specific category created for him by accessing the route described below.
 
 Route: *`GET "/api/v1/admin/shop-categories/:id"`*
 
@@ -2470,6 +2503,7 @@ Route: *`GET "/api/v1/admin/shop-categories/:id"`*
 > List Shop Category
 
 ```shell
+# INPUT
 curl --header "Content-Type: application/vnd.api+json" 
   -H "Authorization: Bearer id-access-token" -X GET -d 
 '{
@@ -2480,7 +2514,7 @@ curl --header "Content-Type: application/vnd.api+json"
 }' 
 http://smart.lvh.me:3000/api/v1/admin/shop-categories
 
-# Return
+# OUTPUT
 {
   "data":
   [
@@ -2541,18 +2575,18 @@ http://smart.lvh.me:3000/api/v1/admin/shop-categories
       }
     }
   ]
-} 
+}
 ```
 
 ```ruby
 Not implemented
 ```
 
-The admin can visualize all Categories created for him accessing the route described below.
+The admin can visualize all categories created for him by accessing the route described below.
 
 Route: *`GET "/api/v1/admin/shop-categories"`*
 
-# Admin - Shop Group
+# Admin Shop Group
 
 When logged in, the admin can access information about the shop, it allows him to create, update, show and list your groups.
 
@@ -2561,6 +2595,7 @@ When logged in, the admin can access information about the shop, it allows him t
 > Create Shop Group
 
 ```shell
+# INPUT
 curl --header "Content-Type: application/vnd.api+json" 
   -H "Authorization: Bearer id-access-token" -X POST -d  
 '{
@@ -2591,7 +2626,7 @@ curl --header "Content-Type: application/vnd.api+json"
 }'  
 http://smart.lvh.me:3000/api/v1/admin/shop-groups
 
-# Return
+# OUTPUT
 {
   "data":
   {
@@ -2634,7 +2669,7 @@ http://smart.lvh.me:3000/api/v1/admin/shop-groups
 Not implemented
 ```
 
-The admin can create a group accessing the route described below.
+The admin can create a group by accessing the route described below.
 
 Route: *`POST "/api/v1/admin/shop-groups"`*
 
@@ -2652,6 +2687,7 @@ icon | String | fa fa-cloud
 > Update Shop Group
 
 ```shell
+# INPUT
 curl --header "Content-Type: application/vnd.api+json" 
   -H "Authorization: Bearer id-access-token" -X PATCH -d 
 '{ 
@@ -2672,7 +2708,7 @@ curl --header "Content-Type: application/vnd.api+json"
 }' 
 http://smart.lvh.me:3000/api/v1/admin/shop-groups/id-admin-shop-group
 
-# Return
+# OUTPUT
 {
   "data":
   {
@@ -2714,7 +2750,7 @@ http://smart.lvh.me:3000/api/v1/admin/shop-groups/id-admin-shop-group
 Not implemented
 ```
 
-The admin can edit a group accessing the route described below.
+The admin can edit a group by accessing the route described below.
 
 Route: *`PATCH "/api/v1/admin/shop-groups/:id`*
 
@@ -2732,6 +2768,7 @@ icon | String | fa fa-cloud
 > Show Shop Group
 
 ```shell
+# INPUT
 curl --header "Content-Type: application/vnd.api+json" 
   -H "Authorization: Bearer id-access-token" -X GET -d 
 '{
@@ -2742,7 +2779,7 @@ curl --header "Content-Type: application/vnd.api+json"
 }' 
 http://smart.lvh.me:3000/api/v1/admin/shop-groups/id-admin-shop-group
 
-# Return
+# OUTPUT
 {
   "data":
   {
@@ -2785,7 +2822,7 @@ http://smart.lvh.me:3000/api/v1/admin/shop-groups/id-admin-shop-group
 Not implemented
 ```
 
-The admin can visualize a specific group created for him accessing the route described below.
+The admin can visualize a specific group created for him by accessing the route described below.
 
 Route: *`GET "/api/v1/admin/shop-groups/:id"`*
 
@@ -2794,6 +2831,7 @@ Route: *`GET "/api/v1/admin/shop-groups/:id"`*
 > List Shop Group
 
 ```shell
+# INPUT
 curl --header "Content-Type: application/vnd.api+json" 
   -H "Authorization: Bearer id-access-token" -X GET -d 
 '{
@@ -2804,7 +2842,7 @@ curl --header "Content-Type: application/vnd.api+json"
 }' 
 http://smart.lvh.me:3000/api/v1/admin/shop-groups
 
-# Return
+# OUTPUT
 {
   "data":
   [
@@ -2875,18 +2913,18 @@ http://smart.lvh.me:3000/api/v1/admin/shop-groups
       }
     }
   ]
-} 
+}
 ```
 
 ```ruby
 Not implemented
 ```
 
-The admin can visualize all Groups created for him accessing the route described below.
+The admin can visualize all groups created for him by accessing the route described below.
 
 Route: *`GET "/api/v1/admin/shop-groups"`*
 
-# Admin - Shop Catalog Provider
+# Admin Shop Catalog Provider
 
 When logged in, the admin can access information about the catalog, it allows him to list your provider availables.
 
@@ -2895,6 +2933,7 @@ When logged in, the admin can access information about the catalog, it allows hi
 > List Shop Catalog Provider
 
 ```shell
+# INPUT
 curl --header "Content-Type: application/vnd.api+json" 
   -H "Authorization: Bearer id-access-token" -X GET -d 
 '{ 
@@ -2905,16 +2944,16 @@ curl --header "Content-Type: application/vnd.api+json"
 }' 
 http://smart.lvh.me:3000/api/v1/admin/catalog-providers
 
-# Return
+# OUTPUT
 {
   "data":
   [
     {
-      "id":"id-catalog-providers",
+      "id":"id-admin-catalog-provider",
       "type":"catalog-providers",
       "links":
       {
-        "self":"http://smart.lvh.me:3000/api/v1/admin/catalog-providers/id-catalog-providers"
+        "self":"http://smart.lvh.me:3000/api/v1/admin/catalog-providers/id-admin-catalog-provider"
       },
       "attributes":
       {
@@ -2926,8 +2965,8 @@ http://smart.lvh.me:3000/api/v1/admin/catalog-providers
         {
           "links":
           {
-            "self":"http://smart.lvh.me:3000/api/v1/admin/catalog-providers/id-catalog-providers/relationships/catalog-products",
-            "related":"http://smart.lvh.me:3000/api/v1/admin/catalog-providers/id-catalog-providers/catalog-products"
+            "self":"http://smart.lvh.me:3000/api/v1/admin/catalog-providers/id-admin-catalog-provider/relationships/catalog-products",
+            "related":"http://smart.lvh.me:3000/api/v1/admin/catalog-providers/id-admin-catalog-provider/catalog-products"
           }
         }
       }
@@ -2940,11 +2979,11 @@ http://smart.lvh.me:3000/api/v1/admin/catalog-providers
 Not implemented
 ```
 
-The admin can visualize all Providers availables accessing the route described below.
+When logged in, the admin can access information about the catalog, it allows him to list your provider availables.
 
 route: *`GET "/api/v1/admin/catalog-providers"`*
 
-# Admin - Shop Catalog Provider Product
+# Admin Shop Catalog Provider Product
 
 When logged in, the admin can access information about the catalog, it allows him to list your provider products.
 
@@ -2953,6 +2992,7 @@ When logged in, the admin can access information about the catalog, it allows hi
 > List Shop Catalog Provider Product
 
 ```shell
+# INPUT
 curl --header "Content-Type: application/vnd.api+json" 
   -H "Authorization: Bearer id-access-token" -X GET -d 
 '{ 
@@ -2963,14 +3003,14 @@ curl --header "Content-Type: application/vnd.api+json"
 }' 
 http://smart.lvh.me:3000/api/v1/admin/catalog-products
 
-# Return
+# OUTPUT
 {
   "data":
   [
     {
-      "id":"id-catalog-provider-product",
+      "id":"id-admin-catalog-provider-product",
       "type":"catalog-products",
-      "links":{"self":"http://smart.lvh.me:3000/api/v1/admin/catalog-products/id-catalog-provider-product"
+      "links":{"self":"http://smart.lvh.me:3000/api/v1/admin/catalog-products/id-admin-catalog-provider-product"
     },
     "attributes":
     {
@@ -2987,21 +3027,21 @@ http://smart.lvh.me:3000/api/v1/admin/catalog-products
       {
         "links":
         {
-          "self":"http://smart.lvh.me:3000/api/v1/admin/catalog-products/id-catalog-provider-product/relationships/catalog-provider",
-          "related":"http://smart.lvh.me:3000/api/v1/admin/catalog-products/id-catalog-provider-product/catalog-provider"
+          "self":"http://smart.lvh.me:3000/api/v1/admin/catalog-products/id-admin-catalog-provider-product/relationships/catalog-provider",
+          "related":"http://smart.lvh.me:3000/api/v1/admin/catalog-products/id-admin-catalog-provider-product/catalog-provider"
         },
         "data":
         {
           "type":"catalog-providers",
-          "id":"id-catalog-providers"
+          "id":"id-admin-catalog-provider"
         }
       },
       "catalog-components":
       {
         "links":
         {
-          "self":"http://smart.lvh.me:3000/api/v1/admin/catalog-products/id-catalog-provider-product/relationships/catalog-components",
-          "related":"http://smart.lvh.me:3000/api/v1/admin/catalog-products/id-catalog-provider-product/catalog-components"
+          "self":"http://smart.lvh.me:3000/api/v1/admin/catalog-products/id-admin-catalog-provider-product/relationships/catalog-components",
+          "related":"http://smart.lvh.me:3000/api/v1/admin/catalog-products/id-admin-catalog-provider-product/catalog-components"
         }
       }
     }
@@ -3013,11 +3053,11 @@ http://smart.lvh.me:3000/api/v1/admin/catalog-products
 Not implemented
 ```
 
-The admin can visualize all Providers products accessing the route described below.
+The admin can visualize all providers products by accessing the route described below.
 
 route: *`GET "/api/v1/admin/catalog-products"`*
 
-# Admin - Shop Catalog Provider Product Attribute
+# Admin Shop Catalog Provider Product Attribute
 
 When logged in, the admin can access information about the catalog, it allows him to list your products attributes.
 
@@ -3026,6 +3066,7 @@ When logged in, the admin can access information about the catalog, it allows hi
 > List Shop Catalog Provider Product Attributes
 
 ```shell
+# INPUT
 curl --header "Content-Type: application/vnd.api+json" 
   -H "Authorization: Bearer id-access-token" -X GET -d 
 '{ 
@@ -3036,16 +3077,16 @@ curl --header "Content-Type: application/vnd.api+json"
 }' 
 http://smart.lvh.me:3000/api/v1/admin/catalog-components
 
-# Return
+# OUTPUT
 {
   "data":
   [
     {
-      "id":"id-catalog-provider-product-attribute",
+      "id":"id-admin-catalog-provider-product-attribute",
       "type":"catalog-components",
       "links":
       {
-        "self":"http://smart.lvh.me:3000/api/v1/admin/catalog-components/id-catalog-provider-product-attribute"
+        "self":"http://smart.lvh.me:3000/api/v1/admin/catalog-components/id-admin-catalog-provider-product-attribute"
       },
       "attributes":
       {
@@ -3060,31 +3101,31 @@ http://smart.lvh.me:3000/api/v1/admin/catalog-components
         {
           "links":
           {
-            "self":"http://smart.lvh.me:3000/api/v1/admin/catalog-components/id-catalog-provider-product-attribute/relationships/catalog-product",
-            "related":"http://smart.lvh.me:3000/api/v1/admin/catalog-components/id-catalog-provider-product-attribute/catalog-product"
+            "self":"http://smart.lvh.me:3000/api/v1/admin/catalog-components/id-admin-catalog-provider-product-attribute/relationships/catalog-product",
+            "related":"http://smart.lvh.me:3000/api/v1/admin/catalog-components/id-admin-catalog-provider-product-attribute/catalog-product"
           },
           "data":
           {
-            "type":"catalog-products",
-            "id":"id-catalog-provider-product"
+            "type":"catalog-products",admin-
+            "id":"id-admin-catalog-provider-product"
           }
         },
         "catalog-component-options":
         {
           "links":
           {
-            "self":"http://smart.lvh.me:3000/api/v1/admin/catalog-components/id-catalog-provider-product-attribute/relationships/catalog-component-options",
-            "related":"http://smart.lvh.me:3000/api/v1/admin/catalog-components/id-catalog-provider-product-attribute/catalog-component-options"
+            "self":"http://smart.lvh.me:3000/api/v1/admin/catalog-components/id-admin-catalog-provider-product-attribute/relationships/catalog-component-options",
+            "related":"http://smart.lvh.me:3000/api/v1/admin/catalog-components/id-admin-catalog-provider-product-attribute/catalog-component-options"
           }
         }
       }
     },
     {
-      "id":"id-catalog-provider-product-attribute",
+      "id":"id-admin-catalog-provider-product-attribute",
       "type":"catalog-components",
       "links":
       {
-        "self":"http://smart.lvh.me:3000/api/v1/admin/catalog-components/id-catalog-provider-product-attribute"
+        "self":"http://smart.lvh.me:3000/api/v1/admin/catalog-components/id-admin-catalog-provider-product-attribute"
       },
       "attributes":
       {
@@ -3099,21 +3140,21 @@ http://smart.lvh.me:3000/api/v1/admin/catalog-components
         {
           "links":
           {
-            "self":"http://smart.lvh.me:3000/api/v1/admin/catalog-components/id-catalog-provider-product-attribute/relationships/catalog-product",
-            "related":"http://smart.lvh.me:3000/api/v1/admin/catalog-components/id-catalog-provider-product-attribute/catalog-product"
+            "self":"http://smart.lvh.me:3000/api/v1/admin/catalog-components/id-admin-catalog-provider-product-attribute/relationships/catalog-product",
+            "related":"http://smart.lvh.me:3000/api/v1/admin/catalog-components/id-admin-catalog-provider-product-attribute/catalog-product"
           },
           "data":
           {
             "type":"catalog-products",
-            "id":"id-catalog-provider-product"
+            "id":"id-admin-catalog-provider-product"
           }
         },
         "catalog-component-options":
         {
           "links":
           {
-            "self":"http://smart.lvh.me:3000/api/v1/admin/catalog-components/id-catalog-provider-product-attribute/relationships/catalog-component-options",
-            "related":"http://smart.lvh.me:3000/api/v1/admin/catalog-components/id-catalog-provider-product-attribute/catalog-component-options"
+            "self":"http://smart.lvh.me:3000/api/v1/admin/catalog-components/id-admin-catalog-provider-product-attribute/relationships/catalog-component-options",
+            "related":"http://smart.lvh.me:3000/api/v1/admin/catalog-components/id-admin-catalog-provider-product-attribute/catalog-component-options"
           }
         }
       }
@@ -3126,11 +3167,11 @@ http://smart.lvh.me:3000/api/v1/admin/catalog-components
 Not implemented
 ```
 
-The admin can visualize all Providers Products Attributes accessing the route described below.
+The admin can visualize all providers products attributes by accessing the route described below.
 
 route: *`GET "/api/v1/admin/catalog-components"`*
 
-# Admin - Shop Catalog Provider Product Option
+# Admin Shop Catalog Provider Product Option
 
 When logged in, the admin can access information about the catalog, it allows him to list your products options.
 
@@ -3139,6 +3180,7 @@ When logged in, the admin can access information about the catalog, it allows hi
 > List Shop Catalog Provider Product Options
 
 ```shell
+# INPUT
 curl --header "Content-Type: application/vnd.api+json" 
   -H "Authorization: Bearer id-access-token" -X GET -d 
 '{ 
@@ -3147,18 +3189,18 @@ curl --header "Content-Type: application/vnd.api+json"
     "type":"catalog-component-options" 
   }
 }' 
-http://smart.lvh.me:3000/api/v1/admin/catalog-components/id-catalog-provider-product-attribute/catalog-component-options
+http://smart.lvh.me:3000/api/v1/admin/catalog-components/id-admin-catalog-provider-product-attribute/catalog-component-options
 
-# Return
+# OUTPUT
 {
   "data":
   [
     {
-      "id":"id-catalog-provider-product-option",
+      "id":"id-admin-catalog-provider-product-option",
       "type":"catalog-component-options",
       "links":
       {
-        "self":"http://smart.lvh.me:3000/api/v1/admin/catalog-component-options/id-catalog-provider-product-option"
+        "self":"http://smart.lvh.me:3000/api/v1/admin/catalog-component-options/id-admin-catalog-provider-product-option"
       },
       "attributes":
       {
@@ -3175,23 +3217,23 @@ http://smart.lvh.me:3000/api/v1/admin/catalog-components/id-catalog-provider-pro
         {
           "links":
           {
-            "self":"http://smart.lvh.me:3000/api/v1/admin/catalog-component-options/id-catalog-provider-product-option/relationships/catalog-component",
-            "related":"http://smart.lvh.me:3000/api/v1/admin/catalog-component-options/id-catalog-provider-product-option/catalog-component"
+            "self":"http://smart.lvh.me:3000/api/v1/admin/catalog-component-options/id-admin-catalog-provider-product-option/relationships/catalog-component",
+            "related":"http://smart.lvh.me:3000/api/v1/admin/catalog-component-options/id-admin-catalog-provider-product-option/catalog-component"
           },
           "data":
           {
             "type":"catalog-components",
-            "id":"id-catalog-provider-product-attribute"
+            "id":"id-admin-catalog-provider-product-attribute"
           }
         }
       }
     },
     {
-      "id":"id-catalog-provider-product-option",
+      "id":"id-admin-catalog-provider-product-option",
       "type":"catalog-component-options",
       "links":
       {
-        "self":"http://smart.lvh.me:3000/api/v1/admin/catalog-component-options/id-catalog-provider-product-option"
+        "self":"http://smart.lvh.me:3000/api/v1/admin/catalog-component-options/id-admin-catalog-provider-product-option"
       },
       "attributes":
       {
@@ -3208,13 +3250,13 @@ http://smart.lvh.me:3000/api/v1/admin/catalog-components/id-catalog-provider-pro
         {
           "links":
           {
-            "self":"http://smart.lvh.me:3000/api/v1/admin/catalog-component-options/id-catalog-provider-product-option/relationships/catalog-component",
-            "related":"http://smart.lvh.me:3000/api/v1/admin/catalog-component-options/id-catalog-provider-product-option/catalog-component"
+            "self":"http://smart.lvh.me:3000/api/v1/admin/catalog-component-options/id-admin-catalog-provider-product-option/relationships/catalog-component",
+            "related":"http://smart.lvh.me:3000/api/v1/admin/catalog-component-options/id-admin-catalog-provider-product-option/catalog-component"
           },
           "data":
           {
             "type":"catalog-components",
-            "id":"id-catalog-provider-product-attribute"
+            "id":"id-admin-catalog-provider-product-attribute"
           }
         }
       }
@@ -3227,19 +3269,20 @@ http://smart.lvh.me:3000/api/v1/admin/catalog-components/id-catalog-provider-pro
 Not implemented
 ```
 
-The admin can visualize all Providers Products Options accessing the route described below.
+The admin can visualize all providers products options by accessing the route described below.
 
-route: *`GET "/api/v1/admin/catalog-components/id-catalog-provider-product-attribute/catalog-component-options"`*
+route: *`GET "/api/v1/admin/catalog-components/id-admin-catalog-provider-product-attribute/catalog-component-options"`*
 
-# Manager - Profile Account
+# Manager Profile Account
 
-When logged in, the manager can access his own profile, it allows him to show and update information about yout account.
+When logged in, the user admin access his own profile, it allows him to show and update information about his account.
 
 ## Show
 
 > Show Profile Account 
 
 ```shell
+# INPUT
 curl --header "Content-Type: application/vnd.api+json" 
   -H "Authorization: Bearer id-access-token" -X GET -d 
 '{
@@ -3250,7 +3293,7 @@ curl --header "Content-Type: application/vnd.api+json"
 }' 
 http://localhost:3000/api/v1/manager/profile
 
-# Return
+# OUTPUT
 {
   "data":
   {
@@ -3271,9 +3314,10 @@ http://localhost:3000/api/v1/manager/profile
 ```
 
 ```ruby
+# INPUT
 horus-cli profile show
 
-# Return
+# OUTPUT
 {
   "id":"id-manager-profile", 
   "type":"profile", 
@@ -3281,17 +3325,18 @@ horus-cli profile show
   "first-name":"Godlike", 
   "last-name":"Manager"
 }
+```
 
-The manager can visualize your own profile account accessing the route described below.
+The manager can visualize your his profile account by accessing a route described below.
 
 Route: *`GET "api/v1/manager/profile"`*
-```
 
 ## Update
 
 > Update Profile Account
 
 ```shell
+# INPUT
 curl --header "Content-Type: application/vnd.api+json" 
   -H "Authorization: Bearer id-access-token" -X PATCH -d 
 '{
@@ -3308,7 +3353,7 @@ curl --header "Content-Type: application/vnd.api+json"
 }' 
 http://localhost:3000/api/v1/manager/profile
 
-# Return
+# OUTPUT
 {
   "data":
   {
@@ -3329,9 +3374,10 @@ http://localhost:3000/api/v1/manager/profile
 ```
 
 ```ruby
+# INPUT
 horus-cli profile update '"first-name":"New Company","last-name":"Corp"'
 
-# Return
+# OUTPUT
 {
   "id":"id-manager-profile", 
   "type":"profile", 
@@ -3341,7 +3387,7 @@ horus-cli profile update '"first-name":"New Company","last-name":"Corp"'
 }
 ```
 
-The manager can edit the information contained in your own profile account accessing the route described below.
+The manager can edit the information contained in his own profile account accessing a route described below.
 
 Route: *`PATCH "api/v1/manager/profile"`*
 
@@ -3350,8 +3396,7 @@ Variable | Type | Value
 first-name | String | New Company 
 last-name  | String | Corp
 
-
-# Manager - Company Profile
+# Manager Company Profile
 
 When logged in, the manager can access his own profile, it allows him to create, update and show information about himself.
 
@@ -3360,6 +3405,7 @@ When logged in, the manager can access his own profile, it allows him to create,
 > Create Company Profile
 
 ```shell
+# INPUT
 curl --header "Content-Type: application/vnd.api+json" 
   -H "Authorization: Bearer id-access-token" -X POST -d 
 '{ 
@@ -3376,7 +3422,7 @@ curl --header "Content-Type: application/vnd.api+json"
 }' 
 http://localhost:3000/api/v1/manager/company-profile
 
-# Return
+# OUTPUT
 {
   "data":
   {
@@ -3435,6 +3481,7 @@ email | String | wayne@enterprises.com
 > Update Company Profile
 
 ```shell
+# INPUT
 curl --header "Content-Type: application/vnd.api+json" 
   -H "Authorization: Bearer id-access-token" -X PATCH -d 
 '{
@@ -3452,7 +3499,7 @@ curl --header "Content-Type: application/vnd.api+json"
 }' 
 http://localhost:3000/api/v1/manager/company-profile
 
-# Return
+# OUTPUT
 {
   "data":
   {
@@ -3515,6 +3562,7 @@ email | String | umbrella@corp.com
 > Show Company Profile
 
 ```shell
+# INPUT
 curl --header "Content-Type: application/vnd.api+json" 
   -H "Authorization: Bearer id-access-token" -X GET -d 
 '{
@@ -3525,7 +3573,7 @@ curl --header "Content-Type: application/vnd.api+json"
 }' 
 http://localhost:3000/api/v1/manager/company-profile
 
-# Return
+# OUTPUT
 {
   "data":
   {
@@ -3573,11 +3621,11 @@ http://localhost:3000/api/v1/manager/company-profile
 Not implemented
 ```
 
-The manager can visualize your own profile account accessing the route described below.
+The manager can visualize his own profile account by accessing the route described below.
 
 Route: *`GET "api/v1/manager/company-profile"`*
 
-# Manager - Company Profile Telephone
+# Manager Company Profile Telephone
 
 When logged in, the manager can access information about your telephones, it allows him to create, update, show and list them.
 
@@ -3586,6 +3634,7 @@ When logged in, the manager can access information about your telephones, it all
 > Create Company Profile Telephone
 
 ```shell
+# INPUT
 curl --header "Content-Type: application/vnd.api+json" 
   -H "Authorization: Bearer id-access-token" -X POST -d  
 '{
@@ -3612,7 +3661,7 @@ curl --header "Content-Type: application/vnd.api+json"
 }'  
 http://localhost:3000/api/v1/manager/company-profile-telephones
 
-# Return
+# OUTPUT
 {
   "data":
   {
@@ -3646,7 +3695,7 @@ http://localhost:3000/api/v1/manager/company-profile-telephones
 Not implemented
 ```
 
-The manager can create a telephone accessing the route described below.
+The amanager can create a telephone by accessing a route described below.
 
 Route: *`POST "/api/v1/manager/company-profile-telephones"`*
 
@@ -3660,6 +3709,7 @@ number | String | 1112223334
 > Update Company Profile Telephone
 
 ```shell
+# INPUT
 curl --header "Content-Type: application/vnd.api+json" 
   -H "Authorization: Bearer id-access-token" -X PATCH -d 
 '{ 
@@ -3676,7 +3726,7 @@ curl --header "Content-Type: application/vnd.api+json"
 }' 
 http://localhost:3000/api/v1/manager/company-profile-telephones/id-manager-company-telephone
 
-# Return
+# OUTPUT
 {
   "data":
   {
@@ -3710,7 +3760,7 @@ http://localhost:3000/api/v1/manager/company-profile-telephones/id-manager-compa
 Not implemented
 ```
 
-The manager can edit the information contained in telephone accessing the route described below.
+The manager can edit the information contained in telephone by accessing the route described below.
 
 Route: *`PATCH "api/v1/manager/company-profile-telephones/:id"`*
 
@@ -3724,6 +3774,7 @@ number | String | 789890888
 > Show Company Profile Telephone
 
 ```shell
+# INPUT
 curl --header "Content-Type: application/vnd.api+json" 
   -H "Authorization: Bearer id-access-token" -X GET -d 
 '{
@@ -3734,7 +3785,7 @@ curl --header "Content-Type: application/vnd.api+json"
 }' 
 http://localhost:3000/api/v1/manager/company-profile-telephones/id-manager-company-telephone
 
-# Return
+# OUTPUT
 {
   "data":
   {
@@ -3768,7 +3819,7 @@ http://localhost:3000/api/v1/manager/company-profile-telephones/id-manager-compa
 Not implemented
 ```
 
-The manager can visualize a specific telephone created for him accessing the route described below.
+The manager can visualize a specific telephone by accessing a route described below.
 
 Route: *`GET "/api/v1/manager/company-profile-telephones/:id"`*
 
@@ -3777,6 +3828,7 @@ Route: *`GET "/api/v1/manager/company-profile-telephones/:id"`*
 > List Company Profile Telephone
 
 ```shell
+# INPUT
 curl --header "Content-Type: application/vnd.api+json" 
   -H "Authorization: Bearer id-access-token" -X GET -d 
 '{
@@ -3785,61 +3837,35 @@ curl --header "Content-Type: application/vnd.api+json"
     "type":"company-profile-telephones"
   }
 }' 
-http://localhost:3000/api/v1/manager/company-profile-telephones
+http://localhost:3000/api/v1/manager/company-profile-telephones/id-manager-company-telephone
 
-# Return
+# OUTPUT
 {
   "data":
-  [
+  {
+    "id":"id-manager-company-telephone",
+    "type":"company-profile-telephones",
+    "links":
     {
-      "id":"id-manager-company-telephone",
-      "type":"company-profile-telephones",
-      "links":
-      {
-        "self":"http://localhost:3000/api/v1/manager/company-profile-telephones/id-manager-company-telephone"
-      },
-      "attributes":
-      {
-        "country-code":"55",
-        "number":"1112223334"
-      },
-      "relationships":
-      {
-        "company-profile":
-        {
-          "links":
-          {
-            "self":"http://localhost:3000/api/v1/manager/company-profile-telephones/id-manager-company-telephone/relationships/company-profile",
-            "related":"http://localhost:3000/api/v1/manager/company-profile-telephones/id-manager-company-telephone/company-profile"
-          }
-        }
-      }
+      "self":"http://localhost:3000/api/v1/manager/company-profile-telephones/id-manager-company-telephone"
     },
+    "attributes":
     {
-      "id":"id-manager-company-telephone",
-      "type":"company-profile-telephones",
-      "links":
+      "country-code":"12",
+      "number":"789890888"
+    },
+    "relationships":
+    {
+      "company-profile":
       {
-        "self":"http://localhost:3000/api/v1/manager/company-profile-telephones/id-manager-company-telephone"
-      },
-      "attributes":
-      {
-        "country-code":"89",
-        "number":"1222333444"
-      },
-      "relationships":
-      {
-        "company-profile":
+        "links":
         {
-          "links":
-          {
-            "self":"http://localhost:3000/api/v1/manager/company-profile-telephones/id-manager-company-telephone/relationships/company-profile",
-            "related":"http://localhost:3000/api/v1/manager/company-profile-telephones/id-manager-company-telephone/company-profile"
-          }
+          "self":"http://localhost:3000/api/v1/manager/company-profile-telephones/id-manager-company-telephone/relationships/company-profile",
+          "related":"http://localhost:3000/api/v1/manager/company-profile-telephones/id-manager-company-telephone/company-profile"
         }
       }
     }
-  ]
+  }
 }
 ```
 
@@ -3847,19 +3873,20 @@ http://localhost:3000/api/v1/manager/company-profile-telephones
 Not implemented
 ```
 
-The manager can visualize all telephones created for him accessing the route described below.
+The manager can visualize all telephones by accessing a route described below.
 
-Route: *`GET "/api/v1/manager/company-profile-telephones"`*
+Route: *`GET "/api/v1/manager/company-profile-telephones/:id"`*
 
-# Manager - Company Profile Address
+# Manager Company Profile Address
 
-When logged in, the manager can access information about your address, it allows him to create, update and show them.
+When logged in, the manager can access information about his address, it allows him to create, update and show them.
 
 ## Create
 
 > Create Company Profile Address
 
 ```shell
+# INPUT
 curl --header "Content-Type: application/vnd.api+json" 
   -H "Authorization: Bearer id-access-token" -X POST -d  
 '{
@@ -3892,7 +3919,7 @@ curl --header "Content-Type: application/vnd.api+json"
 }'  
 http://localhost:3000/api/v1/manager/company-profile-address
 
-# Return
+# OUTPUT
 {
   "data":
   {
@@ -3932,7 +3959,7 @@ http://localhost:3000/api/v1/manager/company-profile-address
 Not implemented
 ```
 
-The manager can create a address accessing the route described below.
+The manager can create an address by accessing the route described below.
 
 Route: *`POST "/api/v1/manager/company-profile-address"`*
 
@@ -3952,6 +3979,7 @@ country | String | US
 > Update Company Profile Address
 
 ```shell
+# INPUT
 curl --header "Content-Type: application/vnd.api+json" 
   -H "Authorization: Bearer id-access-token" -X PATCH -d 
 '{ 
@@ -3974,7 +4002,7 @@ curl --header "Content-Type: application/vnd.api+json"
 }' 
 http://localhost:3000/api/v1/manager/company-profile-address
 
-# Return
+# OUTPUT
 {
   "data":
   {
@@ -4014,7 +4042,7 @@ http://localhost:3000/api/v1/manager/company-profile-address
 Not implemented
 ```
 
-The manager can edit the information contained in your address accessing the route described below.
+The manager can edit the information contained in address by accessing the route described below.
 
 Route: *`PATCH "/api/v1/manager/company-profile-address"`*
 
@@ -4034,6 +4062,7 @@ country | String | UK
 > Show Company Profile Address
 
 ```shell
+# INPUT
 curl --header "Content-Type: application/vnd.api+json" 
   -H "Authorization: Bearer id-access-token" -X GET -d 
 '{ 
@@ -4044,7 +4073,7 @@ curl --header "Content-Type: application/vnd.api+json"
 }' 
 http://localhost:3000/api/v1/manager/company-profile-address
 
-# Return
+# OUTPUT
 {
   "data":
   {
@@ -4084,19 +4113,20 @@ http://localhost:3000/api/v1/manager/company-profile-address
 Not implemented
 ```
 
-The manager can visualize your address accessing the route described below.
+The manager can visualize a specific address by accessing a route described below.
 
 Route: *`GET "/api/v1/manager/company-profile-address"`*
 
-# Manager - Client User Account
+# Manager Client Company Account
 
-When logged in, the manager can access information about your users account, it allows him to create, update, show and list them.
+When logged in, the manager can access information about companies account, it allows him to create, update, show and list them.
 
-## Create Client User Account
+## Create
 
-> Create Client User Account
+> Create Client Company Account
 
 ```shell
+# INPUT
 curl --header "Content-Type: application/vnd.api+json" 
   -H "Authorization: Bearer id-access-token" -X POST -d 
 '{ 
@@ -4115,7 +4145,7 @@ curl --header "Content-Type: application/vnd.api+json"
 }' 
 http://localhost:3000/api/v1/manager/client-users
 
-# Return
+# OUTPUT
 {
   "data":
   {
@@ -4139,7 +4169,7 @@ http://localhost:3000/api/v1/manager/client-users
 Not implemented
 ```
 
-The manager can create a user account accessing the route described below.
+The manager can create an company account by accessing a route described below.
 
 Route: *`POST "/api/v1/manager/client-users"`*
 
@@ -4153,9 +4183,10 @@ password-confirmation | String | pass1234
 
 ## Update
 
-> Update Client User Account
+> Update Client Company Account
 
 ```shell
+# INPUT
 curl --header "Content-Type: application/vnd.api+json" 
   -H "Authorization: Bearer id-access-token" -X PATCH -d 
 '{ 
@@ -4172,7 +4203,7 @@ curl --header "Content-Type: application/vnd.api+json"
 }' 
 http://localhost:3000/api/v1/manager/client-users/id-manager-client-user-profile 
 
-# Return
+# OUTPUT
 {
   "data":
   {
@@ -4194,7 +4225,7 @@ http://localhost:3000/api/v1/manager/client-users/id-manager-client-user-profile
 Not implemented
 ```
 
-The manager can edit the information contained in a user account accessing the route described below.
+The manager can edit information contained in an user account by accessing a route described below.
 
 Route: *`GET "/api/v1/manager/client-users/:id"`*
 
@@ -4205,9 +4236,10 @@ last-name | String | Cool
 
 ## Show
 
-> Show Client User Account
+> Show Client Company Account
 
 ```shell
+# INPUT
 curl --header "Content-Type: application/vnd.api+json" 
   -H "Authorization: Bearer id-access-token" -X GET -d 
 '{
@@ -4218,7 +4250,7 @@ curl --header "Content-Type: application/vnd.api+json"
 }' 
 http://localhost:3000/api/v1/manager/client-users/id-manager-client-user-profile
 
-# Return
+# OUTPUT
 {
   "data":
   {
@@ -4235,22 +4267,23 @@ http://localhost:3000/api/v1/manager/client-users/id-manager-client-user-profile
       "email":"my@manager.com"
     }
   }
-} 
+}
 ```
 
 ```ruby
 Not implemented
 ```
 
-The manager can visualize a specific user account created for him accessing the route described below.
+The manager can visualize a specific company account by accessing a route described below.
 
 Route: *`GET "/api/v1/manager/client-users/:id"`*
 
 ## List
 
-> List Client User Account
+> List Client Company Account
 
 ```shell
+# INPUT
 curl --header "Content-Type: application/vnd.api+json" 
   -H "Authorization: Bearer id-access-token" -X GET -d 
 '{
@@ -4261,7 +4294,7 @@ curl --header "Content-Type: application/vnd.api+json"
 }' 
 http://localhost:3000/api/v1/manager/client-users
 
-# Return
+# OUTPUT
 {
   "data":
   [
@@ -4301,19 +4334,20 @@ http://localhost:3000/api/v1/manager/client-users
 Not implemented
 ```
 
-The manager can visualize all users account created for him accessing the route described below.
+The admin can visualize all companies accounts by accessing a route described below.
 
 Route: *`GET "/api/v1/manager/client-users"`*
 
-# Manager - Client User
+# Manager Client Company
 
-When logged in, the manager can access information about your Company, it allows him to create, update, show and list them.
+When logged in, the manager can access information about companies, it allows him to create, update, show and list them.
 
 ## Create
 
-> Show Client User
+> Create Client Company
 
 ```shell
+# INPUT
 curl --header "Content-Type: application/vnd.api+json" 
   -H "Authorization: Bearer id-access-token" -X POST -d 
 '{ 
@@ -4332,7 +4366,7 @@ curl --header "Content-Type: application/vnd.api+json"
 }' 
 http://localhost:3000/api/v1/manager/clients
 
-# Return
+# OUTPUT
 {
   "data":
   {
@@ -4388,7 +4422,7 @@ http://localhost:3000/api/v1/manager/clients
 Not implemented
 ```
 
-The manager can create a Company accessing the route described below.
+The manager can create a company by accessing the route described below.
 
 Route: *`POST "/api/v1/manager/clients"`*
 
@@ -4401,9 +4435,10 @@ email | String | umbrella@example.com
 
 ## Update
 
-> Update Client User
+> Update Client Company
 
 ```shell
+# INPUT
 curl --header "Content-Type: application/vnd.api+json" 
   -H "Authorization: Bearer id-access-token" -X PATCH -d 
 '{
@@ -4421,7 +4456,7 @@ curl --header "Content-Type: application/vnd.api+json"
 }' 
 http://localhost:3000/api/v1/manager/clients/client-id
 
-# Return
+# OUTPUT
 {
   "data":
   {
@@ -4482,9 +4517,10 @@ http://localhost:3000/api/v1/manager/clients/client-id
 ```
 
 ```ruby
+# INPUT
 horus-cli update clients "id-manager-client-user" '"corporate-name":"New Corporate", "trade-name":"New Trade", "key-name":"key", "email":"client_02@example.com"'
 
-# Return
+# OUTPUT
 {
   "id":"id-manager-client-user", 
   "type":"clients", 
@@ -4497,7 +4533,7 @@ horus-cli update clients "id-manager-client-user" '"corporate-name":"New Corpora
 }
 ```
 
-The manager can edit the information contained in a Company accessing the route described below.
+The manager can edit an information contained in an company by accessing the route described below.
 
 Route: *`PATCH "/api/v1/manager/clients/:id`*
 
@@ -4510,9 +4546,10 @@ email | String | client_02@example.com
 
 ## Show
 
-> Show Client User
+> Show Client Company
 
 ```shell
+# INPUT
 curl --header "Content-Type: application/vnd.api+json" 
   -H "Authorization: Bearer id-access-token" -X GET -d 
 '{
@@ -4523,7 +4560,7 @@ curl --header "Content-Type: application/vnd.api+json"
 }' 
 http://localhost:3000/api/v1/manager/clients/id-manager-client-user
 
-# Return
+# OUTPUT
 {
   "data":
   {
@@ -4584,9 +4621,10 @@ http://localhost:3000/api/v1/manager/clients/id-manager-client-user
 ```
 
 ```ruby
+# INPUT
 horus-cli show clients "id-manager-client-user"
 
-# Return
+# OUTPUT
 {
   "id":"id-manager-client-user", 
   "type":"clients", 
@@ -4599,15 +4637,16 @@ horus-cli show clients "id-manager-client-user"
 }
 ```
 
-The manager can visualize a specific Company created for him accessing the route described below.
+The manager can visualize a specific company by accessing the route described below.
 
 Route: *`GET "/api/v1/manager/clients/:id"`*
 
 ## List
 
-> List Client User
+> List Client Company
 
 ```shell
+# INPUT
 curl --header "Content-Type: application/vnd.api+json" 
   -H "Authorization: Bearer id-access-token" -X GET -d 
 '{
@@ -4618,7 +4657,7 @@ curl --header "Content-Type: application/vnd.api+json"
 }' 
 http://localhost:3000/api/v1/manager/clients
 
-# Return
+# OUTPUT
 {
   "data":
   [
@@ -4731,9 +4770,10 @@ http://localhost:3000/api/v1/manager/clients
 ```
 
 ```ruby
+# INPUT
 horus-cli list clients
 
-# Return
+# OUTPUT
 [
   {
     "id":"id-manager-client-user", 
@@ -4758,19 +4798,20 @@ horus-cli list clients
 ]
 ```
 
-The manager can visualize all Companies created for him accessing the route described below.
+The manager can visualize all companies by accessing the route described below.
 
 Route: *`GET "/api/v1/manager/clients"`*
 
-# Manager Client User Telephone
+# Manager Client Company Telephone
 
-When logged in, the manager can access information about Company's telephones, it allows him to create, update, show and list them
+When logged in, the manager can access information about company's telephones, it allows him to create, update, show and list them.
 
 ## Create
 
-> Create Client User Telephone
+> Create Client Company Telephone
 
 ```shell
+# INPUT
 curl --header "Content-Type: application/vnd.api+json" 
   -H "Authorization: Bearer id-access-token" -X POST -d  
 '{
@@ -4797,7 +4838,7 @@ curl --header "Content-Type: application/vnd.api+json"
 }'  
 http://localhost:3000/api/v1/manager/client-telephones
 
-# Return
+# OUTPUT
 {
   "data":
   {
@@ -4828,9 +4869,10 @@ http://localhost:3000/api/v1/manager/client-telephones
 ```
 
 ```ruby
+# INPUT
 horus-cli create telephones '"country-code":"55", "number":"7578889890"' clients "id-manager-client-user"
 
-# Return
+# OUTPUT
 {
   "country-code":"55", 
   "number":"7578889890", 
@@ -4839,7 +4881,7 @@ horus-cli create telephones '"country-code":"55", "number":"7578889890"' clients
 }
 ```
 
-The manager can create a telephone accessing the route described below.
+The manager can create a telephone by accessing a route described below.
 
 Route: *`POST "/api/v1/manager/client-telephones"`*
 
@@ -4850,9 +4892,10 @@ number | String | 7578889890
 
 ## Update
 
-> Update Client User Telephone
+> Update Client Company Telephone
 
 ```shell
+# INPUT
 curl --header "Content-Type: application/vnd.api+json" 
   -H "Authorization: Bearer id-access-token" -X PATCH -d 
 '{ 
@@ -4869,7 +4912,7 @@ curl --header "Content-Type: application/vnd.api+json"
 }' 
 http://localhost:3000/api/v1/manager/client-telephones/id-manager-client-user-telephone
 
-# Return
+# OUTPUT
 {
   "data":
   {
@@ -4896,13 +4939,14 @@ http://localhost:3000/api/v1/manager/client-telephones/id-manager-client-user-te
       }
     }
   }
-} 
+}
 ```
 
 ```ruby
+# INPUT
 horus-cli update telephones "id-manager-client-user-telephone" '"country-code":"12", "number":"789890888"'
 
-# Return
+# OUTPUT
 {
   "id":"id-manager-client-user-telephone", 
   "type":"client-telephones", 
@@ -4911,7 +4955,7 @@ horus-cli update telephones "id-manager-client-user-telephone" '"country-code":"
 }
 ```
 
-The manager can edit the information contained in telephone accessing the route described below.
+The manager can edit the information contained in telephone by accessing the route described below.
 
 Route: *`PATCH "/api/v1/manager/client-telephones/:id"`*
 
@@ -4922,9 +4966,10 @@ number | String | 789890888
 
 ## Show
 
-> Show Client User Telephone
+> Show Client Company Telephone
 
 ```shell
+# INPUT
 curl --header "Content-Type: application/vnd.api+json" 
   -H "Authorization: Bearer id-access-token" -X GET -d 
 '{
@@ -4935,7 +4980,7 @@ curl --header "Content-Type: application/vnd.api+json"
 }' 
 http://localhost:3000/api/v1/manager/client-telephones/id-manager-client-user-telephone
 
-# Return
+# OUTPUT
 {
   "data":
   {
@@ -4962,13 +5007,14 @@ http://localhost:3000/api/v1/manager/client-telephones/id-manager-client-user-te
       }
     }
   }
-} 
+}
 ```
 
 ```ruby
+# INPUT
 horus-cli show telephones "id-manager-client-user-telephone"
 
-# Return
+# OUTPUT
 {
   "id":"id-manager-client-user-telephone", 
   "type":"client-telephones", 
@@ -4977,15 +5023,16 @@ horus-cli show telephones "id-manager-client-user-telephone"
 }
 ```
 
-The manager can visualize a specific telephone created for him accessing the route described below.
+The manager can visualize a specific telephone by accessing a route described below.
 
 Route: *`GET "/api/v1/manager/client-telephones/:id"`*
 
 ## List
 
-> List Client User Telephone
+> List Client Company Telephone
 
 ```shell
+# INPUT
 curl --header "Content-Type: application/vnd.api+json" 
   -H "Authorization: Bearer id-access-token" -X GET -d 
 '{
@@ -4996,7 +5043,7 @@ curl --header "Content-Type: application/vnd.api+json"
 }' 
 http://localhost:3000/api/v1/manager/client-telephones
 
-# Return
+# OUTPUT
 {
   "data":
   [
@@ -5049,13 +5096,14 @@ http://localhost:3000/api/v1/manager/client-telephones
       }
     }
   ]
-} 
+}
 ```
 
-```ruby
+```ruy
+# INPUT
 horus-cli list telephones
 
-# Return
+# OUTPUT
 [
   {
     "id":"id-manager-client-user-telephone", 
@@ -5072,19 +5120,20 @@ horus-cli list telephones
 }
 ```
 
-The manager can visualize all telephones created for him accessing the route described below.
+The manager can visualize all telephones by accessing a route described below.
 
 Route: *`GET "/api/v1/manager/client-telephones"`*
 
-# Manager - Company Address
+# Manager Client Company Address
 
-When logged in, the manager can access information about Company's address, it allows him to create, update, show and list them.
+When logged in, the manager can access information about company's address, it allows him to create, update, show and list them.
 
 ## Create
 
-> Create Client User Address
+> Create Client Company Address
 
 ```shell
+# INPUT
 curl --header "Content-Type: application/vnd.api+json" 
   -H "Authorization: Bearer id-access-token" -X POST -d  
 '{
@@ -5117,7 +5166,7 @@ curl --header "Content-Type: application/vnd.api+json"
 }'  
 http://localhost:3000/api/v1/manager/client-addresses
 
-# Return
+# OUTPUT
 {
   "data":
   {
@@ -5154,9 +5203,10 @@ http://localhost:3000/api/v1/manager/client-addresses
 ```
 
 ```ruby
+# INPUT
 horus-cli create addresses '"street":"Jericho Tpke Suite 344", "number":"2417", "complement":"Apartment", "zipcode":"11040", "neighborhood":"Commack", "city":"Cidade", "state":"Estado", "country":"Pais"' clients "id-manager-client-user"
 
-# Return
+# OUTPUT
 {
   "street":"Jericho Tpke Suite 344", 
   "number":"2417", 
@@ -5171,7 +5221,7 @@ horus-cli create addresses '"street":"Jericho Tpke Suite 344", "number":"2417", 
 }
 ```
 
-The user manager create a address accessing the route described below.
+The manager can create an address by accessing the route described below.
 
 Route: *`POST "/api/v1/manager/client-addresses"`*
 
@@ -5188,9 +5238,10 @@ country | String | US
 
 ## Update
 
-Update Client User Address
+Update Client Company Address
 
 ```shell
+# INPUT
 curl --header "Content-Type: application/vnd.api+json" 
   -H "Authorization: Bearer id-access-token" -X PATCH -d 
 '{ 
@@ -5213,7 +5264,7 @@ curl --header "Content-Type: application/vnd.api+json"
 }' 
 http://localhost:3000/api/v1/manager/client-addresses/id-manager-client-user-address
 
-# Return
+# OUTPUT
 {
   "data":
   {
@@ -5250,9 +5301,10 @@ http://localhost:3000/api/v1/manager/client-addresses/id-manager-client-user-add
 ```
 
 ```ruby
+# INPUT
 horus-cli update addresses "id-manager-client-user-address" '"street":"Baker Street", "number":"221B", "complement":"Apartment", "zipcode":"5150117", "neighborhood":"unknown", "city":"Westminster", "state":"London", "country":"UK"'
 
-# Return
+# OUTPUT
 {
   "id":"id-manager-client-user-address", 
   "type":"client-addresses", 
@@ -5267,7 +5319,7 @@ horus-cli update addresses "id-manager-client-user-address" '"street":"Baker Str
 }
 ```
 
-The manager can edit the information contained in address accessing the route described below.
+The manager can edit the information contained in address by accessing the route described below.
 
 Route: *`PATCH "/api/v1/manager/client-addresses/:id"`*
 
@@ -5284,9 +5336,10 @@ country | String | UK
 
 ## Show
 
-Show Client User Address
+Show Client Company Address
 
 ```shell
+# INPUT
 curl --header "Content-Type: application/vnd.api+json" 
   -H "Authorization: Bearer id-access-token" -X GET -d 
 '{
@@ -5297,7 +5350,7 @@ curl --header "Content-Type: application/vnd.api+json"
 }' 
 http://localhost:3000/api/v1/manager/client-addresses/id-manager-client-user-address
 
-# Return
+# OUTPUT
 {
   "data":
   {
@@ -5334,9 +5387,10 @@ http://localhost:3000/api/v1/manager/client-addresses/id-manager-client-user-add
 ```
 
 ```ruby
+# INPUT
 horus-cli show addresses "id-manager-client-user-address"
 
-# Return
+# OUTPUT
 {
   "id":"id-manager-client-user-address", 
   "type":"client-addresses",  
@@ -5351,15 +5405,16 @@ horus-cli show addresses "id-manager-client-user-address"
 }
 ```
 
-The manager can visualize a specific address created for him accessing the route described below.
+The manager can visualize a specific address by accessing a route described below.
 
 Route: *`GET "/api/v1/manager/client-addresses/:id"`*
 
 ## List
 
-List Client User Address
+List Client Company Address
 
 ```shell
+# INPUT
 curl --header "Content-Type: application/vnd.api+json" 
 -H "Authorization: Bearer id-access-token" -X GET -d 
 '{
@@ -5370,7 +5425,7 @@ curl --header "Content-Type: application/vnd.api+json"
 }' 
 http://localhost:3000/api/v1/manager/client-addresses
 
-# Return
+# OUTPUT
 {
   "data":
   [
@@ -5439,11 +5494,12 @@ http://localhost:3000/api/v1/manager/client-addresses
 ```
 
 ```ruby
+# INPUT
 horus-cli list addresses
 
-# Return
+# OUTPUT
 [
-  {, 
+  {
     "id":"id-manager-client-user-address", 
     "type":"client-addresses", 
     "street":"Baker Street", 
@@ -5470,7 +5526,7 @@ horus-cli list addresses
 ]
 ```
 
-The manager can visualize all addresses created for him accessing the route described below.
+The manager can visualize all addresses by accessing a route described below.
 
 Route: *`GET "/api/v1/manager/client-addresses"`*
 
