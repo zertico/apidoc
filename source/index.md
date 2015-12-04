@@ -3025,6 +3025,68 @@ processor | String | 4 x 2.0 GHz Cores
 operating-system | String | Debian - Latest (64 bit)
 network-component | String | 1 Gbps Public \u0026 Private Network Uplinks
 
+## List
+
+> List Shop Plan Softlayer Cloud Server
+
+```shell
+# INPUT
+curl --header "Content-Type: application/vnd.api+json" 
+  -H "Authorization: Bearer id-access-token" -X GET -d 
+'{
+  "data":
+  {
+    "type":"shop-softlayer-cloud-server-plans"
+  }
+}' 
+http://acme.lvh.me:3000/api/v1/admin/shop-softlayer-cloud-server-plans
+
+# OUTPUT
+{
+  "data":
+  [
+    {
+      "id":"shop-softlayer-cloud-server-plans",
+      "type":"shop-softlayer-cloud-server-plans",
+      "links":
+      {
+        "self":"http://acme.lvh.me:3000/api/v1/admin/shop-softlayer-cloud-server-plans/shop-softlayer-cloud-server-plans"
+      },
+      "attributes":
+      {
+        "name":"Acme Cloud Server (Small)",
+        "enabled":true,
+        "description":"Acme Cloud Server Small Desc",
+        "long-description":"Acme Cloud Server Small Long Desc",
+        "allow-custom":true,
+        "can-customize":["datacenter"],
+        "disk-1-san":"25 GB (SAN)",
+        "disk-2-san":null,
+        "disk-3-san":null,
+        "disk-4-san":null,
+        "disk-5-san":null,
+        "disk-1-local":null,
+        "disk-2-local":null,
+        "disk-type":"san",
+        "datacenter":"wdc01",
+        "memory":"2 GB",
+        "processor":"4 x 2.0 GHz Cores",
+        "operating-system":"Debian - Latest (64 bit)",
+        "network-component":"1 Gbps Public \u0026 Private Network Uplinks"
+      }
+    }
+  ]
+}
+```
+
+```ruby
+Not implemented
+```
+
+The admin can visualize all plans Softlayer cloud server created by accessing the route below.
+
+Route: *`GET "api/v1/admin/shop-softlayer-cloud-server-plans"`*
+
 # Admin Shop Catalog Provider
 
 When logged in, the admin can access information about the catalog. This access allows him to list his catalog provider availables.
