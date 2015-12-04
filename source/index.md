@@ -76,6 +76,7 @@ id-admin-client-user-telephone | 87d3c3a2-0cd2-4667-8fc9-3c3487133061
 id-admin-client-user-address | 0778b605-36ca-4a4e-8f54-d38f830d226c
 id-admin-shop-category | baedf1c1-cc00-454d-8cb7-fcc8319498fa
 id-admin-shop-group | 40c6d92b-4185-4a3d-bdfc-853da1f90f3d
+id-admin-plan-softlayer-cloud-server | 35ee5268-531e-4d15-bd5c-5bb21faa6500
 id-admin-catalog-provider | c2928f65-4ba6-59ba-b8d3-abec6a44fb23
 id-admin-catalog-provider-product | 2e646490-eeb2-5fbe-bbf3-a7d8b1d6a2e3
 id-admin-catalog-provider-product-attribute | 3082f9b2-6ba5-5808-8db7-25f25dc7ff70
@@ -2923,6 +2924,106 @@ Not implemented
 The admin can visualize all shop groups created by accessing the route below.
 
 Route: *`GET "/api/v1/admin/shop-groups"`*
+
+# Admin Shop Plan Softlayer Cloud Server
+
+When logged in, the admin can access information about the shop. This access allows him to create, update, show and list shop plans Softlayer cloud server.
+
+## Create
+
+> Create Shop Plan Softlayer Cloud Server
+
+```shell
+# INPUT
+curl --header "Content-Type: application/vnd.api+json" 
+  -H "Authorization: Bearer id-access-token" -X POST -d 
+'{ 
+  "data":
+  { 
+    "type":"shop-softlayer-cloud-server-plans", 
+    "attributes":
+    { 
+      "description":"Small",
+      "long-description":"Cloud Server Small",
+      "disk-1-san":"25 GB (SAN)",
+      "disk-2-san":"10 GB (SAN)",
+      "disk-3-san":"10 GB (SAN)",
+      "disk-type":"san",
+      "datacenter":"wdc01",
+      "memory":"2 GB",
+      "processor":"4 x 2.0 GHz Cores",
+      "operating-system":"Debian - Latest (64 bit)",
+      "network-component":"1 Gbps Public & Private Network Uplinks"
+    }
+  }
+}' 
+http://smart.lvh.me:3000/api/v1/admin/shop-softlayer-cloud-server-plans
+
+# OUTPUT
+{
+  "data":
+  {
+    "id":"id-admin-plan-softlayer-cloud-server",
+    "type":"shop-softlayer-cloud-server-plans",
+    "links":
+    {
+      "self":"http://smart.lvh.me:3000/api/v1/admin/shop-softlayer-cloud-server-plans/id-admin-plan-softlayer-cloud-server"
+    },
+    "attributes":
+    {
+      "name":null,
+      "enabled":true,
+      "description":"Small",
+      "long-description":"Cloud Server Small",
+      "allow-custom":false,
+      "can-customize":[],
+      "disk-1-san":"25 GB (SAN)",
+      "disk-2-san":"10 GB (SAN)",
+      "disk-3-san":"10 GB (SAN)",
+      "disk-4-san":null,
+      "disk-5-san":null,
+      "disk-1-local":null,
+      "disk-2-local":null,
+      "disk-type":"san",
+      "datacenter":"wdc01",
+      "memory":"2 GB",
+      "processor":"4 x 2.0 GHz Cores",
+      "operating-system":"Debian - Latest (64 bit)",
+      "network-component":"1 Gbps Public \u0026 Private Network Uplinks"
+    }
+  }
+}
+```
+
+```ruby
+Not implemented
+```
+
+The admin can create a plan Softlayer cloud server by accessing the route below.
+
+Route: *`POST "api/v1/admin/shop-softlayer-cloud-server-plans"`*
+
+Variable | Type | Value
+-------- | ---- | ----- 
+name | String | name
+enabled | String | true
+description | String | Small
+long-description | String | Cloud Server Small
+allow-custom | String | false
+can-customize | String | [ ]
+disk-1-san | String | 25 GB (SAN)
+disk-2-san | String | 10 GB (SAN)
+disk-3-san | String | 10 GB (SAN)
+disk-4-san | String | 10 GB (SAN)
+disk-5-san | String | 10 GB (SAN)
+disk-1-local | String | 10 GB (SAN)
+disk-2-local | String | 10 GB (SAN)
+disk-type | String | san
+datacenter | String | wdc01
+memory | String | 2 GB
+processor | String | 4 x 2.0 GHz Cores
+operating-system | String | Debian - Latest (64 bit)
+network-component | String | 1 Gbps Public \u0026 Private Network Uplinks
 
 # Admin Shop Catalog Provider
 
