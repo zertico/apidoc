@@ -3025,6 +3025,153 @@ processor | String | 4 x 2.0 GHz Cores
 operating-system | String | Debian - Latest (64 bit)
 network-component | String | 1 Gbps Public \u0026 Private Network Uplinks
 
+## Update
+
+> Update Shop Plan Softlayer Cloud Server
+
+```shell
+# INPUT
+curl --header "Content-Type: application/vnd.api+json" 
+  -H "Authorization: Bearer id-access-token" -X PATCH -d 
+'{
+  "data":
+  {
+    "id":"id-admin-plan-softlayer-cloud-server", 
+    "type":"shop-softlayer-cloud-server-plans", 
+    "attributes":
+    { 
+      "description":"Boom",
+      "long-description":"Cloud Server Boom",
+      "disk-1-san":"10 GB (SAN)",
+      "disk-2-san":"5 GB (SAN)",
+      "disk-3-san":"5 GB (SAN)",
+      "memory":"4 GB",
+      "processor":"16 x 2.0 GHz Cores",
+      "operating-system":"Ubunto - Latest (64 bit)",
+      "network-component":"2 Gbps Public & Private Network Uplinks"
+    }
+  }
+}' 
+http://acme.lvh.me:3000/api/v1/admin/shop-softlayer-cloud-server-plans/id-admin-plan-softlayer-cloud-server
+
+# OUTPUT
+{
+  "data":
+  {
+    "id":"id-admin-plan-softlayer-cloud-server",
+    "type":"shop-softlayer-cloud-server-plans",
+    "links":
+    {
+      "self":"http://acme.lvh.me:3000/api/v1/admin/shop-softlayer-cloud-server-plans/id-admin-plan-softlayer-cloud-server"
+    },
+    "attributes":
+    {
+      "name":"Acme Cloud Server (Small)",
+      "enabled":true,
+      "description":"Boom",
+      "long-description":"Cloud Server Boom",
+      "allow-custom":true,
+      "can-customize":["datacenter"],
+      "disk-1-san":"10 GB (SAN)",
+      "disk-2-san":"5 GB (SAN)",
+      "disk-3-san":"5 GB (SAN)",
+      "disk-4-san":null,
+      "disk-5-san":null,
+      "disk-1-local":null,
+      "disk-2-local":null,
+      "disk-type":"san",
+      "datacenter":"wdc01",
+      "memory":"4 GB",
+      "processor":"16 x 2.0 GHz Cores",
+      "operating-system":"Ubunto - Latest (64 bit)",
+      "network-component":"2 Gbps Public \u0026 Private Network Uplinks"
+    }
+  }
+} 
+```
+
+```ruby
+Not implemented
+```
+
+The admin can edit a plan Softlayer cloud server by accessing the route below.
+
+Route: *`PATCH "api/v1/admin/shop-softlayer-cloud-server-plans/:id`*
+
+Variable | Type | Value
+-------- | ---- | ----- 
+description | String | Boom
+long-description | String | Cloud Server Boom
+allow-custom | String | false
+can-customize | String | [ ]
+disk-1-san | String | 10 GB (SAN)
+disk-2-san | String | 5 GB (SAN)
+disk-3-san | String | 5 GB (SAN)
+memory | String | 4 GB
+processor | String | 16 x 2.0 GHz Cores
+operating-system | String | Ubunto - Latest (64 bit)
+network-component | String | 2 Gbps Public \u0026 Private Network Uplinks
+
+## Show
+
+> Show Shop Plan Softlayer Cloud Server
+
+```shell
+# INPUT
+curl --header "Content-Type: application/vnd.api+json" 
+  -H "Authorization: Bearer id-access-token" -X GET -d 
+'{
+  "data":
+  {
+    "type":"shop-softlayer-cloud-server-plans"
+  }
+}' 
+http://acme.lvh.me:3000/api/v1/admin/shop-softlayer-cloud-server-plans/id-admin-plan-softlayer-cloud-server
+
+# OUTPUT
+{
+  "data":
+  {
+    "id":"48c178e6-d4e7-5b2e-8dba-47d7e7b2265a",
+    "type":"shop-softlayer-cloud-server-plans",
+    "links":
+    {
+      "self":"http://acme.lvh.me:3000/api/v1/admin/shop-softlayer-cloud-server-plans/48c178e6-d4e7-5b2e-8dba-47d7e7b2265a"
+    },
+    "attributes":
+    {
+      "name":"Acme Cloud Server (Small)",
+      "enabled":true,
+      "description":"Boom",
+      "long-description":"Cloud Server Boom",
+      "allow-custom":true,
+      "can-customize":["datacenter"],
+      "disk-1-san":"10 GB (SAN)",
+      "disk-2-san":"5 GB (SAN)",
+      "disk-3-san":"5 GB (SAN)",
+      "disk-4-san":null,
+      "disk-5-san":null,
+      "disk-1-local":null,
+      "disk-2-local":null,
+      "disk-type":"san",
+      "datacenter":"wdc01",
+      "memory":"4 GB",
+      "processor":"16 x 2.0 GHz Cores",
+      "operating-system":"Ubunto - Latest (64 bit)",
+      "network-component":"2 Gbps Public \u0026 Private Network Uplinks"
+    }
+  }
+}
+```
+
+```ruby
+Not implemented
+```
+
+The admin can visualize a specific plan Softlayer cloud server created by accessing the route below.
+
+Route: *`GET "/api/v1/admin/shop-softlayer-cloud-server-plans/:id"`*
+
 ## List
 
 > List Shop Plan Softlayer Cloud Server
@@ -3046,11 +3193,11 @@ http://acme.lvh.me:3000/api/v1/admin/shop-softlayer-cloud-server-plans
   "data":
   [
     {
-      "id":"shop-softlayer-cloud-server-plans",
+      "id":"id-admin-plan-softlayer-cloud-server",
       "type":"shop-softlayer-cloud-server-plans",
       "links":
       {
-        "self":"http://acme.lvh.me:3000/api/v1/admin/shop-softlayer-cloud-server-plans/shop-softlayer-cloud-server-plans"
+        "self":"http://acme.lvh.me:3000/api/v1/admin/shop-softlayer-cloud-server-plans/id-admin-plan-softlayer-cloud-server"
       },
       "attributes":
       {
