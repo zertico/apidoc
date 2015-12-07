@@ -61,34 +61,11 @@ horus-cli version
 
 # Identification
 
-UUID | Value
----- | ----- 
-id-access-token | 22222c3b9ce6eef158104ba4d99e7f9f849682c9c55df737d6e208220f5868d7
-id-refresh-token | 222254129c800c05bf40cab02b0c03f481b489d426bd06b5a32439e969df364c
-id-user-profile | 03b829d7-bbe6-5556-ae91-e480c27a28ee
-id-admin-profile | dab41f5f-a40c-54d8-a2f3
-id-admin-company | 918ba9c6-bde4-543a-a280-afbc1bf698ad
-id-admin-company-telephone | 924e8f38-369f-41e6-92f3-71d2f9e83884
-id-admin-company-address | c4f5337b-bd74-4e60-9f90-7ce5c4cba782
-id-admin-client-user-profile | 56facbbe-a59d-4743-99fd-ff9936411efd
-id-admin-client-user | 4be57074-5fc6-5942-bb62-c882fb2b4eff
-id-admin-client-user-telephone | 87d3c3a2-0cd2-4667-8fc9-3c3487133061
-id-admin-client-user-address | 0778b605-36ca-4a4e-8f54-d38f830d226c
-id-admin-shop-category | baedf1c1-cc00-454d-8cb7-fcc8319498fa
-id-admin-shop-group | 40c6d92b-4185-4a3d-bdfc-853da1f90f3d
-id-admin-plan-softlayer-cloud-server | 35ee5268-531e-4d15-bd5c-5bb21faa6500
-id-admin-catalog-provider | c2928f65-4ba6-59ba-b8d3-abec6a44fb23
-id-admin-catalog-provider-product | 2e646490-eeb2-5fbe-bbf3-a7d8b1d6a2e3
-id-admin-catalog-provider-product-attribute | 3082f9b2-6ba5-5808-8db7-25f25dc7ff70
-id-admin-catalog-provider-product-option | 37098c00-7215-5752-8c65-738d04ea4a02
-id-manager-profile | 1c9dcbb4-758d-55c0-874a-da7a8285a814
-id-manager-company | 78473988-b021-4864-aa48-f3b7bc4a06f6
-id-manager-company-telephone | 7915969d-e949-4066-b264-8d5bdcdf2d5c
-id-manager-company-address | 1906c99a-8d54-42e1-a035-cc425553f1fd
-id-manager-client-user-profile | 1b5c1105-360c-418c-8362-385749ec5746
-id-manager-client-user | 03b829d7-bbe6-5556-ae91-e480c27a28ee
-id-manager-client-user-telephone | 690c7235-59b3-5a4e-9c04-e1aa98cc6e38
-id-manager-client-user-address | 0778b605-36ca-4a4e-8f54-d38f830d226c
+All system identification is a UUID type and it begins with a substring "id + resource + function".
+
+exemple: id-user-profile: 03b829d7-bbe6-5556-ae91-e480c27a28ee
+
+For more information about UUID access *`https://en.wikipedia.org/wiki/Universally_unique_identifier`*
 
 # Login
 
@@ -2999,7 +2976,7 @@ http://smart.lvh.me:3000/api/v1/admin/shop-softlayer-cloud-server-plans
 Not implemented
 ```
 
-The admin can create a plan Softlayer cloud server by accessing the route below.
+The admin can create a Softlayer Cloud Server plan accessing the route below.
 
 Route: *`POST "api/v1/admin/shop-softlayer-cloud-server-plans"`*
 
@@ -3094,7 +3071,7 @@ http://acme.lvh.me:3000/api/v1/admin/shop-softlayer-cloud-server-plans/id-admin-
 Not implemented
 ```
 
-The admin can edit a plan Softlayer cloud server by accessing the route below.
+The admin can edit a SoftLayer Cloud Server plan accessing the route below.
 
 Route: *`PATCH "api/v1/admin/shop-softlayer-cloud-server-plans/:id`*
 
@@ -3168,7 +3145,7 @@ http://acme.lvh.me:3000/api/v1/admin/shop-softlayer-cloud-server-plans/id-admin-
 Not implemented
 ```
 
-The admin can visualize a specific plan Softlayer cloud server created by accessing the route below.
+The admin can get information for a specific SoftLayer Cloud Server plan accessing the route bellow.
 
 Route: *`GET "/api/v1/admin/shop-softlayer-cloud-server-plans/:id"`*
 
@@ -3230,7 +3207,7 @@ http://acme.lvh.me:3000/api/v1/admin/shop-softlayer-cloud-server-plans
 Not implemented
 ```
 
-The admin can visualize all plans Softlayer cloud server created by accessing the route below.
+The admin can list all SoftLayer Cloud Server plans accessing the route bellow.
 
 Route: *`GET "api/v1/admin/shop-softlayer-cloud-server-plans"`*
 
