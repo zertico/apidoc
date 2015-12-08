@@ -298,6 +298,163 @@ first-name | String | Super
 last-name | String | User
 email | String | user@smart.com
 
+# User Organization Profile
+
+When logged in, the user can access his own profile. This access allows him to show and update information about his account.
+
+## Show
+
+> Show Organization Profile
+
+```shell
+# INPUT
+curl --header "Content-Type: application/vnd.api+json" 
+  -H "Authorization: Bearer id-access-token" -X GET -d 
+'{ 
+  "data":
+  { 
+    "type":"organization-profiles" 
+  }
+}' 
+http://acme.lvh.me:3000/api/v1/organization-profile
+
+# OUTPUT
+{
+  "data":
+  {
+    "id":"id-user-organization-profile",
+    "type":"organization-profiles",
+    "links":
+    {
+      "self":"http://acme.lvh.me:3000/api/v1/organization-profile"
+    },
+    "attributes":
+    {
+      "name":"Fulano da Silva",
+      "nickname":"Fulano",
+      "organization-type":"person",
+      "email":"fulano@dasilva.com"
+    },
+    "relationships":
+    {
+      "organization-profile-address":
+      {
+        "links":
+        {
+          "self":"http://acme.lvh.me:3000/api/v1/organization-profile/relationships/organization-profile-address",
+          "related":"http://acme.lvh.me:3000/api/v1/organization-profile/organization-profile-address"
+        },
+        "data":
+        {
+          "type":"organization-profile-addresses",
+          "id":"id-user-organization-profile"
+        }
+      },
+      "organization-profile-telephones":
+      {
+        "links":
+        {
+          "self":"http://acme.lvh.me:3000/api/v1/organization-profile/relationships/organization-profile-telephones",
+          "related":"http://acme.lvh.me:3000/api/v1/organization-profile/organization-profile-telephones"
+        }
+      }
+    }
+  }
+}
+```
+
+```ruby
+Not implemented
+```
+
+The user can visualize his own profile by accessing the route below.
+
+Route: *`GET "/api/v1/organization-profile"`*
+
+## Update
+
+> Update Organization Profile
+
+```shell
+# INPUT
+curl --header "Content-Type: application/vnd.api+json" 
+  -H "Authorization: Bearer id-access-token" -X PATCH -d 
+'{
+  "data":
+  {
+    "type":"organization-profiles", 
+    "id":"id-user-organization-profile", 
+    "attributes":
+    {
+      "name":"Umbrella Corporation",
+      "nickname":"Umbrella",
+      "organization-type":"person",
+      "email":"umbrella@corp.com"
+    }
+  }
+}' 
+http://acme.lvh.me:3000/api/v1/organization-profile
+
+# OUTPUT
+{
+  "data":
+  {
+    "id":"id-user-organization-profile",
+    "type":"organization-profiles",
+    "links":
+    {
+      "self":"http://acme.lvh.me:3000/api/v1/organization-profile"
+    },
+    "attributes":
+    {
+      "name":"Umbrella Corporation",
+      "nickname":"Umbrella",
+      "organization-type":"person",
+      "email":"umbrella@corp.com"
+    },
+    "relationships":
+    {
+      "organization-profile-address":
+      {
+        "links":
+        {
+          "self":"http://acme.lvh.me:3000/api/v1/organization-profile/relationships/organization-profile-address",
+          "related":"http://acme.lvh.me:3000/api/v1/organization-profile/organization-profile-address"
+        },
+        "data":
+        {
+          "type":"organization-profile-addresses",
+          "id":"id-user-organization-profile"
+        }
+      },
+      "organization-profile-telephones":
+      {
+        "links":
+        {
+          "self":"http://acme.lvh.me:3000/api/v1/organization-profile/relationships/organization-profile-telephones",
+          "related":"http://acme.lvh.me:3000/api/v1/organization-profile/organization-profile-telephones"
+        }
+      }
+    }
+  }
+}
+```
+
+```ruby
+Not implemented
+```
+
+The user can edit the information contained in his own profile by accessing the route below.
+
+Route: *`PATCH "/api/v1/organization-profile"`*
+
+Variable | Type | Value
+-------- | ---- | ----- 
+name | String | Umbrella Corporation
+nickname | String | Umbrella
+organization-type | String | person
+email | String | umbrella@corp.com
+
 # Admin Profile Account
 
 When logged in, the user admin access his own profile. This access allows him to show and update information about his account.
@@ -472,7 +629,7 @@ Not implemented
 
 The admin can visualize his own profile by accessing the route below.
 
-Route: *`GET "api/v1/admin/company-profile"`*
+Route: *`GET "/api/v1/admin/company-profile"`*
 
 ## Update
 
@@ -544,7 +701,7 @@ http://smart.lvh.me:3000/api/v1/admin/company-profile
 Not implemented
 ```
 
-The admin can edit the information contained in his own profile by accessing the route below
+The admin can edit the information contained in his own profile by accessing the route below.
 
 Route: *`PATCH "/api/v1/admin/company-profile"`*
 
