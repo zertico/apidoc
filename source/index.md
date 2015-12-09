@@ -240,7 +240,7 @@ Not implemented
 
 The user can visualize his profile account by accessing the route below.
 
-Route: *`GET "api/v1/profile"`*
+Route: *`GET "/api/v1/profile"`*
 
 ## Update
 
@@ -290,7 +290,7 @@ Not implemented
 
 The user can edit the information contained in his own profile account by accessing the route below.
 
-Route: *`GET "api/v1/profile"`*
+Route: *`GET "/api/v1/profile"`*
 
 Variable | Type | Value
 -------- | ---- | ----- 
@@ -455,6 +455,284 @@ nickname | String | Umbrella
 organization-type | String | person
 email | String | umbrella@corp.com
 
+# User Organization Profile Telephone
+
+When logged in, the user can access information about his telephones. This access allows him to create, update, show and list them.
+
+## Create
+
+> Create Organization Profile Telephone
+
+```shell
+# INPUT
+curl --header "Content-Type: application/vnd.api+json" 
+  -H "Authorization: Bearer id-access-token" -X POST -d  
+'{
+  "data":
+  {
+    "type":"organization-profile-telephones", 
+    "relationships":
+    {
+      "organization-profile":
+      {
+        "data":
+        {
+          "type":"organization-profiles", 
+          "id":"id-user-organization-profile"
+        }
+      }
+    }, 
+    "attributes":
+    {
+      "country-code":"31", 
+      "number":"1112223334"
+    }
+  }
+}'  
+http://acme.lvh.me:3000/api/v1/organization-profile-telephones
+
+# OUTPUT
+{
+  "data":
+  {
+    "id":"id-user-organization-profile-telephone",
+    "type":"organization-profile-telephones",
+    "links":
+    {
+      "self":"http://acme.lvh.me:3000/api/v1/organization-profile-telephones/id-user-organization-profile-telephone"
+    },
+    "attributes":
+    {
+      "country-code":"31",
+      "number":"1112223334"
+    },
+    "relationships":
+    {
+      "organization-profile":
+      {
+        "links":
+        {
+          "self":"http://acme.lvh.me:3000/api/v1/organization-profile-telephones/id-user-organization-profile-telephone/relationships/organization-profile",
+          "related":"http://acme.lvh.me:3000/api/v1/organization-profile-telephones/id-user-organization-profile-telephone/organization-profile"
+        }
+      }
+    }
+  }
+}
+```
+
+```ruby
+Not implemented
+```
+
+The user can create a telephone by accessing the route below.
+
+Route: *`POST "/api/v1/organization-profile-telephones"`*
+
+Variable | Type | Value
+-------- | ---- | ----- 
+country-code | String | 31 
+number | String | 1112223334
+
+## Update
+
+> Update Organization Profile Telephone
+
+```shell
+# INPUT
+curl --header "Content-Type: application/vnd.api+json" 
+  -H "Authorization: Bearer id-access-token" -X PATCH -d 
+'{ 
+  "data":
+  {
+    "id":"id-user-organization-profile-telephone",
+    "type":"organization-profile-telephones",
+    "attributes":
+    {
+      "country-code":"12", 
+      "number":"789890888"
+    }
+  }
+}' 
+http://acme.lvh.me:3000/api/v1/organization-profile-telephones/id-user-organization-profile-telephone
+
+# OUTPUT
+{
+  "data":
+  {
+    "id":"id-user-organization-profile-telephone",
+    "type":"organization-profile-telephones",
+    "links":
+    {
+      "self":"http://acme.lvh.me:3000/api/v1/organization-profile-telephones/id-user-organization-profile-telephone"
+    },
+    "attributes":
+    {
+      "country-code":"12",
+      "number":"789890888"
+    },
+    "relationships":
+    {
+      "organization-profile":
+      {
+        "links":
+        {
+          "self":"http://acme.lvh.me:3000/api/v1/organization-profile-telephones/id-user-organization-profile-telephone/relationships/organization-profile",
+          "related":"http://acme.lvh.me:3000/api/v1/organization-profile-telephones/id-user-organization-profile-telephone/organization-profile"
+        }
+      }
+    }
+  }
+}
+```
+
+```ruby
+Not implemented
+```
+
+The user can edit the information contained in telephone by accessing the route below.
+
+Route: *`PATCH "/api/v1/organization-profile-telephones/:id"`*
+
+Variable | Type | Value
+-------- | ---- | ----- 
+country-code | String | 12 
+number | String | 789890888
+
+## Show
+
+> Show Organization Profile Telephone
+
+```shell
+# INPUT
+curl --header "Content-Type: application/vnd.api+json" 
+  -H "Authorization: Bearer id-access-token" -X GET -d 
+'{
+  "data":
+  {
+    "type":"organization-profile-telephones"
+  }
+}' 
+http://acme.lvh.me:3000/api/v1/organization-profile-telephones/id-user-organization-profile-telephone
+
+# OUTPUT
+{
+  "data":
+  {
+    "id":"id-user-organization-profile-telephone",
+    "type":"organization-profile-telephones",
+    "links":
+    {
+      "self":"http://acme.lvh.me:3000/api/v1/organization-profile-telephones/id-user-organization-profile-telephone"
+    },
+    "attributes":
+    {
+      "country-code":"12",
+      "number":"789890888"
+    },
+    "relationships":
+    {
+      "organization-profile":
+      {
+        "links":
+        {
+          "self":"http://acme.lvh.me:3000/api/v1/organization-profile-telephones/id-user-organization-profile-telephone/relationships/organization-profile",
+          "related":"http://acme.lvh.me:3000/api/v1/organization-profile-telephones/id-user-organization-profile-telephone/organization-profile"
+        }
+      }
+    }
+  }
+}
+```
+
+```ruby
+Not implemented
+```
+
+The user can visualize a specific telephone by accessing the route below.
+
+Route: *`GET "/api/v1/organization-profile-telephones/:id"`*
+
+## List
+
+> List Organization Profile Telephone
+
+```shell
+# INPUT
+curl --header "Content-Type: application/vnd.api+json" 
+  -H "Authorization: Bearer id-access-token" -X GET -d 
+'{
+  "data":
+  {
+    "type":"organization-profile-telephones"
+  }
+}' 
+http://acme.lvh.me:3000/api/v1/organization-profile-telephones
+
+# OUTPUT
+{
+  "data":
+  [
+    {
+      "id":"id-user-organization-profile-telephone",
+      "type":"organization-profile-telephones",
+      "links":
+      {
+        "self":"http://acme.lvh.me:3000/api/v1/organization-profile-telephones/id-user-organization-profile-telephone"
+      },
+      "attributes":
+      {
+        "country-code":"12",
+        "number":"789890888"
+      },
+      "relationships":
+      {
+        "organization-profile":
+        {
+          "links":
+          {
+            "self":"http://acme.lvh.me:3000/api/v1/organization-profile-telephones/id-user-organization-profile-telephone/relationships/organization-profile",
+            "related":"http://acme.lvh.me:3000/api/v1/organization-profile-telephones/id-user-organization-profile-telephone/organization-profile"
+          }
+        }
+      }
+    },
+    {
+      "id":"id-user-organization-profile-telephone",
+      "type":"organization-profile-telephones",
+      "links":
+      {
+        "self":"http://acme.lvh.me:3000/api/v1/organization-profile-telephones/id-user-organization-profile-telephone"
+      },
+      "attributes":
+      {
+        "country-code":"55",
+        "number":"1132578900"
+      },
+      "relationships":
+      {
+        "organization-profile":
+        {
+          "links":
+          {
+            "self":"http://acme.lvh.me:3000/api/v1/organization-profile-telephones/id-user-organization-profile-telephone/relationships/organization-profile",
+            "related":"http://acme.lvh.me:3000/api/v1/organization-profile-telephones/id-user-organization-profile-telephone/organization-profile"
+          }
+        }
+      }
+    }
+  ]
+}
+```
+
+```ruby
+Not implemented
+```
+
+The user can visualize all telephones by accessing the route below.
+
+Route: *`GET "/api/v1/organization-profile-telephones"`*
+
 # Admin Profile Account
 
 When logged in, the user admin access his own profile. This access allows him to show and update information about his account.
@@ -501,7 +779,7 @@ Not implemented
 
 The admin can visualize his profile account by accessing the route below.
 
-Route: *`GET "api/v1/admin/profile"`*
+Route: *`GET "/api/v1/admin/profile"`*
 
 ## Update
 
@@ -551,7 +829,7 @@ Not implemented
 
 The admin can edit the information contained in his own profile account by accessing the route below.
 
-Route: *`GET "api/v1/admin/profile"`*
+Route: *`GET "/api/v1/admin/profile"`*
 
 Variable | Type | Value
 -------- | ---- | ----- 
@@ -785,7 +1063,6 @@ The admin can create a telephone by accessing the route below.
 
 Route: *`POST "/api/v1/admin/company-profile-telephones"`*
 
-
 Variable | Type | Value
 -------- | ---- | ----- 
 country-code | String | 55 
@@ -849,7 +1126,7 @@ Not implemented
 
 The admin can edit the information contained in telephone by accessing the route below.
 
-Route: *`PATCH "api/v1/admin/company-profile-telephones/:id"`*
+Route: *`PATCH "/api/v1/admin/company-profile-telephones/:id"`*
 
 Variable | Type | Value
 -------- | ---- | ----- 
@@ -3135,7 +3412,7 @@ Not implemented
 
 The admin can create a Softlayer Cloud Server plan accessing the route below.
 
-Route: *`POST "api/v1/admin/shop-softlayer-cloud-server-plans"`*
+Route: *`POST "/api/v1/admin/shop-softlayer-cloud-server-plans"`*
 
 Variable | Type | Value
 -------- | ---- | ----- 
@@ -3230,7 +3507,7 @@ Not implemented
 
 The admin can edit a SoftLayer Cloud Server plan accessing the route below.
 
-Route: *`PATCH "api/v1/admin/shop-softlayer-cloud-server-plans/:id`*
+Route: *`PATCH "/api/v1/admin/shop-softlayer-cloud-server-plans/:id`*
 
 Variable | Type | Value
 -------- | ---- | ----- 
@@ -3366,7 +3643,7 @@ Not implemented
 
 The admin can list all SoftLayer Cloud Server plans accessing the route bellow.
 
-Route: *`GET "api/v1/admin/shop-softlayer-cloud-server-plans"`*
+Route: *`GET "/api/v1/admin/shop-softlayer-cloud-server-plans"`*
 
 # Admin Shop Catalog Provider
 
@@ -3773,7 +4050,7 @@ horus-cli profile show
 
 The manager can visualize his profile account by accessing the route below.
 
-Route: *`GET "api/v1/manager/profile"`*
+Route: *`GET "/api/v1/manager/profile"`*
 
 ## Update
 
@@ -3833,7 +4110,7 @@ horus-cli profile update '"first-name":"New Company","last-name":"Corp"'
 
 The manager can edit the information contained in his own profile account by accessing the route below.
 
-Route: *`PATCH "api/v1/manager/profile"`*
+Route: *`PATCH "/api/v1/manager/profile"`*
 
 Variable | Type | Value
 ---------- | ---- | ----- 
@@ -4066,7 +4343,7 @@ Not implemented
 
 The manager can visualize his own profile account by accessing the route below.
 
-Route: *`GET "api/v1/manager/company-profile"`*
+Route: *`GET "/api/v1/manager/company-profile"`*
 
 # Manager Company Profile Telephone
 
@@ -4205,7 +4482,7 @@ Not implemented
 
 The manager can edit the information contained in a telephone by accessing the route below.
 
-Route: *`PATCH "api/v1/manager/company-profile-telephones/:id"`*
+Route: *`PATCH "/api/v1/manager/company-profile-telephones/:id"`*
 
 Variable | Type | Value
 -------- | ---- | ----- 
