@@ -733,6 +733,246 @@ The user can visualize all telephones by accessing the route below.
 
 Route: *`GET "/api/v1/organization-profile-telephones"`*
 
+# User Organization Profile Address
+
+When logged in, the user can access information about his address. This access allows him to create, update and show them.
+
+## Create
+
+> Create Organization Profile Address
+
+```shell
+# INPUT
+curl --header "Content-Type: application/vnd.api+json" 
+  -H "Authorization: Bearer id-access-token" -X POST -d  
+'{
+  "data":
+  {
+    "type":"organization-profile-addresses", 
+    "relationships":
+    {
+      "organization-profile":
+      {
+        "data":
+        {
+          "type":"organization-profiles", 
+          "id":"id-user-organization-profile"
+        }
+      }
+    }, 
+    "attributes":
+    {
+      "street":"Jericho Tpke Suite 344", 
+      "number":"2417", 
+      "complement":"Apartment", 
+      "zipcode":"11040", 
+      "neighborhood":"Commack", 
+      "city":"Garden City Park", 
+      "state":"NY", 
+      "country":"US"
+    }
+  }
+}'  
+http://acme.lvh.me:3000/api/v1/organization-profile-address
+
+# OUTPUT
+{
+  "data":
+  {
+    "id":"id-user-organization-profile-address",
+    "type":"organization-profile-addresses",
+    "links":
+    {
+      "self":"http://acme.lvh.me:3000/api/v1/organization-profile-address"
+    },
+    "attributes":
+    {
+      "street":"Jericho Tpke Suite 344",
+      "number":"2417",
+      "complement":"Apartment",
+      "zipcode":"11040",
+      "neighborhood":"Commack",
+      "city":"Garden City Park",
+      "state":"NY",
+      "country":"US"
+    },
+    "relationships":
+    {
+      "organization-profile":
+      {
+        "links":
+        {
+          "self":"http://acme.lvh.me:3000/api/v1/organization-profile-address/relationships/organization-profile",
+          "related":"http://acme.lvh.me:3000/api/v1/organization-profile-address/organization-profile"
+        }
+      }
+    }
+  }
+}
+```
+
+```ruby
+Not implemented
+```
+
+The user can create an address by accessing the route below.
+
+Route: *`POST "/api/v1/organization-profile-address"`*
+
+Variable | Type | Value
+-------- | ---- | ----- 
+street | String | Jericho Tpke Suite 344
+number | String | 2417
+complement | String | Apartment
+zipcode | String | 11040
+neighborhood | String | Commack
+city | String | Garden City Park
+state | String | NY
+country | String | US
+
+## Update
+
+> Update Organization Profile Address
+
+```shell
+# INPUT
+curl --header "Content-Type: application/vnd.api+json" 
+  -H "Authorization: Bearer id-access-token" -X PATCH -d 
+'{ 
+  "data": 
+  { 
+    "type":"organization-profile-addresses", 
+    "id":"id-user-organization-profile-address", 
+    "attributes":
+    { 
+      "street":"Baker Street", 
+      "number":"221B", 
+      "complement":"Apartament", 
+      "zipcode":"5150117", 
+      "neighborhood":"unknown", 
+      "city":"Westminster", 
+      "state":"London", 
+      "country":"UK"
+    }
+  }
+}' 
+http://acme.lvh.me:3000/api/v1/organization-profile-address
+
+# OUTPUT
+{
+  "data":
+  {
+    "id":"id-user-organization-profile-address",
+    "type":"organization-profile-addresses",
+    "links":
+    {
+      "self":"http://acme.lvh.me:3000/api/v1/organization-profile-address"
+    },
+    "attributes":
+    {
+      "street":"Baker Street",
+      "number":"221B",
+      "complement":"Apartament",
+      "zipcode":"5150117",
+      "neighborhood":"unknown",
+      "city":"Westminster",
+      "state":"London",
+      "country":"UK"
+    },
+    "relationships":
+    {
+      "organization-profile":
+      {
+        "links":
+        {
+          "self":"http://acme.lvh.me:3000/api/v1/organization-profile-address/relationships/organization-profile",
+          "related":"http://acme.lvh.me:3000/api/v1/organization-profile-address/organization-profile"
+        }
+      }
+    }
+  }
+}
+```
+
+```ruby
+Not implemented
+```
+
+The user can edit the information contained in address by accessing the route below.
+
+Route: *`PATCH "/api/v1/organization-profile-address"`*
+
+Variable | Type | Value
+-------- | ---- | ----- 
+street | String | Baker Street
+number | String | 221B
+complement | String | Apartment
+zipcode | String | 5150117
+neighborhood | String | unknown
+city | String | Westminster
+state | String | London
+country | String | UK
+
+## Show
+
+> Show Organization Profile Address
+
+```shell
+# INPUT
+curl --header "Content-Type: application/vnd.api+json" 
+  -H "Authorization: Bearer id-access-token" -X GET -d 
+'{ 
+  "data":
+  { 
+    "type":"organization-profile-addresses" 
+  }
+}' 
+http://acme.lvh.me:3000/api/v1/organization-profile-address
+
+# OUTPUT
+{
+  "data":
+  {
+    "id":"id-user-organization-profile-address",
+    "type":"organization-profile-addresses",
+    "links":
+    {
+      "self":"http://acme.lvh.me:3000/api/v1/organization-profile-address"
+    },
+    "attributes":
+    {
+      "street":"Baker Street",
+      "number":"221B",
+      "complement":"Apartament",
+      "zipcode":"5150117",
+      "neighborhood":"unknown",
+      "city":"Westminster",
+      "state":"London",
+      "country":"UK"
+    },
+    "relationships":
+    {
+      "organization-profile":
+      {
+        "links":
+        {
+          "self":"http://acme.lvh.me:3000/api/v1/organization-profile-address/relationships/organization-profile",
+          "related":"http://acme.lvh.me:3000/api/v1/organization-profile-address/organization-profile"
+        }
+      }
+    }
+  }
+}
+```
+
+```ruby
+Not implemented
+```
+
+The user can visualize a specific address by accessing the route below.
+
+Route: *`GET "/api/v1/organization-profile-address"`*
+
 # Admin Profile Account
 
 When logged in, the user admin access his own profile. This access allows him to show and update information about his account.
@@ -1458,7 +1698,7 @@ curl --header "Content-Type: application/vnd.api+json"
 '{ 
   "data":
   { 
-    "type":"profile" 
+    "type":"company-profile-addresses" 
   }
 }' 
 http://smart.lvh.me:3000/api/v1/admin/company-profile-address
