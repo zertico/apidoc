@@ -973,6 +973,122 @@ The user can visualize a specific address by accessing the route below.
 
 Route: *`GET "/api/v1/organization-profile-address"`*
 
+# User Select Product and Add them to His Shopping Cart
+
+When logged in, the user can acess the shop. This acess allows him to select products and add them to his shopping cart. First of all the user need to create a shop cart and after select product order.
+
+## Create Shop Cart
+
+> Create Shop Cart
+
+```shell
+# INPUT
+curl --header "Content-Type: application/vnd.api+json" 
+  -H "Authorization: Bearer id-access-token" -X POST -d 
+'{ 
+  "data":
+  { 
+    "type":"shop-carts" 
+  }
+}' 
+http://acme.lvh.me:3000/api/v1/shop-carts
+
+# OUTPUT
+{
+  "data":
+  {
+    "id":"id-user-shop-cart",
+    "type":"shop-carts",
+    "links":
+    {
+      "self":"http://acme.lvh.me:3000/api/v1/shop-carts/id-user-shop-cart"
+    },
+    "relationships":
+    {
+      "shop-plans":
+      {
+        "links":
+        {
+          "self":"http://acme.lvh.me:3000/api/v1/shop-carts/id-user-shop-cart/relationships/shop-plans",
+          "related":"http://acme.lvh.me:3000/api/v1/shop-carts/id-user-shop-cart/shop-plans"
+        }
+      }
+    }
+  }
+}
+```
+
+```ruby
+Not implemented
+```
+
+The user can create a shop cart that has relationship with a plan by accessing the route below.
+
+Route: *`POST "/api/v1/shop-carts"`
+
+## Create Shop Product Order
+
+> Create Shop Product Order
+
+```shell
+# INPUT
+curl --header "Content-Type: application/vnd.api+json" 
+  -H "Authorization: Bearer id-access-token" -X POST -d 
+'{ 
+  "data":
+  { 
+    "type":"shop-product-orders", 
+    "attributes":
+    { 
+      "shop-cart-id":"id-user-shop-cart" 
+    }
+  }
+}' 
+http://acme.lvh.me:3000/api/v1/shop-product-orders
+
+# OUTPUT
+{
+  "data":
+  {
+    "id":"id-user-shop-product-order",
+    "type":"shop-product-orders",
+    "links":
+    {
+      "self":"http://acme.lvh.me:3000/api/v1/shop-product-orders/id-user-shop-product-order"
+    },
+    "attributes":
+    {
+      "period":"monthly",
+      "price":0,
+      "created-at":"2015-12-14T03:38:16.499Z"
+    },
+    "relationships":
+    {
+      "shop-plans":
+      {
+        "links":
+        {
+          "self":"http://acme.lvh.me:3000/api/v1/shop-product-orders/id-user-shop-product-order/relationships/shop-plans",
+          "related":"http://acme.lvh.me:3000/api/v1/shop-product-orders/id-user-shop-product-order/shop-plans"
+        }
+      }
+    }
+  }
+}
+```
+
+```ruby
+Not implemented
+```
+
+The user can create a shop product order by accessing the route bellow.
+
+Route: *`POST "/api/v1/shop-product-orders"`*
+
+Variable | Type | Value
+-------- | ---- | ----- 
+shop-cart-id | String | id-user-shop-cart
+
 # Admin Profile Account
 
 When logged in, the user admin access his own profile. This access allows him to show and update information about his account.
