@@ -61,34 +61,11 @@ horus-cli version
 
 # Identification
 
-UUID | Value
----- | ----- 
-id-access-token | 22222c3b9ce6eef158104ba4d99e7f9f849682c9c55df737d6e208220f5868d7
-id-refresh-token | 222254129c800c05bf40cab02b0c03f481b489d426bd06b5a32439e969df364c
-id-user-profile | 03b829d7-bbe6-5556-ae91-e480c27a28ee
-id-admin-profile | dab41f5f-a40c-54d8-a2f3
-id-admin-company | 918ba9c6-bde4-543a-a280-afbc1bf698ad
-id-admin-company-telephone | 924e8f38-369f-41e6-92f3-71d2f9e83884
-id-admin-company-address | c4f5337b-bd74-4e60-9f90-7ce5c4cba782
-id-admin-client-user-profile | 56facbbe-a59d-4743-99fd-ff9936411efd
-id-admin-client-user | 4be57074-5fc6-5942-bb62-c882fb2b4eff
-id-admin-client-user-telephone | 87d3c3a2-0cd2-4667-8fc9-3c3487133061
-id-admin-client-user-address | 0778b605-36ca-4a4e-8f54-d38f830d226c
-id-admin-shop-category | baedf1c1-cc00-454d-8cb7-fcc8319498fa
-id-admin-shop-group | 40c6d92b-4185-4a3d-bdfc-853da1f90f3d
-id-admin-plan-softlayer-cloud-server | 35ee5268-531e-4d15-bd5c-5bb21faa6500
-id-admin-catalog-provider | c2928f65-4ba6-59ba-b8d3-abec6a44fb23
-id-admin-catalog-provider-product | 2e646490-eeb2-5fbe-bbf3-a7d8b1d6a2e3
-id-admin-catalog-provider-product-attribute | 3082f9b2-6ba5-5808-8db7-25f25dc7ff70
-id-admin-catalog-provider-product-option | 37098c00-7215-5752-8c65-738d04ea4a02
-id-manager-profile | 1c9dcbb4-758d-55c0-874a-da7a8285a814
-id-manager-company | 78473988-b021-4864-aa48-f3b7bc4a06f6
-id-manager-company-telephone | 7915969d-e949-4066-b264-8d5bdcdf2d5c
-id-manager-company-address | 1906c99a-8d54-42e1-a035-cc425553f1fd
-id-manager-client-user-profile | 1b5c1105-360c-418c-8362-385749ec5746
-id-manager-client-user | 03b829d7-bbe6-5556-ae91-e480c27a28ee
-id-manager-client-user-telephone | 690c7235-59b3-5a4e-9c04-e1aa98cc6e38
-id-manager-client-user-address | 0778b605-36ca-4a4e-8f54-d38f830d226c
+All system identification is a UUID type and it begins with a substring "id + resource + function".
+
+exemple: id-user-profile: 03b829d7-bbe6-5556-ae91-e480c27a28ee
+
+For more information about UUID access *`https://en.wikipedia.org/wiki/Universally_unique_identifier`*
 
 # Login
 
@@ -263,7 +240,7 @@ Not implemented
 
 The user can visualize his profile account by accessing the route below.
 
-Route: *`GET "api/v1/profile"`*
+Route: *`GET "/api/v1/profile"`*
 
 ## Update
 
@@ -313,13 +290,804 @@ Not implemented
 
 The user can edit the information contained in his own profile account by accessing the route below.
 
-Route: *`GET "api/v1/profile"`*
+Route: *`GET "/api/v1/profile"`*
 
 Variable | Type | Value
 -------- | ---- | ----- 
 first-name | String | Super
 last-name | String | User
 email | String | user@smart.com
+
+# User Organization Profile
+
+When logged in, the user can access his own profile. This access allows him to show and update information about his account.
+
+## Show
+
+> Show Organization Profile
+
+```shell
+# INPUT
+curl --header "Content-Type: application/vnd.api+json" 
+  -H "Authorization: Bearer id-access-token" -X GET -d 
+'{ 
+  "data":
+  { 
+    "type":"organization-profiles" 
+  }
+}' 
+http://acme.lvh.me:3000/api/v1/organization-profile
+
+# OUTPUT
+{
+  "data":
+  {
+    "id":"id-user-organization-profile",
+    "type":"organization-profiles",
+    "links":
+    {
+      "self":"http://acme.lvh.me:3000/api/v1/organization-profile"
+    },
+    "attributes":
+    {
+      "name":"Fulano da Silva",
+      "nickname":"Fulano",
+      "organization-type":"person",
+      "email":"fulano@dasilva.com"
+    },
+    "relationships":
+    {
+      "organization-profile-address":
+      {
+        "links":
+        {
+          "self":"http://acme.lvh.me:3000/api/v1/organization-profile/relationships/organization-profile-address",
+          "related":"http://acme.lvh.me:3000/api/v1/organization-profile/organization-profile-address"
+        },
+        "data":
+        {
+          "type":"organization-profile-addresses",
+          "id":"id-user-organization-profile"
+        }
+      },
+      "organization-profile-telephones":
+      {
+        "links":
+        {
+          "self":"http://acme.lvh.me:3000/api/v1/organization-profile/relationships/organization-profile-telephones",
+          "related":"http://acme.lvh.me:3000/api/v1/organization-profile/organization-profile-telephones"
+        }
+      }
+    }
+  }
+}
+```
+
+```ruby
+Not implemented
+```
+
+The user can visualize his own profile by accessing the route below.
+
+Route: *`GET "/api/v1/organization-profile"`*
+
+## Update
+
+> Update Organization Profile
+
+```shell
+# INPUT
+curl --header "Content-Type: application/vnd.api+json" 
+  -H "Authorization: Bearer id-access-token" -X PATCH -d 
+'{
+  "data":
+  {
+    "type":"organization-profiles", 
+    "id":"id-user-organization-profile", 
+    "attributes":
+    {
+      "name":"Umbrella Corporation",
+      "nickname":"Umbrella",
+      "organization-type":"person",
+      "email":"umbrella@corp.com"
+    }
+  }
+}' 
+http://acme.lvh.me:3000/api/v1/organization-profile
+
+# OUTPUT
+{
+  "data":
+  {
+    "id":"id-user-organization-profile",
+    "type":"organization-profiles",
+    "links":
+    {
+      "self":"http://acme.lvh.me:3000/api/v1/organization-profile"
+    },
+    "attributes":
+    {
+      "name":"Umbrella Corporation",
+      "nickname":"Umbrella",
+      "organization-type":"person",
+      "email":"umbrella@corp.com"
+    },
+    "relationships":
+    {
+      "organization-profile-address":
+      {
+        "links":
+        {
+          "self":"http://acme.lvh.me:3000/api/v1/organization-profile/relationships/organization-profile-address",
+          "related":"http://acme.lvh.me:3000/api/v1/organization-profile/organization-profile-address"
+        },
+        "data":
+        {
+          "type":"organization-profile-addresses",
+          "id":"id-user-organization-profile"
+        }
+      },
+      "organization-profile-telephones":
+      {
+        "links":
+        {
+          "self":"http://acme.lvh.me:3000/api/v1/organization-profile/relationships/organization-profile-telephones",
+          "related":"http://acme.lvh.me:3000/api/v1/organization-profile/organization-profile-telephones"
+        }
+      }
+    }
+  }
+}
+```
+
+```ruby
+Not implemented
+```
+
+The user can edit the information contained in his own profile by accessing the route below.
+
+Route: *`PATCH "/api/v1/organization-profile"`*
+
+Variable | Type | Value
+-------- | ---- | ----- 
+name | String | Umbrella Corporation
+nickname | String | Umbrella
+organization-type | String | person
+email | String | umbrella@corp.com
+
+# User Organization Profile Telephone
+
+When logged in, the user can access information about his telephones. This access allows him to create, update, show and list them.
+
+## Create
+
+> Create Organization Profile Telephone
+
+```shell
+# INPUT
+curl --header "Content-Type: application/vnd.api+json" 
+  -H "Authorization: Bearer id-access-token" -X POST -d  
+'{
+  "data":
+  {
+    "type":"organization-profile-telephones", 
+    "relationships":
+    {
+      "organization-profile":
+      {
+        "data":
+        {
+          "type":"organization-profiles", 
+          "id":"id-user-organization-profile"
+        }
+      }
+    }, 
+    "attributes":
+    {
+      "country-code":"31", 
+      "number":"1112223334"
+    }
+  }
+}'  
+http://acme.lvh.me:3000/api/v1/organization-profile-telephones
+
+# OUTPUT
+{
+  "data":
+  {
+    "id":"id-user-organization-profile-telephone",
+    "type":"organization-profile-telephones",
+    "links":
+    {
+      "self":"http://acme.lvh.me:3000/api/v1/organization-profile-telephones/id-user-organization-profile-telephone"
+    },
+    "attributes":
+    {
+      "country-code":"31",
+      "number":"1112223334"
+    },
+    "relationships":
+    {
+      "organization-profile":
+      {
+        "links":
+        {
+          "self":"http://acme.lvh.me:3000/api/v1/organization-profile-telephones/id-user-organization-profile-telephone/relationships/organization-profile",
+          "related":"http://acme.lvh.me:3000/api/v1/organization-profile-telephones/id-user-organization-profile-telephone/organization-profile"
+        }
+      }
+    }
+  }
+}
+```
+
+```ruby
+Not implemented
+```
+
+The user can create a telephone by accessing the route below.
+
+Route: *`POST "/api/v1/organization-profile-telephones"`*
+
+Variable | Type | Value
+-------- | ---- | ----- 
+country-code | String | 31 
+number | String | 1112223334
+
+## Update
+
+> Update Organization Profile Telephone
+
+```shell
+# INPUT
+curl --header "Content-Type: application/vnd.api+json" 
+  -H "Authorization: Bearer id-access-token" -X PATCH -d 
+'{ 
+  "data":
+  {
+    "id":"id-user-organization-profile-telephone",
+    "type":"organization-profile-telephones",
+    "attributes":
+    {
+      "country-code":"12", 
+      "number":"789890888"
+    }
+  }
+}' 
+http://acme.lvh.me:3000/api/v1/organization-profile-telephones/id-user-organization-profile-telephone
+
+# OUTPUT
+{
+  "data":
+  {
+    "id":"id-user-organization-profile-telephone",
+    "type":"organization-profile-telephones",
+    "links":
+    {
+      "self":"http://acme.lvh.me:3000/api/v1/organization-profile-telephones/id-user-organization-profile-telephone"
+    },
+    "attributes":
+    {
+      "country-code":"12",
+      "number":"789890888"
+    },
+    "relationships":
+    {
+      "organization-profile":
+      {
+        "links":
+        {
+          "self":"http://acme.lvh.me:3000/api/v1/organization-profile-telephones/id-user-organization-profile-telephone/relationships/organization-profile",
+          "related":"http://acme.lvh.me:3000/api/v1/organization-profile-telephones/id-user-organization-profile-telephone/organization-profile"
+        }
+      }
+    }
+  }
+}
+```
+
+```ruby
+Not implemented
+```
+
+The user can edit the information contained in telephone by accessing the route below.
+
+Route: *`PATCH "/api/v1/organization-profile-telephones/:id"`*
+
+Variable | Type | Value
+-------- | ---- | ----- 
+country-code | String | 12 
+number | String | 789890888
+
+## Show
+
+> Show Organization Profile Telephone
+
+```shell
+# INPUT
+curl --header "Content-Type: application/vnd.api+json" 
+  -H "Authorization: Bearer id-access-token" -X GET -d 
+'{
+  "data":
+  {
+    "type":"organization-profile-telephones"
+  }
+}' 
+http://acme.lvh.me:3000/api/v1/organization-profile-telephones/id-user-organization-profile-telephone
+
+# OUTPUT
+{
+  "data":
+  {
+    "id":"id-user-organization-profile-telephone",
+    "type":"organization-profile-telephones",
+    "links":
+    {
+      "self":"http://acme.lvh.me:3000/api/v1/organization-profile-telephones/id-user-organization-profile-telephone"
+    },
+    "attributes":
+    {
+      "country-code":"12",
+      "number":"789890888"
+    },
+    "relationships":
+    {
+      "organization-profile":
+      {
+        "links":
+        {
+          "self":"http://acme.lvh.me:3000/api/v1/organization-profile-telephones/id-user-organization-profile-telephone/relationships/organization-profile",
+          "related":"http://acme.lvh.me:3000/api/v1/organization-profile-telephones/id-user-organization-profile-telephone/organization-profile"
+        }
+      }
+    }
+  }
+}
+```
+
+```ruby
+Not implemented
+```
+
+The user can visualize a specific telephone by accessing the route below.
+
+Route: *`GET "/api/v1/organization-profile-telephones/:id"`*
+
+## List
+
+> List Organization Profile Telephone
+
+```shell
+# INPUT
+curl --header "Content-Type: application/vnd.api+json" 
+  -H "Authorization: Bearer id-access-token" -X GET -d 
+'{
+  "data":
+  {
+    "type":"organization-profile-telephones"
+  }
+}' 
+http://acme.lvh.me:3000/api/v1/organization-profile-telephones
+
+# OUTPUT
+{
+  "data":
+  [
+    {
+      "id":"id-user-organization-profile-telephone",
+      "type":"organization-profile-telephones",
+      "links":
+      {
+        "self":"http://acme.lvh.me:3000/api/v1/organization-profile-telephones/id-user-organization-profile-telephone"
+      },
+      "attributes":
+      {
+        "country-code":"12",
+        "number":"789890888"
+      },
+      "relationships":
+      {
+        "organization-profile":
+        {
+          "links":
+          {
+            "self":"http://acme.lvh.me:3000/api/v1/organization-profile-telephones/id-user-organization-profile-telephone/relationships/organization-profile",
+            "related":"http://acme.lvh.me:3000/api/v1/organization-profile-telephones/id-user-organization-profile-telephone/organization-profile"
+          }
+        }
+      }
+    },
+    {
+      "id":"id-user-organization-profile-telephone",
+      "type":"organization-profile-telephones",
+      "links":
+      {
+        "self":"http://acme.lvh.me:3000/api/v1/organization-profile-telephones/id-user-organization-profile-telephone"
+      },
+      "attributes":
+      {
+        "country-code":"55",
+        "number":"1132578900"
+      },
+      "relationships":
+      {
+        "organization-profile":
+        {
+          "links":
+          {
+            "self":"http://acme.lvh.me:3000/api/v1/organization-profile-telephones/id-user-organization-profile-telephone/relationships/organization-profile",
+            "related":"http://acme.lvh.me:3000/api/v1/organization-profile-telephones/id-user-organization-profile-telephone/organization-profile"
+          }
+        }
+      }
+    }
+  ]
+}
+```
+
+```ruby
+Not implemented
+```
+
+The user can visualize all telephones by accessing the route below.
+
+Route: *`GET "/api/v1/organization-profile-telephones"`*
+
+# User Organization Profile Address
+
+When logged in, the user can access information about his address. This access allows him to create, update and show them.
+
+## Create
+
+> Create Organization Profile Address
+
+```shell
+# INPUT
+curl --header "Content-Type: application/vnd.api+json" 
+  -H "Authorization: Bearer id-access-token" -X POST -d  
+'{
+  "data":
+  {
+    "type":"organization-profile-addresses", 
+    "relationships":
+    {
+      "organization-profile":
+      {
+        "data":
+        {
+          "type":"organization-profiles", 
+          "id":"id-user-organization-profile"
+        }
+      }
+    }, 
+    "attributes":
+    {
+      "street":"Jericho Tpke Suite 344", 
+      "number":"2417", 
+      "complement":"Apartment", 
+      "zipcode":"11040", 
+      "neighborhood":"Commack", 
+      "city":"Garden City Park", 
+      "state":"NY", 
+      "country":"US"
+    }
+  }
+}'  
+http://acme.lvh.me:3000/api/v1/organization-profile-address
+
+# OUTPUT
+{
+  "data":
+  {
+    "id":"id-user-organization-profile-address",
+    "type":"organization-profile-addresses",
+    "links":
+    {
+      "self":"http://acme.lvh.me:3000/api/v1/organization-profile-address"
+    },
+    "attributes":
+    {
+      "street":"Jericho Tpke Suite 344",
+      "number":"2417",
+      "complement":"Apartment",
+      "zipcode":"11040",
+      "neighborhood":"Commack",
+      "city":"Garden City Park",
+      "state":"NY",
+      "country":"US"
+    },
+    "relationships":
+    {
+      "organization-profile":
+      {
+        "links":
+        {
+          "self":"http://acme.lvh.me:3000/api/v1/organization-profile-address/relationships/organization-profile",
+          "related":"http://acme.lvh.me:3000/api/v1/organization-profile-address/organization-profile"
+        }
+      }
+    }
+  }
+}
+```
+
+```ruby
+Not implemented
+```
+
+The user can create an address by accessing the route below.
+
+Route: *`POST "/api/v1/organization-profile-address"`*
+
+Variable | Type | Value
+-------- | ---- | ----- 
+street | String | Jericho Tpke Suite 344
+number | String | 2417
+complement | String | Apartment
+zipcode | String | 11040
+neighborhood | String | Commack
+city | String | Garden City Park
+state | String | NY
+country | String | US
+
+## Update
+
+> Update Organization Profile Address
+
+```shell
+# INPUT
+curl --header "Content-Type: application/vnd.api+json" 
+  -H "Authorization: Bearer id-access-token" -X PATCH -d 
+'{ 
+  "data": 
+  { 
+    "type":"organization-profile-addresses", 
+    "id":"id-user-organization-profile-address", 
+    "attributes":
+    { 
+      "street":"Baker Street", 
+      "number":"221B", 
+      "complement":"Apartament", 
+      "zipcode":"5150117", 
+      "neighborhood":"unknown", 
+      "city":"Westminster", 
+      "state":"London", 
+      "country":"UK"
+    }
+  }
+}' 
+http://acme.lvh.me:3000/api/v1/organization-profile-address
+
+# OUTPUT
+{
+  "data":
+  {
+    "id":"id-user-organization-profile-address",
+    "type":"organization-profile-addresses",
+    "links":
+    {
+      "self":"http://acme.lvh.me:3000/api/v1/organization-profile-address"
+    },
+    "attributes":
+    {
+      "street":"Baker Street",
+      "number":"221B",
+      "complement":"Apartament",
+      "zipcode":"5150117",
+      "neighborhood":"unknown",
+      "city":"Westminster",
+      "state":"London",
+      "country":"UK"
+    },
+    "relationships":
+    {
+      "organization-profile":
+      {
+        "links":
+        {
+          "self":"http://acme.lvh.me:3000/api/v1/organization-profile-address/relationships/organization-profile",
+          "related":"http://acme.lvh.me:3000/api/v1/organization-profile-address/organization-profile"
+        }
+      }
+    }
+  }
+}
+```
+
+```ruby
+Not implemented
+```
+
+The user can edit the information contained in address by accessing the route below.
+
+Route: *`PATCH "/api/v1/organization-profile-address"`*
+
+Variable | Type | Value
+-------- | ---- | ----- 
+street | String | Baker Street
+number | String | 221B
+complement | String | Apartment
+zipcode | String | 5150117
+neighborhood | String | unknown
+city | String | Westminster
+state | String | London
+country | String | UK
+
+## Show
+
+> Show Organization Profile Address
+
+```shell
+# INPUT
+curl --header "Content-Type: application/vnd.api+json" 
+  -H "Authorization: Bearer id-access-token" -X GET -d 
+'{ 
+  "data":
+  { 
+    "type":"organization-profile-addresses" 
+  }
+}' 
+http://acme.lvh.me:3000/api/v1/organization-profile-address
+
+# OUTPUT
+{
+  "data":
+  {
+    "id":"id-user-organization-profile-address",
+    "type":"organization-profile-addresses",
+    "links":
+    {
+      "self":"http://acme.lvh.me:3000/api/v1/organization-profile-address"
+    },
+    "attributes":
+    {
+      "street":"Baker Street",
+      "number":"221B",
+      "complement":"Apartament",
+      "zipcode":"5150117",
+      "neighborhood":"unknown",
+      "city":"Westminster",
+      "state":"London",
+      "country":"UK"
+    },
+    "relationships":
+    {
+      "organization-profile":
+      {
+        "links":
+        {
+          "self":"http://acme.lvh.me:3000/api/v1/organization-profile-address/relationships/organization-profile",
+          "related":"http://acme.lvh.me:3000/api/v1/organization-profile-address/organization-profile"
+        }
+      }
+    }
+  }
+}
+```
+
+```ruby
+Not implemented
+```
+
+The user can visualize a specific address by accessing the route below.
+
+Route: *`GET "/api/v1/organization-profile-address"`*
+
+# User Select Product and Add them to His Shopping Cart
+
+When logged in, the user can acess the shop. This acess allows him to select products and add them to his shopping cart. First of all the user need to create a shop cart and after select product order.
+
+## Create Shop Cart
+
+> Create Shop Cart
+
+```shell
+# INPUT
+curl --header "Content-Type: application/vnd.api+json" 
+  -H "Authorization: Bearer id-access-token" -X POST -d 
+'{ 
+  "data":
+  { 
+    "type":"shop-carts" 
+  }
+}' 
+http://acme.lvh.me:3000/api/v1/shop-carts
+
+# OUTPUT
+{
+  "data":
+  {
+    "id":"id-user-shop-cart",
+    "type":"shop-carts",
+    "links":
+    {
+      "self":"http://acme.lvh.me:3000/api/v1/shop-carts/id-user-shop-cart"
+    },
+    "relationships":
+    {
+      "shop-plans":
+      {
+        "links":
+        {
+          "self":"http://acme.lvh.me:3000/api/v1/shop-carts/id-user-shop-cart/relationships/shop-plans",
+          "related":"http://acme.lvh.me:3000/api/v1/shop-carts/id-user-shop-cart/shop-plans"
+        }
+      }
+    }
+  }
+}
+```
+
+```ruby
+Not implemented
+```
+
+The user can create a shop cart that has relationship with a plan by accessing the route below.
+
+Route: *`POST "/api/v1/shop-carts"`
+
+## Create Shop Product Order
+
+> Create Shop Product Order
+
+```shell
+# INPUT
+curl --header "Content-Type: application/vnd.api+json" 
+  -H "Authorization: Bearer id-access-token" -X POST -d 
+'{ 
+  "data":
+  { 
+    "type":"shop-product-orders", 
+    "attributes":
+    { 
+      "shop-cart-id":"id-user-shop-cart" 
+    }
+  }
+}' 
+http://acme.lvh.me:3000/api/v1/shop-product-orders
+
+# OUTPUT
+{
+  "data":
+  {
+    "id":"id-user-shop-product-order",
+    "type":"shop-product-orders",
+    "links":
+    {
+      "self":"http://acme.lvh.me:3000/api/v1/shop-product-orders/id-user-shop-product-order"
+    },
+    "attributes":
+    {
+      "period":"monthly",
+      "price":0,
+      "created-at":"2015-12-14T03:38:16.499Z"
+    },
+    "relationships":
+    {
+      "shop-plans":
+      {
+        "links":
+        {
+          "self":"http://acme.lvh.me:3000/api/v1/shop-product-orders/id-user-shop-product-order/relationships/shop-plans",
+          "related":"http://acme.lvh.me:3000/api/v1/shop-product-orders/id-user-shop-product-order/shop-plans"
+        }
+      }
+    }
+  }
+}
+```
+
+```ruby
+Not implemented
+```
+
+The user can create a shop product order by accessing the route bellow.
+
+Route: *`POST "/api/v1/shop-product-orders"`*
+
+Variable | Type | Value
+-------- | ---- | ----- 
+shop-cart-id | String | id-user-shop-cart
 
 # Admin Profile Account
 
@@ -367,7 +1135,7 @@ Not implemented
 
 The admin can visualize his profile account by accessing the route below.
 
-Route: *`GET "api/v1/admin/profile"`*
+Route: *`GET "/api/v1/admin/profile"`*
 
 ## Update
 
@@ -417,7 +1185,7 @@ Not implemented
 
 The admin can edit the information contained in his own profile account by accessing the route below.
 
-Route: *`GET "api/v1/admin/profile"`*
+Route: *`GET "/api/v1/admin/profile"`*
 
 Variable | Type | Value
 -------- | ---- | ----- 
@@ -495,7 +1263,7 @@ Not implemented
 
 The admin can visualize his own profile by accessing the route below.
 
-Route: *`GET "api/v1/admin/company-profile"`*
+Route: *`GET "/api/v1/admin/company-profile"`*
 
 ## Update
 
@@ -567,7 +1335,7 @@ http://smart.lvh.me:3000/api/v1/admin/company-profile
 Not implemented
 ```
 
-The admin can edit the information contained in his own profile by accessing the route below
+The admin can edit the information contained in his own profile by accessing the route below.
 
 Route: *`PATCH "/api/v1/admin/company-profile"`*
 
@@ -651,7 +1419,6 @@ The admin can create a telephone by accessing the route below.
 
 Route: *`POST "/api/v1/admin/company-profile-telephones"`*
 
-
 Variable | Type | Value
 -------- | ---- | ----- 
 country-code | String | 55 
@@ -715,7 +1482,7 @@ Not implemented
 
 The admin can edit the information contained in telephone by accessing the route below.
 
-Route: *`PATCH "api/v1/admin/company-profile-telephones/:id"`*
+Route: *`PATCH "/api/v1/admin/company-profile-telephones/:id"`*
 
 Variable | Type | Value
 -------- | ---- | ----- 
@@ -1047,7 +1814,7 @@ curl --header "Content-Type: application/vnd.api+json"
 '{ 
   "data":
   { 
-    "type":"profile" 
+    "type":"company-profile-addresses" 
   }
 }' 
 http://smart.lvh.me:3000/api/v1/admin/company-profile-address
@@ -2999,9 +3766,9 @@ http://smart.lvh.me:3000/api/v1/admin/shop-softlayer-cloud-server-plans
 Not implemented
 ```
 
-The admin can create a plan Softlayer cloud server by accessing the route below.
+The admin can create a Softlayer Cloud Server plan accessing the route below.
 
-Route: *`POST "api/v1/admin/shop-softlayer-cloud-server-plans"`*
+Route: *`POST "/api/v1/admin/shop-softlayer-cloud-server-plans"`*
 
 Variable | Type | Value
 -------- | ---- | ----- 
@@ -3024,6 +3791,215 @@ memory | String | 2 GB
 processor | String | 4 x 2.0 GHz Cores
 operating-system | String | Debian - Latest (64 bit)
 network-component | String | 1 Gbps Public \u0026 Private Network Uplinks
+
+## Update
+
+> Update Shop Plan Softlayer Cloud Server
+
+```shell
+# INPUT
+curl --header "Content-Type: application/vnd.api+json" 
+  -H "Authorization: Bearer id-access-token" -X PATCH -d 
+'{
+  "data":
+  {
+    "id":"id-admin-plan-softlayer-cloud-server", 
+    "type":"shop-softlayer-cloud-server-plans", 
+    "attributes":
+    { 
+      "description":"Boom",
+      "long-description":"Cloud Server Boom",
+      "disk-1-san":"10 GB (SAN)",
+      "disk-2-san":"5 GB (SAN)",
+      "disk-3-san":"5 GB (SAN)",
+      "memory":"4 GB",
+      "processor":"16 x 2.0 GHz Cores",
+      "operating-system":"Ubunto - Latest (64 bit)",
+      "network-component":"2 Gbps Public & Private Network Uplinks"
+    }
+  }
+}' 
+http://acme.lvh.me:3000/api/v1/admin/shop-softlayer-cloud-server-plans/id-admin-plan-softlayer-cloud-server
+
+# OUTPUT
+{
+  "data":
+  {
+    "id":"id-admin-plan-softlayer-cloud-server",
+    "type":"shop-softlayer-cloud-server-plans",
+    "links":
+    {
+      "self":"http://acme.lvh.me:3000/api/v1/admin/shop-softlayer-cloud-server-plans/id-admin-plan-softlayer-cloud-server"
+    },
+    "attributes":
+    {
+      "name":"Acme Cloud Server (Small)",
+      "enabled":true,
+      "description":"Boom",
+      "long-description":"Cloud Server Boom",
+      "allow-custom":true,
+      "can-customize":["datacenter"],
+      "disk-1-san":"10 GB (SAN)",
+      "disk-2-san":"5 GB (SAN)",
+      "disk-3-san":"5 GB (SAN)",
+      "disk-4-san":null,
+      "disk-5-san":null,
+      "disk-1-local":null,
+      "disk-2-local":null,
+      "disk-type":"san",
+      "datacenter":"wdc01",
+      "memory":"4 GB",
+      "processor":"16 x 2.0 GHz Cores",
+      "operating-system":"Ubunto - Latest (64 bit)",
+      "network-component":"2 Gbps Public \u0026 Private Network Uplinks"
+    }
+  }
+} 
+```
+
+```ruby
+Not implemented
+```
+
+The admin can edit a SoftLayer Cloud Server plan accessing the route below.
+
+Route: *`PATCH "/api/v1/admin/shop-softlayer-cloud-server-plans/:id`*
+
+Variable | Type | Value
+-------- | ---- | ----- 
+description | String | Boom
+long-description | String | Cloud Server Boom
+allow-custom | String | false
+can-customize | String | [ ]
+disk-1-san | String | 10 GB (SAN)
+disk-2-san | String | 5 GB (SAN)
+disk-3-san | String | 5 GB (SAN)
+memory | String | 4 GB
+processor | String | 16 x 2.0 GHz Cores
+operating-system | String | Ubunto - Latest (64 bit)
+network-component | String | 2 Gbps Public \u0026 Private Network Uplinks
+
+## Show
+
+> Show Shop Plan Softlayer Cloud Server
+
+```shell
+# INPUT
+curl --header "Content-Type: application/vnd.api+json" 
+  -H "Authorization: Bearer id-access-token" -X GET -d 
+'{
+  "data":
+  {
+    "type":"shop-softlayer-cloud-server-plans"
+  }
+}' 
+http://acme.lvh.me:3000/api/v1/admin/shop-softlayer-cloud-server-plans/id-admin-plan-softlayer-cloud-server
+
+# OUTPUT
+{
+  "data":
+  {
+    "id":"48c178e6-d4e7-5b2e-8dba-47d7e7b2265a",
+    "type":"shop-softlayer-cloud-server-plans",
+    "links":
+    {
+      "self":"http://acme.lvh.me:3000/api/v1/admin/shop-softlayer-cloud-server-plans/48c178e6-d4e7-5b2e-8dba-47d7e7b2265a"
+    },
+    "attributes":
+    {
+      "name":"Acme Cloud Server (Small)",
+      "enabled":true,
+      "description":"Boom",
+      "long-description":"Cloud Server Boom",
+      "allow-custom":true,
+      "can-customize":["datacenter"],
+      "disk-1-san":"10 GB (SAN)",
+      "disk-2-san":"5 GB (SAN)",
+      "disk-3-san":"5 GB (SAN)",
+      "disk-4-san":null,
+      "disk-5-san":null,
+      "disk-1-local":null,
+      "disk-2-local":null,
+      "disk-type":"san",
+      "datacenter":"wdc01",
+      "memory":"4 GB",
+      "processor":"16 x 2.0 GHz Cores",
+      "operating-system":"Ubunto - Latest (64 bit)",
+      "network-component":"2 Gbps Public \u0026 Private Network Uplinks"
+    }
+  }
+}
+```
+
+```ruby
+Not implemented
+```
+
+The admin can get information for a specific SoftLayer Cloud Server plan accessing the route bellow.
+
+Route: *`GET "/api/v1/admin/shop-softlayer-cloud-server-plans/:id"`*
+
+## List
+
+> List Shop Plan Softlayer Cloud Server
+
+```shell
+# INPUT
+curl --header "Content-Type: application/vnd.api+json" 
+  -H "Authorization: Bearer id-access-token" -X GET -d 
+'{
+  "data":
+  {
+    "type":"shop-softlayer-cloud-server-plans"
+  }
+}' 
+http://acme.lvh.me:3000/api/v1/admin/shop-softlayer-cloud-server-plans
+
+# OUTPUT
+{
+  "data":
+  [
+    {
+      "id":"id-admin-plan-softlayer-cloud-server",
+      "type":"shop-softlayer-cloud-server-plans",
+      "links":
+      {
+        "self":"http://acme.lvh.me:3000/api/v1/admin/shop-softlayer-cloud-server-plans/id-admin-plan-softlayer-cloud-server"
+      },
+      "attributes":
+      {
+        "name":"Acme Cloud Server (Small)",
+        "enabled":true,
+        "description":"Acme Cloud Server Small Desc",
+        "long-description":"Acme Cloud Server Small Long Desc",
+        "allow-custom":true,
+        "can-customize":["datacenter"],
+        "disk-1-san":"25 GB (SAN)",
+        "disk-2-san":null,
+        "disk-3-san":null,
+        "disk-4-san":null,
+        "disk-5-san":null,
+        "disk-1-local":null,
+        "disk-2-local":null,
+        "disk-type":"san",
+        "datacenter":"wdc01",
+        "memory":"2 GB",
+        "processor":"4 x 2.0 GHz Cores",
+        "operating-system":"Debian - Latest (64 bit)",
+        "network-component":"1 Gbps Public \u0026 Private Network Uplinks"
+      }
+    }
+  ]
+}
+```
+
+```ruby
+Not implemented
+```
+
+The admin can list all SoftLayer Cloud Server plans accessing the route bellow.
+
+Route: *`GET "/api/v1/admin/shop-softlayer-cloud-server-plans"`*
 
 # Admin Shop Catalog Provider
 
@@ -3430,7 +4406,7 @@ horus-cli profile show
 
 The manager can visualize his profile account by accessing the route below.
 
-Route: *`GET "api/v1/manager/profile"`*
+Route: *`GET "/api/v1/manager/profile"`*
 
 ## Update
 
@@ -3490,7 +4466,7 @@ horus-cli profile update '"first-name":"New Company","last-name":"Corp"'
 
 The manager can edit the information contained in his own profile account by accessing the route below.
 
-Route: *`PATCH "api/v1/manager/profile"`*
+Route: *`PATCH "/api/v1/manager/profile"`*
 
 Variable | Type | Value
 ---------- | ---- | ----- 
@@ -3723,7 +4699,7 @@ Not implemented
 
 The manager can visualize his own profile account by accessing the route below.
 
-Route: *`GET "api/v1/manager/company-profile"`*
+Route: *`GET "/api/v1/manager/company-profile"`*
 
 # Manager Company Profile Telephone
 
@@ -3862,7 +4838,7 @@ Not implemented
 
 The manager can edit the information contained in a telephone by accessing the route below.
 
-Route: *`PATCH "api/v1/manager/company-profile-telephones/:id"`*
+Route: *`PATCH "/api/v1/manager/company-profile-telephones/:id"`*
 
 Variable | Type | Value
 -------- | ---- | ----- 
