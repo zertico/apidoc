@@ -89,113 +89,11 @@
 
 <h1 id="identification">Identification</h1>
 
-<table><thead>
-<tr>
-<th>UUID</th>
-<th>Value</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>id-access-token</td>
-<td>22222c3b9ce6eef158104ba4d99e7f9f849682c9c55df737d6e208220f5868d7</td>
-</tr>
-<tr>
-<td>id-refresh-token</td>
-<td>222254129c800c05bf40cab02b0c03f481b489d426bd06b5a32439e969df364c</td>
-</tr>
-<tr>
-<td>id-user-profile</td>
-<td>03b829d7-bbe6-5556-ae91-e480c27a28ee</td>
-</tr>
-<tr>
-<td>id-admin-profile</td>
-<td>dab41f5f-a40c-54d8-a2f3</td>
-</tr>
-<tr>
-<td>id-admin-company</td>
-<td>918ba9c6-bde4-543a-a280-afbc1bf698ad</td>
-</tr>
-<tr>
-<td>id-admin-company-telephone</td>
-<td>924e8f38-369f-41e6-92f3-71d2f9e83884</td>
-</tr>
-<tr>
-<td>id-admin-company-address</td>
-<td>c4f5337b-bd74-4e60-9f90-7ce5c4cba782</td>
-</tr>
-<tr>
-<td>id-admin-client-user-profile</td>
-<td>56facbbe-a59d-4743-99fd-ff9936411efd</td>
-</tr>
-<tr>
-<td>id-admin-client-user</td>
-<td>4be57074-5fc6-5942-bb62-c882fb2b4eff</td>
-</tr>
-<tr>
-<td>id-admin-client-user-telephone</td>
-<td>87d3c3a2-0cd2-4667-8fc9-3c3487133061</td>
-</tr>
-<tr>
-<td>id-admin-client-user-address</td>
-<td>0778b605-36ca-4a4e-8f54-d38f830d226c</td>
-</tr>
-<tr>
-<td>id-admin-shop-category</td>
-<td>baedf1c1-cc00-454d-8cb7-fcc8319498fa</td>
-</tr>
-<tr>
-<td>id-admin-shop-group</td>
-<td>40c6d92b-4185-4a3d-bdfc-853da1f90f3d</td>
-</tr>
-<tr>
-<td>id-admin-catalog-provider</td>
-<td>c2928f65-4ba6-59ba-b8d3-abec6a44fb23</td>
-</tr>
-<tr>
-<td>id-admin-catalog-provider-product</td>
-<td>2e646490-eeb2-5fbe-bbf3-a7d8b1d6a2e3</td>
-</tr>
-<tr>
-<td>id-admin-catalog-provider-product-attribute</td>
-<td>3082f9b2-6ba5-5808-8db7-25f25dc7ff70</td>
-</tr>
-<tr>
-<td>id-admin-catalog-provider-product-option</td>
-<td>37098c00-7215-5752-8c65-738d04ea4a02</td>
-</tr>
-<tr>
-<td>id-manager-profile</td>
-<td>1c9dcbb4-758d-55c0-874a-da7a8285a814</td>
-</tr>
-<tr>
-<td>id-manager-company</td>
-<td>78473988-b021-4864-aa48-f3b7bc4a06f6</td>
-</tr>
-<tr>
-<td>id-manager-company-telephone</td>
-<td>7915969d-e949-4066-b264-8d5bdcdf2d5c</td>
-</tr>
-<tr>
-<td>id-manager-company-address</td>
-<td>1906c99a-8d54-42e1-a035-cc425553f1fd</td>
-</tr>
-<tr>
-<td>id-manager-client-user-profile</td>
-<td>1b5c1105-360c-418c-8362-385749ec5746</td>
-</tr>
-<tr>
-<td>id-manager-client-user</td>
-<td>03b829d7-bbe6-5556-ae91-e480c27a28ee</td>
-</tr>
-<tr>
-<td>id-manager-client-user-telephone</td>
-<td>690c7235-59b3-5a4e-9c04-e1aa98cc6e38</td>
-</tr>
-<tr>
-<td>id-manager-client-user-address</td>
-<td>0778b605-36ca-4a4e-8f54-d38f830d226c</td>
-</tr>
-</tbody></table>
+<p>All system identification is a UUID type and it begins with a substring &ldquo;id + resource + function&rdquo;.</p>
+
+<p>exemple: id-user-profile: 03b829d7-bbe6-5556-ae91-e480c27a28ee</p>
+
+<p>For more information about UUID access <em><code class="prettyprint">https://en.wikipedia.org/wiki/Universally_unique_identifier</code></em></p>
 
 <h1 id="login">Login</h1>
 
@@ -424,7 +322,7 @@ http://smart.lvh.me:3000/api/v1/profile
 
 <p>The user can visualize his profile account by accessing the route below.</p>
 
-<p>Route: <em><code class="prettyprint">GET &quot;api/v1/profile&quot;</code></em></p>
+<p>Route: <em><code class="prettyprint">GET &quot;/api/v1/profile&quot;</code></em></p>
 
 <h2 id="update">Update</h2>
 
@@ -472,7 +370,7 @@ http://smart.lvh.me:3000/api/v1/profile
 
 <p>The user can edit the information contained in his own profile account by accessing the route below.</p>
 
-<p>Route: <em><code class="prettyprint">GET &quot;api/v1/profile&quot;</code></em></p>
+<p>Route: <em><code class="prettyprint">GET &quot;/api/v1/profile&quot;</code></em></p>
 
 <table><thead>
 <tr>
@@ -495,6 +393,911 @@ http://smart.lvh.me:3000/api/v1/profile
 <td>email</td>
 <td>String</td>
 <td>user@smart.com</td>
+</tr>
+</tbody></table>
+
+<h1 id="user-organization-profile">User Organization Profile</h1>
+
+<p>When logged in, the user can access his own profile. This access allows him to show and update information about his account.</p>
+
+<h2 id="show">Show</h2>
+
+<blockquote>
+<p>Show Organization Profile</p>
+</blockquote>
+<pre class="highlight shell"><code><span class="c"># INPUT</span>
+curl --header <span class="s2">"Content-Type: application/vnd.api+json"</span> 
+  -H <span class="s2">"Authorization: Bearer id-access-token"</span> -X GET -d 
+<span class="s1">'{ 
+  "data":
+  { 
+    "type":"organization-profiles" 
+  }
+}'</span> 
+http://acme.lvh.me:3000/api/v1/organization-profile
+
+<span class="c"># OUTPUT</span>
+<span class="o">{</span>
+  <span class="s2">"data"</span>:
+  <span class="o">{</span>
+    <span class="s2">"id"</span>:<span class="s2">"id-user-organization-profile"</span>,
+    <span class="s2">"type"</span>:<span class="s2">"organization-profiles"</span>,
+    <span class="s2">"links"</span>:
+    <span class="o">{</span>
+      <span class="s2">"self"</span>:<span class="s2">"http://acme.lvh.me:3000/api/v1/organization-profile"</span>
+    <span class="o">}</span>,
+    <span class="s2">"attributes"</span>:
+    <span class="o">{</span>
+      <span class="s2">"name"</span>:<span class="s2">"Fulano da Silva"</span>,
+      <span class="s2">"nickname"</span>:<span class="s2">"Fulano"</span>,
+      <span class="s2">"organization-type"</span>:<span class="s2">"person"</span>,
+      <span class="s2">"email"</span>:<span class="s2">"fulano@dasilva.com"</span>
+    <span class="o">}</span>,
+    <span class="s2">"relationships"</span>:
+    <span class="o">{</span>
+      <span class="s2">"organization-profile-address"</span>:
+      <span class="o">{</span>
+        <span class="s2">"links"</span>:
+        <span class="o">{</span>
+          <span class="s2">"self"</span>:<span class="s2">"http://acme.lvh.me:3000/api/v1/organization-profile/relationships/organization-profile-address"</span>,
+          <span class="s2">"related"</span>:<span class="s2">"http://acme.lvh.me:3000/api/v1/organization-profile/organization-profile-address"</span>
+        <span class="o">}</span>,
+        <span class="s2">"data"</span>:
+        <span class="o">{</span>
+          <span class="s2">"type"</span>:<span class="s2">"organization-profile-addresses"</span>,
+          <span class="s2">"id"</span>:<span class="s2">"id-user-organization-profile"</span>
+        <span class="o">}</span>
+      <span class="o">}</span>,
+      <span class="s2">"organization-profile-telephones"</span>:
+      <span class="o">{</span>
+        <span class="s2">"links"</span>:
+        <span class="o">{</span>
+          <span class="s2">"self"</span>:<span class="s2">"http://acme.lvh.me:3000/api/v1/organization-profile/relationships/organization-profile-telephones"</span>,
+          <span class="s2">"related"</span>:<span class="s2">"http://acme.lvh.me:3000/api/v1/organization-profile/organization-profile-telephones"</span>
+        <span class="o">}</span>
+      <span class="o">}</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+<pre class="highlight ruby"><code><span class="no">Not</span> <span class="n">implemented</span>
+</code></pre>
+
+<p>The user can visualize his own profile by accessing the route below.</p>
+
+<p>Route: <em><code class="prettyprint">GET &quot;/api/v1/organization-profile&quot;</code></em></p>
+
+<h2 id="update">Update</h2>
+
+<blockquote>
+<p>Update Organization Profile</p>
+</blockquote>
+<pre class="highlight shell"><code><span class="c"># INPUT</span>
+curl --header <span class="s2">"Content-Type: application/vnd.api+json"</span> 
+  -H <span class="s2">"Authorization: Bearer id-access-token"</span> -X PATCH -d 
+<span class="s1">'{
+  "data":
+  {
+    "type":"organization-profiles", 
+    "id":"id-user-organization-profile", 
+    "attributes":
+    {
+      "name":"Umbrella Corporation",
+      "nickname":"Umbrella",
+      "organization-type":"person",
+      "email":"umbrella@corp.com"
+    }
+  }
+}'</span> 
+http://acme.lvh.me:3000/api/v1/organization-profile
+
+<span class="c"># OUTPUT</span>
+<span class="o">{</span>
+  <span class="s2">"data"</span>:
+  <span class="o">{</span>
+    <span class="s2">"id"</span>:<span class="s2">"id-user-organization-profile"</span>,
+    <span class="s2">"type"</span>:<span class="s2">"organization-profiles"</span>,
+    <span class="s2">"links"</span>:
+    <span class="o">{</span>
+      <span class="s2">"self"</span>:<span class="s2">"http://acme.lvh.me:3000/api/v1/organization-profile"</span>
+    <span class="o">}</span>,
+    <span class="s2">"attributes"</span>:
+    <span class="o">{</span>
+      <span class="s2">"name"</span>:<span class="s2">"Umbrella Corporation"</span>,
+      <span class="s2">"nickname"</span>:<span class="s2">"Umbrella"</span>,
+      <span class="s2">"organization-type"</span>:<span class="s2">"person"</span>,
+      <span class="s2">"email"</span>:<span class="s2">"umbrella@corp.com"</span>
+    <span class="o">}</span>,
+    <span class="s2">"relationships"</span>:
+    <span class="o">{</span>
+      <span class="s2">"organization-profile-address"</span>:
+      <span class="o">{</span>
+        <span class="s2">"links"</span>:
+        <span class="o">{</span>
+          <span class="s2">"self"</span>:<span class="s2">"http://acme.lvh.me:3000/api/v1/organization-profile/relationships/organization-profile-address"</span>,
+          <span class="s2">"related"</span>:<span class="s2">"http://acme.lvh.me:3000/api/v1/organization-profile/organization-profile-address"</span>
+        <span class="o">}</span>,
+        <span class="s2">"data"</span>:
+        <span class="o">{</span>
+          <span class="s2">"type"</span>:<span class="s2">"organization-profile-addresses"</span>,
+          <span class="s2">"id"</span>:<span class="s2">"id-user-organization-profile"</span>
+        <span class="o">}</span>
+      <span class="o">}</span>,
+      <span class="s2">"organization-profile-telephones"</span>:
+      <span class="o">{</span>
+        <span class="s2">"links"</span>:
+        <span class="o">{</span>
+          <span class="s2">"self"</span>:<span class="s2">"http://acme.lvh.me:3000/api/v1/organization-profile/relationships/organization-profile-telephones"</span>,
+          <span class="s2">"related"</span>:<span class="s2">"http://acme.lvh.me:3000/api/v1/organization-profile/organization-profile-telephones"</span>
+        <span class="o">}</span>
+      <span class="o">}</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+<pre class="highlight ruby"><code><span class="no">Not</span> <span class="n">implemented</span>
+</code></pre>
+
+<p>The user can edit the information contained in his own profile by accessing the route below.</p>
+
+<p>Route: <em><code class="prettyprint">PATCH &quot;/api/v1/organization-profile&quot;</code></em></p>
+
+<table><thead>
+<tr>
+<th>Variable</th>
+<th>Type</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>String</td>
+<td>Umbrella Corporation</td>
+</tr>
+<tr>
+<td>nickname</td>
+<td>String</td>
+<td>Umbrella</td>
+</tr>
+<tr>
+<td>organization-type</td>
+<td>String</td>
+<td>person</td>
+</tr>
+<tr>
+<td>email</td>
+<td>String</td>
+<td>umbrella@corp.com</td>
+</tr>
+</tbody></table>
+
+<h1 id="user-organization-profile-telephone">User Organization Profile Telephone</h1>
+
+<p>When logged in, the user can access information about his telephones. This access allows him to create, update, show and list them.</p>
+
+<h2 id="create">Create</h2>
+
+<blockquote>
+<p>Create Organization Profile Telephone</p>
+</blockquote>
+<pre class="highlight shell"><code><span class="c"># INPUT</span>
+curl --header <span class="s2">"Content-Type: application/vnd.api+json"</span> 
+  -H <span class="s2">"Authorization: Bearer id-access-token"</span> -X POST -d  
+<span class="s1">'{
+  "data":
+  {
+    "type":"organization-profile-telephones", 
+    "relationships":
+    {
+      "organization-profile":
+      {
+        "data":
+        {
+          "type":"organization-profiles", 
+          "id":"id-user-organization-profile"
+        }
+      }
+    }, 
+    "attributes":
+    {
+      "country-code":"31", 
+      "number":"1112223334"
+    }
+  }
+}'</span>  
+http://acme.lvh.me:3000/api/v1/organization-profile-telephones
+
+<span class="c"># OUTPUT</span>
+<span class="o">{</span>
+  <span class="s2">"data"</span>:
+  <span class="o">{</span>
+    <span class="s2">"id"</span>:<span class="s2">"id-user-organization-profile-telephone"</span>,
+    <span class="s2">"type"</span>:<span class="s2">"organization-profile-telephones"</span>,
+    <span class="s2">"links"</span>:
+    <span class="o">{</span>
+      <span class="s2">"self"</span>:<span class="s2">"http://acme.lvh.me:3000/api/v1/organization-profile-telephones/id-user-organization-profile-telephone"</span>
+    <span class="o">}</span>,
+    <span class="s2">"attributes"</span>:
+    <span class="o">{</span>
+      <span class="s2">"country-code"</span>:<span class="s2">"31"</span>,
+      <span class="s2">"number"</span>:<span class="s2">"1112223334"</span>
+    <span class="o">}</span>,
+    <span class="s2">"relationships"</span>:
+    <span class="o">{</span>
+      <span class="s2">"organization-profile"</span>:
+      <span class="o">{</span>
+        <span class="s2">"links"</span>:
+        <span class="o">{</span>
+          <span class="s2">"self"</span>:<span class="s2">"http://acme.lvh.me:3000/api/v1/organization-profile-telephones/id-user-organization-profile-telephone/relationships/organization-profile"</span>,
+          <span class="s2">"related"</span>:<span class="s2">"http://acme.lvh.me:3000/api/v1/organization-profile-telephones/id-user-organization-profile-telephone/organization-profile"</span>
+        <span class="o">}</span>
+      <span class="o">}</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+<pre class="highlight ruby"><code><span class="no">Not</span> <span class="n">implemented</span>
+</code></pre>
+
+<p>The user can create a telephone by accessing the route below.</p>
+
+<p>Route: <em><code class="prettyprint">POST &quot;/api/v1/organization-profile-telephones&quot;</code></em></p>
+
+<table><thead>
+<tr>
+<th>Variable</th>
+<th>Type</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>country-code</td>
+<td>String</td>
+<td>31</td>
+</tr>
+<tr>
+<td>number</td>
+<td>String</td>
+<td>1112223334</td>
+</tr>
+</tbody></table>
+
+<h2 id="update">Update</h2>
+
+<blockquote>
+<p>Update Organization Profile Telephone</p>
+</blockquote>
+<pre class="highlight shell"><code><span class="c"># INPUT</span>
+curl --header <span class="s2">"Content-Type: application/vnd.api+json"</span> 
+  -H <span class="s2">"Authorization: Bearer id-access-token"</span> -X PATCH -d 
+<span class="s1">'{ 
+  "data":
+  {
+    "id":"id-user-organization-profile-telephone",
+    "type":"organization-profile-telephones",
+    "attributes":
+    {
+      "country-code":"12", 
+      "number":"789890888"
+    }
+  }
+}'</span> 
+http://acme.lvh.me:3000/api/v1/organization-profile-telephones/id-user-organization-profile-telephone
+
+<span class="c"># OUTPUT</span>
+<span class="o">{</span>
+  <span class="s2">"data"</span>:
+  <span class="o">{</span>
+    <span class="s2">"id"</span>:<span class="s2">"id-user-organization-profile-telephone"</span>,
+    <span class="s2">"type"</span>:<span class="s2">"organization-profile-telephones"</span>,
+    <span class="s2">"links"</span>:
+    <span class="o">{</span>
+      <span class="s2">"self"</span>:<span class="s2">"http://acme.lvh.me:3000/api/v1/organization-profile-telephones/id-user-organization-profile-telephone"</span>
+    <span class="o">}</span>,
+    <span class="s2">"attributes"</span>:
+    <span class="o">{</span>
+      <span class="s2">"country-code"</span>:<span class="s2">"12"</span>,
+      <span class="s2">"number"</span>:<span class="s2">"789890888"</span>
+    <span class="o">}</span>,
+    <span class="s2">"relationships"</span>:
+    <span class="o">{</span>
+      <span class="s2">"organization-profile"</span>:
+      <span class="o">{</span>
+        <span class="s2">"links"</span>:
+        <span class="o">{</span>
+          <span class="s2">"self"</span>:<span class="s2">"http://acme.lvh.me:3000/api/v1/organization-profile-telephones/id-user-organization-profile-telephone/relationships/organization-profile"</span>,
+          <span class="s2">"related"</span>:<span class="s2">"http://acme.lvh.me:3000/api/v1/organization-profile-telephones/id-user-organization-profile-telephone/organization-profile"</span>
+        <span class="o">}</span>
+      <span class="o">}</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+<pre class="highlight ruby"><code><span class="no">Not</span> <span class="n">implemented</span>
+</code></pre>
+
+<p>The user can edit the information contained in telephone by accessing the route below.</p>
+
+<p>Route: <em><code class="prettyprint">PATCH &quot;/api/v1/organization-profile-telephones/:id&quot;</code></em></p>
+
+<table><thead>
+<tr>
+<th>Variable</th>
+<th>Type</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>country-code</td>
+<td>String</td>
+<td>12</td>
+</tr>
+<tr>
+<td>number</td>
+<td>String</td>
+<td>789890888</td>
+</tr>
+</tbody></table>
+
+<h2 id="show">Show</h2>
+
+<blockquote>
+<p>Show Organization Profile Telephone</p>
+</blockquote>
+<pre class="highlight shell"><code><span class="c"># INPUT</span>
+curl --header <span class="s2">"Content-Type: application/vnd.api+json"</span> 
+  -H <span class="s2">"Authorization: Bearer id-access-token"</span> -X GET -d 
+<span class="s1">'{
+  "data":
+  {
+    "type":"organization-profile-telephones"
+  }
+}'</span> 
+http://acme.lvh.me:3000/api/v1/organization-profile-telephones/id-user-organization-profile-telephone
+
+<span class="c"># OUTPUT</span>
+<span class="o">{</span>
+  <span class="s2">"data"</span>:
+  <span class="o">{</span>
+    <span class="s2">"id"</span>:<span class="s2">"id-user-organization-profile-telephone"</span>,
+    <span class="s2">"type"</span>:<span class="s2">"organization-profile-telephones"</span>,
+    <span class="s2">"links"</span>:
+    <span class="o">{</span>
+      <span class="s2">"self"</span>:<span class="s2">"http://acme.lvh.me:3000/api/v1/organization-profile-telephones/id-user-organization-profile-telephone"</span>
+    <span class="o">}</span>,
+    <span class="s2">"attributes"</span>:
+    <span class="o">{</span>
+      <span class="s2">"country-code"</span>:<span class="s2">"12"</span>,
+      <span class="s2">"number"</span>:<span class="s2">"789890888"</span>
+    <span class="o">}</span>,
+    <span class="s2">"relationships"</span>:
+    <span class="o">{</span>
+      <span class="s2">"organization-profile"</span>:
+      <span class="o">{</span>
+        <span class="s2">"links"</span>:
+        <span class="o">{</span>
+          <span class="s2">"self"</span>:<span class="s2">"http://acme.lvh.me:3000/api/v1/organization-profile-telephones/id-user-organization-profile-telephone/relationships/organization-profile"</span>,
+          <span class="s2">"related"</span>:<span class="s2">"http://acme.lvh.me:3000/api/v1/organization-profile-telephones/id-user-organization-profile-telephone/organization-profile"</span>
+        <span class="o">}</span>
+      <span class="o">}</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+<pre class="highlight ruby"><code><span class="no">Not</span> <span class="n">implemented</span>
+</code></pre>
+
+<p>The user can visualize a specific telephone by accessing the route below.</p>
+
+<p>Route: <em><code class="prettyprint">GET &quot;/api/v1/organization-profile-telephones/:id&quot;</code></em></p>
+
+<h2 id="list">List</h2>
+
+<blockquote>
+<p>List Organization Profile Telephone</p>
+</blockquote>
+<pre class="highlight shell"><code><span class="c"># INPUT</span>
+curl --header <span class="s2">"Content-Type: application/vnd.api+json"</span> 
+  -H <span class="s2">"Authorization: Bearer id-access-token"</span> -X GET -d 
+<span class="s1">'{
+  "data":
+  {
+    "type":"organization-profile-telephones"
+  }
+}'</span> 
+http://acme.lvh.me:3000/api/v1/organization-profile-telephones
+
+<span class="c"># OUTPUT</span>
+<span class="o">{</span>
+  <span class="s2">"data"</span>:
+  <span class="o">[</span>
+    <span class="o">{</span>
+      <span class="s2">"id"</span>:<span class="s2">"id-user-organization-profile-telephone"</span>,
+      <span class="s2">"type"</span>:<span class="s2">"organization-profile-telephones"</span>,
+      <span class="s2">"links"</span>:
+      <span class="o">{</span>
+        <span class="s2">"self"</span>:<span class="s2">"http://acme.lvh.me:3000/api/v1/organization-profile-telephones/id-user-organization-profile-telephone"</span>
+      <span class="o">}</span>,
+      <span class="s2">"attributes"</span>:
+      <span class="o">{</span>
+        <span class="s2">"country-code"</span>:<span class="s2">"12"</span>,
+        <span class="s2">"number"</span>:<span class="s2">"789890888"</span>
+      <span class="o">}</span>,
+      <span class="s2">"relationships"</span>:
+      <span class="o">{</span>
+        <span class="s2">"organization-profile"</span>:
+        <span class="o">{</span>
+          <span class="s2">"links"</span>:
+          <span class="o">{</span>
+            <span class="s2">"self"</span>:<span class="s2">"http://acme.lvh.me:3000/api/v1/organization-profile-telephones/id-user-organization-profile-telephone/relationships/organization-profile"</span>,
+            <span class="s2">"related"</span>:<span class="s2">"http://acme.lvh.me:3000/api/v1/organization-profile-telephones/id-user-organization-profile-telephone/organization-profile"</span>
+          <span class="o">}</span>
+        <span class="o">}</span>
+      <span class="o">}</span>
+    <span class="o">}</span>,
+    <span class="o">{</span>
+      <span class="s2">"id"</span>:<span class="s2">"id-user-organization-profile-telephone"</span>,
+      <span class="s2">"type"</span>:<span class="s2">"organization-profile-telephones"</span>,
+      <span class="s2">"links"</span>:
+      <span class="o">{</span>
+        <span class="s2">"self"</span>:<span class="s2">"http://acme.lvh.me:3000/api/v1/organization-profile-telephones/id-user-organization-profile-telephone"</span>
+      <span class="o">}</span>,
+      <span class="s2">"attributes"</span>:
+      <span class="o">{</span>
+        <span class="s2">"country-code"</span>:<span class="s2">"55"</span>,
+        <span class="s2">"number"</span>:<span class="s2">"1132578900"</span>
+      <span class="o">}</span>,
+      <span class="s2">"relationships"</span>:
+      <span class="o">{</span>
+        <span class="s2">"organization-profile"</span>:
+        <span class="o">{</span>
+          <span class="s2">"links"</span>:
+          <span class="o">{</span>
+            <span class="s2">"self"</span>:<span class="s2">"http://acme.lvh.me:3000/api/v1/organization-profile-telephones/id-user-organization-profile-telephone/relationships/organization-profile"</span>,
+            <span class="s2">"related"</span>:<span class="s2">"http://acme.lvh.me:3000/api/v1/organization-profile-telephones/id-user-organization-profile-telephone/organization-profile"</span>
+          <span class="o">}</span>
+        <span class="o">}</span>
+      <span class="o">}</span>
+    <span class="o">}</span>
+  <span class="o">]</span>
+<span class="o">}</span>
+</code></pre>
+<pre class="highlight ruby"><code><span class="no">Not</span> <span class="n">implemented</span>
+</code></pre>
+
+<p>The user can visualize all telephones by accessing the route below.</p>
+
+<p>Route: <em><code class="prettyprint">GET &quot;/api/v1/organization-profile-telephones&quot;</code></em></p>
+
+<h1 id="user-organization-profile-address">User Organization Profile Address</h1>
+
+<p>When logged in, the user can access information about his address. This access allows him to create, update and show them.</p>
+
+<h2 id="create">Create</h2>
+
+<blockquote>
+<p>Create Organization Profile Address</p>
+</blockquote>
+<pre class="highlight shell"><code><span class="c"># INPUT</span>
+curl --header <span class="s2">"Content-Type: application/vnd.api+json"</span> 
+  -H <span class="s2">"Authorization: Bearer id-access-token"</span> -X POST -d  
+<span class="s1">'{
+  "data":
+  {
+    "type":"organization-profile-addresses", 
+    "relationships":
+    {
+      "organization-profile":
+      {
+        "data":
+        {
+          "type":"organization-profiles", 
+          "id":"id-user-organization-profile"
+        }
+      }
+    }, 
+    "attributes":
+    {
+      "street":"Jericho Tpke Suite 344", 
+      "number":"2417", 
+      "complement":"Apartment", 
+      "zipcode":"11040", 
+      "neighborhood":"Commack", 
+      "city":"Garden City Park", 
+      "state":"NY", 
+      "country":"US"
+    }
+  }
+}'</span>  
+http://acme.lvh.me:3000/api/v1/organization-profile-address
+
+<span class="c"># OUTPUT</span>
+<span class="o">{</span>
+  <span class="s2">"data"</span>:
+  <span class="o">{</span>
+    <span class="s2">"id"</span>:<span class="s2">"id-user-organization-profile-address"</span>,
+    <span class="s2">"type"</span>:<span class="s2">"organization-profile-addresses"</span>,
+    <span class="s2">"links"</span>:
+    <span class="o">{</span>
+      <span class="s2">"self"</span>:<span class="s2">"http://acme.lvh.me:3000/api/v1/organization-profile-address"</span>
+    <span class="o">}</span>,
+    <span class="s2">"attributes"</span>:
+    <span class="o">{</span>
+      <span class="s2">"street"</span>:<span class="s2">"Jericho Tpke Suite 344"</span>,
+      <span class="s2">"number"</span>:<span class="s2">"2417"</span>,
+      <span class="s2">"complement"</span>:<span class="s2">"Apartment"</span>,
+      <span class="s2">"zipcode"</span>:<span class="s2">"11040"</span>,
+      <span class="s2">"neighborhood"</span>:<span class="s2">"Commack"</span>,
+      <span class="s2">"city"</span>:<span class="s2">"Garden City Park"</span>,
+      <span class="s2">"state"</span>:<span class="s2">"NY"</span>,
+      <span class="s2">"country"</span>:<span class="s2">"US"</span>
+    <span class="o">}</span>,
+    <span class="s2">"relationships"</span>:
+    <span class="o">{</span>
+      <span class="s2">"organization-profile"</span>:
+      <span class="o">{</span>
+        <span class="s2">"links"</span>:
+        <span class="o">{</span>
+          <span class="s2">"self"</span>:<span class="s2">"http://acme.lvh.me:3000/api/v1/organization-profile-address/relationships/organization-profile"</span>,
+          <span class="s2">"related"</span>:<span class="s2">"http://acme.lvh.me:3000/api/v1/organization-profile-address/organization-profile"</span>
+        <span class="o">}</span>
+      <span class="o">}</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+<pre class="highlight ruby"><code><span class="no">Not</span> <span class="n">implemented</span>
+</code></pre>
+
+<p>The user can create an address by accessing the route below.</p>
+
+<p>Route: <em><code class="prettyprint">POST &quot;/api/v1/organization-profile-address&quot;</code></em></p>
+
+<table><thead>
+<tr>
+<th>Variable</th>
+<th>Type</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>street</td>
+<td>String</td>
+<td>Jericho Tpke Suite 344</td>
+</tr>
+<tr>
+<td>number</td>
+<td>String</td>
+<td>2417</td>
+</tr>
+<tr>
+<td>complement</td>
+<td>String</td>
+<td>Apartment</td>
+</tr>
+<tr>
+<td>zipcode</td>
+<td>String</td>
+<td>11040</td>
+</tr>
+<tr>
+<td>neighborhood</td>
+<td>String</td>
+<td>Commack</td>
+</tr>
+<tr>
+<td>city</td>
+<td>String</td>
+<td>Garden City Park</td>
+</tr>
+<tr>
+<td>state</td>
+<td>String</td>
+<td>NY</td>
+</tr>
+<tr>
+<td>country</td>
+<td>String</td>
+<td>US</td>
+</tr>
+</tbody></table>
+
+<h2 id="update">Update</h2>
+
+<blockquote>
+<p>Update Organization Profile Address</p>
+</blockquote>
+<pre class="highlight shell"><code><span class="c"># INPUT</span>
+curl --header <span class="s2">"Content-Type: application/vnd.api+json"</span> 
+  -H <span class="s2">"Authorization: Bearer id-access-token"</span> -X PATCH -d 
+<span class="s1">'{ 
+  "data": 
+  { 
+    "type":"organization-profile-addresses", 
+    "id":"id-user-organization-profile-address", 
+    "attributes":
+    { 
+      "street":"Baker Street", 
+      "number":"221B", 
+      "complement":"Apartament", 
+      "zipcode":"5150117", 
+      "neighborhood":"unknown", 
+      "city":"Westminster", 
+      "state":"London", 
+      "country":"UK"
+    }
+  }
+}'</span> 
+http://acme.lvh.me:3000/api/v1/organization-profile-address
+
+<span class="c"># OUTPUT</span>
+<span class="o">{</span>
+  <span class="s2">"data"</span>:
+  <span class="o">{</span>
+    <span class="s2">"id"</span>:<span class="s2">"id-user-organization-profile-address"</span>,
+    <span class="s2">"type"</span>:<span class="s2">"organization-profile-addresses"</span>,
+    <span class="s2">"links"</span>:
+    <span class="o">{</span>
+      <span class="s2">"self"</span>:<span class="s2">"http://acme.lvh.me:3000/api/v1/organization-profile-address"</span>
+    <span class="o">}</span>,
+    <span class="s2">"attributes"</span>:
+    <span class="o">{</span>
+      <span class="s2">"street"</span>:<span class="s2">"Baker Street"</span>,
+      <span class="s2">"number"</span>:<span class="s2">"221B"</span>,
+      <span class="s2">"complement"</span>:<span class="s2">"Apartament"</span>,
+      <span class="s2">"zipcode"</span>:<span class="s2">"5150117"</span>,
+      <span class="s2">"neighborhood"</span>:<span class="s2">"unknown"</span>,
+      <span class="s2">"city"</span>:<span class="s2">"Westminster"</span>,
+      <span class="s2">"state"</span>:<span class="s2">"London"</span>,
+      <span class="s2">"country"</span>:<span class="s2">"UK"</span>
+    <span class="o">}</span>,
+    <span class="s2">"relationships"</span>:
+    <span class="o">{</span>
+      <span class="s2">"organization-profile"</span>:
+      <span class="o">{</span>
+        <span class="s2">"links"</span>:
+        <span class="o">{</span>
+          <span class="s2">"self"</span>:<span class="s2">"http://acme.lvh.me:3000/api/v1/organization-profile-address/relationships/organization-profile"</span>,
+          <span class="s2">"related"</span>:<span class="s2">"http://acme.lvh.me:3000/api/v1/organization-profile-address/organization-profile"</span>
+        <span class="o">}</span>
+      <span class="o">}</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+<pre class="highlight ruby"><code><span class="no">Not</span> <span class="n">implemented</span>
+</code></pre>
+
+<p>The user can edit the information contained in address by accessing the route below.</p>
+
+<p>Route: <em><code class="prettyprint">PATCH &quot;/api/v1/organization-profile-address&quot;</code></em></p>
+
+<table><thead>
+<tr>
+<th>Variable</th>
+<th>Type</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>street</td>
+<td>String</td>
+<td>Baker Street</td>
+</tr>
+<tr>
+<td>number</td>
+<td>String</td>
+<td>221B</td>
+</tr>
+<tr>
+<td>complement</td>
+<td>String</td>
+<td>Apartment</td>
+</tr>
+<tr>
+<td>zipcode</td>
+<td>String</td>
+<td>5150117</td>
+</tr>
+<tr>
+<td>neighborhood</td>
+<td>String</td>
+<td>unknown</td>
+</tr>
+<tr>
+<td>city</td>
+<td>String</td>
+<td>Westminster</td>
+</tr>
+<tr>
+<td>state</td>
+<td>String</td>
+<td>London</td>
+</tr>
+<tr>
+<td>country</td>
+<td>String</td>
+<td>UK</td>
+</tr>
+</tbody></table>
+
+<h2 id="show">Show</h2>
+
+<blockquote>
+<p>Show Organization Profile Address</p>
+</blockquote>
+<pre class="highlight shell"><code><span class="c"># INPUT</span>
+curl --header <span class="s2">"Content-Type: application/vnd.api+json"</span> 
+  -H <span class="s2">"Authorization: Bearer id-access-token"</span> -X GET -d 
+<span class="s1">'{ 
+  "data":
+  { 
+    "type":"organization-profile-addresses" 
+  }
+}'</span> 
+http://acme.lvh.me:3000/api/v1/organization-profile-address
+
+<span class="c"># OUTPUT</span>
+<span class="o">{</span>
+  <span class="s2">"data"</span>:
+  <span class="o">{</span>
+    <span class="s2">"id"</span>:<span class="s2">"id-user-organization-profile-address"</span>,
+    <span class="s2">"type"</span>:<span class="s2">"organization-profile-addresses"</span>,
+    <span class="s2">"links"</span>:
+    <span class="o">{</span>
+      <span class="s2">"self"</span>:<span class="s2">"http://acme.lvh.me:3000/api/v1/organization-profile-address"</span>
+    <span class="o">}</span>,
+    <span class="s2">"attributes"</span>:
+    <span class="o">{</span>
+      <span class="s2">"street"</span>:<span class="s2">"Baker Street"</span>,
+      <span class="s2">"number"</span>:<span class="s2">"221B"</span>,
+      <span class="s2">"complement"</span>:<span class="s2">"Apartament"</span>,
+      <span class="s2">"zipcode"</span>:<span class="s2">"5150117"</span>,
+      <span class="s2">"neighborhood"</span>:<span class="s2">"unknown"</span>,
+      <span class="s2">"city"</span>:<span class="s2">"Westminster"</span>,
+      <span class="s2">"state"</span>:<span class="s2">"London"</span>,
+      <span class="s2">"country"</span>:<span class="s2">"UK"</span>
+    <span class="o">}</span>,
+    <span class="s2">"relationships"</span>:
+    <span class="o">{</span>
+      <span class="s2">"organization-profile"</span>:
+      <span class="o">{</span>
+        <span class="s2">"links"</span>:
+        <span class="o">{</span>
+          <span class="s2">"self"</span>:<span class="s2">"http://acme.lvh.me:3000/api/v1/organization-profile-address/relationships/organization-profile"</span>,
+          <span class="s2">"related"</span>:<span class="s2">"http://acme.lvh.me:3000/api/v1/organization-profile-address/organization-profile"</span>
+        <span class="o">}</span>
+      <span class="o">}</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+<pre class="highlight ruby"><code><span class="no">Not</span> <span class="n">implemented</span>
+</code></pre>
+
+<p>The user can visualize a specific address by accessing the route below.</p>
+
+<p>Route: <em><code class="prettyprint">GET &quot;/api/v1/organization-profile-address&quot;</code></em></p>
+
+<h1 id="user-select-product-and-add-them-to-his-shopping-cart">User Select Product and Add them to His Shopping Cart</h1>
+
+<p>When logged in, the user can acess the shop. This acess allows him to select products and add them to his shopping cart. First of all the user need to create a shop cart and after select product order.</p>
+
+<h2 id="create-shop-cart">Create Shop Cart</h2>
+
+<blockquote>
+<p>Create Shop Cart</p>
+</blockquote>
+<pre class="highlight shell"><code><span class="c"># INPUT</span>
+curl --header <span class="s2">"Content-Type: application/vnd.api+json"</span> 
+  -H <span class="s2">"Authorization: Bearer id-access-token"</span> -X POST -d 
+<span class="s1">'{ 
+  "data":
+  { 
+    "type":"shop-carts" 
+  }
+}'</span> 
+http://acme.lvh.me:3000/api/v1/shop-carts
+
+<span class="c"># OUTPUT</span>
+<span class="o">{</span>
+  <span class="s2">"data"</span>:
+  <span class="o">{</span>
+    <span class="s2">"id"</span>:<span class="s2">"id-user-shop-cart"</span>,
+    <span class="s2">"type"</span>:<span class="s2">"shop-carts"</span>,
+    <span class="s2">"links"</span>:
+    <span class="o">{</span>
+      <span class="s2">"self"</span>:<span class="s2">"http://acme.lvh.me:3000/api/v1/shop-carts/id-user-shop-cart"</span>
+    <span class="o">}</span>,
+    <span class="s2">"relationships"</span>:
+    <span class="o">{</span>
+      <span class="s2">"shop-plans"</span>:
+      <span class="o">{</span>
+        <span class="s2">"links"</span>:
+        <span class="o">{</span>
+          <span class="s2">"self"</span>:<span class="s2">"http://acme.lvh.me:3000/api/v1/shop-carts/id-user-shop-cart/relationships/shop-plans"</span>,
+          <span class="s2">"related"</span>:<span class="s2">"http://acme.lvh.me:3000/api/v1/shop-carts/id-user-shop-cart/shop-plans"</span>
+        <span class="o">}</span>
+      <span class="o">}</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+<pre class="highlight ruby"><code><span class="no">Not</span> <span class="n">implemented</span>
+</code></pre>
+
+<p>The user can create a shop cart that has relationship with a plan by accessing the route below.</p>
+
+<p>Route: *<code class="prettyprint">POST &quot;/api/v1/shop-carts&quot;</code></p>
+
+<h2 id="create-shop-product-order">Create Shop Product Order</h2>
+
+<blockquote>
+<p>Create Shop Product Order</p>
+</blockquote>
+<pre class="highlight shell"><code><span class="c"># INPUT</span>
+curl --header <span class="s2">"Content-Type: application/vnd.api+json"</span> 
+  -H <span class="s2">"Authorization: Bearer id-access-token"</span> -X POST -d 
+<span class="s1">'{ 
+  "data":
+  { 
+    "type":"shop-product-orders", 
+    "attributes":
+    { 
+      "shop-cart-id":"id-user-shop-cart" 
+    }
+  }
+}'</span> 
+http://acme.lvh.me:3000/api/v1/shop-product-orders
+
+<span class="c"># OUTPUT</span>
+<span class="o">{</span>
+  <span class="s2">"data"</span>:
+  <span class="o">{</span>
+    <span class="s2">"id"</span>:<span class="s2">"id-user-shop-product-order"</span>,
+    <span class="s2">"type"</span>:<span class="s2">"shop-product-orders"</span>,
+    <span class="s2">"links"</span>:
+    <span class="o">{</span>
+      <span class="s2">"self"</span>:<span class="s2">"http://acme.lvh.me:3000/api/v1/shop-product-orders/id-user-shop-product-order"</span>
+    <span class="o">}</span>,
+    <span class="s2">"attributes"</span>:
+    <span class="o">{</span>
+      <span class="s2">"period"</span>:<span class="s2">"monthly"</span>,
+      <span class="s2">"price"</span>:0,
+      <span class="s2">"created-at"</span>:<span class="s2">"2015-12-14T03:38:16.499Z"</span>
+    <span class="o">}</span>,
+    <span class="s2">"relationships"</span>:
+    <span class="o">{</span>
+      <span class="s2">"shop-plans"</span>:
+      <span class="o">{</span>
+        <span class="s2">"links"</span>:
+        <span class="o">{</span>
+          <span class="s2">"self"</span>:<span class="s2">"http://acme.lvh.me:3000/api/v1/shop-product-orders/id-user-shop-product-order/relationships/shop-plans"</span>,
+          <span class="s2">"related"</span>:<span class="s2">"http://acme.lvh.me:3000/api/v1/shop-product-orders/id-user-shop-product-order/shop-plans"</span>
+        <span class="o">}</span>
+      <span class="o">}</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+<pre class="highlight ruby"><code><span class="no">Not</span> <span class="n">implemented</span>
+</code></pre>
+
+<p>The user can create a shop product order by accessing the route bellow.</p>
+
+<p>Route: <em><code class="prettyprint">POST &quot;/api/v1/shop-product-orders&quot;</code></em></p>
+
+<table><thead>
+<tr>
+<th>Variable</th>
+<th>Type</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>shop-cart-id</td>
+<td>String</td>
+<td>id-user-shop-cart</td>
 </tr>
 </tbody></table>
 
@@ -542,7 +1345,7 @@ http://smart.lvh.me:3000/api/v1/admin/profile
 
 <p>The admin can visualize his profile account by accessing the route below.</p>
 
-<p>Route: <em><code class="prettyprint">GET &quot;api/v1/admin/profile&quot;</code></em></p>
+<p>Route: <em><code class="prettyprint">GET &quot;/api/v1/admin/profile&quot;</code></em></p>
 
 <h2 id="update">Update</h2>
 
@@ -590,7 +1393,7 @@ http://smart.lvh.me:3000/api/v1/admin/profile
 
 <p>The admin can edit the information contained in his own profile account by accessing the route below.</p>
 
-<p>Route: <em><code class="prettyprint">GET &quot;api/v1/admin/profile&quot;</code></em></p>
+<p>Route: <em><code class="prettyprint">GET &quot;/api/v1/admin/profile&quot;</code></em></p>
 
 <table><thead>
 <tr>
@@ -684,7 +1487,7 @@ http://smart.lvh.me:3000/api/v1/admin/company-profile
 
 <p>The admin can visualize his own profile by accessing the route below.</p>
 
-<p>Route: <em><code class="prettyprint">GET &quot;api/v1/admin/company-profile&quot;</code></em></p>
+<p>Route: <em><code class="prettyprint">GET &quot;/api/v1/admin/company-profile&quot;</code></em></p>
 
 <h2 id="update">Update</h2>
 
@@ -754,7 +1557,7 @@ http://smart.lvh.me:3000/api/v1/admin/company-profile
 <pre class="highlight ruby"><code><span class="no">Not</span> <span class="n">implemented</span>
 </code></pre>
 
-<p>The admin can edit the information contained in his own profile by accessing the route below</p>
+<p>The admin can edit the information contained in his own profile by accessing the route below.</p>
 
 <p>Route: <em><code class="prettyprint">PATCH &quot;/api/v1/admin/company-profile&quot;</code></em></p>
 
@@ -929,7 +1732,7 @@ http://smart.lvh.me:3000/api/v1/admin/company-profile-telephones/id-admin-compan
 
 <p>The admin can edit the information contained in telephone by accessing the route below.</p>
 
-<p>Route: <em><code class="prettyprint">PATCH &quot;api/v1/admin/company-profile-telephones/:id&quot;</code></em></p>
+<p>Route: <em><code class="prettyprint">PATCH &quot;/api/v1/admin/company-profile-telephones/:id&quot;</code></em></p>
 
 <table><thead>
 <tr>
@@ -1343,7 +2146,7 @@ curl --header <span class="s2">"Content-Type: application/vnd.api+json"</span>
 <span class="s1">'{ 
   "data":
   { 
-    "type":"profile" 
+    "type":"company-profile-addresses" 
   }
 }'</span> 
 http://smart.lvh.me:3000/api/v1/admin/company-profile-address
@@ -3475,6 +4278,439 @@ http://smart.lvh.me:3000/api/v1/admin/shop-groups
 
 <p>Route: <em><code class="prettyprint">GET &quot;/api/v1/admin/shop-groups&quot;</code></em></p>
 
+<h1 id="admin-shop-plan-softlayer-cloud-server">Admin Shop Plan Softlayer Cloud Server</h1>
+
+<p>When logged in, the admin can access information about the shop. This access allows him to create, update, show and list shop plans Softlayer cloud server.</p>
+
+<h2 id="create">Create</h2>
+
+<blockquote>
+<p>Create Shop Plan Softlayer Cloud Server</p>
+</blockquote>
+<pre class="highlight shell"><code><span class="c"># INPUT</span>
+curl --header <span class="s2">"Content-Type: application/vnd.api+json"</span> 
+  -H <span class="s2">"Authorization: Bearer id-access-token"</span> -X POST -d 
+<span class="s1">'{ 
+  "data":
+  { 
+    "type":"shop-softlayer-cloud-server-plans", 
+    "attributes":
+    { 
+      "description":"Small",
+      "long-description":"Cloud Server Small",
+      "disk-1-san":"25 GB (SAN)",
+      "disk-2-san":"10 GB (SAN)",
+      "disk-3-san":"10 GB (SAN)",
+      "disk-type":"san",
+      "datacenter":"wdc01",
+      "memory":"2 GB",
+      "processor":"4 x 2.0 GHz Cores",
+      "operating-system":"Debian - Latest (64 bit)",
+      "network-component":"1 Gbps Public &amp; Private Network Uplinks"
+    }
+  }
+}'</span> 
+http://smart.lvh.me:3000/api/v1/admin/shop-softlayer-cloud-server-plans
+
+<span class="c"># OUTPUT</span>
+<span class="o">{</span>
+  <span class="s2">"data"</span>:
+  <span class="o">{</span>
+    <span class="s2">"id"</span>:<span class="s2">"id-admin-plan-softlayer-cloud-server"</span>,
+    <span class="s2">"type"</span>:<span class="s2">"shop-softlayer-cloud-server-plans"</span>,
+    <span class="s2">"links"</span>:
+    <span class="o">{</span>
+      <span class="s2">"self"</span>:<span class="s2">"http://smart.lvh.me:3000/api/v1/admin/shop-softlayer-cloud-server-plans/id-admin-plan-softlayer-cloud-server"</span>
+    <span class="o">}</span>,
+    <span class="s2">"attributes"</span>:
+    <span class="o">{</span>
+      <span class="s2">"name"</span>:null,
+      <span class="s2">"enabled"</span>:true,
+      <span class="s2">"description"</span>:<span class="s2">"Small"</span>,
+      <span class="s2">"long-description"</span>:<span class="s2">"Cloud Server Small"</span>,
+      <span class="s2">"allow-custom"</span>:false,
+      <span class="s2">"can-customize"</span>:[],
+      <span class="s2">"disk-1-san"</span>:<span class="s2">"25 GB (SAN)"</span>,
+      <span class="s2">"disk-2-san"</span>:<span class="s2">"10 GB (SAN)"</span>,
+      <span class="s2">"disk-3-san"</span>:<span class="s2">"10 GB (SAN)"</span>,
+      <span class="s2">"disk-4-san"</span>:null,
+      <span class="s2">"disk-5-san"</span>:null,
+      <span class="s2">"disk-1-local"</span>:null,
+      <span class="s2">"disk-2-local"</span>:null,
+      <span class="s2">"disk-type"</span>:<span class="s2">"san"</span>,
+      <span class="s2">"datacenter"</span>:<span class="s2">"wdc01"</span>,
+      <span class="s2">"memory"</span>:<span class="s2">"2 GB"</span>,
+      <span class="s2">"processor"</span>:<span class="s2">"4 x 2.0 GHz Cores"</span>,
+      <span class="s2">"operating-system"</span>:<span class="s2">"Debian - Latest (64 bit)"</span>,
+      <span class="s2">"network-component"</span>:<span class="s2">"1 Gbps Public </span><span class="se">\u</span><span class="s2">0026 Private Network Uplinks"</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+<pre class="highlight ruby"><code><span class="no">Not</span> <span class="n">implemented</span>
+</code></pre>
+
+<p>The admin can create a Softlayer Cloud Server plan accessing the route below.</p>
+
+<p>Route: <em><code class="prettyprint">POST &quot;/api/v1/admin/shop-softlayer-cloud-server-plans&quot;</code></em></p>
+
+<table><thead>
+<tr>
+<th>Variable</th>
+<th>Type</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>String</td>
+<td>name</td>
+</tr>
+<tr>
+<td>enabled</td>
+<td>String</td>
+<td>true</td>
+</tr>
+<tr>
+<td>description</td>
+<td>String</td>
+<td>Small</td>
+</tr>
+<tr>
+<td>long-description</td>
+<td>String</td>
+<td>Cloud Server Small</td>
+</tr>
+<tr>
+<td>allow-custom</td>
+<td>String</td>
+<td>false</td>
+</tr>
+<tr>
+<td>can-customize</td>
+<td>String</td>
+<td>[ ]</td>
+</tr>
+<tr>
+<td>disk-1-san</td>
+<td>String</td>
+<td>25 GB (SAN)</td>
+</tr>
+<tr>
+<td>disk-2-san</td>
+<td>String</td>
+<td>10 GB (SAN)</td>
+</tr>
+<tr>
+<td>disk-3-san</td>
+<td>String</td>
+<td>10 GB (SAN)</td>
+</tr>
+<tr>
+<td>disk-4-san</td>
+<td>String</td>
+<td>10 GB (SAN)</td>
+</tr>
+<tr>
+<td>disk-5-san</td>
+<td>String</td>
+<td>10 GB (SAN)</td>
+</tr>
+<tr>
+<td>disk-1-local</td>
+<td>String</td>
+<td>10 GB (SAN)</td>
+</tr>
+<tr>
+<td>disk-2-local</td>
+<td>String</td>
+<td>10 GB (SAN)</td>
+</tr>
+<tr>
+<td>disk-type</td>
+<td>String</td>
+<td>san</td>
+</tr>
+<tr>
+<td>datacenter</td>
+<td>String</td>
+<td>wdc01</td>
+</tr>
+<tr>
+<td>memory</td>
+<td>String</td>
+<td>2 GB</td>
+</tr>
+<tr>
+<td>processor</td>
+<td>String</td>
+<td>4 x 2.0 GHz Cores</td>
+</tr>
+<tr>
+<td>operating-system</td>
+<td>String</td>
+<td>Debian - Latest (64 bit)</td>
+</tr>
+<tr>
+<td>network-component</td>
+<td>String</td>
+<td>1 Gbps Public \u0026 Private Network Uplinks</td>
+</tr>
+</tbody></table>
+
+<h2 id="update">Update</h2>
+
+<blockquote>
+<p>Update Shop Plan Softlayer Cloud Server</p>
+</blockquote>
+<pre class="highlight shell"><code><span class="c"># INPUT</span>
+curl --header <span class="s2">"Content-Type: application/vnd.api+json"</span> 
+  -H <span class="s2">"Authorization: Bearer id-access-token"</span> -X PATCH -d 
+<span class="s1">'{
+  "data":
+  {
+    "id":"id-admin-plan-softlayer-cloud-server", 
+    "type":"shop-softlayer-cloud-server-plans", 
+    "attributes":
+    { 
+      "description":"Boom",
+      "long-description":"Cloud Server Boom",
+      "disk-1-san":"10 GB (SAN)",
+      "disk-2-san":"5 GB (SAN)",
+      "disk-3-san":"5 GB (SAN)",
+      "memory":"4 GB",
+      "processor":"16 x 2.0 GHz Cores",
+      "operating-system":"Ubunto - Latest (64 bit)",
+      "network-component":"2 Gbps Public &amp; Private Network Uplinks"
+    }
+  }
+}'</span> 
+http://acme.lvh.me:3000/api/v1/admin/shop-softlayer-cloud-server-plans/id-admin-plan-softlayer-cloud-server
+
+<span class="c"># OUTPUT</span>
+<span class="o">{</span>
+  <span class="s2">"data"</span>:
+  <span class="o">{</span>
+    <span class="s2">"id"</span>:<span class="s2">"id-admin-plan-softlayer-cloud-server"</span>,
+    <span class="s2">"type"</span>:<span class="s2">"shop-softlayer-cloud-server-plans"</span>,
+    <span class="s2">"links"</span>:
+    <span class="o">{</span>
+      <span class="s2">"self"</span>:<span class="s2">"http://acme.lvh.me:3000/api/v1/admin/shop-softlayer-cloud-server-plans/id-admin-plan-softlayer-cloud-server"</span>
+    <span class="o">}</span>,
+    <span class="s2">"attributes"</span>:
+    <span class="o">{</span>
+      <span class="s2">"name"</span>:<span class="s2">"Acme Cloud Server (Small)"</span>,
+      <span class="s2">"enabled"</span>:true,
+      <span class="s2">"description"</span>:<span class="s2">"Boom"</span>,
+      <span class="s2">"long-description"</span>:<span class="s2">"Cloud Server Boom"</span>,
+      <span class="s2">"allow-custom"</span>:true,
+      <span class="s2">"can-customize"</span>:[<span class="s2">"datacenter"</span><span class="o">]</span>,
+      <span class="s2">"disk-1-san"</span>:<span class="s2">"10 GB (SAN)"</span>,
+      <span class="s2">"disk-2-san"</span>:<span class="s2">"5 GB (SAN)"</span>,
+      <span class="s2">"disk-3-san"</span>:<span class="s2">"5 GB (SAN)"</span>,
+      <span class="s2">"disk-4-san"</span>:null,
+      <span class="s2">"disk-5-san"</span>:null,
+      <span class="s2">"disk-1-local"</span>:null,
+      <span class="s2">"disk-2-local"</span>:null,
+      <span class="s2">"disk-type"</span>:<span class="s2">"san"</span>,
+      <span class="s2">"datacenter"</span>:<span class="s2">"wdc01"</span>,
+      <span class="s2">"memory"</span>:<span class="s2">"4 GB"</span>,
+      <span class="s2">"processor"</span>:<span class="s2">"16 x 2.0 GHz Cores"</span>,
+      <span class="s2">"operating-system"</span>:<span class="s2">"Ubunto - Latest (64 bit)"</span>,
+      <span class="s2">"network-component"</span>:<span class="s2">"2 Gbps Public </span><span class="se">\u</span><span class="s2">0026 Private Network Uplinks"</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+<span class="o">}</span> 
+</code></pre>
+<pre class="highlight ruby"><code><span class="no">Not</span> <span class="n">implemented</span>
+</code></pre>
+
+<p>The admin can edit a SoftLayer Cloud Server plan accessing the route below.</p>
+
+<p>Route: <em><code class="prettyprint">PATCH &quot;/api/v1/admin/shop-softlayer-cloud-server-plans/:id</code></em></p>
+
+<table><thead>
+<tr>
+<th>Variable</th>
+<th>Type</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>description</td>
+<td>String</td>
+<td>Boom</td>
+</tr>
+<tr>
+<td>long-description</td>
+<td>String</td>
+<td>Cloud Server Boom</td>
+</tr>
+<tr>
+<td>allow-custom</td>
+<td>String</td>
+<td>false</td>
+</tr>
+<tr>
+<td>can-customize</td>
+<td>String</td>
+<td>[ ]</td>
+</tr>
+<tr>
+<td>disk-1-san</td>
+<td>String</td>
+<td>10 GB (SAN)</td>
+</tr>
+<tr>
+<td>disk-2-san</td>
+<td>String</td>
+<td>5 GB (SAN)</td>
+</tr>
+<tr>
+<td>disk-3-san</td>
+<td>String</td>
+<td>5 GB (SAN)</td>
+</tr>
+<tr>
+<td>memory</td>
+<td>String</td>
+<td>4 GB</td>
+</tr>
+<tr>
+<td>processor</td>
+<td>String</td>
+<td>16 x 2.0 GHz Cores</td>
+</tr>
+<tr>
+<td>operating-system</td>
+<td>String</td>
+<td>Ubunto - Latest (64 bit)</td>
+</tr>
+<tr>
+<td>network-component</td>
+<td>String</td>
+<td>2 Gbps Public \u0026 Private Network Uplinks</td>
+</tr>
+</tbody></table>
+
+<h2 id="show">Show</h2>
+
+<blockquote>
+<p>Show Shop Plan Softlayer Cloud Server</p>
+</blockquote>
+<pre class="highlight shell"><code><span class="c"># INPUT</span>
+curl --header <span class="s2">"Content-Type: application/vnd.api+json"</span> 
+  -H <span class="s2">"Authorization: Bearer id-access-token"</span> -X GET -d 
+<span class="s1">'{
+  "data":
+  {
+    "type":"shop-softlayer-cloud-server-plans"
+  }
+}'</span> 
+http://acme.lvh.me:3000/api/v1/admin/shop-softlayer-cloud-server-plans/id-admin-plan-softlayer-cloud-server
+
+<span class="c"># OUTPUT</span>
+<span class="o">{</span>
+  <span class="s2">"data"</span>:
+  <span class="o">{</span>
+    <span class="s2">"id"</span>:<span class="s2">"48c178e6-d4e7-5b2e-8dba-47d7e7b2265a"</span>,
+    <span class="s2">"type"</span>:<span class="s2">"shop-softlayer-cloud-server-plans"</span>,
+    <span class="s2">"links"</span>:
+    <span class="o">{</span>
+      <span class="s2">"self"</span>:<span class="s2">"http://acme.lvh.me:3000/api/v1/admin/shop-softlayer-cloud-server-plans/48c178e6-d4e7-5b2e-8dba-47d7e7b2265a"</span>
+    <span class="o">}</span>,
+    <span class="s2">"attributes"</span>:
+    <span class="o">{</span>
+      <span class="s2">"name"</span>:<span class="s2">"Acme Cloud Server (Small)"</span>,
+      <span class="s2">"enabled"</span>:true,
+      <span class="s2">"description"</span>:<span class="s2">"Boom"</span>,
+      <span class="s2">"long-description"</span>:<span class="s2">"Cloud Server Boom"</span>,
+      <span class="s2">"allow-custom"</span>:true,
+      <span class="s2">"can-customize"</span>:[<span class="s2">"datacenter"</span><span class="o">]</span>,
+      <span class="s2">"disk-1-san"</span>:<span class="s2">"10 GB (SAN)"</span>,
+      <span class="s2">"disk-2-san"</span>:<span class="s2">"5 GB (SAN)"</span>,
+      <span class="s2">"disk-3-san"</span>:<span class="s2">"5 GB (SAN)"</span>,
+      <span class="s2">"disk-4-san"</span>:null,
+      <span class="s2">"disk-5-san"</span>:null,
+      <span class="s2">"disk-1-local"</span>:null,
+      <span class="s2">"disk-2-local"</span>:null,
+      <span class="s2">"disk-type"</span>:<span class="s2">"san"</span>,
+      <span class="s2">"datacenter"</span>:<span class="s2">"wdc01"</span>,
+      <span class="s2">"memory"</span>:<span class="s2">"4 GB"</span>,
+      <span class="s2">"processor"</span>:<span class="s2">"16 x 2.0 GHz Cores"</span>,
+      <span class="s2">"operating-system"</span>:<span class="s2">"Ubunto - Latest (64 bit)"</span>,
+      <span class="s2">"network-component"</span>:<span class="s2">"2 Gbps Public </span><span class="se">\u</span><span class="s2">0026 Private Network Uplinks"</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+<pre class="highlight ruby"><code><span class="no">Not</span> <span class="n">implemented</span>
+</code></pre>
+
+<p>The admin can get information for a specific SoftLayer Cloud Server plan accessing the route bellow.</p>
+
+<p>Route: <em><code class="prettyprint">GET &quot;/api/v1/admin/shop-softlayer-cloud-server-plans/:id&quot;</code></em></p>
+
+<h2 id="list">List</h2>
+
+<blockquote>
+<p>List Shop Plan Softlayer Cloud Server</p>
+</blockquote>
+<pre class="highlight shell"><code><span class="c"># INPUT</span>
+curl --header <span class="s2">"Content-Type: application/vnd.api+json"</span> 
+  -H <span class="s2">"Authorization: Bearer id-access-token"</span> -X GET -d 
+<span class="s1">'{
+  "data":
+  {
+    "type":"shop-softlayer-cloud-server-plans"
+  }
+}'</span> 
+http://acme.lvh.me:3000/api/v1/admin/shop-softlayer-cloud-server-plans
+
+<span class="c"># OUTPUT</span>
+<span class="o">{</span>
+  <span class="s2">"data"</span>:
+  <span class="o">[</span>
+    <span class="o">{</span>
+      <span class="s2">"id"</span>:<span class="s2">"id-admin-plan-softlayer-cloud-server"</span>,
+      <span class="s2">"type"</span>:<span class="s2">"shop-softlayer-cloud-server-plans"</span>,
+      <span class="s2">"links"</span>:
+      <span class="o">{</span>
+        <span class="s2">"self"</span>:<span class="s2">"http://acme.lvh.me:3000/api/v1/admin/shop-softlayer-cloud-server-plans/id-admin-plan-softlayer-cloud-server"</span>
+      <span class="o">}</span>,
+      <span class="s2">"attributes"</span>:
+      <span class="o">{</span>
+        <span class="s2">"name"</span>:<span class="s2">"Acme Cloud Server (Small)"</span>,
+        <span class="s2">"enabled"</span>:true,
+        <span class="s2">"description"</span>:<span class="s2">"Acme Cloud Server Small Desc"</span>,
+        <span class="s2">"long-description"</span>:<span class="s2">"Acme Cloud Server Small Long Desc"</span>,
+        <span class="s2">"allow-custom"</span>:true,
+        <span class="s2">"can-customize"</span>:[<span class="s2">"datacenter"</span><span class="o">]</span>,
+        <span class="s2">"disk-1-san"</span>:<span class="s2">"25 GB (SAN)"</span>,
+        <span class="s2">"disk-2-san"</span>:null,
+        <span class="s2">"disk-3-san"</span>:null,
+        <span class="s2">"disk-4-san"</span>:null,
+        <span class="s2">"disk-5-san"</span>:null,
+        <span class="s2">"disk-1-local"</span>:null,
+        <span class="s2">"disk-2-local"</span>:null,
+        <span class="s2">"disk-type"</span>:<span class="s2">"san"</span>,
+        <span class="s2">"datacenter"</span>:<span class="s2">"wdc01"</span>,
+        <span class="s2">"memory"</span>:<span class="s2">"2 GB"</span>,
+        <span class="s2">"processor"</span>:<span class="s2">"4 x 2.0 GHz Cores"</span>,
+        <span class="s2">"operating-system"</span>:<span class="s2">"Debian - Latest (64 bit)"</span>,
+        <span class="s2">"network-component"</span>:<span class="s2">"1 Gbps Public </span><span class="se">\u</span><span class="s2">0026 Private Network Uplinks"</span>
+      <span class="o">}</span>
+    <span class="o">}</span>
+  <span class="o">]</span>
+<span class="o">}</span>
+</code></pre>
+<pre class="highlight ruby"><code><span class="no">Not</span> <span class="n">implemented</span>
+</code></pre>
+
+<p>The admin can list all SoftLayer Cloud Server plans accessing the route bellow.</p>
+
+<p>Route: <em><code class="prettyprint">GET &quot;/api/v1/admin/shop-softlayer-cloud-server-plans&quot;</code></em></p>
+
 <h1 id="admin-shop-catalog-provider">Admin Shop Catalog Provider</h1>
 
 <p>When logged in, the admin can access information about the catalog. This access allows him to list his catalog provider availables.</p>
@@ -3870,7 +5106,7 @@ http://localhost:3000/api/v1/manager/profile
 
 <p>The manager can visualize his profile account by accessing the route below.</p>
 
-<p>Route: <em><code class="prettyprint">GET &quot;api/v1/manager/profile&quot;</code></em></p>
+<p>Route: <em><code class="prettyprint">GET &quot;/api/v1/manager/profile&quot;</code></em></p>
 
 <h2 id="update">Update</h2>
 
@@ -3928,7 +5164,7 @@ http://localhost:3000/api/v1/manager/profile
 
 <p>The manager can edit the information contained in his own profile account by accessing the route below.</p>
 
-<p>Route: <em><code class="prettyprint">PATCH &quot;api/v1/manager/profile&quot;</code></em></p>
+<p>Route: <em><code class="prettyprint">PATCH &quot;/api/v1/manager/profile&quot;</code></em></p>
 
 <table><thead>
 <tr>
@@ -4206,7 +5442,7 @@ http://localhost:3000/api/v1/manager/company-profile
 
 <p>The manager can visualize his own profile account by accessing the route below.</p>
 
-<p>Route: <em><code class="prettyprint">GET &quot;api/v1/manager/company-profile&quot;</code></em></p>
+<p>Route: <em><code class="prettyprint">GET &quot;/api/v1/manager/company-profile&quot;</code></em></p>
 
 <h1 id="manager-company-profile-telephone">Manager Company Profile Telephone</h1>
 
@@ -4355,7 +5591,7 @@ http://localhost:3000/api/v1/manager/company-profile-telephones/id-manager-compa
 
 <p>The manager can edit the information contained in a telephone by accessing the route below.</p>
 
-<p>Route: <em><code class="prettyprint">PATCH &quot;api/v1/manager/company-profile-telephones/:id&quot;</code></em></p>
+<p>Route: <em><code class="prettyprint">PATCH &quot;/api/v1/manager/company-profile-telephones/:id&quot;</code></em></p>
 
 <table><thead>
 <tr>
@@ -6382,6 +7618,10 @@ http://localhost:3000/api/v1/manager/client-addresses
 <td>Created</td>
 </tr>
 <tr>
+<td>204</td>
+<td>No Content</td>
+</tr>
+<tr>
 <td>400</td>
 <td>Bad Request</td>
 </tr>
@@ -6392,6 +7632,10 @@ http://localhost:3000/api/v1/manager/client-addresses
 <tr>
 <td>403</td>
 <td>Forbidden</td>
+</tr>
+<tr>
+<td>404</td>
+<td>Not Found</td>
 </tr>
 <tr>
 <td>422</td>
