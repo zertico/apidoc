@@ -973,9 +973,9 @@ The user can visualize a specific address by accessing the route below.
 
 Route: *`GET "/api/v1/organization-profile-address"`*
 
-# User Select Product and Add them to His Shopping Cart
+# User Select Products and Add them to His Shopping Cart
 
-When logged in, the user can acess the shop. This acess allows him to select products and add them to his shopping cart. First of all the user need to create a shop cart and after select product order.
+When logged in, the user can access the shop. This allows him to select products and add them to his shopping cart, to do it, the user need to create a shop cart with a relationship with a plan and after  select the product order.
 
 ## Create Shop Cart
 
@@ -984,14 +984,27 @@ When logged in, the user can acess the shop. This acess allows him to select pro
 ```shell
 # INPUT
 curl --header "Content-Type: application/vnd.api+json" 
-  -H "Authorization: Bearer id-access-token" -X POST -d 
-'{ 
+  -H "Authorization: Bearer id-access-token" -X POST -d  
+'{
   "data":
-  { 
-    "type":"shop-carts" 
+  {
+    "type":"shop-carts", 
+    "relationships":
+    {
+      "shop-plans":
+      {
+        "data":
+        [
+          {
+            "type":"shop-plans", 
+            "id":"id-shop-plans"
+          }
+        ]
+      }
+    }
   }
-}' 
-http://acme.lvh.me:3000/api/v1/shop-carts
+}'  
+http://smart.lvh.me:3000/api/v1/shop-carts
 
 # OUTPUT
 {
@@ -1001,7 +1014,7 @@ http://acme.lvh.me:3000/api/v1/shop-carts
     "type":"shop-carts",
     "links":
     {
-      "self":"http://acme.lvh.me:3000/api/v1/shop-carts/id-user-shop-cart"
+      "self":"http://smart.lvh.me:3000/api/v1/shop-carts/id-user-shop-cart"
     },
     "relationships":
     {
@@ -1009,8 +1022,8 @@ http://acme.lvh.me:3000/api/v1/shop-carts
       {
         "links":
         {
-          "self":"http://acme.lvh.me:3000/api/v1/shop-carts/id-user-shop-cart/relationships/shop-plans",
-          "related":"http://acme.lvh.me:3000/api/v1/shop-carts/id-user-shop-cart/shop-plans"
+          "self":"http://smart.lvh.me:3000/api/v1/shop-carts/id-user-shop-cart/relationships/shop-plans",
+          "related":"http://smart.lvh.me:3000/api/v1/shop-carts/id-user-shop-cart/shop-plans"
         }
       }
     }
@@ -1022,7 +1035,7 @@ http://acme.lvh.me:3000/api/v1/shop-carts
 Not implemented
 ```
 
-The user can create a shop cart that has relationship with a plan by accessing the route below.
+The user can create a shop cart by accessing the route below.
 
 Route: *`POST "/api/v1/shop-carts"`
 
@@ -5242,7 +5255,17 @@ http://localhost:3000/api/v1/manager/client-users
 ```
 
 ```ruby
-Not implemented
+# INPUT
+horus-cli create users '"first-name":"My", "last-name":"User", "email":"my@manager.com", "password":"pass1234", "password-confirmation":"pass1234"'
+
+# OUTPUT
+{
+  "first-name":"My", 
+  "last-name":"User", 
+  "email":"my@manager.com", 
+  "password":"pass1234", 
+  "password-confirmation":"pass1234"
+}
 ```
 
 The manager can create a company account by accessing the route below.
@@ -5298,7 +5321,17 @@ http://localhost:3000/api/v1/manager/client-users/id-manager-client-user-profile
 ```
 
 ```ruby
-Not implemented
+# INPUT
+horus-cli update users "id-manager-client-user-profile" '"first-name":"Manager", "last-name":"Cool"'
+
+# OUTPUT
+{
+  "id":"id-manager-client-user-profile", 
+  "type":"client-users", 
+  "first-name":"Manager", 
+  "last-name":"Cool", 
+  "email":"my@manager.com"
+}
 ```
 
 The manager can edit information contained in an user account by accessing the route below.
@@ -5347,7 +5380,17 @@ http://localhost:3000/api/v1/manager/client-users/id-manager-client-user-profile
 ```
 
 ```ruby
-Not implemented
+# INPUT
+horus-cli show users "id-manager-client-user-profile"
+
+# OUTPUT
+{
+  "id":"id-manager-client-user-profile", 
+  "type":"client-users", 
+  "first-name":"Godlike", 
+  "last-name":"Manager", 
+  "email":"manager@example.com"
+}
 ```
 
 The manager can visualize a specific company account by accessing the route below.
@@ -5407,7 +5450,26 @@ http://localhost:3000/api/v1/manager/client-users
 ```
 
 ```ruby
-Not implemented
+# INPUT
+horus-cli list users
+
+# OUTPUT
+[
+  {
+    "id":"id-manager-client-user-profile", 
+    "type":"client-users", 
+    "first-name":"Godlike", 
+    "last-name":"Manager", 
+    "email":"manager@example.com"
+  },
+  {
+    "id":"id-manager-client-user-profile", 
+    "type":"client-users", 
+    "first-name":"Power", 
+    "last-name":"Admin", 
+    "email":"admin@smart.com"
+  }
+]
 ```
 
 The admin can visualize all companies accounts by accessing the route below.
@@ -5495,7 +5557,17 @@ http://localhost:3000/api/v1/manager/clients
 ```
 
 ```ruby
-Not implemented
+# INPUT
+horus-cli create clients '"corporate-name":"Corporacao", "trade-name":"Umbrella", "key-name":"umbrella", "email":"umbrella@example.com", "owner-id":"id-profile"'
+
+# OUTPUT
+{
+  "corporate-name":"Corporacao", 
+  "trade-name":"Umbrella", 
+  "key-name":"umbrella", 
+  "email":"umbrella@example.com", 
+  "owner-id":"id-profile"
+}
 ```
 
 The manager can create a company by accessing the route below.
@@ -5603,9 +5675,7 @@ horus-cli update clients "id-manager-client-user" '"corporate-name":"New Corpora
   "corporate-name":"New Corporate", 
   "trade-name":"New Trade", 
   "key-name":"key", 
-  "email":"client_02@example.com", 
-  "created-at":"2015-11-12T11:36:45.000Z", 
-  "updated-at":"2015-11-12T13:29:20.003Z"
+  "email":"client_02@example.com"
 }
 ```
 
@@ -5707,9 +5777,7 @@ horus-cli show clients "id-manager-client-user"
   "corporate-name":"Acme Inc.", 
   "trade-name":"Acme", 
   "key-name":"acme", 
-  "email":"newclient@acme.com", 
-  "created-at":"2015-11-12T11:36:45.000Z", 
-  "updated-at":"2015-11-12T11:37:30.899Z"
+  "email":"newclient@acme.com"
 }
 ```
 
@@ -5857,9 +5925,7 @@ horus-cli list clients
     "corporate-name":"Acme Inc.", 
     "trade-name":"Acme", 
     "key-name":"acme", 
-    "email":"newclient@acme.com", 
-    "created-at":"2015-11-12T11:36:45.000Z", 
-    "updated-at":"2015-11-12T11:37:30.899Z"
+    "email":"newclient@acme.com"
   },
   {
     "id":"id-manager-client-user", 
@@ -5867,9 +5933,7 @@ horus-cli list clients
     "corporate-name":"Smart Inc.", 
     "trade-name":"Smart", 
     "key-name":"smart", 
-    "email":"hello@smart.com", 
-    "created-at":"2015-11-12T11:36:45.000Z", 
-    "updated-at":"2015-11-12T11:36:45.000Z"
+    "email":"hello@smart.com"
   }
 ]
 ```
@@ -6175,7 +6239,7 @@ http://localhost:3000/api/v1/manager/client-telephones
 }
 ```
 
-```ruy
+```ruby
 # INPUT
 horus-cli list telephones
 
