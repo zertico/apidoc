@@ -1102,6 +1102,540 @@ Variable | Type | Value
 -------- | ---- | ----- 
 shop-cart-id | String | id-user-shop-cart
 
+# User Shop Category
+
+When logged in, the user can access information about the shop. This access allows him to show and list shop categories.
+
+## Show
+
+> Show Shop Category
+
+```shell
+# INPUT
+curl --header "Content-Type: application/vnd.api+json" 
+  -H "Authorization: Bearer id-access-token" -X GET -d 
+'{ 
+  "data":
+  { 
+    "type":"shop-categories" 
+  }
+}' 
+http://smart.lvh.me:3000/api/v1/shop-categories/id-shop-category
+
+# OUTPUT
+{
+  "data":
+  {
+    "id":"id-shop-category",
+    "type":"shop-categories",
+    "links":
+    {
+      "self":"http://smart.lvh.me:3000/api/v1/shop-categories/id-shop-category"
+    },
+    "attributes":
+    {
+      "name":"Smart Email",
+      "enabled":true,
+      "description":"Smart Email",
+      "long-description":"Smart Email Description",
+      "slug":"email",
+      "icon":"fa fa-envelope-o"
+    },
+    "relationships":
+    {
+      "shop-groups":
+      {
+        "links":
+        {
+          "self":"http://smart.lvh.me:3000/api/v1/shop-categories/id-shop-category/relationships/shop-groups",
+          "related":"http://smart.lvh.me:3000/api/v1/shop-categories/id-shop-category/shop-groups"
+        }
+      }
+    }
+  }
+}
+```
+
+```ruby
+Not implemented
+```
+
+The user can visualize a specific category created by accessing the route below.
+
+Route: *`GET "/api/v1/shop-categories/:id"`*
+
+## List
+
+> List Shop Group
+
+```shell
+# INPUT
+curl --header "Content-Type: application/vnd.api+json" 
+  -H "Authorization: Bearer id-access-token" -X GET -d 
+'{ 
+  "data":
+  { 
+    "type":"shop-categories" 
+  }
+}' 
+http://smart.lvh.me:3000/api/v1/shop-categories
+
+# OUTPUT
+{
+  "data":
+  [
+    {
+      "id":"id-shop-category",
+      "type":"shop-categories",
+      "links":
+      {
+        "self":"http://smart.lvh.me:3000/api/v1/shop-categories/id-shop-category"
+      },
+      "attributes":
+      {
+        "name":"Smart Email",
+        "enabled":true,
+        "description":"Smart Email",
+        "long-description":"Smart Email Description",
+        "slug":"email",
+        "icon":"fa fa-envelope-o"
+      },
+      "relationships":
+      {
+        "shop-groups":
+        {
+          "links":
+          {
+            "self":"http://smart.lvh.me:3000/api/v1/shop-categories/id-shop-category/relationships/shop-groups",
+            "related":"http://smart.lvh.me:3000/api/v1/shop-categories/id-shop-category/shop-groups"
+          }
+        }
+      }
+    },
+    {
+      "id":"id-shop-category",
+      "type":"shop-categories",
+      "links":
+      {
+        "self":"http://smart.lvh.me:3000/api/v1/shop-categories/id-shop-category"
+      },
+      "attributes":
+      {
+        "name":"Smart Server",
+        "enabled":true,
+        "description":"Smart IaaS",
+        "long-description":"Smart IaaS Description",
+        "slug":"server",
+        "icon":"fa fa-cloud"
+      },
+      "relationships":
+      {
+        "shop-groups":
+        {
+          "links":
+          {
+            "self":"http://smart.lvh.me:3000/api/v1/shop-categories/id-shop-category/relationships/shop-groups",
+            "related":"http://smart.lvh.me:3000/api/v1/shop-categories/id-shop-category/shop-groups"
+          }
+        }
+      }
+    }
+  ]
+}
+```
+
+```ruby
+Not implemented
+```
+
+The user can visualize all shop categories created by accessing the route below.
+
+Route: *`GET "/api/v1/shop-categories"`*
+
+# User Shop Group
+
+When logged in, the user can access information about the shop. This access allows him to show and list shop groups.
+
+## Show
+
+> Show Shop Group
+
+```shell
+# INPUT
+curl --header "Content-Type: application/vnd.api+json"
+  -H "Authorization: Bearer id-access-token" -X GET -d 
+'{ 
+  "data":
+  { 
+    "type":"shop-groups" 
+  }
+}' 
+http://smart.lvh.me:3000/api/v1/shop-groups/id-shop-group
+
+# OUTPUT
+{
+  "data":
+  {
+    "id":"id-shop-group",
+    "type":"shop-groups",
+    "links":
+    {
+      "self":"http://smart.lvh.me:3000/api/v1/shop-groups/id-shop-group"
+    },
+    "attributes":
+    {
+      "name":"Smart Cloud Servers",
+      "enabled":true,
+      "description":"Smart Cloud Servers Desc",
+      "long-description":"Smart Cloud Servers Long Desc",
+      "slug":"cloud-server",
+      "icon":"fa fa-cloud"
+    },
+    "relationships":
+    {
+      "shop-category":
+      {
+        "links":
+        {
+          "self":"http://smart.lvh.me:3000/api/v1/shop-groups/id-shop-group/relationships/shop-category",
+          "related":"http://smart.lvh.me:3000/api/v1/shop-groups/id-shop-group/shop-category"
+        },
+        "data":
+        {
+          "type":"shop-categories",
+          "id":"id-shop-category"
+        }
+      },
+      "shop-plans":
+      {
+        "links":
+        {
+          "self":"http://smart.lvh.me:3000/api/v1/shop-groups/id-shop-group/relationships/shop-plans",
+          "related":"http://smart.lvh.me:3000/api/v1/shop-groups/id-shop-group/shop-plans"
+        }
+      }
+    }
+  }
+}
+```
+
+```ruby
+Not implemented
+```
+
+The user can visualize a specific group created by accessing the route below.
+
+Route: *`GET "/api/v1/shop-groups/:id"`*
+
+## List
+
+> List Shop Group
+
+```shell
+# INPUT
+curl --header "Content-Type: application/vnd.api+json"
+  -H "Authorization: Bearer id-access-token" -X GET -d 
+'{ 
+  "data":
+  { 
+    "type":"shop-groups" 
+  }
+}' 
+http://smart.lvh.me:3000/api/v1/shop-groups
+
+# OUTPUT
+{
+  "data":
+  [
+    {
+      "id":"id-shop-group",
+      "type":"shop-groups",
+      "links":
+      {
+        "self":"http://smart.lvh.me:3000/api/v1/shop-groups/id-shop-group"
+      },
+      "attributes":
+      {
+        "name":"Smart Cloud Servers",
+        "enabled":true,
+        "description":"Smart Cloud Servers Desc",
+        "long-description":"Smart Cloud Servers Long Desc",
+        "slug":"cloud-server",
+        "icon":"fa fa-cloud"
+      },
+      "relationships":
+      {
+        "shop-category":
+        {
+          "links":
+          {
+            "self":"http://smart.lvh.me:3000/api/v1/shop-groups/id-shop-group/relationships/shop-category",
+            "related":"http://smart.lvh.me:3000/api/v1/shop-groups/id-shop-group/shop-category"
+          },
+          "data":
+          {
+            "type":"shop-categories",
+            "id":"id-shop-category"
+          }
+        },
+        "shop-plans":
+        {
+          "links":
+          {
+            "self":"http://smart.lvh.me:3000/api/v1/shop-groups/id-shop-group/relationships/shop-plans",
+            "related":"http://smart.lvh.me:3000/api/v1/shop-groups/id-shop-group/shop-plans"
+          }
+        }
+      }
+    },
+    {
+      "id":"id-shop-group",
+      "type":"shop-groups",
+      "links":
+      {
+        "self":"http://smart.lvh.me:3000/api/v1/shop-groups/id-shop-group"
+      },
+      "attributes":
+      {
+        "name":"Smart Email Hotmail",
+        "enabled":true,
+        "description":"Smart Email Hotmail Desc",
+        "long-description":"Smart Email Hotmail Long Desc",
+        "slug":"email-hotmail",
+        "icon":"fa fa-windows"
+      },
+      "relationships":
+      {
+        "shop-category":
+        {
+          "links":
+          {
+            "self":"http://smart.lvh.me:3000/api/v1/shop-groups/id-shop-group/relationships/shop-category",
+            "related":"http://smart.lvh.me:3000/api/v1/shop-groups/id-shop-group/shop-category"
+          },
+          "data":
+          {
+            "type":"shop-categories",
+            "id":"id-shop-category"
+          }
+        },
+        "shop-plans":
+        {
+          "links":
+          {
+            "self":"http://smart.lvh.me:3000/api/v1/shop-groups/id-shop-group/relationships/shop-plans",
+            "related":"http://smart.lvh.me:3000/api/v1/shop-groups/id-shop-group/shop-plans"
+          }
+        }
+      }
+    }
+  ]
+}
+```
+
+```ruby
+Not implemented
+```
+
+The user can visualize all shop groups created by accessing the route below.
+
+Route: *`GET "/api/v1/shop-groups"`*
+
+# User Shop Plan
+
+When logged in, the user can access information about the shop. This access allows him to show and list shop plans.
+
+## List
+
+> List Shop Plan
+
+```shell
+# INPUT
+curl --header "Content-Type: application/vnd.api+json" 
+  -H "Authorization: Bearer id-access-token" -X GET -d 
+'{
+  "data":
+  {
+    "type":"shop-plans"
+  }
+}' 
+http://acme.lvh.me:3000/api/v1/shop-plans
+
+# OUTPUT
+{
+  "data":
+  [
+    {
+      "id":"id-shop-plan",
+      "type":"shop-plans",
+      "links":
+      {
+        "self":"http://acme.lvh.me:3000/api/v1/shop-plans/id-shop-plan"
+      },
+      "attributes":
+      {
+        "name":"Acme Cloud Server (Small)",
+        "enabled":true,
+        "values":
+        {
+          "disk_1_san":"25 GB (SAN)",
+          "disk_2_san":null,
+          "disk_3_san":null,
+          "disk_4_san":null,
+          "disk_5_san":null,
+          "disk_1_local":null,
+          "disk_2_local":null,
+          "disk_type":"san",
+          "datacenter":"wdc01",
+          "memory":"2 GB",
+          "processor":"4 x 2.0 GHz Cores",
+          "operating_system":"Debian - Latest (64 bit)",
+          "network_component":"1 Gbps Public \u0026 Private Network Uplinks"
+        },
+        "description":"Acme Cloud Server Small Desc",
+        "long-description":"Acme Cloud Server Small Long Desc",
+        "allow-custom":true,
+        "can-customize":["datacenter"],
+        "product-name":"cloud_server",
+        "product-provider":"softlayer",
+        "hourly-price":"0.48",
+        "monthly-price":"300.0"
+      },
+      "relationships":
+      {
+        "shop-group":
+        {
+          "links":
+          {
+            "self":"http://acme.lvh.me:3000/api/v1/shop-plans/id-shop-plan/relationships/shop-group",
+            "related":"http://acme.lvh.me:3000/api/v1/shop-plans/id-shop-plan/shop-group"
+          },
+          "data":
+          {
+            "type":"shop-groups",
+            "id":"id-shop-group"
+          }
+        }
+      }
+    },
+    {
+      "id":"id-shop-plan",
+      "type":"shop-plans",
+      "links":
+      {
+        "self":"http://acme.lvh.me:3000/api/v1/shop-plans/id-shop-plan"
+      },
+      "attributes":
+      {
+        "name":"Acme Cloud Server (Large)",
+        "enabled":true,
+        "values":
+        {
+          "disk_1_san":"100 GB (SAN)",
+          "disk_2_san":null,
+          "disk_3_san":null,
+          "disk_4_san":null,
+          "disk_5_san":null,
+          "disk_1_local":null,
+          "disk_2_local":null,
+          "disk_type":"san",
+          "datacenter":"wdc01",
+          "memory":"6 GB",
+          "processor":"8 x 2.0 GHz Cores",
+          "operating_system":"Debian - Latest (64 bit)",
+          "network_component":"1 Gbps Public \u0026 Private Network Uplinks"
+        },
+        "description":"Acme Cloud Server Large Desc",
+        "long-description":"Acme Cloud Server Large Long Desc",
+        "allow-custom":true,
+        "can-customize":["datacenter"],
+        "product-name":"cloud_server",
+        "product-provider":"softlayer",
+        "hourly-price":"0.972",
+        "monthly-price":"624.87"
+      },
+      "relationships":
+      {
+        "shop-group":
+        {
+          "links":
+          {
+            "self":"http://acme.lvh.me:3000/api/v1/shop-plans/id-shop-plan/relationships/shop-group",
+            "related":"http://acme.lvh.me:3000/api/v1/shop-plans/id-shop-plan/shop-group"
+          },
+          "data":
+          {
+            "type":"shop-groups",
+            "id":"id-shop-group"
+          }
+        }
+      }
+    },
+    {
+      "id":"id-shop-plan",
+      "type":"shop-plans",
+      "links":
+      {
+        "self":"http://acme.lvh.me:3000/api/v1/shop-plans/id-shop-plan"
+      },
+      "attributes":
+      {
+        "name":"Acme Cloud Server (Medium)",
+        "enabled":true,
+        "values":
+        {
+          "disk_1_san":"25 GB (SAN)",
+          "disk_2_san":null,
+          "disk_3_san":null,
+          "disk_4_san":null,
+          "disk_5_san":null,
+          "disk_1_local":null,
+          "disk_2_local":null,
+          "disk_type":"san",
+          "datacenter":"wdc01",
+          "memory":"4 GB",
+          "processor":"8 x 2.0 GHz Cores",
+          "operating_system":"Debian - Latest (64 bit)",
+          "network_component":"1 Gbps Public \u0026 Private Network Uplinks"
+        },
+        "description":"Acme Cloud Server Medium Desc",
+        "long-description":"Acme Cloud Server Medium Long Desc",
+        "allow-custom":true,
+        "can-customize":["datacenter"],
+        "product-name":"cloud_server",
+        "product-provider":"softlayer",
+        "hourly-price":"0.843",
+        "monthly-price":"540.0"
+      },
+      "relationships":
+      {
+        "shop-group":
+        {
+          "links":
+          {
+            "self":"http://acme.lvh.me:3000/api/v1/shop-plans/id-shop-plan/relationships/shop-group",
+            "related":"http://acme.lvh.me:3000/api/v1/shop-plans/id-shop-plan/shop-group"
+          },
+          "data":
+          {
+            "type":"shop-groups",
+            "id":"id-shop-group"
+          }
+        }
+      }
+    }
+  ]
+}
+```
+
+```ruby
+Not implemented
+```
+
+The user can visualize all shop plans created by accessing the route below.
+
+Route: *`GET "/api/v1/shop-plans"`*
+
 # Admin Profile Account
 
 When logged in, the user admin access his own profile. This access allows him to show and update information about his account.
