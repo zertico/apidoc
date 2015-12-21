@@ -1636,6 +1636,145 @@ The user can visualize all shop plans created by accessing the route below.
 
 Route: *`GET "/api/v1/shop-plans"`*
 
+# User Filter
+
+When logged in, the user can access information about the shop. This access allows him list a specific group through a filter in the end of the url.
+
+*`?filter%5Bvariable%5D=value`*
+
+## Group
+
+> Filter Group
+
+```shell
+# INPUT
+curl --header "Content-Type: application/vnd.api+json" 
+  -H "Authorization: Bearer id-access-token" -X GET -d 
+'{
+  "data":
+  {
+    "type":"shop-groups"
+  }
+}' 
+http://smart.lvh.me:3000/api/v1/shop-groups?filter%5Bslug%5D=cloud-server
+
+# OUTPUT
+{
+  "data":
+  [
+    {
+      "id":"id-admin-shop-group",
+      "type":"shop-groups",
+      "links":
+      {
+        "self":"http://smart.lvh.me:3000/api/v1/shop-groups/id-admin-shop-group"
+      },
+      "attributes":
+      {
+        "name":"Smart Cloud Servers",
+        "enabled":true,
+        "description":"Smart Cloud Servers Desc",
+        "long-description":"Smart Cloud Servers Long Desc",
+        "slug":"cloud-server",
+        "icon":"fa fa-cloud"
+      },
+      "relationships":
+      {
+        "shop-category":
+        {
+          "links":
+          {
+            "self":"http://smart.lvh.me:3000/api/v1/shop-groups/id-admin-shop-group/relationships/shop-category",
+            "related":"http://smart.lvh.me:3000/api/v1/shop-groups/id-admin-shop-group/shop-category"
+          },
+          "data":
+          {
+            "type":"shop-categories",
+            "id":"id-admin-shop-category"
+          }
+        },
+        "shop-plans":
+        {
+          "links":
+          {
+            "self":"http://smart.lvh.me:3000/api/v1/shop-groups/id-admin-shop-group/relationships/shop-plans",
+            "related":"http://smart.lvh.me:3000/api/v1/shop-groups/id-admin-shop-group/shop-plans"
+          }
+        }
+      }
+    }
+  ]
+}
+```
+
+```ruby
+Not implemented
+```
+
+The user can filter a group by accessing the route below.
+
+Route: *`GET "/api/v1/shop-groups?filter%5Bslug%5D=cloud-server"`*
+
+## Category
+
+> Filter Category
+
+```shell
+# INPUT
+curl --header "Content-Type: application/vnd.api+json" 
+  -H "Authorization: Bearer id-access-token" -X GET -d 
+'{
+  "data":
+  {
+    "type":"shop-categories"
+  }
+}' 
+http://smart.lvh.me:3000/api/v1/shop-categories?filter%5Bslug%5D=email
+
+# OUTPUT
+{
+  "data":
+  [
+    {
+      "id":"id-admin-shop-category",
+      "type":"shop-categories",
+      "links":
+      {
+        "self":"http://smart.lvh.me:3000/api/v1/shop-categories/id-admin-shop-category"
+      },
+      "attributes":
+      {
+        "name":"Smart Email",
+        "enabled":true,
+        "description":"Smart Email",
+        "long-description":"Smart Email Description",
+        "slug":"email",
+        "icon":"fa fa-envelope-o"
+      },
+      "relationships":
+      {
+        "shop-groups":
+        {
+          "links":
+          {
+            "self":"http://smart.lvh.me:3000/api/v1/shop-categories/id-admin-shop-category/relationships/shop-groups",
+            "related":"http://smart.lvh.me:3000/api/v1/shop-categories/id-admin-shop-category/shop-groups"
+          }
+        }
+      }
+    }
+  ]
+}
+```
+
+```ruby
+Not implemented
+```
+
+The user can filter a category by accessing the route below.
+
+Route: *`GET "/api/v1/shop-categories?filter%5Bslug%5D=email"`*
+
 # Admin Profile Account
 
 When logged in, the user admin access his own profile. This access allows him to show and update information about his account.
