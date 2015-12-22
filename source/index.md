@@ -1636,6 +1636,378 @@ The user can visualize all shop plans created by accessing the route below.
 
 Route: *`GET "/api/v1/shop-plans"`*
 
+# User Shop Plan Softlayer Cloud Server
+
+When logged in, the user can access information about the shop. This access allows him to create, show and list shop plans Softlayer cloud server.
+
+## Create
+
+> Create Shop Plan Softlayer Cloud Server
+
+```shell
+# INPUT
+curl --header "Content-Type: application/vnd.api+json" 
+  -H "Authorization: Bearer id-access-token" -X POST -d 
+'{ 
+  "data":
+  { 
+    "type":"shop-softlayer-cloud-server-plans", 
+    "attributes":
+    { 
+      "description":"Small", 
+      "long-description":"Cloud Server Small", 
+      "disk-1-san":"25 GB (SAN)", 
+      "disk-2-san":"10 GB (SAN)", 
+      "disk-3-san":"10 GB (SAN)", 
+      "disk-type":"san", 
+      "datacenter":"wdc01", 
+      "memory":"2 GB", 
+      "processor":"4 x 2.0 GHz Cores", 
+      "operating-system":"Debian - Latest (64 bit)", 
+      "network-component":"1 Gbps Public & Private Network Uplinks" 
+    }
+  }
+}' 
+http://smart.lvh.me:3000/api/v1/shop-softlayer-cloud-server-plans
+
+# OUTPUT
+{
+  "data":
+  {
+    "id":"id-plan-softlayer-cloud-server",
+    "type":"shop-softlayer-cloud-server-plans",
+    "links":
+    {
+      "self":"http://smart.lvh.me:3000/api/v1/shop-softlayer-cloud-server-plans/id-plan-softlayer-cloud-server"
+    },
+    "attributes":
+    {
+      "name":null,
+      "enabled":true,
+      "description":"Small",
+      "long-description":"Cloud Server Small",
+      "allow-custom":false,
+      "can-customize":[],
+      "disk-1-san":"25 GB (SAN)",
+      "disk-2-san":"10 GB (SAN)",
+      "disk-3-san":"10 GB (SAN)",
+      "disk-4-san":null,
+      "disk-5-san":null,
+      "disk-1-local":null,
+      "disk-2-local":null,
+      "disk-type":"san",
+      "datacenter":"wdc01",
+      "memory":"2 GB",
+      "processor":"4 x 2.0 GHz Cores",
+      "operating-system":"Debian - Latest (64 bit)",
+      "network-component":"1 Gbps Public \u0026 Private Network Uplinks",
+      "hourly-price":"0.522",
+      "monthly-price":"327.42",
+      "product-name":"cloud_server",
+      "product-provider":"softlayer"
+    },
+    "relationships":
+    {
+      "shop-group":
+      {
+        "links":
+        {
+          "self":"http://smart.lvh.me:3000/api/v1/shop-softlayer-cloud-server-plans/id-plan-softlayer-cloud-server/relationships/shop-group",
+          "related":"http://smart.lvh.me:3000/api/v1/shop-softlayer-cloud-server-plans/id-plan-softlayer-cloud-server/shop-group"
+        },
+        "data":null
+      }
+    }
+  }
+}
+```
+
+```ruby
+Not implemented
+```
+
+The user can create a Softlayer Cloud Server plan accessing the route below.
+
+Route: *`POST "/api/v1/shop-softlayer-cloud-server-plans"`*
+
+Variable | Type | Value
+-------- | ---- | ----- 
+name | String | name
+enabled | String | true
+description | String | Small
+long-description | String | Cloud Server Small
+allow-custom | String | false
+can-customize | String | [ ]
+disk-1-san | String | 25 GB (SAN)
+disk-2-san | String | 10 GB (SAN)
+disk-3-san | String | 10 GB (SAN)
+disk-4-san | String | 10 GB (SAN)
+disk-5-san | String | 10 GB (SAN)
+disk-1-local | String | 10 GB (SAN)
+disk-2-local | String | 10 GB (SAN)
+disk-type | String | san
+datacenter | String | wdc01
+memory | String | 2 GB
+processor | String | 4 x 2.0 GHz Cores
+operating-system | String | Debian - Latest (64 bit)
+network-component | String | 1 Gbps Public \u0026 Private Network Uplinks
+
+## Show
+
+> Show Shop Plan Softlayer Cloud Server
+
+```shell
+# INPUT
+curl --header "Content-Type: application/vnd.api+json" 
+  -H "Authorization: Bearer id-access-token" -X GET -d 
+'{
+  "data":
+  {
+    "type":"shop-softlayer-cloud-server-plans"
+  }
+}' 
+http://acme.lvh.me:3000/api/v1/shop-softlayer-cloud-server-plans/id-plan-softlayer-cloud-server
+
+# OUTPUT
+{
+  "data":
+  {
+    "id":"id-plan-softlayer-cloud-server",
+    "type":"shop-softlayer-cloud-server-plans",
+    "links":
+    {
+      "self":"http://acme.lvh.me:3000/api/v1/shop-softlayer-cloud-server-plans/id-plan-softlayer-cloud-server"
+    },
+    "attributes":
+    {
+      "name":null,
+      "enabled":true,
+      "description":"Small",
+      "long-description":"Cloud Server Small",
+      "allow-custom":false,
+      "can-customize":[],
+      "disk-1-san":"25 GB (SAN)",
+      "disk-2-san":"10 GB (SAN)",
+      "disk-3-san":"10 GB (SAN)",
+      "disk-4-san":null,
+      "disk-5-san":null,
+      "disk-1-local":null,
+      "disk-2-local":null,
+      "disk-type":"san",
+      "datacenter":"wdc01",
+      "memory":"2 GB",
+      "processor":"4 x 2.0 GHz Cores",
+      "operating-system":"Debian - Latest (64 bit)",
+      "network-component":"1 Gbps Public \u0026 Private Network Uplinks",
+      "hourly-price":"0.522",
+      "monthly-price":"327.42",
+      "product-name":"cloud_server",
+      "product-provider":"softlayer"
+    },
+    "relationships":
+    {
+      "shop-group":
+      {
+        "links":
+        {
+          "self":"http://acme.lvh.me:3000/api/v1/shop-softlayer-cloud-server-plans/id-plan-softlayer-cloud-server/relationships/shop-group",
+          "related":"http://acme.lvh.me:3000/api/v1/shop-softlayer-cloud-server-plans/id-plan-softlayer-cloud-server/shop-group"
+        },
+        "data":null
+      }
+    }
+  }
+}
+```
+
+```ruby
+Not implemented
+```
+
+The user can get information for a specific SoftLayer Cloud Server plan accessing the route bellow.
+
+Route: *`GET "/api/v1/shop-softlayer-cloud-server-plans/:id"`*
+
+## List
+
+> List Shop Plan Softlayer Cloud Server
+
+```shell
+# INPUT
+curl --header "Content-Type: application/vnd.api+json" 
+  -H "Authorization: Bearer id-access-token" -X GET -d 
+'{
+  "data":
+  {
+    "type":"shop-softlayer-cloud-server-plans"
+  }
+}' 
+http://acme.lvh.me:3000/api/v1/shop-softlayer-cloud-server-plans
+
+# OUTPUT
+{
+  "data":
+  [
+    {
+      "id":"id-plan-softlayer-cloud-server",
+      "type":"shop-softlayer-cloud-server-plans",
+      "links":
+      {
+        "self":"http://acme.lvh.me:3000/api/v1/shop-softlayer-cloud-server-plans/id-plan-softlayer-cloud-server"
+      },
+      "attributes":
+      {
+        "name":"Acme Cloud Server (Small)",
+        "enabled":true,
+        "description":"Acme Cloud Server Small Desc",
+        "long-description":"Acme Cloud Server Small Long Desc",
+        "allow-custom":true,
+        "can-customize":["datacenter"],
+        "disk-1-san":"25 GB (SAN)",
+        "disk-2-san":null,
+        "disk-3-san":null,
+        "disk-4-san":null,
+        "disk-5-san":null,
+        "disk-1-local":null,
+        "disk-2-local":null,
+        "disk-type":"san",
+        "datacenter":"wdc01",
+        "memory":"2 GB",
+        "processor":"4 x 2.0 GHz Cores",
+        "operating-system":"Debian - Latest (64 bit)",
+        "network-component":"1 Gbps Public \u0026 Private Network Uplinks",
+        "hourly-price":"0.48",
+        "monthly-price":"300.0",
+        "product-name":"cloud_server",
+        "product-provider":"softlayer"
+      },
+      "relationships":
+      {
+        "shop-group":
+        {
+          "links":
+          {
+            "self":"http://acme.lvh.me:3000/api/v1/shop-softlayer-cloud-server-plans/id-plan-softlayer-cloud-server/relationships/shop-group",
+            "related":"http://acme.lvh.me:3000/api/v1/shop-softlayer-cloud-server-plans/id-plan-softlayer-cloud-server/shop-group"
+          },
+          "data":
+          {
+            "type":"shop-groups",
+            "id":"id-shop-group"
+          }
+        }
+      }
+    },
+    {
+      "id":"id-plan-softlayer-cloud-server",
+      "type":"shop-softlayer-cloud-server-plans",
+      "links":
+      {
+        "self":"http://acme.lvh.me:3000/api/v1/shop-softlayer-cloud-server-plans/id-plan-softlayer-cloud-server"
+      },
+      "attributes":
+      {
+        "name":"Acme Cloud Server (Large)",
+        "enabled":true,"description":"Acme Cloud Server Large Desc",
+        "long-description":"Acme Cloud Server Large Long Desc",
+        "allow-custom":true,
+        "can-customize":["datacenter"],
+        "disk-1-san":"100 GB (SAN)",
+        "disk-2-san":null,
+        "disk-3-san":null,
+        "disk-4-san":null,
+        "disk-5-san":null,
+        "disk-1-local":null,
+        "disk-2-local":null,
+        "disk-type":"san",
+        "datacenter":"wdc01",
+        "memory":"6 GB",
+        "processor":"8 x 2.0 GHz Cores",
+        "operating-system":"Debian - Latest (64 bit)",
+        "network-component":"1 Gbps Public \u0026 Private Network Uplinks",
+        "hourly-price":"0.972",
+        "monthly-price":"624.87",
+        "product-name":"cloud_server",
+        "product-provider":"softlayer"
+      },
+      "relationships":
+      {
+        "shop-group":
+        {
+          "links":
+          {
+            "self":"http://acme.lvh.me:3000/api/v1/shop-softlayer-cloud-server-plans/id-plan-softlayer-cloud-server/relationships/shop-group",
+            "related":"http://acme.lvh.me:3000/api/v1/shop-softlayer-cloud-server-plans/id-plan-softlayer-cloud-server/shop-group"
+          },
+          "data":
+          {
+            "type":"shop-groups",
+            "id":"id-shop-group"
+          }
+        }
+      }
+    },
+    {
+      "id":"id-plan-softlayer-cloud-server",
+      "type":"shop-softlayer-cloud-server-plans",
+      "links":
+      {
+        "self":"http://acme.lvh.me:3000/api/v1/shop-softlayer-cloud-server-plans/id-plan-softlayer-cloud-server"
+      },
+      "attributes":
+      {
+        "name":"Acme Cloud Server (Medium)",
+        "enabled":true,
+        "description":"Acme Cloud Server Medium Desc",
+        "long-description":"Acme Cloud Server Medium Long Desc",
+        "allow-custom":true,
+        "can-customize":["datacenter"],
+        "disk-1-san":"25 GB (SAN)",
+        "disk-2-san":null,
+        "disk-3-san":null,
+        "disk-4-san":null,
+        "disk-5-san":null,
+        "disk-1-local":null,
+        "disk-2-local":null,
+        "disk-type":"san",
+        "datacenter":"wdc01",
+        "memory":"4 GB",
+        "processor":"8 x 2.0 GHz Cores",
+        "operating-system":"Debian - Latest (64 bit)",
+        "network-component":"1 Gbps Public \u0026 Private Network Uplinks",
+        "hourly-price":"0.843",
+        "monthly-price":"540.0",
+        "product-name":"cloud_server",
+        "product-provider":"softlayer"
+      },
+      "relationships":
+      {
+        "shop-group":
+        {
+          "links":
+          {
+            "self":"http://acme.lvh.me:3000/api/v1/shop-softlayer-cloud-server-plans/id-plan-softlayer-cloud-server/relationships/shop-group",
+            "related":"http://acme.lvh.me:3000/api/v1/shop-softlayer-cloud-server-plans/id-plan-softlayer-cloud-server/shop-group"
+          },
+          "data":
+          {
+            "type":"shop-groups",
+            "id":"id-shop-group"
+          }
+        }
+      }
+    }
+  ]
+}
+```
+
+```ruby
+Not implemented
+```
+The user can list all SoftLayer Cloud Server plans accessing the route bellow.
+
+Route: *`GET "/api/v1/shop-softlayer-cloud-server-plans"`*
+
 # User Filter
 
 When logged in, the user can access information about the shop. This access allows him list a specific group through a filter in the end of the url.
