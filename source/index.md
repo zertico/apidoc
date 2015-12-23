@@ -1102,6 +1102,1751 @@ Variable | Type | Value
 -------- | ---- | ----- 
 shop-cart-id | String | id-user-shop-cart
 
+# User Shop Category
+
+When logged in, the user can access information about the shop. This access allows him to show and list shop categories.
+
+## Show
+
+> Show Shop Category
+
+```shell
+# INPUT
+curl --header "Content-Type: application/vnd.api+json" 
+  -H "Authorization: Bearer id-access-token" -X GET -d 
+'{ 
+  "data":
+  { 
+    "type":"shop-categories" 
+  }
+}' 
+http://smart.lvh.me:3000/api/v1/shop-categories/id-shop-category
+
+# OUTPUT
+{
+  "data":
+  {
+    "id":"id-shop-category",
+    "type":"shop-categories",
+    "links":
+    {
+      "self":"http://smart.lvh.me:3000/api/v1/shop-categories/id-shop-category"
+    },
+    "attributes":
+    {
+      "name":"Smart Email",
+      "enabled":true,
+      "description":"Smart Email",
+      "long-description":"Smart Email Description",
+      "slug":"email",
+      "icon":"fa fa-envelope-o"
+    },
+    "relationships":
+    {
+      "shop-groups":
+      {
+        "links":
+        {
+          "self":"http://smart.lvh.me:3000/api/v1/shop-categories/id-shop-category/relationships/shop-groups",
+          "related":"http://smart.lvh.me:3000/api/v1/shop-categories/id-shop-category/shop-groups"
+        }
+      }
+    }
+  }
+}
+```
+
+```ruby
+Not implemented
+```
+
+The user can visualize a specific category created by accessing the route below.
+
+Route: *`GET "/api/v1/shop-categories/:id"`*
+
+## List
+
+> List Shop Group
+
+```shell
+# INPUT
+curl --header "Content-Type: application/vnd.api+json" 
+  -H "Authorization: Bearer id-access-token" -X GET -d 
+'{ 
+  "data":
+  { 
+    "type":"shop-categories" 
+  }
+}' 
+http://smart.lvh.me:3000/api/v1/shop-categories
+
+# OUTPUT
+{
+  "data":
+  [
+    {
+      "id":"id-shop-category",
+      "type":"shop-categories",
+      "links":
+      {
+        "self":"http://smart.lvh.me:3000/api/v1/shop-categories/id-shop-category"
+      },
+      "attributes":
+      {
+        "name":"Smart Email",
+        "enabled":true,
+        "description":"Smart Email",
+        "long-description":"Smart Email Description",
+        "slug":"email",
+        "icon":"fa fa-envelope-o"
+      },
+      "relationships":
+      {
+        "shop-groups":
+        {
+          "links":
+          {
+            "self":"http://smart.lvh.me:3000/api/v1/shop-categories/id-shop-category/relationships/shop-groups",
+            "related":"http://smart.lvh.me:3000/api/v1/shop-categories/id-shop-category/shop-groups"
+          }
+        }
+      }
+    },
+    {
+      "id":"id-shop-category",
+      "type":"shop-categories",
+      "links":
+      {
+        "self":"http://smart.lvh.me:3000/api/v1/shop-categories/id-shop-category"
+      },
+      "attributes":
+      {
+        "name":"Smart Server",
+        "enabled":true,
+        "description":"Smart IaaS",
+        "long-description":"Smart IaaS Description",
+        "slug":"server",
+        "icon":"fa fa-cloud"
+      },
+      "relationships":
+      {
+        "shop-groups":
+        {
+          "links":
+          {
+            "self":"http://smart.lvh.me:3000/api/v1/shop-categories/id-shop-category/relationships/shop-groups",
+            "related":"http://smart.lvh.me:3000/api/v1/shop-categories/id-shop-category/shop-groups"
+          }
+        }
+      }
+    }
+  ]
+}
+```
+
+```ruby
+Not implemented
+```
+
+The user can visualize all shop categories created by accessing the route below.
+
+Route: *`GET "/api/v1/shop-categories"`*
+
+# User Shop Group
+
+When logged in, the user can access information about the shop. This access allows him to show and list shop groups.
+
+## Show
+
+> Show Shop Group
+
+```shell
+# INPUT
+curl --header "Content-Type: application/vnd.api+json"
+  -H "Authorization: Bearer id-access-token" -X GET -d 
+'{ 
+  "data":
+  { 
+    "type":"shop-groups" 
+  }
+}' 
+http://smart.lvh.me:3000/api/v1/shop-groups/id-shop-group
+
+# OUTPUT
+{
+  "data":
+  {
+    "id":"id-shop-group",
+    "type":"shop-groups",
+    "links":
+    {
+      "self":"http://smart.lvh.me:3000/api/v1/shop-groups/id-shop-group"
+    },
+    "attributes":
+    {
+      "name":"Smart Cloud Servers",
+      "enabled":true,
+      "description":"Smart Cloud Servers Desc",
+      "long-description":"Smart Cloud Servers Long Desc",
+      "slug":"cloud-server",
+      "icon":"fa fa-cloud"
+    },
+    "relationships":
+    {
+      "shop-category":
+      {
+        "links":
+        {
+          "self":"http://smart.lvh.me:3000/api/v1/shop-groups/id-shop-group/relationships/shop-category",
+          "related":"http://smart.lvh.me:3000/api/v1/shop-groups/id-shop-group/shop-category"
+        },
+        "data":
+        {
+          "type":"shop-categories",
+          "id":"id-shop-category"
+        }
+      },
+      "shop-plans":
+      {
+        "links":
+        {
+          "self":"http://smart.lvh.me:3000/api/v1/shop-groups/id-shop-group/relationships/shop-plans",
+          "related":"http://smart.lvh.me:3000/api/v1/shop-groups/id-shop-group/shop-plans"
+        }
+      }
+    }
+  }
+}
+```
+
+```ruby
+Not implemented
+```
+
+The user can visualize a specific group created by accessing the route below.
+
+Route: *`GET "/api/v1/shop-groups/:id"`*
+
+## List
+
+> List Shop Group
+
+```shell
+# INPUT
+curl --header "Content-Type: application/vnd.api+json"
+  -H "Authorization: Bearer id-access-token" -X GET -d 
+'{ 
+  "data":
+  { 
+    "type":"shop-groups" 
+  }
+}' 
+http://smart.lvh.me:3000/api/v1/shop-groups
+
+# OUTPUT
+{
+  "data":
+  [
+    {
+      "id":"id-shop-group",
+      "type":"shop-groups",
+      "links":
+      {
+        "self":"http://smart.lvh.me:3000/api/v1/shop-groups/id-shop-group"
+      },
+      "attributes":
+      {
+        "name":"Smart Cloud Servers",
+        "enabled":true,
+        "description":"Smart Cloud Servers Desc",
+        "long-description":"Smart Cloud Servers Long Desc",
+        "slug":"cloud-server",
+        "icon":"fa fa-cloud"
+      },
+      "relationships":
+      {
+        "shop-category":
+        {
+          "links":
+          {
+            "self":"http://smart.lvh.me:3000/api/v1/shop-groups/id-shop-group/relationships/shop-category",
+            "related":"http://smart.lvh.me:3000/api/v1/shop-groups/id-shop-group/shop-category"
+          },
+          "data":
+          {
+            "type":"shop-categories",
+            "id":"id-shop-category"
+          }
+        },
+        "shop-plans":
+        {
+          "links":
+          {
+            "self":"http://smart.lvh.me:3000/api/v1/shop-groups/id-shop-group/relationships/shop-plans",
+            "related":"http://smart.lvh.me:3000/api/v1/shop-groups/id-shop-group/shop-plans"
+          }
+        }
+      }
+    },
+    {
+      "id":"id-shop-group",
+      "type":"shop-groups",
+      "links":
+      {
+        "self":"http://smart.lvh.me:3000/api/v1/shop-groups/id-shop-group"
+      },
+      "attributes":
+      {
+        "name":"Smart Email Hotmail",
+        "enabled":true,
+        "description":"Smart Email Hotmail Desc",
+        "long-description":"Smart Email Hotmail Long Desc",
+        "slug":"email-hotmail",
+        "icon":"fa fa-windows"
+      },
+      "relationships":
+      {
+        "shop-category":
+        {
+          "links":
+          {
+            "self":"http://smart.lvh.me:3000/api/v1/shop-groups/id-shop-group/relationships/shop-category",
+            "related":"http://smart.lvh.me:3000/api/v1/shop-groups/id-shop-group/shop-category"
+          },
+          "data":
+          {
+            "type":"shop-categories",
+            "id":"id-shop-category"
+          }
+        },
+        "shop-plans":
+        {
+          "links":
+          {
+            "self":"http://smart.lvh.me:3000/api/v1/shop-groups/id-shop-group/relationships/shop-plans",
+            "related":"http://smart.lvh.me:3000/api/v1/shop-groups/id-shop-group/shop-plans"
+          }
+        }
+      }
+    }
+  ]
+}
+```
+
+```ruby
+Not implemented
+```
+
+The user can visualize all shop groups created by accessing the route below.
+
+Route: *`GET "/api/v1/shop-groups"`*
+
+# User Shop Plan
+
+When logged in, the user can access information about the shop. This access allows him to show and list shop plans.
+
+## List
+
+> List Shop Plan
+
+```shell
+# INPUT
+curl --header "Content-Type: application/vnd.api+json" 
+  -H "Authorization: Bearer id-access-token" -X GET -d 
+'{
+  "data":
+  {
+    "type":"shop-plans"
+  }
+}' 
+http://acme.lvh.me:3000/api/v1/shop-plans
+
+# OUTPUT
+{
+  "data":
+  [
+    {
+      "id":"id-shop-plan",
+      "type":"shop-plans",
+      "links":
+      {
+        "self":"http://acme.lvh.me:3000/api/v1/shop-plans/id-shop-plan"
+      },
+      "attributes":
+      {
+        "name":"Acme Cloud Server (Small)",
+        "enabled":true,
+        "values":
+        {
+          "disk_1_san":"25 GB (SAN)",
+          "disk_2_san":null,
+          "disk_3_san":null,
+          "disk_4_san":null,
+          "disk_5_san":null,
+          "disk_1_local":null,
+          "disk_2_local":null,
+          "disk_type":"san",
+          "datacenter":"wdc01",
+          "memory":"2 GB",
+          "processor":"4 x 2.0 GHz Cores",
+          "operating_system":"Debian - Latest (64 bit)",
+          "network_component":"1 Gbps Public \u0026 Private Network Uplinks"
+        },
+        "description":"Acme Cloud Server Small Desc",
+        "long-description":"Acme Cloud Server Small Long Desc",
+        "allow-custom":true,
+        "can-customize":["datacenter"],
+        "product-name":"cloud_server",
+        "product-provider":"softlayer",
+        "hourly-price":"0.48",
+        "monthly-price":"300.0"
+      },
+      "relationships":
+      {
+        "shop-group":
+        {
+          "links":
+          {
+            "self":"http://acme.lvh.me:3000/api/v1/shop-plans/id-shop-plan/relationships/shop-group",
+            "related":"http://acme.lvh.me:3000/api/v1/shop-plans/id-shop-plan/shop-group"
+          },
+          "data":
+          {
+            "type":"shop-groups",
+            "id":"id-shop-group"
+          }
+        }
+      }
+    },
+    {
+      "id":"id-shop-plan",
+      "type":"shop-plans",
+      "links":
+      {
+        "self":"http://acme.lvh.me:3000/api/v1/shop-plans/id-shop-plan"
+      },
+      "attributes":
+      {
+        "name":"Acme Cloud Server (Large)",
+        "enabled":true,
+        "values":
+        {
+          "disk_1_san":"100 GB (SAN)",
+          "disk_2_san":null,
+          "disk_3_san":null,
+          "disk_4_san":null,
+          "disk_5_san":null,
+          "disk_1_local":null,
+          "disk_2_local":null,
+          "disk_type":"san",
+          "datacenter":"wdc01",
+          "memory":"6 GB",
+          "processor":"8 x 2.0 GHz Cores",
+          "operating_system":"Debian - Latest (64 bit)",
+          "network_component":"1 Gbps Public \u0026 Private Network Uplinks"
+        },
+        "description":"Acme Cloud Server Large Desc",
+        "long-description":"Acme Cloud Server Large Long Desc",
+        "allow-custom":true,
+        "can-customize":["datacenter"],
+        "product-name":"cloud_server",
+        "product-provider":"softlayer",
+        "hourly-price":"0.972",
+        "monthly-price":"624.87"
+      },
+      "relationships":
+      {
+        "shop-group":
+        {
+          "links":
+          {
+            "self":"http://acme.lvh.me:3000/api/v1/shop-plans/id-shop-plan/relationships/shop-group",
+            "related":"http://acme.lvh.me:3000/api/v1/shop-plans/id-shop-plan/shop-group"
+          },
+          "data":
+          {
+            "type":"shop-groups",
+            "id":"id-shop-group"
+          }
+        }
+      }
+    },
+    {
+      "id":"id-shop-plan",
+      "type":"shop-plans",
+      "links":
+      {
+        "self":"http://acme.lvh.me:3000/api/v1/shop-plans/id-shop-plan"
+      },
+      "attributes":
+      {
+        "name":"Acme Cloud Server (Medium)",
+        "enabled":true,
+        "values":
+        {
+          "disk_1_san":"25 GB (SAN)",
+          "disk_2_san":null,
+          "disk_3_san":null,
+          "disk_4_san":null,
+          "disk_5_san":null,
+          "disk_1_local":null,
+          "disk_2_local":null,
+          "disk_type":"san",
+          "datacenter":"wdc01",
+          "memory":"4 GB",
+          "processor":"8 x 2.0 GHz Cores",
+          "operating_system":"Debian - Latest (64 bit)",
+          "network_component":"1 Gbps Public \u0026 Private Network Uplinks"
+        },
+        "description":"Acme Cloud Server Medium Desc",
+        "long-description":"Acme Cloud Server Medium Long Desc",
+        "allow-custom":true,
+        "can-customize":["datacenter"],
+        "product-name":"cloud_server",
+        "product-provider":"softlayer",
+        "hourly-price":"0.843",
+        "monthly-price":"540.0"
+      },
+      "relationships":
+      {
+        "shop-group":
+        {
+          "links":
+          {
+            "self":"http://acme.lvh.me:3000/api/v1/shop-plans/id-shop-plan/relationships/shop-group",
+            "related":"http://acme.lvh.me:3000/api/v1/shop-plans/id-shop-plan/shop-group"
+          },
+          "data":
+          {
+            "type":"shop-groups",
+            "id":"id-shop-group"
+          }
+        }
+      }
+    }
+  ]
+}
+```
+
+```ruby
+Not implemented
+```
+
+The user can visualize all shop plans created by accessing the route below.
+
+Route: *`GET "/api/v1/shop-plans"`*
+
+# User Shop Plan Softlayer Cloud Server
+
+When logged in, the user can access information about the shop. This access allows him to create, show and list shop plans Softlayer cloud server.
+
+## Create
+
+> Create Shop Plan Softlayer Cloud Server
+
+```shell
+# INPUT
+curl --header "Content-Type: application/vnd.api+json" 
+  -H "Authorization: Bearer id-access-token" -X POST -d 
+'{ 
+  "data":
+  { 
+    "type":"shop-softlayer-cloud-server-plans", 
+    "attributes":
+    { 
+      "description":"Small", 
+      "long-description":"Cloud Server Small", 
+      "disk-1-san":"25 GB (SAN)", 
+      "disk-2-san":"10 GB (SAN)", 
+      "disk-3-san":"10 GB (SAN)", 
+      "disk-type":"san", 
+      "datacenter":"wdc01", 
+      "memory":"2 GB", 
+      "processor":"4 x 2.0 GHz Cores", 
+      "operating-system":"Debian - Latest (64 bit)", 
+      "network-component":"1 Gbps Public & Private Network Uplinks" 
+    }
+  }
+}' 
+http://smart.lvh.me:3000/api/v1/shop-softlayer-cloud-server-plans
+
+# OUTPUT
+{
+  "data":
+  {
+    "id":"id-plan-softlayer-cloud-server",
+    "type":"shop-softlayer-cloud-server-plans",
+    "links":
+    {
+      "self":"http://smart.lvh.me:3000/api/v1/shop-softlayer-cloud-server-plans/id-plan-softlayer-cloud-server"
+    },
+    "attributes":
+    {
+      "name":null,
+      "enabled":true,
+      "description":"Small",
+      "long-description":"Cloud Server Small",
+      "allow-custom":false,
+      "can-customize":[],
+      "disk-1-san":"25 GB (SAN)",
+      "disk-2-san":"10 GB (SAN)",
+      "disk-3-san":"10 GB (SAN)",
+      "disk-4-san":null,
+      "disk-5-san":null,
+      "disk-1-local":null,
+      "disk-2-local":null,
+      "disk-type":"san",
+      "datacenter":"wdc01",
+      "memory":"2 GB",
+      "processor":"4 x 2.0 GHz Cores",
+      "operating-system":"Debian - Latest (64 bit)",
+      "network-component":"1 Gbps Public \u0026 Private Network Uplinks",
+      "hourly-price":"0.522",
+      "monthly-price":"327.42",
+      "product-name":"cloud_server",
+      "product-provider":"softlayer"
+    },
+    "relationships":
+    {
+      "shop-group":
+      {
+        "links":
+        {
+          "self":"http://smart.lvh.me:3000/api/v1/shop-softlayer-cloud-server-plans/id-plan-softlayer-cloud-server/relationships/shop-group",
+          "related":"http://smart.lvh.me:3000/api/v1/shop-softlayer-cloud-server-plans/id-plan-softlayer-cloud-server/shop-group"
+        },
+        "data":null
+      }
+    }
+  }
+}
+```
+
+```ruby
+Not implemented
+```
+
+The user can create a Softlayer Cloud Server plan accessing the route below.
+
+Route: *`POST "/api/v1/shop-softlayer-cloud-server-plans"`*
+
+Variable | Type | Value
+-------- | ---- | ----- 
+name | String | name
+enabled | String | true
+description | String | Small
+long-description | String | Cloud Server Small
+allow-custom | String | false
+can-customize | String | [ ]
+disk-1-san | String | 25 GB (SAN)
+disk-2-san | String | 10 GB (SAN)
+disk-3-san | String | 10 GB (SAN)
+disk-4-san | String | 10 GB (SAN)
+disk-5-san | String | 10 GB (SAN)
+disk-1-local | String | 10 GB (SAN)
+disk-2-local | String | 10 GB (SAN)
+disk-type | String | san
+datacenter | String | wdc01
+memory | String | 2 GB
+processor | String | 4 x 2.0 GHz Cores
+operating-system | String | Debian - Latest (64 bit)
+network-component | String | 1 Gbps Public \u0026 Private Network Uplinks
+
+## Show
+
+> Show Shop Plan Softlayer Cloud Server
+
+```shell
+# INPUT
+curl --header "Content-Type: application/vnd.api+json" 
+  -H "Authorization: Bearer id-access-token" -X GET -d 
+'{
+  "data":
+  {
+    "type":"shop-softlayer-cloud-server-plans"
+  }
+}' 
+http://acme.lvh.me:3000/api/v1/shop-softlayer-cloud-server-plans/id-plan-softlayer-cloud-server
+
+# OUTPUT
+{
+  "data":
+  {
+    "id":"id-plan-softlayer-cloud-server",
+    "type":"shop-softlayer-cloud-server-plans",
+    "links":
+    {
+      "self":"http://acme.lvh.me:3000/api/v1/shop-softlayer-cloud-server-plans/id-plan-softlayer-cloud-server"
+    },
+    "attributes":
+    {
+      "name":null,
+      "enabled":true,
+      "description":"Small",
+      "long-description":"Cloud Server Small",
+      "allow-custom":false,
+      "can-customize":[],
+      "disk-1-san":"25 GB (SAN)",
+      "disk-2-san":"10 GB (SAN)",
+      "disk-3-san":"10 GB (SAN)",
+      "disk-4-san":null,
+      "disk-5-san":null,
+      "disk-1-local":null,
+      "disk-2-local":null,
+      "disk-type":"san",
+      "datacenter":"wdc01",
+      "memory":"2 GB",
+      "processor":"4 x 2.0 GHz Cores",
+      "operating-system":"Debian - Latest (64 bit)",
+      "network-component":"1 Gbps Public \u0026 Private Network Uplinks",
+      "hourly-price":"0.522",
+      "monthly-price":"327.42",
+      "product-name":"cloud_server",
+      "product-provider":"softlayer"
+    },
+    "relationships":
+    {
+      "shop-group":
+      {
+        "links":
+        {
+          "self":"http://acme.lvh.me:3000/api/v1/shop-softlayer-cloud-server-plans/id-plan-softlayer-cloud-server/relationships/shop-group",
+          "related":"http://acme.lvh.me:3000/api/v1/shop-softlayer-cloud-server-plans/id-plan-softlayer-cloud-server/shop-group"
+        },
+        "data":null
+      }
+    }
+  }
+}
+```
+
+```ruby
+Not implemented
+```
+
+The user can get information for a specific SoftLayer Cloud Server plan accessing the route bellow.
+
+Route: *`GET "/api/v1/shop-softlayer-cloud-server-plans/:id"`*
+
+## List
+
+> List Shop Plan Softlayer Cloud Server
+
+```shell
+# INPUT
+curl --header "Content-Type: application/vnd.api+json" 
+  -H "Authorization: Bearer id-access-token" -X GET -d 
+'{
+  "data":
+  {
+    "type":"shop-softlayer-cloud-server-plans"
+  }
+}' 
+http://acme.lvh.me:3000/api/v1/shop-softlayer-cloud-server-plans
+
+# OUTPUT
+{
+  "data":
+  [
+    {
+      "id":"id-plan-softlayer-cloud-server",
+      "type":"shop-softlayer-cloud-server-plans",
+      "links":
+      {
+        "self":"http://acme.lvh.me:3000/api/v1/shop-softlayer-cloud-server-plans/id-plan-softlayer-cloud-server"
+      },
+      "attributes":
+      {
+        "name":"Acme Cloud Server (Small)",
+        "enabled":true,
+        "description":"Acme Cloud Server Small Desc",
+        "long-description":"Acme Cloud Server Small Long Desc",
+        "allow-custom":true,
+        "can-customize":["datacenter"],
+        "disk-1-san":"25 GB (SAN)",
+        "disk-2-san":null,
+        "disk-3-san":null,
+        "disk-4-san":null,
+        "disk-5-san":null,
+        "disk-1-local":null,
+        "disk-2-local":null,
+        "disk-type":"san",
+        "datacenter":"wdc01",
+        "memory":"2 GB",
+        "processor":"4 x 2.0 GHz Cores",
+        "operating-system":"Debian - Latest (64 bit)",
+        "network-component":"1 Gbps Public \u0026 Private Network Uplinks",
+        "hourly-price":"0.48",
+        "monthly-price":"300.0",
+        "product-name":"cloud_server",
+        "product-provider":"softlayer"
+      },
+      "relationships":
+      {
+        "shop-group":
+        {
+          "links":
+          {
+            "self":"http://acme.lvh.me:3000/api/v1/shop-softlayer-cloud-server-plans/id-plan-softlayer-cloud-server/relationships/shop-group",
+            "related":"http://acme.lvh.me:3000/api/v1/shop-softlayer-cloud-server-plans/id-plan-softlayer-cloud-server/shop-group"
+          },
+          "data":
+          {
+            "type":"shop-groups",
+            "id":"id-shop-group"
+          }
+        }
+      }
+    },
+    {
+      "id":"id-plan-softlayer-cloud-server",
+      "type":"shop-softlayer-cloud-server-plans",
+      "links":
+      {
+        "self":"http://acme.lvh.me:3000/api/v1/shop-softlayer-cloud-server-plans/id-plan-softlayer-cloud-server"
+      },
+      "attributes":
+      {
+        "name":"Acme Cloud Server (Large)",
+        "enabled":true,"description":"Acme Cloud Server Large Desc",
+        "long-description":"Acme Cloud Server Large Long Desc",
+        "allow-custom":true,
+        "can-customize":["datacenter"],
+        "disk-1-san":"100 GB (SAN)",
+        "disk-2-san":null,
+        "disk-3-san":null,
+        "disk-4-san":null,
+        "disk-5-san":null,
+        "disk-1-local":null,
+        "disk-2-local":null,
+        "disk-type":"san",
+        "datacenter":"wdc01",
+        "memory":"6 GB",
+        "processor":"8 x 2.0 GHz Cores",
+        "operating-system":"Debian - Latest (64 bit)",
+        "network-component":"1 Gbps Public \u0026 Private Network Uplinks",
+        "hourly-price":"0.972",
+        "monthly-price":"624.87",
+        "product-name":"cloud_server",
+        "product-provider":"softlayer"
+      },
+      "relationships":
+      {
+        "shop-group":
+        {
+          "links":
+          {
+            "self":"http://acme.lvh.me:3000/api/v1/shop-softlayer-cloud-server-plans/id-plan-softlayer-cloud-server/relationships/shop-group",
+            "related":"http://acme.lvh.me:3000/api/v1/shop-softlayer-cloud-server-plans/id-plan-softlayer-cloud-server/shop-group"
+          },
+          "data":
+          {
+            "type":"shop-groups",
+            "id":"id-shop-group"
+          }
+        }
+      }
+    },
+    {
+      "id":"id-plan-softlayer-cloud-server",
+      "type":"shop-softlayer-cloud-server-plans",
+      "links":
+      {
+        "self":"http://acme.lvh.me:3000/api/v1/shop-softlayer-cloud-server-plans/id-plan-softlayer-cloud-server"
+      },
+      "attributes":
+      {
+        "name":"Acme Cloud Server (Medium)",
+        "enabled":true,
+        "description":"Acme Cloud Server Medium Desc",
+        "long-description":"Acme Cloud Server Medium Long Desc",
+        "allow-custom":true,
+        "can-customize":["datacenter"],
+        "disk-1-san":"25 GB (SAN)",
+        "disk-2-san":null,
+        "disk-3-san":null,
+        "disk-4-san":null,
+        "disk-5-san":null,
+        "disk-1-local":null,
+        "disk-2-local":null,
+        "disk-type":"san",
+        "datacenter":"wdc01",
+        "memory":"4 GB",
+        "processor":"8 x 2.0 GHz Cores",
+        "operating-system":"Debian - Latest (64 bit)",
+        "network-component":"1 Gbps Public \u0026 Private Network Uplinks",
+        "hourly-price":"0.843",
+        "monthly-price":"540.0",
+        "product-name":"cloud_server",
+        "product-provider":"softlayer"
+      },
+      "relationships":
+      {
+        "shop-group":
+        {
+          "links":
+          {
+            "self":"http://acme.lvh.me:3000/api/v1/shop-softlayer-cloud-server-plans/id-plan-softlayer-cloud-server/relationships/shop-group",
+            "related":"http://acme.lvh.me:3000/api/v1/shop-softlayer-cloud-server-plans/id-plan-softlayer-cloud-server/shop-group"
+          },
+          "data":
+          {
+            "type":"shop-groups",
+            "id":"id-shop-group"
+          }
+        }
+      }
+    }
+  ]
+}
+```
+
+```ruby
+Not implemented
+```
+The user can list all SoftLayer Cloud Server plans accessing the route bellow.
+
+Route: *`GET "/api/v1/shop-softlayer-cloud-server-plans"`*
+
+# User Shop Catalog Provider
+
+When logged in, the user can access information about the catalog. This access allows him to list his catalog provider availables.
+
+## Show
+
+> Show Shop Catalog Provider
+
+```shell
+# INPUT
+curl --header "Content-Type: application/vnd.api+json" 
+  -H "Authorization: Bearer id-access-token" -X GET -d 
+'{ 
+  "data":
+  { 
+    "type":"catalog-providers" 
+  }
+}' 
+http://smart.lvh.me:3000/api/v1/catalog-providers/id-catalog-provider
+
+# OUTPUT
+{
+  "data":
+  {
+    "id":"id-catalog-provider",
+    "type":"catalog-providers",
+    "links":
+    {
+      "self":"http://smart.lvh.me:3000/api/v1/catalog-providers/id-catalog-provider"
+    },
+    "attributes":
+    {
+      "name":"Provider",
+      "provider-name":"provider"
+    },
+    "relationships":
+    {
+      "catalog-products":
+      {
+        "links":
+        {
+          "self":"http://smart.lvh.me:3000/api/v1/catalog-providers/id-catalog-provider/relationships/catalog-products",
+          "related":"http://smart.lvh.me:3000/api/v1/catalog-providers/id-catalog-provider/catalog-products"
+        }
+      }
+    }
+  }
+}
+```
+
+```ruby
+Not implemented
+```
+
+When logged in, the user can access information about the catalog. This access allows him to show catalog provider availables.
+
+route: *`GET "/api/v1/catalog-providers/:id"`*
+
+## List
+
+> List Shop Catalog Provider
+
+```shell
+# INPUT
+curl --header "Content-Type: application/vnd.api+json" 
+  -H "Authorization: Bearer id-access-token" -X GET -d 
+'{ 
+  "data":
+  { 
+    "type":"catalog-providers" 
+  }
+}' 
+http://smart.lvh.me:3000/api/v1/catalog-providers
+
+# OUTPUT
+{
+  "data":
+  [
+    {
+      "id":"id-catalog-provider",
+      "type":"catalog-providers",
+      "links":
+      {
+        "self":"http://smart.lvh.me:3000/api/v1/catalog-providers/id-catalog-provider"
+      },
+      "attributes":
+      {
+        "name":"Provider",
+        "provider-name":"provider"
+      },
+      "relationships":
+      {
+        "catalog-products":
+        {
+          "links":
+          {
+            "self":"http://smart.lvh.me:3000/api/v1/catalog-providers/id-catalog-provider/relationships/catalog-products",
+            "related":"http://smart.lvh.me:3000/api/v1/catalog-providers/id-catalog-provider/catalog-products"
+          }
+        }
+      }
+    },
+    {
+      "id":"id-catalog-provider",
+      "type":"catalog-providers",
+      "links":
+      {
+        "self":"http://smart.lvh.me:3000/api/v1/catalog-providers/id-catalog-provider"
+      },
+      "attributes":
+      {
+        "name":"SoftLayer",
+        "provider-name":"softlayer"
+      },
+      "relationships":
+      {
+        "catalog-products":
+        {
+          "links":
+          {
+            "self":"http://smart.lvh.me:3000/api/v1/catalog-providers/id-catalog-provider/relationships/catalog-products",
+            "related":"http://smart.lvh.me:3000/api/v1/catalog-providers/id-catalog-provider/catalog-products"
+          }
+        }
+      }
+    }
+  ]
+}
+```
+
+```ruby
+Not implemented
+```
+
+When logged in, the user can access information about the catalog. This access allows him to list catalog provider availables.
+
+route: *`GET "/api/v1/catalog-providers"`*
+
+# User Shop Catalog Provider Product
+
+When logged in, the user can access information about the catalog. This access allows him to show and list catalog provider products.
+
+## Show
+
+> Show Shop Catalog Provider Product
+
+```shell
+# INPUT
+curl --header "Content-Type: application/vnd.api+json" 
+  -H "Authorization: Bearer id-access-token" -X GET -d 
+'{ 
+  "data":
+  { 
+    "type":"catalog-products" 
+  }
+}' 
+http://smart.lvh.me:3000/api/v1/catalog-products/id-catalog-provider-product
+
+# OUTPUT
+{
+  "data":
+  {
+    "id":"id-catalog-provider-product",
+    "type":"catalog-products",
+    "links":
+    {
+      "self":"http://smart.lvh.me:3000/api/v1/catalog-products/id-catalog-provider-product"
+    },
+    "attributes":
+    {
+      "name":"Bare Metal",
+      "slug":"bare-metal",
+      "dynamic":true,
+      "hourly":true,
+      "version":1,
+      "allow-custom":true,
+      "product-name":"bare_metal",
+      "provider-name":"softlayer"
+    },
+    "relationships":
+    {
+      "catalog-provider":
+      {
+        "links":
+        {
+          "self":"http://smart.lvh.me:3000/api/v1/catalog-products/id-catalog-provider-product/relationships/catalog-provider",
+          "related":"http://smart.lvh.me:3000/api/v1/catalog-products/id-catalog-provider-product/catalog-provider"
+        },
+        "data":
+        {
+          "type":"catalog-providers",
+          "id":"id-catalog-provider"
+        }
+      },
+      "catalog-components":
+      {
+        "links":
+        {
+          "self":"http://smart.lvh.me:3000/api/v1/catalog-products/id-catalog-provider-product/relationships/catalog-components",
+          "related":"http://smart.lvh.me:3000/api/v1/catalog-products/id-catalog-provider-product/catalog-components"
+        }
+      }
+    }
+  }
+}
+```
+
+```ruby
+Not implemented
+```
+
+The user can visualize a specific provider products by accessing the route below.
+
+route: *`GET "/api/v1/catalog-products/:id"`*
+
+## List
+
+> List Shop Catalog Provider Product
+
+```shell
+# INPUT
+curl --header "Content-Type: application/vnd.api+json" 
+  -H "Authorization: Bearer id-access-token" -X GET -d 
+'{ 
+  "data":
+  { 
+    "type":"catalog-products" 
+  }
+}' 
+http://smart.lvh.me:3000/api/v1/catalog-products
+
+# OUTPUT
+{
+  "data":
+  [
+    {
+      "id":"id-catalog-provider-product",
+      "type":"catalog-products",
+      "links":
+      {
+        "self":"http://smart.lvh.me:3000/api/v1/catalog-products/id-catalog-provider-product"
+      },
+      "attributes":
+      {
+        "name":"Bare Metal",
+        "slug":"bare-metal",
+        "dynamic":true,
+        "hourly":true,
+        "version":1,
+        "allow-custom":true,
+        "product-name":"bare_metal",
+        "provider-name":"softlayer"
+      },
+      "relationships":
+      {
+        "catalog-provider":
+        {
+          "links":
+          {
+            "self":"http://smart.lvh.me:3000/api/v1/catalog-products/id-catalog-provider-product/relationships/catalog-provider",
+            "related":"http://smart.lvh.me:3000/api/v1/catalog-products/id-catalog-provider-product/catalog-provider"
+          },
+          "data":
+          {
+            "type":"catalog-providers",
+            "id":"id-catalog-provider"
+          }
+        },
+        "catalog-components":
+        {
+          "links":
+          {
+            "self":"http://smart.lvh.me:3000/api/v1/catalog-products/id-catalog-provider-product/relationships/catalog-components",
+            "related":"http://smart.lvh.me:3000/api/v1/catalog-products/id-catalog-provider-product/catalog-components"
+          }
+        }
+      }
+    },
+    {
+      "id":"id-catalog-provider-product",
+      "type":"catalog-products",
+      "links":
+      {
+        "self":"http://smart.lvh.me:3000/api/v1/catalog-products/id-catalog-provider-product"
+      },
+      "attributes":
+      {
+        "name":"Cloud Server",
+        "slug":"cloud-server",
+        "dynamic":true,
+        "hourly":true,
+        "version":1,
+        "allow-custom":true,
+        "product-name":"cloud_server",
+        "provider-name":"softlayer"
+      },
+      "relationships":
+      {
+        "catalog-provider":
+        {
+          "links":
+          {
+            "self":"http://smart.lvh.me:3000/api/v1/catalog-products/id-catalog-provider-product/relationships/catalog-provider",
+            "related":"http://smart.lvh.me:3000/api/v1/catalog-products/id-catalog-provider-product/catalog-provider"
+          },
+          "data":
+          {
+            "type":"catalog-providers",
+            "id":"id-catalog-provider"
+          }
+        },
+        "catalog-components":
+        {
+          "links":
+          {
+            "self":"http://smart.lvh.me:3000/api/v1/catalog-products/id-catalog-provider-product/relationships/catalog-components",
+            "related":"http://smart.lvh.me:3000/api/v1/catalog-products/id-catalog-provider-product/catalog-components"
+          }
+        }
+      }
+    }
+  ]
+}
+```
+
+```ruby
+Not implemented
+```
+
+The user can visualize all providers products by accessing the route below.
+
+route: *`GET "/api/v1/catalog-products"`*
+
+# User Shop Catalog Provider Product Attribute
+
+When logged in, the user can access information about the catalog. This access allows him to show and list catalog products attributes.
+
+## Show
+
+> Show Shop Catalog Provider Product Attributes
+
+```shell
+# INPUT
+curl --header "Content-Type: application/vnd.api+json" 
+  -H "Authorization: Bearer id-access-token" -X GET -d 
+'{ 
+  "data":
+  { 
+    "type":"catalog-components" 
+  }
+}' 
+http://smart.lvh.me:3000/api/v1/catalog-components
+
+# OUTPUT
+{
+  "data":
+  {
+    "id":"id-catalog-provider-product-attribute",
+    "type":"catalog-components",
+    "links":
+    {
+      "self":"http://smart.lvh.me:3000/api/v1/catalog-components/id-catalog-provider-product-attribute"
+    },
+    "attributes":
+    {
+      "name":"Disk 1 (Local)",
+      "system":false,
+      "allow-upgrade":true,
+      "allow-downgrade":false
+    },
+    "relationships":
+    {
+      "catalog-product":
+      {
+        "links":
+        {
+          "self":"http://smart.lvh.me:3000/api/v1/catalog-components/id-catalog-provider-product-attribute/relationships/catalog-product",
+          "related":"http://smart.lvh.me:3000/api/v1/catalog-components/id-catalog-provider-product-attribute/catalog-product"
+        },
+        "data":
+        {
+          "type":"catalog-products",
+          "id":"id-catalog-provider-product"
+        }
+      },
+      "catalog-component-options":
+      {
+        "links":
+        {
+          "self":"http://smart.lvh.me:3000/api/v1/catalog-components/id-catalog-provider-product-attribute/relationships/catalog-component-options",
+          "related":"http://smart.lvh.me:3000/api/v1/catalog-components/id-catalog-provider-product-attribute/catalog-component-options"
+        }
+      }
+    }
+  }
+}
+```
+
+```ruby
+Not implemented
+```
+
+The user can visualize a specific product attributes by accessing the route below.
+
+route: *`GET "/api/v1/catalog-components/:id"`*
+
+## List
+
+> List Shop Catalog Provider Product Attributes
+
+```shell
+# INPUT
+curl --header "Content-Type: application/vnd.api+json" 
+  -H "Authorization: Bearer id-access-token" -X GET -d 
+'{ 
+  "data":
+  { 
+    "type":"catalog-components" 
+  }
+}' 
+http://smart.lvh.me:3000/api/v1/catalog-components/id-catalog-provider-product-attribute
+
+# OUTPUT
+{
+  "data":
+  [
+    {
+      "id":"id-catalog-provider-product-attribute",
+      "type":"catalog-components",
+      "links":
+      {
+        "self":"http://smart.lvh.me:3000/api/v1/catalog-components/id-catalog-provider-product-attribute"
+      },
+      "attributes":
+      {
+        "name":"Disk 1 (Local)",
+        "system":false,
+        "allow-upgrade":true,
+        "allow-downgrade":false
+      },
+      "relationships":
+      {
+        "catalog-product":
+        {
+          "links":
+          {
+            "self":"http://smart.lvh.me:3000/api/v1/catalog-components/id-catalog-provider-product-attribute/relationships/catalog-product",
+            "related":"http://smart.lvh.me:3000/api/v1/catalog-components/id-catalog-provider-product-attribute/catalog-product"
+          },
+          "data":
+          {
+            "type":"catalog-products",
+            "id":"id-catalog-provider-product"
+          }
+        },
+        "catalog-component-options":
+        {
+          "links":
+          {
+            "self":"http://smart.lvh.me:3000/api/v1/catalog-components/id-catalog-provider-product-attribute/relationships/catalog-component-options",
+            "related":"http://smart.lvh.me:3000/api/v1/catalog-components/id-catalog-provider-product-attribute/catalog-component-options"
+          }
+        }
+      }
+    },
+    {
+      "id":"id-catalog-provider-product-attribute",
+      "type":"catalog-components",
+      "links":
+      {
+        "self":"http://smart.lvh.me:3000/api/v1/catalog-components/id-catalog-provider-product-attribute"
+      },
+      "attributes":
+      {
+        "name":"Datacenter",
+        "system":false,
+        "allow-upgrade":false,
+        "allow-downgrade":false
+      },
+      "relationships":
+      {
+        "catalog-product":
+        {
+          "links":
+          {
+            "self":"http://smart.lvh.me:3000/api/v1/catalog-components/id-catalog-provider-product-attribute/relationships/catalog-product",
+            "related":"http://smart.lvh.me:3000/api/v1/catalog-components/id-catalog-provider-product-attribute/catalog-product"
+          },
+          "data":
+          {
+            "type":"catalog-products",
+            "id":"id-catalog-provider-product"
+          }
+        },
+        "catalog-component-options":
+        {
+          "links":
+          {
+            "self":"http://smart.lvh.me:3000/api/v1/catalog-components/id-catalog-provider-product-attribute/relationships/catalog-component-options",
+            "related":"http://smart.lvh.me:3000/api/v1/catalog-components/id-catalog-provider-product-attribute/catalog-component-options"
+          }
+        }
+      }
+    }
+  ]
+}
+```
+
+```ruby
+Not implemented
+```
+
+The user can visualize all providers products attributes by accessing the route below.
+
+route: *`GET "/api/v1/catalog-components"`*
+
+# User Shop Catalog Provider Product Option
+
+When logged in, the user can access information about the catalog. This access allows him to list catalog products options.
+
+## List
+
+> List Shop Catalog Provider Product Options
+
+```shell
+# INPUT
+curl --header "Content-Type: application/vnd.api+json" 
+  -H "Authorization: Bearer id-access-token" -X GET -d 
+'{ 
+  "data":
+  { 
+    "type":"catalog-component-options" 
+  }
+}' 
+http://smart.lvh.me:3000/api/v1/catalog-components/id-admin-catalog-provider-product-attribute/catalog-component-options
+
+# OUTPUT
+{
+  "data":
+  [
+    {
+      "id":"id-catalog-provider-product-option",
+      "type":"catalog-component-options",
+      "links":
+      {
+        "self":"http://smart.lvh.me:3000/api/v1/catalog-component-options/id-catalog-provider-product-option"
+      },
+      "attributes":
+      {
+        "name":"1 Gbps Private Network Uplink",
+        "value":"1 Gbps Private Network Uplink",
+        "hourly-price":null,
+        "monthly-price":null,
+        "dynamic-hourly-price":"0.02",
+        "dynamic-monthly-price":"10.0"
+      },
+      "relationships":
+      {
+        "catalog-component":
+        {
+          "links":
+          {
+            "self":"http://smart.lvh.me:3000/api/v1/catalog-component-options/id-catalog-provider-product-option/relationships/catalog-component",
+            "related":"http://smart.lvh.me:3000/api/v1/catalog-component-options/id-catalog-provider-product-option/catalog-component"
+          },
+          "data":
+          {
+            "type":"catalog-components",
+            "id":"id-catalog-provider-product-attribute"
+          }
+        }
+      }
+    },
+    {
+      "id":"id-catalog-provider-product-option",
+      "type":"catalog-component-options",
+      "links":
+      {
+        "self":"http://smart.lvh.me:3000/api/v1/catalog-component-options/id-catalog-provider-product-option"
+      },
+      "attributes":
+      {
+        "name":"10 Mbps Public \u0026 Private Network Uplinks",
+        "value":"10 Mbps Public \u0026 Private Network Uplinks",
+        "hourly-price":null,
+        "monthly-price":null,
+        "dynamic-hourly-price":"0.0",
+        "dynamic-monthly-price":"0.0"
+      },
+      "relationships":
+      {
+        "catalog-component":
+        {
+          "links":
+          {
+            "self":"http://smart.lvh.me:3000/api/v1/catalog-component-options/id-catalog-provider-product-option/relationships/catalog-component",
+            "related":"http://smart.lvh.me:3000/api/v1/catalog-component-options/id-catalog-provider-product-option/catalog-component"
+          },
+          "data":
+          {
+            "type":"catalog-components",
+            "id":"id-catalog-provider-product-attribute"
+          }
+        }
+      }
+    }
+  ]
+}
+```
+
+```ruby
+Not implemented
+```
+
+The admin can visualize all providers products options by accessing the route below.
+
+route: *`GET "/api/v1/catalog-components/id-catalog-provider-product-attribute/catalog-component-options"`*
+
+# User Filter
+
+When logged in, the user can access information about the shop. This access allows him list a specific group through a filter in the end of the url.
+
+*`?filter%5Bvariable%5D=value`*
+
+## Group
+
+> Filter Group
+
+```shell
+# INPUT
+curl --header "Content-Type: application/vnd.api+json" 
+  -H "Authorization: Bearer id-access-token" -X GET -d 
+'{
+  "data":
+  {
+    "type":"shop-groups"
+  }
+}' 
+http://smart.lvh.me:3000/api/v1/shop-groups?filter%5Bslug%5D=cloud-server
+
+# OUTPUT
+{
+  "data":
+  [
+    {
+      "id":"id-admin-shop-group",
+      "type":"shop-groups",
+      "links":
+      {
+        "self":"http://smart.lvh.me:3000/api/v1/shop-groups/id-admin-shop-group"
+      },
+      "attributes":
+      {
+        "name":"Smart Cloud Servers",
+        "enabled":true,
+        "description":"Smart Cloud Servers Desc",
+        "long-description":"Smart Cloud Servers Long Desc",
+        "slug":"cloud-server",
+        "icon":"fa fa-cloud"
+      },
+      "relationships":
+      {
+        "shop-category":
+        {
+          "links":
+          {
+            "self":"http://smart.lvh.me:3000/api/v1/shop-groups/id-admin-shop-group/relationships/shop-category",
+            "related":"http://smart.lvh.me:3000/api/v1/shop-groups/id-admin-shop-group/shop-category"
+          },
+          "data":
+          {
+            "type":"shop-categories",
+            "id":"id-admin-shop-category"
+          }
+        },
+        "shop-plans":
+        {
+          "links":
+          {
+            "self":"http://smart.lvh.me:3000/api/v1/shop-groups/id-admin-shop-group/relationships/shop-plans",
+            "related":"http://smart.lvh.me:3000/api/v1/shop-groups/id-admin-shop-group/shop-plans"
+          }
+        }
+      }
+    }
+  ]
+}
+```
+
+```ruby
+Not implemented
+```
+
+The user can filter a group by accessing the route below.
+
+Route: *`GET "/api/v1/shop-groups?filter%5Bslug%5D=cloud-server"`*
+
+* slug
+
+## Category
+
+> Filter Category
+
+```shell
+# INPUT
+curl --header "Content-Type: application/vnd.api+json" 
+  -H "Authorization: Bearer id-access-token" -X GET -d 
+'{
+  "data":
+  {
+    "type":"shop-categories"
+  }
+}' 
+http://smart.lvh.me:3000/api/v1/shop-categories?filter%5Bslug%5D=email
+
+# OUTPUT
+{
+  "data":
+  [
+    {
+      "id":"id-admin-shop-category",
+      "type":"shop-categories",
+      "links":
+      {
+        "self":"http://smart.lvh.me:3000/api/v1/shop-categories/id-admin-shop-category"
+      },
+      "attributes":
+      {
+        "name":"Smart Email",
+        "enabled":true,
+        "description":"Smart Email",
+        "long-description":"Smart Email Description",
+        "slug":"email",
+        "icon":"fa fa-envelope-o"
+      },
+      "relationships":
+      {
+        "shop-groups":
+        {
+          "links":
+          {
+            "self":"http://smart.lvh.me:3000/api/v1/shop-categories/id-admin-shop-category/relationships/shop-groups",
+            "related":"http://smart.lvh.me:3000/api/v1/shop-categories/id-admin-shop-category/shop-groups"
+          }
+        }
+      }
+    }
+  ]
+}
+```
+
+```ruby
+Not implemented
+```
+
+The user can filter a category by accessing the route below.
+
+Route: *`GET "/api/v1/shop-categories?filter%5Bslug%5D=email"`*
+
+* slug
+
+## Shop Catalog Provider Product
+
+> Filter Shop Catalog Provider Product
+
+```shell
+# INPUT
+curl --header "Content-Type: application/vnd.api+json" 
+  -H "Authorization: Bearer id-access-token" -X GET -d 
+'{ 
+  "data":
+  { 
+    "type":"catalog-products" 
+  }
+}' 
+http://smart.lvh.me:3000/api/v1/catalog-products?filter%5Bprovider_name%5D=softlayer
+
+# OUTPUT
+{
+  "data":
+  [
+    {
+      "id":"id-catalog-provider-product",
+      "type":"catalog-products",
+      "links":
+      {
+        "self":"http://smart.lvh.me:3000/api/v1/catalog-products/id-catalog-provider-product"
+      },
+      "attributes":
+      {
+        "name":"Bare Metal",
+        "slug":"bare-metal",
+        "dynamic":true,
+        "hourly":true,
+        "version":1,
+        "allow-custom":true,
+        "product-name":"bare_metal",
+        "provider-name":"softlayer"
+      },
+      "relationships":
+      {
+        "catalog-provider":
+        {
+          "links":
+          {
+            "self":"http://smart.lvh.me:3000/api/v1/catalog-products/id-catalog-provider-product/relationships/catalog-provider",
+            "related":"http://smart.lvh.me:3000/api/v1/catalog-products/id-catalog-provider-product/catalog-provider"
+          },
+          "data":
+          {
+            "type":"catalog-providers",
+            "id":"id-catalog-provider"
+          }
+        },
+        "catalog-components":
+        {
+          "links":
+          {
+            "self":"http://smart.lvh.me:3000/api/v1/catalog-products/id-catalog-provider-product/relationships/catalog-components",
+            "related":"http://smart.lvh.me:3000/api/v1/catalog-products/id-catalog-provider-product/catalog-components"
+          }
+        }
+      }
+    }
+  ]
+}
+```
+
+```ruby
+Not implemented
+```
+
+The user can filter a provider products by accessing the route below.
+
+Route: *`GET "/api/v1/catalog-products?filter%5Bprovider_name%5D=softlayer"`*
+
+* product_name
+* provider_name
+
 # Admin Profile Account
 
 When logged in, the user admin access his own profile. This access allows him to show and update information about his account.
