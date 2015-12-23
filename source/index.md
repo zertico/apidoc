@@ -2008,6 +2008,624 @@ The user can list all SoftLayer Cloud Server plans accessing the route bellow.
 
 Route: *`GET "/api/v1/shop-softlayer-cloud-server-plans"`*
 
+# User Shop Catalog Provider
+
+When logged in, the user can access information about the catalog. This access allows him to list his catalog provider availables.
+
+## Show
+
+> Show Shop Catalog Provider
+
+```shell
+# INPUT
+curl --header "Content-Type: application/vnd.api+json" 
+  -H "Authorization: Bearer id-access-token" -X GET -d 
+'{ 
+  "data":
+  { 
+    "type":"catalog-providers" 
+  }
+}' 
+http://smart.lvh.me:3000/api/v1/catalog-providers/id-catalog-provider
+
+# OUTPUT
+{
+  "data":
+  {
+    "id":"id-catalog-provider",
+    "type":"catalog-providers",
+    "links":
+    {
+      "self":"http://smart.lvh.me:3000/api/v1/catalog-providers/id-catalog-provider"
+    },
+    "attributes":
+    {
+      "name":"Provider",
+      "provider-name":"provider"
+    },
+    "relationships":
+    {
+      "catalog-products":
+      {
+        "links":
+        {
+          "self":"http://smart.lvh.me:3000/api/v1/catalog-providers/id-catalog-provider/relationships/catalog-products",
+          "related":"http://smart.lvh.me:3000/api/v1/catalog-providers/id-catalog-provider/catalog-products"
+        }
+      }
+    }
+  }
+}
+```
+
+```ruby
+Not implemented
+```
+
+When logged in, the user can access information about the catalog. This access allows him to show catalog provider availables.
+
+route: *`GET "/api/v1/catalog-providers/:id"`*
+
+## List
+
+> List Shop Catalog Provider
+
+```shell
+# INPUT
+curl --header "Content-Type: application/vnd.api+json" 
+  -H "Authorization: Bearer id-access-token" -X GET -d 
+'{ 
+  "data":
+  { 
+    "type":"catalog-providers" 
+  }
+}' 
+http://smart.lvh.me:3000/api/v1/catalog-providers
+
+# OUTPUT
+{
+  "data":
+  [
+    {
+      "id":"id-catalog-provider",
+      "type":"catalog-providers",
+      "links":
+      {
+        "self":"http://smart.lvh.me:3000/api/v1/catalog-providers/id-catalog-provider"
+      },
+      "attributes":
+      {
+        "name":"Provider",
+        "provider-name":"provider"
+      },
+      "relationships":
+      {
+        "catalog-products":
+        {
+          "links":
+          {
+            "self":"http://smart.lvh.me:3000/api/v1/catalog-providers/id-catalog-provider/relationships/catalog-products",
+            "related":"http://smart.lvh.me:3000/api/v1/catalog-providers/id-catalog-provider/catalog-products"
+          }
+        }
+      }
+    },
+    {
+      "id":"id-catalog-provider",
+      "type":"catalog-providers",
+      "links":
+      {
+        "self":"http://smart.lvh.me:3000/api/v1/catalog-providers/id-catalog-provider"
+      },
+      "attributes":
+      {
+        "name":"SoftLayer",
+        "provider-name":"softlayer"
+      },
+      "relationships":
+      {
+        "catalog-products":
+        {
+          "links":
+          {
+            "self":"http://smart.lvh.me:3000/api/v1/catalog-providers/id-catalog-provider/relationships/catalog-products",
+            "related":"http://smart.lvh.me:3000/api/v1/catalog-providers/id-catalog-provider/catalog-products"
+          }
+        }
+      }
+    }
+  ]
+}
+```
+
+```ruby
+Not implemented
+```
+
+When logged in, the user can access information about the catalog. This access allows him to list catalog provider availables.
+
+route: *`GET "/api/v1/catalog-providers"`*
+
+# User Shop Catalog Provider Product
+
+When logged in, the user can access information about the catalog. This access allows him to show and list catalog provider products.
+
+## Show
+
+> Show Shop Catalog Provider Product
+
+```shell
+# INPUT
+curl --header "Content-Type: application/vnd.api+json" 
+  -H "Authorization: Bearer id-access-token" -X GET -d 
+'{ 
+  "data":
+  { 
+    "type":"catalog-products" 
+  }
+}' 
+http://smart.lvh.me:3000/api/v1/catalog-products/id-catalog-provider-product
+
+# OUTPUT
+{
+  "data":
+  {
+    "id":"id-catalog-provider-product",
+    "type":"catalog-products",
+    "links":
+    {
+      "self":"http://smart.lvh.me:3000/api/v1/catalog-products/id-catalog-provider-product"
+    },
+    "attributes":
+    {
+      "name":"Bare Metal",
+      "slug":"bare-metal",
+      "dynamic":true,
+      "hourly":true,
+      "version":1,
+      "allow-custom":true,
+      "product-name":"bare_metal",
+      "provider-name":"softlayer"
+    },
+    "relationships":
+    {
+      "catalog-provider":
+      {
+        "links":
+        {
+          "self":"http://smart.lvh.me:3000/api/v1/catalog-products/id-catalog-provider-product/relationships/catalog-provider",
+          "related":"http://smart.lvh.me:3000/api/v1/catalog-products/id-catalog-provider-product/catalog-provider"
+        },
+        "data":
+        {
+          "type":"catalog-providers",
+          "id":"id-catalog-provider"
+        }
+      },
+      "catalog-components":
+      {
+        "links":
+        {
+          "self":"http://smart.lvh.me:3000/api/v1/catalog-products/id-catalog-provider-product/relationships/catalog-components",
+          "related":"http://smart.lvh.me:3000/api/v1/catalog-products/id-catalog-provider-product/catalog-components"
+        }
+      }
+    }
+  }
+}
+```
+
+```ruby
+Not implemented
+```
+
+The user can visualize a specific provider products by accessing the route below.
+
+route: *`GET "/api/v1/catalog-products/:id"`*
+
+## List
+
+> List Shop Catalog Provider Product
+
+```shell
+# INPUT
+curl --header "Content-Type: application/vnd.api+json" 
+  -H "Authorization: Bearer id-access-token" -X GET -d 
+'{ 
+  "data":
+  { 
+    "type":"catalog-products" 
+  }
+}' 
+http://smart.lvh.me:3000/api/v1/catalog-products
+
+# OUTPUT
+{
+  "data":
+  [
+    {
+      "id":"id-catalog-provider-product",
+      "type":"catalog-products",
+      "links":
+      {
+        "self":"http://smart.lvh.me:3000/api/v1/catalog-products/id-catalog-provider-product"
+      },
+      "attributes":
+      {
+        "name":"Bare Metal",
+        "slug":"bare-metal",
+        "dynamic":true,
+        "hourly":true,
+        "version":1,
+        "allow-custom":true,
+        "product-name":"bare_metal",
+        "provider-name":"softlayer"
+      },
+      "relationships":
+      {
+        "catalog-provider":
+        {
+          "links":
+          {
+            "self":"http://smart.lvh.me:3000/api/v1/catalog-products/id-catalog-provider-product/relationships/catalog-provider",
+            "related":"http://smart.lvh.me:3000/api/v1/catalog-products/id-catalog-provider-product/catalog-provider"
+          },
+          "data":
+          {
+            "type":"catalog-providers",
+            "id":"id-catalog-provider"
+          }
+        },
+        "catalog-components":
+        {
+          "links":
+          {
+            "self":"http://smart.lvh.me:3000/api/v1/catalog-products/id-catalog-provider-product/relationships/catalog-components",
+            "related":"http://smart.lvh.me:3000/api/v1/catalog-products/id-catalog-provider-product/catalog-components"
+          }
+        }
+      }
+    },
+    {
+      "id":"id-catalog-provider-product",
+      "type":"catalog-products",
+      "links":
+      {
+        "self":"http://smart.lvh.me:3000/api/v1/catalog-products/id-catalog-provider-product"
+      },
+      "attributes":
+      {
+        "name":"Cloud Server",
+        "slug":"cloud-server",
+        "dynamic":true,
+        "hourly":true,
+        "version":1,
+        "allow-custom":true,
+        "product-name":"cloud_server",
+        "provider-name":"softlayer"
+      },
+      "relationships":
+      {
+        "catalog-provider":
+        {
+          "links":
+          {
+            "self":"http://smart.lvh.me:3000/api/v1/catalog-products/id-catalog-provider-product/relationships/catalog-provider",
+            "related":"http://smart.lvh.me:3000/api/v1/catalog-products/id-catalog-provider-product/catalog-provider"
+          },
+          "data":
+          {
+            "type":"catalog-providers",
+            "id":"id-catalog-provider"
+          }
+        },
+        "catalog-components":
+        {
+          "links":
+          {
+            "self":"http://smart.lvh.me:3000/api/v1/catalog-products/id-catalog-provider-product/relationships/catalog-components",
+            "related":"http://smart.lvh.me:3000/api/v1/catalog-products/id-catalog-provider-product/catalog-components"
+          }
+        }
+      }
+    }
+  ]
+}
+```
+
+```ruby
+Not implemented
+```
+
+The user can visualize all providers products by accessing the route below.
+
+route: *`GET "/api/v1/catalog-products"`*
+
+# User Shop Catalog Provider Product Attribute
+
+When logged in, the user can access information about the catalog. This access allows him to show and list catalog products attributes.
+
+## Show
+
+> Show Shop Catalog Provider Product Attributes
+
+```shell
+# INPUT
+curl --header "Content-Type: application/vnd.api+json" 
+  -H "Authorization: Bearer id-access-token" -X GET -d 
+'{ 
+  "data":
+  { 
+    "type":"catalog-components" 
+  }
+}' 
+http://smart.lvh.me:3000/api/v1/catalog-components
+
+# OUTPUT
+{
+  "data":
+  {
+    "id":"id-catalog-provider-product-attribute",
+    "type":"catalog-components",
+    "links":
+    {
+      "self":"http://smart.lvh.me:3000/api/v1/catalog-components/id-catalog-provider-product-attribute"
+    },
+    "attributes":
+    {
+      "name":"Disk 1 (Local)",
+      "system":false,
+      "allow-upgrade":true,
+      "allow-downgrade":false
+    },
+    "relationships":
+    {
+      "catalog-product":
+      {
+        "links":
+        {
+          "self":"http://smart.lvh.me:3000/api/v1/catalog-components/id-catalog-provider-product-attribute/relationships/catalog-product",
+          "related":"http://smart.lvh.me:3000/api/v1/catalog-components/id-catalog-provider-product-attribute/catalog-product"
+        },
+        "data":
+        {
+          "type":"catalog-products",
+          "id":"id-catalog-provider-product"
+        }
+      },
+      "catalog-component-options":
+      {
+        "links":
+        {
+          "self":"http://smart.lvh.me:3000/api/v1/catalog-components/id-catalog-provider-product-attribute/relationships/catalog-component-options",
+          "related":"http://smart.lvh.me:3000/api/v1/catalog-components/id-catalog-provider-product-attribute/catalog-component-options"
+        }
+      }
+    }
+  }
+}
+```
+
+```ruby
+Not implemented
+```
+
+The user can visualize a specific product attributes by accessing the route below.
+
+route: *`GET "/api/v1/catalog-components/:id"`*
+
+## List
+
+> List Shop Catalog Provider Product Attributes
+
+```shell
+# INPUT
+curl --header "Content-Type: application/vnd.api+json" 
+  -H "Authorization: Bearer id-access-token" -X GET -d 
+'{ 
+  "data":
+  { 
+    "type":"catalog-components" 
+  }
+}' 
+http://smart.lvh.me:3000/api/v1/catalog-components/id-catalog-provider-product-attribute
+
+# OUTPUT
+{
+  "data":
+  [
+    {
+      "id":"id-catalog-provider-product-attribute",
+      "type":"catalog-components",
+      "links":
+      {
+        "self":"http://smart.lvh.me:3000/api/v1/catalog-components/id-catalog-provider-product-attribute"
+      },
+      "attributes":
+      {
+        "name":"Disk 1 (Local)",
+        "system":false,
+        "allow-upgrade":true,
+        "allow-downgrade":false
+      },
+      "relationships":
+      {
+        "catalog-product":
+        {
+          "links":
+          {
+            "self":"http://smart.lvh.me:3000/api/v1/catalog-components/id-catalog-provider-product-attribute/relationships/catalog-product",
+            "related":"http://smart.lvh.me:3000/api/v1/catalog-components/id-catalog-provider-product-attribute/catalog-product"
+          },
+          "data":
+          {
+            "type":"catalog-products",
+            "id":"id-catalog-provider-product"
+          }
+        },
+        "catalog-component-options":
+        {
+          "links":
+          {
+            "self":"http://smart.lvh.me:3000/api/v1/catalog-components/id-catalog-provider-product-attribute/relationships/catalog-component-options",
+            "related":"http://smart.lvh.me:3000/api/v1/catalog-components/id-catalog-provider-product-attribute/catalog-component-options"
+          }
+        }
+      }
+    },
+    {
+      "id":"id-catalog-provider-product-attribute",
+      "type":"catalog-components",
+      "links":
+      {
+        "self":"http://smart.lvh.me:3000/api/v1/catalog-components/id-catalog-provider-product-attribute"
+      },
+      "attributes":
+      {
+        "name":"Datacenter",
+        "system":false,
+        "allow-upgrade":false,
+        "allow-downgrade":false
+      },
+      "relationships":
+      {
+        "catalog-product":
+        {
+          "links":
+          {
+            "self":"http://smart.lvh.me:3000/api/v1/catalog-components/id-catalog-provider-product-attribute/relationships/catalog-product",
+            "related":"http://smart.lvh.me:3000/api/v1/catalog-components/id-catalog-provider-product-attribute/catalog-product"
+          },
+          "data":
+          {
+            "type":"catalog-products",
+            "id":"id-catalog-provider-product"
+          }
+        },
+        "catalog-component-options":
+        {
+          "links":
+          {
+            "self":"http://smart.lvh.me:3000/api/v1/catalog-components/id-catalog-provider-product-attribute/relationships/catalog-component-options",
+            "related":"http://smart.lvh.me:3000/api/v1/catalog-components/id-catalog-provider-product-attribute/catalog-component-options"
+          }
+        }
+      }
+    }
+  ]
+}
+```
+
+```ruby
+Not implemented
+```
+
+The user can visualize all providers products attributes by accessing the route below.
+
+route: *`GET "/api/v1/catalog-components"`*
+
+# User Shop Catalog Provider Product Option
+
+When logged in, the user can access information about the catalog. This access allows him to list catalog products options.
+
+## List
+
+> List Shop Catalog Provider Product Options
+
+```shell
+# INPUT
+curl --header "Content-Type: application/vnd.api+json" 
+  -H "Authorization: Bearer id-access-token" -X GET -d 
+'{ 
+  "data":
+  { 
+    "type":"catalog-component-options" 
+  }
+}' 
+http://smart.lvh.me:3000/api/v1/catalog-components/id-admin-catalog-provider-product-attribute/catalog-component-options
+
+# OUTPUT
+{
+  "data":
+  [
+    {
+      "id":"id-catalog-provider-product-option",
+      "type":"catalog-component-options",
+      "links":
+      {
+        "self":"http://smart.lvh.me:3000/api/v1/catalog-component-options/id-catalog-provider-product-option"
+      },
+      "attributes":
+      {
+        "name":"1 Gbps Private Network Uplink",
+        "value":"1 Gbps Private Network Uplink",
+        "hourly-price":null,
+        "monthly-price":null,
+        "dynamic-hourly-price":"0.02",
+        "dynamic-monthly-price":"10.0"
+      },
+      "relationships":
+      {
+        "catalog-component":
+        {
+          "links":
+          {
+            "self":"http://smart.lvh.me:3000/api/v1/catalog-component-options/id-catalog-provider-product-option/relationships/catalog-component",
+            "related":"http://smart.lvh.me:3000/api/v1/catalog-component-options/id-catalog-provider-product-option/catalog-component"
+          },
+          "data":
+          {
+            "type":"catalog-components",
+            "id":"id-catalog-provider-product-attribute"
+          }
+        }
+      }
+    },
+    {
+      "id":"id-catalog-provider-product-option",
+      "type":"catalog-component-options",
+      "links":
+      {
+        "self":"http://smart.lvh.me:3000/api/v1/catalog-component-options/id-catalog-provider-product-option"
+      },
+      "attributes":
+      {
+        "name":"10 Mbps Public \u0026 Private Network Uplinks",
+        "value":"10 Mbps Public \u0026 Private Network Uplinks",
+        "hourly-price":null,
+        "monthly-price":null,
+        "dynamic-hourly-price":"0.0",
+        "dynamic-monthly-price":"0.0"
+      },
+      "relationships":
+      {
+        "catalog-component":
+        {
+          "links":
+          {
+            "self":"http://smart.lvh.me:3000/api/v1/catalog-component-options/id-catalog-provider-product-option/relationships/catalog-component",
+            "related":"http://smart.lvh.me:3000/api/v1/catalog-component-options/id-catalog-provider-product-option/catalog-component"
+          },
+          "data":
+          {
+            "type":"catalog-components",
+            "id":"id-catalog-provider-product-attribute"
+          }
+        }
+      }
+    }
+  ]
+}
+```
+
+```ruby
+Not implemented
+```
+
+The admin can visualize all providers products options by accessing the route below.
+
+route: *`GET "/api/v1/catalog-components/id-catalog-provider-product-attribute/catalog-component-options"`*
+
 # User Filter
 
 When logged in, the user can access information about the shop. This access allows him list a specific group through a filter in the end of the url.
@@ -2087,6 +2705,8 @@ The user can filter a group by accessing the route below.
 
 Route: *`GET "/api/v1/shop-groups?filter%5Bslug%5D=cloud-server"`*
 
+* slug
+
 ## Category
 
 > Filter Category
@@ -2146,6 +2766,86 @@ Not implemented
 The user can filter a category by accessing the route below.
 
 Route: *`GET "/api/v1/shop-categories?filter%5Bslug%5D=email"`*
+
+* slug
+
+## Shop Catalog Provider Product
+
+> Filter Shop Catalog Provider Product
+
+```shell
+# INPUT
+curl --header "Content-Type: application/vnd.api+json" 
+  -H "Authorization: Bearer id-access-token" -X GET -d 
+'{ 
+  "data":
+  { 
+    "type":"catalog-products" 
+  }
+}' 
+http://smart.lvh.me:3000/api/v1/catalog-products?filter%5Bprovider_name%5D=softlayer
+
+# OUTPUT
+{
+  "data":
+  [
+    {
+      "id":"id-catalog-provider-product",
+      "type":"catalog-products",
+      "links":
+      {
+        "self":"http://smart.lvh.me:3000/api/v1/catalog-products/id-catalog-provider-product"
+      },
+      "attributes":
+      {
+        "name":"Bare Metal",
+        "slug":"bare-metal",
+        "dynamic":true,
+        "hourly":true,
+        "version":1,
+        "allow-custom":true,
+        "product-name":"bare_metal",
+        "provider-name":"softlayer"
+      },
+      "relationships":
+      {
+        "catalog-provider":
+        {
+          "links":
+          {
+            "self":"http://smart.lvh.me:3000/api/v1/catalog-products/id-catalog-provider-product/relationships/catalog-provider",
+            "related":"http://smart.lvh.me:3000/api/v1/catalog-products/id-catalog-provider-product/catalog-provider"
+          },
+          "data":
+          {
+            "type":"catalog-providers",
+            "id":"id-catalog-provider"
+          }
+        },
+        "catalog-components":
+        {
+          "links":
+          {
+            "self":"http://smart.lvh.me:3000/api/v1/catalog-products/id-catalog-provider-product/relationships/catalog-components",
+            "related":"http://smart.lvh.me:3000/api/v1/catalog-products/id-catalog-provider-product/catalog-components"
+          }
+        }
+      }
+    }
+  ]
+}
+```
+
+```ruby
+Not implemented
+```
+
+The user can filter a provider products by accessing the route below.
+
+Route: *`GET "/api/v1/catalog-products?filter%5Bprovider_name%5D=softlayer"`*
+
+* product_name
+* provider_name
 
 # Admin Profile Account
 
