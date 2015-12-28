@@ -1443,7 +1443,7 @@ Route: *`GET "/api/v1/shop-groups"`*
 
 # User Shop Plan
 
-When logged in, the user can access information about the shop. This access allows him to show and list shop plans.
+When logged in, the user can access information about the shop. This access allows him to list shop plans.
 
 ## List
 
@@ -5536,6 +5536,194 @@ The admin can visualize all shop groups created by accessing the route below.
 
 Route: *`GET "/api/v1/admin/shop-groups"`*
 
+# Admin Shop Plan
+
+When logged in, the admin can access information about the shop. This access allows him to list shop plans.
+
+## List
+
+> List Shop Plan
+
+```shell
+# INPUT
+curl --header "Content-Type: application/vnd.api+json" 
+  -H "Authorization: Bearer id-access-token" -X GET -d 
+'{
+  "data":
+  {
+    "type":"shop-plans"
+  }
+}' 
+http://smart.lvh.me:3000/api/v1/admin/shop-plans
+
+# OUTPUT
+{
+  "data":
+  [
+    {
+      "id":"id-shop-plans",
+      "type":"shop-plans",
+      "links":
+      {
+        "self":"http://acme.lvh.me:3000/api/v1/admin/shop-plans/id-shop-plans"
+      },
+      "attributes":
+      {
+        "name":"Acme Cloud Server (Small)",
+        "enabled":true,
+        "values":
+        {
+          "disk_1_san":"25 GB (SAN)",
+          "disk_2_san":null,
+          "disk_3_san":null,
+          "disk_4_san":null,
+          "disk_5_san":null,
+          "disk_1_local":null,
+          "disk_2_local":null,
+          "disk_type":"san",
+          "datacenter":"wdc01",
+          "memory":"2 GB",
+          "processor":"4 x 2.0 GHz Cores",
+          "operating_system":"Debian - Latest (64 bit)",
+          "network_component":"1 Gbps Public \u0026 Private Network Uplinks"
+        },
+        "description":"Acme Cloud Server Small Desc",
+        "long-description":"Acme Cloud Server Small Long Desc",
+        "allow-custom":true,
+        "can-customize":["datacenter"],
+        "product-name":"cloud_server",
+        "product-provider":"softlayer"
+      },
+      "relationships":
+      {
+        "shop-group":
+        {
+          "links":
+          {
+            "self":"http://acme.lvh.me:3000/api/v1/admin/shop-plans/id-shop-plans/relationships/shop-group",
+            "related":"http://acme.lvh.me:3000/api/v1/admin/shop-plans/id-shop-plans/shop-group"
+          },
+          "data":
+          {
+            "type":"shop-groups","id":"id-shop-groups"
+          }
+        }
+      }
+    },
+    {
+      "id":"id-shop-plans",
+      "type":"shop-plans",
+      "links":
+      {
+        "self":"http://acme.lvh.me:3000/api/v1/admin/shop-plans/id-shop-plans"
+      },
+      "attributes":
+      {
+        "name":"Acme Cloud Server (Large)",
+        "enabled":true,
+        "values":
+        {
+          "disk_1_san":"100 GB (SAN)",
+          "disk_2_san":null,
+          "disk_3_san":null,
+          "disk_4_san":null,
+          "disk_5_san":null,
+          "disk_1_local":null,
+          "disk_2_local":null,
+          "disk_type":"san",
+          "datacenter":"wdc01",
+          "memory":"6 GB",
+          "processor":"8 x 2.0 GHz Cores",
+          "operating_system":"Debian - Latest (64 bit)",
+          "network_component":"1 Gbps Public \u0026 Private Network Uplinks"
+        },
+        "description":"Acme Cloud Server Large Desc",
+        "long-description":"Acme Cloud Server Large Long Desc",
+        "allow-custom":true,
+        "can-customize":["datacenter"],
+        "product-name":"cloud_server",
+        "product-provider":"softlayer"
+      },
+      "relationships":
+      {
+        "shop-group":
+        {
+          "links":
+          {
+            "self":"http://acme.lvh.me:3000/api/v1/admin/shop-plans/id-shop-plans/relationships/shop-group",
+            "related":"http://acme.lvh.me:3000/api/v1/admin/shop-plans/id-shop-plans/shop-group"
+          },
+          "data":
+          {
+            "type":"shop-groups",
+            "id":"id-shop-groups"
+          }
+        }
+      }
+    },
+    {
+      "id":"id-shop-plans",
+      "type":"shop-plans",
+      "links":
+      {
+        "self":"http://acme.lvh.me:3000/api/v1/admin/shop-plans/id-shop-plans"
+      },
+      "attributes":
+      {
+        "name":"Acme Cloud Server (Medium)",
+        "enabled":true,
+        "values":
+        {
+          "disk_1_san":"25 GB (SAN)",
+          "disk_2_san":null,
+          "disk_3_san":null,
+          "disk_4_san":null,
+          "disk_5_san":null,
+          "disk_1_local":null,
+          "disk_2_local":null,
+          "disk_type":"san",
+          "datacenter":"wdc01",
+          "memory":"4 GB",
+          "processor":"8 x 2.0 GHz Cores",
+          "operating_system":"Debian - Latest (64 bit)",
+          "network_component":"1 Gbps Public \u0026 Private Network Uplinks"
+        },
+        "description":"Acme Cloud Server Medium Desc",
+        "long-description":"Acme Cloud Server Medium Long Desc",
+        "allow-custom":true,
+        "can-customize":["datacenter"],
+        "product-name":"cloud_server",
+        "product-provider":"softlayer"
+      },
+      "relationships":
+      {
+        "shop-group":
+        {
+          "links":
+          {
+            "self":"http://acme.lvh.me:3000/api/v1/admin/shop-plans/id-shop-plans/relationships/shop-group",
+            "related":"http://acme.lvh.me:3000/api/v1/admin/shop-plans/id-shop-plans/shop-group"
+          },
+          "data":
+          {
+            "type":"shop-groups",
+            "id":"id-shop-groups"
+          }
+        }
+      }
+    }
+  ]
+}
+```
+
+```ruby
+Not implemented
+```
+
+The admin can visualize all shop plans created by accessing the route below.
+
+Route: *`GET "/api/v1/admin/shop-plans"`*
+
 # Admin Shop Plan Softlayer Cloud Server
 
 When logged in, the admin can access information about the shop. This access allows him to create, update, show and list shop plans Softlayer cloud server.
@@ -6279,6 +6467,133 @@ Not implemented
 The admin can visualize all providers products options by accessing the route below.
 
 route: *`GET "/api/v1/admin/catalog-components/id-admin-catalog-provider-product-attribute/catalog-component-options"`*
+
+# Admin Filter
+
+When logged in, the admin can access information about the shop. This access allows him list a specific group through a filter in the end of the url.
+
+*`?filter%5Bvariable%5D=value`*
+
+## Shop Catalog Provider Product
+
+> Filter Shop Catalog Provider Product
+
+```shell
+# INPUT
+curl --header "Content-Type: application/vnd.api+json" 
+  -H "Authorization: Bearer id-access-token" -X GET -d 
+'{ 
+  "data":
+  { 
+    "type":"catalog-products" 
+  }
+}' 
+http://smart.lvh.me:3000/api/v1/admin/catalog-products?filter%5Bprovider_name%5D=softlayer
+
+# OUTPUT
+{
+  "data":
+  [
+    {
+      "id":"id-catalog-products",
+      "type":"catalog-products",
+      "links":
+      {
+        "self":"http://acme.lvh.me:3000/api/v1/admin/catalog-products/id-catalog-products"
+      },
+      "attributes":
+      {
+        "name":"Bare Metal",
+        "slug":"bare-metal",
+        "dynamic":true,
+        "hourly":true,
+        "version":1,
+        "allow-custom":true,
+        "product-name":"bare_metal",
+        "provider-name":"softlayer"
+      },
+      "relationships":
+      {
+        "catalog-provider":
+        {
+          "links":
+          {
+            "self":"http://acme.lvh.me:3000/api/v1/admin/catalog-products/id-catalog-products/relationships/catalog-provider",
+            "related":"http://acme.lvh.me:3000/api/v1/admin/catalog-products/id-catalog-products/catalog-provider"
+          },
+          "data":
+          {
+            "type":"catalog-providers",
+            "id":"id-catalog-provider"
+          }
+        },
+        "catalog-components":
+        {
+          "links":
+          {
+            "self":"http://acme.lvh.me:3000/api/v1/admin/catalog-products/id-catalog-products/relationships/catalog-components",
+            "related":"http://acme.lvh.me:3000/api/v1/admin/catalog-products/id-catalog-products/catalog-components"
+          }
+        }
+      }
+    },
+    {
+      "id":"id-catalog-products",
+      "type":"catalog-products",
+      "links":
+      {
+        "self":"http://acme.lvh.me:3000/api/v1/admin/catalog-products/id-catalog-products"
+      },
+      "attributes":
+      {
+        "name":"Cloud Server",
+        "slug":"cloud-server",
+        "dynamic":true,
+        "hourly":true,
+        "version":1,
+        "allow-custom":true,
+        "product-name":"cloud_server",
+        "provider-name":"softlayer"
+      },
+      "relationships":
+      {
+        "catalog-provider":
+        {
+          "links":
+          {
+            "self":"http://acme.lvh.me:3000/api/v1/admin/catalog-products/id-catalog-products/relationships/catalog-provider",
+            "related":"http://acme.lvh.me:3000/api/v1/admin/catalog-products/id-catalog-products9/catalog-provider"
+          },
+          "data":
+          {
+            "type":"catalog-providers",
+            "id":"id-catalog-provider"
+          }
+        },
+        "catalog-components":
+        {
+          "links":
+          {
+            "self":"http://acme.lvh.me:3000/api/v1/admin/catalog-products/id-catalog-products/relationships/catalog-components",
+            "related":"http://acme.lvh.me:3000/api/v1/admin/catalog-products/id-catalog-products/catalog-components"
+          }
+        }
+      }
+    }
+  ]
+}
+```
+
+```ruby
+Not implemented
+```
+
+The admin can filter a provider products by accessing the route below.
+
+Route: *`GET "/api/v1/admin/catalog-products?filter%5Bprovider_name%5D=softlayer"`*
+
+* product_name
+* provider_name
 
 # Manager Profile Account
 
