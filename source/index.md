@@ -2008,6 +2008,92 @@ The user can list all SoftLayer Cloud Server plans accessing the route bellow.
 
 Route: *`GET "/api/v1/shop-softlayer-cloud-server-plans"`*
 
+# User Shop Price
+
+When logged in, the user can access information about the shop. This access allows him to create shop prices.
+
+## Create
+
+> Create Shop Price
+
+```shell
+# INPUT
+curl --header "Content-Type: application/vnd.api+json" 
+  -H "Authorization: Bearer id-access-token" -X POST -d 
+'{ 
+  "data":
+  { 
+    "type":"shop-prices", 
+    "attributes":
+    { 
+      "components":
+      {
+        "disk-1-san":"25 GB (SAN)",
+        "disk-type":"san",
+        "datacenter":"wdc01",
+        "memory":"2 GB",
+        "processor":"4 x 2.0 GHz Cores",
+        "operating-system":"Debian - Latest (64 bit)",
+        "network-component":"1 Gbps Public & Private Network Uplinks"
+      },
+      "product":"cloud-server",
+      "provider":"softlayer"
+    }
+  }
+}' 
+http://acme.lvh.me:3000/api/v1/shop-price
+
+# OUTPUT
+{
+  "data":
+  {
+    "id":null,
+    "type":"shop-prices",
+    "links":
+    {
+      "self":"http://acme.lvh.me:3000/api/v1/shop-prices/"
+    },
+    "attributes":
+    {
+      "components":
+      {
+        "disk-1-san":"25 GB (SAN)",
+        "disk-type":"san",
+        "datacenter":"wdc01",
+        "memory":"2 GB",
+        "processor":"4 x 2.0 GHz Cores",
+        "operating-system":"Debian - Latest (64 bit)",
+        "network-component":"1 Gbps Public \u0026 Private Network Uplinks"
+      },
+      "hourly-price":"0.48",
+      "monthly-price":"300.0",
+      "product":"cloud-server",
+      "provider":"softlayer"
+    }
+  }
+}
+```
+
+```ruby
+Not implemented
+```
+
+The user can create a Shop Price accessing the route below.
+
+Route: *`POST "/api/v1/shop-price"`*
+
+Variable | Type | Value
+-------- | ---- | ----- 
+disk-1-san | String | 25 GB (SAN)
+disk-type | String | san
+datacenter | String | wdc01
+memory | String | 2 GB
+processor | String | 4 x 2.0 GHz Cores
+operating-system | String | Debian - Latest (64 bit)
+network-component | String | 1 Gbps Public & Private Network Uplinks
+product | String | cloud-server
+provider | String | softlayer
+
 # User Shop Catalog Provider
 
 When logged in, the user can access information about the catalog. This access allows him to list his catalog provider availables.
@@ -2622,7 +2708,7 @@ http://smart.lvh.me:3000/api/v1/catalog-components/id-admin-catalog-provider-pro
 Not implemented
 ```
 
-The admin can visualize all providers products options by accessing the route below.
+The user can visualize all providers products options by accessing the route below.
 
 route: *`GET "/api/v1/catalog-components/id-catalog-provider-product-attribute/catalog-component-options"`*
 
@@ -5758,6 +5844,92 @@ Not implemented
 The admin can list all SoftLayer Cloud Server plans accessing the route bellow.
 
 Route: *`GET "/api/v1/admin/shop-softlayer-cloud-server-plans"`*
+
+# Admin Shop Price
+
+When logged in, the admin can access information about the shop. This access allows him to create shop prices.
+
+## Create
+
+> Create Shop Price
+
+```shell
+# INPUT
+curl --header "Content-Type: application/vnd.api+json" 
+  -H "Authorization: Bearer id-access-token" -X POST -d 
+'{ 
+  "data":
+  { 
+    "type":"shop-prices", 
+    "attributes":
+    { 
+      "components":
+      {
+        "disk-1-san":"25 GB (SAN)",
+        "disk-type":"san",
+        "datacenter":"wdc01",
+        "memory":"2 GB",
+        "processor":"4 x 2.0 GHz Cores",
+        "operating-system":"Debian - Latest (64 bit)",
+        "network-component":"1 Gbps Public & Private Network Uplinks"
+      },
+      "product":"cloud-server",
+      "provider":"softlayer"
+    }
+  }
+}' 
+http://smart.lvh.me:3000/api/v1/admin/shop-price
+
+# OUTPUT
+{
+  "data":
+  {
+    "id":null,
+    "type":"shop-prices",
+    "links":
+    {
+      "self":"http://smart.lvh.me:3000/api/v1/admin/shop-prices/"
+    },
+    "attributes":
+    {
+      "components":
+      {
+        "disk-1-san":"25 GB (SAN)",
+        "disk-type":"san",
+        "datacenter":"wdc01",
+        "memory":"2 GB",
+        "processor":"4 x 2.0 GHz Cores",
+        "operating-system":"Debian - Latest (64 bit)",
+        "network-component":"1 Gbps Public \u0026 Private Network Uplinks"
+      },
+      "hourly-price":"0.48",
+      "monthly-price":"300.0",
+      "product":"cloud-server",
+      "provider":"softlayer"
+    }
+  }
+}
+```
+
+```ruby
+Not implemented
+```
+
+The admin can create a Shop Price accessing the route below.
+
+Route: *`POST "/api/v1/admin/shop-price"`*
+
+Variable | Type | Value
+-------- | ---- | ----- 
+disk-1-san | String | 25 GB (SAN)
+disk-type | String | san
+datacenter | String | wdc01
+memory | String | 2 GB
+processor | String | 4 x 2.0 GHz Cores
+operating-system | String | Debian - Latest (64 bit)
+network-component | String | 1 Gbps Public & Private Network Uplinks
+product | String | cloud-server
+provider | String | softlayer
 
 # Admin Shop Catalog Provider
 
