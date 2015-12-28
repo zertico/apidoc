@@ -2010,7 +2010,7 @@ Route: *`GET "/api/v1/shop-softlayer-cloud-server-plans"`*
 
 # User Shop Price
 
-When logged in, the user can access information about the shop. This access allows him to create shop prices.
+When logged in, the user can access information about the shop. This access allows him to verify a price for the custom plan.
 
 ## Create
 
@@ -2091,8 +2091,8 @@ memory | String | 2 GB
 processor | String | 4 x 2.0 GHz Cores
 operating-system | String | Debian - Latest (64 bit)
 network-component | String | 1 Gbps Public & Private Network Uplinks
-product | String | cloud-server
-provider | String | softlayer
+product | String | product_example_cloud-server
+provider | String | provider_example_softlayer
 
 # User Shop Catalog Provider
 
@@ -5847,7 +5847,7 @@ Route: *`GET "/api/v1/admin/shop-softlayer-cloud-server-plans"`*
 
 # Admin Shop Price
 
-When logged in, the admin can access information about the shop. This access allows him to create shop prices.
+When logged in, the admin can access information about the shop. This access allows him to verify a price for the custom plan.
 
 ## Create
 
@@ -5928,8 +5928,8 @@ memory | String | 2 GB
 processor | String | 4 x 2.0 GHz Cores
 operating-system | String | Debian - Latest (64 bit)
 network-component | String | 1 Gbps Public & Private Network Uplinks
-product | String | cloud-server
-provider | String | softlayer
+product | String | product_example_cloud-server
+provider | String | provider_example_softlayer
 
 # Admin Shop Catalog Provider
 
