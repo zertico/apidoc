@@ -6121,7 +6121,61 @@ provider | String | provider_example_softlayer
 
 # Admin Shop Catalog Provider
 
-When logged in, the admin can access information about the catalog. This access allows him to list his catalog provider availables.
+When logged in, the admin can access information about the catalog. This access allows him to show and list his catalog provider availables.
+
+## Show
+
+> Show Shop Catalog Provider
+
+```shell
+# INPUT
+curl --header "Content-Type: application/vnd.api+json" 
+  -H "Authorization: Bearer id-access-token" -X GET -d 
+'{ 
+  "data":
+  { 
+    "type":"catalog-providers" 
+  }
+}' 
+http://smart.lvh.me:3000/api/v1/admin/catalog-providers/id-catalog-provider
+
+# OUTPUT
+{
+  "data":
+  {
+    "id":"id-catalog-provider",
+    "type":"catalog-providers",
+    "links":
+    {
+      "self":"http://smart.lvh.me:3000/api/v1/admin/catalog-providers/id-catalog-provider"
+    },
+    "attributes":
+    {
+      "name":"Provider",
+      "provider-name":"provider"
+    },
+    "relationships":
+    {
+      "catalog-products":
+      {
+        "links":
+        {
+          "self":"http://smart.lvh.me:3000/api/v1/admin/catalog-providers/id-catalog-provider/relationships/catalog-products",
+          "related":"http://smart.lvh.me:3000/api/v1/admin/catalog-providers/id-catalog-provider/catalog-products"
+        }
+      }
+    }
+  }
+}
+```
+
+```ruby
+Not implemented
+```
+
+When logged in, the admin can access information about the catalog. This access allows him to show catalog provider availables.
+
+route: *`GET "/api/v1/admin/catalog-providers/:id"`*
 
 ## List
 
@@ -6174,13 +6228,86 @@ http://smart.lvh.me:3000/api/v1/admin/catalog-providers
 Not implemented
 ```
 
-When logged in, the admin can access information about the catalog. This access allows him to list catalog provider availables.
+When logged in, the admin can access information about the catalog. This access allows him to show and list catalog provider availables.
 
 route: *`GET "/api/v1/admin/catalog-providers"`*
 
 # Admin Shop Catalog Provider Product
 
 When logged in, the admin can access information about the catalog. This access allows him to list catalog provider products.
+
+## Show
+
+> Show Shop Catalog Provider Product
+
+```shell
+# INPUT
+curl --header "Content-Type: application/vnd.api+json" 
+  -H "Authorization: Bearer id-access-token" -X GET -d 
+'{ 
+  "data":
+  { 
+    "type":"catalog-products" 
+  }
+}' 
+http://smart.lvh.me:3000/api/v1/admin/catalog-products/id-catalog-product
+
+# OUTPUT
+{
+  "data":
+  {
+    "id":"id-catalog-product",
+    "type":"catalog-products",
+    "links":
+    {
+      "self":"http://smart.lvh.me:3000/api/v1/admin/catalog-products/id-catalog-product"
+    },
+    "attributes":
+    {
+      "name":"Bare Metal",
+      "slug":"bare-metal",
+      "dynamic":true,
+      "hourly":true,
+      "version":1,
+      "allow-custom":true,
+      "product-name":"bare_metal",
+      "provider-name":"softlayer"
+    },
+    "relationships":
+    {
+      "catalog-provider":
+      {
+        "links":
+        {
+          "self":"http://smart.lvh.me:3000/api/v1/admin/catalog-products/id-catalog-product/relationships/catalog-provider",
+          "related":"http://smart.lvh.me:3000/api/v1/admin/catalog-products/id-catalog-product/catalog-provider"
+        },
+        "data":
+        {
+          "type":"catalog-providers",
+          "id":"id-catalog-provider"
+        }
+      },
+      "catalog-components":
+      {
+        "links":
+        {
+          "self":"http://smart.lvh.me:3000/api/v1/admin/catalog-products/id-catalog-product/relationships/catalog-components",
+          "related":"http://smart.lvh.me:3000/api/v1/admin/catalog-products/id-catalog-product/catalog-components"
+        }
+      }
+    }
+  }
+}
+```
+
+```ruby
+Not implemented
+```
+
+The user can visualize a specific provider products by accessing the route below.
+
+route: *`GET "/api/v1/admin/catalog-products/:id"`*
 
 ## List
 
@@ -6254,7 +6381,76 @@ route: *`GET "/api/v1/admin/catalog-products"`*
 
 # Admin Shop Catalog Provider Product Attribute
 
-When logged in, the admin can access information about the catalog. This access allows him to list catalog products attributes.
+When logged in, the admin can access information about the catalog. This access allows him to show and list catalog products attributes.
+
+## Show
+
+> Show Shop Catalog Provider Product Attributes
+
+```shell
+# INPUT
+curl --header "Content-Type: application/vnd.api+json" 
+  -H "Authorization: Bearer id-access-token" -X GET -d 
+'{ 
+  "data":
+  { 
+    "type":"catalog-components" 
+  }
+}' 
+http://smart.lvh.me:3000/api/v1/admin/catalog-components/id-catalog-components
+
+# OUTPUT
+{
+  "data":
+  {
+    "id":"id-catalog-components",
+    "type":"catalog-components",
+    "links":
+    {
+      "self":"http://smart.lvh.me:3000/api/v1/admin/catalog-components/id-catalog-components"
+    },
+    "attributes":
+    {
+      "name":"Disk 1 (Local)",
+      "system":false,
+      "allow-upgrade":true,
+      "allow-downgrade":false
+    },
+    "relationships":
+    {
+      "catalog-product":
+      {
+        "links":
+        {
+          "self":"http://smart.lvh.me:3000/api/v1/admin/catalog-components/id-catalog-components/relationships/catalog-product",
+          "related":"http://smart.lvh.me:3000/api/v1/admin/catalog-components/id-catalog-components/catalog-product"
+        },
+        "data":
+        {
+          "type":"catalog-products",
+          "id":"id-catalog-product"
+        }
+      },
+      "catalog-component-options":
+      {
+        "links":
+        {
+          "self":"http://smart.lvh.me:3000/api/v1/admin/catalog-components/id-catalog-components/relationships/catalog-component-options",
+          "related":"http://smart.lvh.me:3000/api/v1/admin/catalog-components/id-catalog-components/catalog-component-options"
+        }
+      }
+    }
+  }
+}
+```
+
+```ruby
+Not implemented
+```
+
+The admin can visualize a specific product attributes by accessing the route below.
+
+route: *`GET "/api/v1/admin/catalog-components/:id"`*
 
 ## List
 
