@@ -6793,7 +6793,7 @@ Route: *`GET "/api/v1/admin/catalog-products?filter%5Bprovider_name%5D=softlayer
 
 # Manager Profile Account
 
-When logged in, the user admin access his own profile. This access allows him to show and update information about his account.
+When logged in, the user manager access his own profile. This access allows him to show and update information about his account.
 
 ## Show
 
@@ -9097,6 +9097,135 @@ horus-cli list addresses
 The manager can visualize all addresses by accessing the route below.
 
 Route: *`GET "/api/v1/manager/client-addresses"`*
+
+# Manager Provider Softlayer Profile
+
+When logged in, the user manager access his own Softlayer profile. This access allows him to show and update information about his account.
+
+## Show
+
+> Show Softlayer Profile Account
+
+```shell
+# INPUT
+curl --header "Content-Type: application/vnd.api+json" 
+  -H "Authorization: Bearer id-access-token" -X GET -d 
+'{
+  "data":
+  {
+    "type":"provider-softlayer-profiles"
+  }
+}' 
+http://localhost:3000/api/v1/manager/provider-softlayer-profil
+
+# OUTPUT
+{
+  "data":
+  {
+    "id":"id-softlayer-profile",
+    "type":"provider-softlayer-profiles",
+    "links":
+    {
+      "self":"http://localhost:3000/api/v1/manager/provider-softlayer-profiles/id-softlayer-profile"
+    },
+    "attributes":
+    {
+      "softlayer-id":521069,
+      "brand-id":44443,
+      "account-status-id":1001,
+      "is-reseller":0,
+      "company-name":"Zertico Master Account",
+      "email":"fernandes@zertico.com",
+      "office-phone":"(+)55 35 9125-8952",
+      "first-name":"Celso",
+      "last-name":"Fernandes",
+      "address1":"Av Bps, 1303 Sl 10",
+      "address2":"Sl 10",
+      "postal-code":"37500-903",
+      "city":"Itajubá",
+      "state":"OT",
+      "country":"BR",
+      "create-date":"2015-04-28T19:52:36.000Z",
+      "modify-date":"2015-04-28T19:55:39.000Z"
+    }
+  }
+}
+```
+
+```ruby
+Not implemented
+```
+
+The manager can visualize his Softlayer profile account by accessing the route below.
+
+Route: *`GET "/api/v1/manager/provider-softlayer-profile"`*
+
+## Update
+
+> Update Softlayer Profile Account
+
+```shell
+# INPUT
+curl --header "Content-Type: application/vnd.api+json" 
+  -H "Authorization: Bearer id-access-token" -X GET -d 
+'{
+  "data":
+  {
+    "type":"provider-softlayer-profiles",
+    "id":"id-softlayer-profile", 
+    "attributes":
+    {
+      "company-name":"Growls"
+    }
+  }
+}' 
+http://localhost:3000/api/v1/manager/provider-softlayer-profile
+
+# OUTPUT
+{
+  "data":
+  {
+    "id":"id-softlayer-profile",
+    "type":"provider-softlayer-profiles",
+    "links":
+    {
+      "self":"http://localhost:3000/api/v1/manager/provider-softlayer-profiles/id-softlayer-profile"
+    },
+    "attributes":
+    {
+      "softlayer-id":521069,
+      "brand-id":44443,
+      "account-status-id":1001,
+      "is-reseller":0,
+      "company-name":"Zertico Master Account",
+      "email":"fernandes@zertico.com",
+      "office-phone":"(+)55 35 9125-8952",
+      "first-name":"Celso",
+      "last-name":"Fernandes",
+      "address1":"Av Bps, 1303 Sl 10",
+      "address2":"Sl 10",
+      "postal-code":"37500-903",
+      "city":"Itajubá",
+      "state":"OT",
+      "country":"BR",
+      "create-date":"2015-04-28T19:52:36.000Z",
+      "modify-date":"2015-04-28T19:55:39.000Z"
+    }
+  }
+}
+```
+
+```ruby
+Not implemented
+```
+
+The manager can edit the information contained in his own Softlayer profile account by accessing the route below.
+
+Route: *`PATCH "/api/v1/manager/provider-softlayer-profile"`*
+
+Variable | Type | Value
+---------- | ---- | ----- 
+company-name | String | Growls
 
 # Manager Provider Softlayer Profile Clients
 
