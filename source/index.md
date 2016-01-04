@@ -7900,7 +7900,7 @@ horus-cli list users
 ]
 ```
 
-The admin can visualize all companies accounts by accessing the route below.
+The manager can visualize all companies accounts by accessing the route below.
 
 Route: *`GET "/api/v1/manager/client-users"`*
 
@@ -9097,6 +9097,353 @@ horus-cli list addresses
 The manager can visualize all addresses by accessing the route below.
 
 Route: *`GET "/api/v1/manager/client-addresses"`*
+
+# Manager Provider Softlayer Profile Clients
+
+When logged in, the manager can access information about softlayer clients account. This access allows him to create, update, show and list them.
+
+## Create
+
+> Create Softlayer Clients Account
+
+```shell
+# INPUT
+curl --header "Content-Type: application/vnd.api+json" 
+  -H "Authorization: Bearer id-access-token" -X POST -d 
+'{ 
+  "data":
+  { 
+    "type":"provider-softlayer-profile-clients", 
+    "attributes":
+    { 
+      "company-name":"Apple Inc"
+    }
+  }
+}' 
+http://localhost:3000/api/v1/manager/provider-softlayer-profile-clients
+
+# OUTPUT
+{
+  "data":
+  {
+    "id":"id-softlayer-clients",
+    "type":"provider-softlayer-profile-clients",
+    "links":
+    {
+      "self":"http://localhost:3000/api/v1/manager/provider-softlayer-profile-clients/id-softlayer-clients"
+    },
+    "attributes":
+    {
+      "softlayer-id":null,
+      "brand-id":null,
+      "account-status-id":null,
+      "is-reseller":null,
+      "company-name":"Apple Inc",
+      "email":null,
+      "office-phone":null,
+      "first-name":null,
+      "last-name":null,
+      "address1":null,
+      "address2":null,
+      "postal-code":null,
+      "city":null,
+      "state":null,
+      "country":null,
+      "create-date":null,
+      "modify-date":null
+    },
+    "relationships":
+    {
+      "client":
+      {
+        "links":
+        {
+          "self":"http://localhost:3000/api/v1/manager/provider-softlayer-profile-clients/id-softlayer-clients/relationships/client",
+          "related":"http://localhost:3000/api/v1/manager/provider-softlayer-profile-clients/id-softlayer-clients/client"
+        },
+        "data":null
+      }
+    }
+  }
+}
+```
+
+```ruby
+Not implemented
+```
+
+The manager can create a softlayer client account by accessing the route below.
+
+Route: *`POST "/api/v1/manager/provider-softlayer-profile-clients"`*
+
+Variable | Type | Value
+-------- | ---- | ----- 
+company-name | String | Apple Inc
+
+## Update
+
+> Update Softlayer Clients Account
+
+```shell
+# INPUT
+curl --header "Content-Type: application/vnd.api+json" 
+  -H "Authorization: Bearer id-access-token" -X PATCH -d 
+'{ 
+  "data":
+  { 
+    "type":"provider-softlayer-profile-clients", 
+    "id":"id-softlayer-clients", 
+    "attributes":
+    { 
+      "company-name":"Boom"
+    }
+  }
+}' 
+http://localhost:3000/api/v1/manager/provider-softlayer-profile-clients/id-softlayer-clients
+
+# OUTPUT
+{
+  "data":
+  {
+    "id":"id-softlayer-clients",
+    "type":"provider-softlayer-profile-clients",
+    "links":
+    {
+      "self":"http://localhost:3000/api/v1/manager/provider-softlayer-profile-clients/id-softlayer-clients"
+    },
+    "attributes":
+    {
+      "softlayer-id":null,
+      "brand-id":null,
+      "account-status-id":null,
+      "is-reseller":null,
+      "company-name":"Boom",
+      "email":null,
+      "office-phone":null,
+      "first-name":null,
+      "last-name":null,
+      "address1":null,
+      "address2":null,
+      "postal-code":null,
+      "city":null,
+      "state":null,
+      "country":null,
+      "create-date":null,
+      "modify-date":null
+    },
+    "relationships":
+    {
+      "client":
+      {
+        "links":
+        {
+          "self":"http://localhost:3000/api/v1/manager/provider-softlayer-profile-clients/id-softlayer-clients/relationships/client",
+          "related":"http://localhost:3000/api/v1/manager/provider-softlayer-profile-clients/id-softlayer-clients/client"
+        },
+        "data":null
+      }
+    }
+  }
+} 
+```
+
+```ruby
+Not implemented
+```
+
+The manager can edit information contained in a softlayer client account by accessing the route below.
+
+Route: *`GET "/api/v1/manager/provider-softlayer-profile-clients/:id"`*
+
+Variable | Type | Value
+-------- | ---- | ----- 
+company-name | String | Boom
+
+## Show
+
+> Show Softlayer Clients Account
+
+```shell
+# INPUT
+curl --header "Content-Type: application/vnd.api+json" 
+  -H "Authorization: Bearer id-access-token" -X GET -d 
+'{
+  "data":
+  {
+    "type":"provider-softlayer-profile-clients"
+  }
+}' 
+http://localhost:3000/api/v1/manager/provider-softlayer-profile-clients/id-softlayer-clients
+
+# OUTPUT
+{
+  "data":
+  {
+    "id":"id-softlayer-clients",
+    "type":"provider-softlayer-profile-clients",
+    "links":
+    {
+      "self":"http://localhost:3000/api/v1/manager/provider-softlayer-profile-clients/id-softlayer-clients"
+    },
+    "attributes":
+    {
+      "softlayer-id":null,
+      "brand-id":null,
+      "account-status-id":null,
+      "is-reseller":null,
+      "company-name":"Boom",
+      "email":null,
+      "office-phone":null,
+      "first-name":null,
+      "last-name":null,
+      "address1":null,
+      "address2":null,
+      "postal-code":null,
+      "city":null,
+      "state":null,
+      "country":null,
+      "create-date":null,
+      "modify-date":null
+    },
+    "relationships":
+    {
+      "client":
+      {
+        "links":
+        {
+          "self":"http://localhost:3000/api/v1/manager/provider-softlayer-profile-clients/id-softlayer-clients/relationships/client",
+          "related":"http://localhost:3000/api/v1/manager/provider-softlayer-profile-clients/id-softlayer-clients/client"
+        },
+        "data":null
+      }
+    }
+  }
+}
+```
+
+```ruby
+Not implemented
+```
+
+The manager can visualize a specific softlayer client account by accessing the route below.
+
+Route: *`GET "/api/v1/manager/provider-softlayer-profile-clients/:id"`*
+
+## List
+
+> List Softlayer Clients Account
+
+```shell
+# INPUT
+curl --header "Content-Type: application/vnd.api+json" 
+  -H "Authorization: Bearer id-access-token" -X GET -d 
+'{
+  "data":
+  {
+    "type":"provider-softlayer-profile-clients"
+  }
+}' 
+http://localhost:3000/api/v1/manager/provider-softlayer-profile-clients
+
+# OUTPUT
+{
+  "data":
+  [
+    {
+      "id":"id-softlayer-clients",
+      "type":"provider-softlayer-profile-clients",
+      "links":
+      {
+        "self":"http://localhost:3000/api/v1/manager/provider-softlayer-profile-clients/id-softlayer-clients"
+      },
+      "attributes":
+      {
+        "softlayer-id":null,
+        "brand-id":null,
+        "account-status-id":null,
+        "is-reseller":null,
+        "company-name":"Boom",
+        "email":null,
+        "office-phone":null,
+        "first-name":null,
+        "last-name":null,
+        "address1":null,
+        "address2":null,
+        "postal-code":null,
+        "city":null,
+        "state":null,
+        "country":null,
+        "create-date":null,
+        "modify-date":null
+      },
+      "relationships":
+      {
+        "client":
+        {
+          "links":
+          {
+            "self":"http://localhost:3000/api/v1/manager/provider-softlayer-profile-clients/id-softlayer-clients/relationships/client",
+            "related":"http://localhost:3000/api/v1/manager/provider-softlayer-profile-clients/id-softlayer-clients/client"
+          },
+          "data":null
+        }
+      }
+    },
+    {
+      "id":"id-softlayer-clients",
+      "type":"provider-softlayer-profile-clients",
+      "links":
+      {
+        "self":"http://localhost:3000/api/v1/manager/provider-softlayer-profile-clients/id-softlayer-clients"
+      },
+      "attributes":
+      {
+        "softlayer-id":760935,
+        "brand-id":64603,
+        "account-status-id":1001,
+        "is-reseller":0,
+        "company-name":"Test Example",
+        "email":"test@example.com",
+        "office-phone":"35 3623-9833",
+        "first-name":"Test First Name",
+        "last-name":"Test Last Name",
+        "address1":"Test Street",
+        "address2":null,
+        "postal-code":"0000-000",
+        "city":"Test City",
+        "state":"TO",
+        "country":"BR",
+        "create-date":"2015-10-22T16:45:10.000Z",
+        "modify-date":"2015-10-22T16:50:41.000Z"
+      },
+      "relationships":
+      {
+        "client":
+        {
+          "links":
+          {
+            "self":"http://localhost:3000/api/v1/manager/provider-softlayer-profile-clients/id-softlayer-clients/relationships/client",
+            "related":"http://localhost:3000/api/v1/manager/provider-softlayer-profile-clients/id-softlayer-clients/client"
+          },
+          "data":
+          {
+            "type":"clients",
+            "id":"id-client"
+          }
+        }
+      }
+    }
+  ]
+}
+```
+
+```ruby
+Not implemented
+```
+
+The manager can visualize all softlayer clients account by accessing the route below.
+
+Route: *`GET "/api/v1/manager/provider-softlayer-profile-clients"`*
 
 # License
 
