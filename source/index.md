@@ -1443,7 +1443,7 @@ Route: *`GET "/api/v1/shop-groups"`*
 
 # User Shop Plan
 
-When logged in, the user can access information about the shop. This access allows him to show and list shop plans.
+When logged in, the user can access information about the shop. This access allows him to list shop plans.
 
 ## List
 
@@ -2007,6 +2007,92 @@ Not implemented
 The user can list all SoftLayer Cloud Server plans accessing the route bellow.
 
 Route: *`GET "/api/v1/shop-softlayer-cloud-server-plans"`*
+
+# User Shop Price
+
+When logged in, the user can access information about the shop. This access allows him to verify a price for the custom plan.
+
+## Create
+
+> Create Shop Price
+
+```shell
+# INPUT
+curl --header "Content-Type: application/vnd.api+json" 
+  -H "Authorization: Bearer id-access-token" -X POST -d 
+'{ 
+  "data":
+  { 
+    "type":"shop-prices", 
+    "attributes":
+    { 
+      "components":
+      {
+        "disk-1-san":"25 GB (SAN)",
+        "disk-type":"san",
+        "datacenter":"wdc01",
+        "memory":"2 GB",
+        "processor":"4 x 2.0 GHz Cores",
+        "operating-system":"Debian - Latest (64 bit)",
+        "network-component":"1 Gbps Public & Private Network Uplinks"
+      },
+      "product":"cloud-server",
+      "provider":"softlayer"
+    }
+  }
+}' 
+http://acme.lvh.me:3000/api/v1/shop-price
+
+# OUTPUT
+{
+  "data":
+  {
+    "id":null,
+    "type":"shop-prices",
+    "links":
+    {
+      "self":"http://acme.lvh.me:3000/api/v1/shop-prices/"
+    },
+    "attributes":
+    {
+      "components":
+      {
+        "disk-1-san":"25 GB (SAN)",
+        "disk-type":"san",
+        "datacenter":"wdc01",
+        "memory":"2 GB",
+        "processor":"4 x 2.0 GHz Cores",
+        "operating-system":"Debian - Latest (64 bit)",
+        "network-component":"1 Gbps Public \u0026 Private Network Uplinks"
+      },
+      "hourly-price":"0.48",
+      "monthly-price":"300.0",
+      "product":"cloud-server",
+      "provider":"softlayer"
+    }
+  }
+}
+```
+
+```ruby
+Not implemented
+```
+
+The user can create a Shop Price accessing the route below.
+
+Route: *`POST "/api/v1/shop-price"`*
+
+Variable | Type | Value
+-------- | ---- | ----- 
+disk-1-san | String | 25 GB (SAN)
+disk-type | String | san
+datacenter | String | wdc01
+memory | String | 2 GB
+processor | String | 4 x 2.0 GHz Cores
+operating-system | String | Debian - Latest (64 bit)
+network-component | String | 1 Gbps Public & Private Network Uplinks
+product | String | product_example_cloud-server
+provider | String | provider_example_softlayer
 
 # User Shop Catalog Provider
 
@@ -2622,7 +2708,7 @@ http://smart.lvh.me:3000/api/v1/catalog-components/id-admin-catalog-provider-pro
 Not implemented
 ```
 
-The admin can visualize all providers products options by accessing the route below.
+The user can visualize all providers products options by accessing the route below.
 
 route: *`GET "/api/v1/catalog-components/id-catalog-provider-product-attribute/catalog-component-options"`*
 
@@ -5450,6 +5536,194 @@ The admin can visualize all shop groups created by accessing the route below.
 
 Route: *`GET "/api/v1/admin/shop-groups"`*
 
+# Admin Shop Plan
+
+When logged in, the admin can access information about the shop. This access allows him to list shop plans.
+
+## List
+
+> List Shop Plan
+
+```shell
+# INPUT
+curl --header "Content-Type: application/vnd.api+json" 
+  -H "Authorization: Bearer id-access-token" -X GET -d 
+'{
+  "data":
+  {
+    "type":"shop-plans"
+  }
+}' 
+http://smart.lvh.me:3000/api/v1/admin/shop-plans
+
+# OUTPUT
+{
+  "data":
+  [
+    {
+      "id":"id-shop-plans",
+      "type":"shop-plans",
+      "links":
+      {
+        "self":"http://acme.lvh.me:3000/api/v1/admin/shop-plans/id-shop-plans"
+      },
+      "attributes":
+      {
+        "name":"Acme Cloud Server (Small)",
+        "enabled":true,
+        "values":
+        {
+          "disk_1_san":"25 GB (SAN)",
+          "disk_2_san":null,
+          "disk_3_san":null,
+          "disk_4_san":null,
+          "disk_5_san":null,
+          "disk_1_local":null,
+          "disk_2_local":null,
+          "disk_type":"san",
+          "datacenter":"wdc01",
+          "memory":"2 GB",
+          "processor":"4 x 2.0 GHz Cores",
+          "operating_system":"Debian - Latest (64 bit)",
+          "network_component":"1 Gbps Public \u0026 Private Network Uplinks"
+        },
+        "description":"Acme Cloud Server Small Desc",
+        "long-description":"Acme Cloud Server Small Long Desc",
+        "allow-custom":true,
+        "can-customize":["datacenter"],
+        "product-name":"cloud_server",
+        "product-provider":"softlayer"
+      },
+      "relationships":
+      {
+        "shop-group":
+        {
+          "links":
+          {
+            "self":"http://acme.lvh.me:3000/api/v1/admin/shop-plans/id-shop-plans/relationships/shop-group",
+            "related":"http://acme.lvh.me:3000/api/v1/admin/shop-plans/id-shop-plans/shop-group"
+          },
+          "data":
+          {
+            "type":"shop-groups","id":"id-shop-groups"
+          }
+        }
+      }
+    },
+    {
+      "id":"id-shop-plans",
+      "type":"shop-plans",
+      "links":
+      {
+        "self":"http://acme.lvh.me:3000/api/v1/admin/shop-plans/id-shop-plans"
+      },
+      "attributes":
+      {
+        "name":"Acme Cloud Server (Large)",
+        "enabled":true,
+        "values":
+        {
+          "disk_1_san":"100 GB (SAN)",
+          "disk_2_san":null,
+          "disk_3_san":null,
+          "disk_4_san":null,
+          "disk_5_san":null,
+          "disk_1_local":null,
+          "disk_2_local":null,
+          "disk_type":"san",
+          "datacenter":"wdc01",
+          "memory":"6 GB",
+          "processor":"8 x 2.0 GHz Cores",
+          "operating_system":"Debian - Latest (64 bit)",
+          "network_component":"1 Gbps Public \u0026 Private Network Uplinks"
+        },
+        "description":"Acme Cloud Server Large Desc",
+        "long-description":"Acme Cloud Server Large Long Desc",
+        "allow-custom":true,
+        "can-customize":["datacenter"],
+        "product-name":"cloud_server",
+        "product-provider":"softlayer"
+      },
+      "relationships":
+      {
+        "shop-group":
+        {
+          "links":
+          {
+            "self":"http://acme.lvh.me:3000/api/v1/admin/shop-plans/id-shop-plans/relationships/shop-group",
+            "related":"http://acme.lvh.me:3000/api/v1/admin/shop-plans/id-shop-plans/shop-group"
+          },
+          "data":
+          {
+            "type":"shop-groups",
+            "id":"id-shop-groups"
+          }
+        }
+      }
+    },
+    {
+      "id":"id-shop-plans",
+      "type":"shop-plans",
+      "links":
+      {
+        "self":"http://acme.lvh.me:3000/api/v1/admin/shop-plans/id-shop-plans"
+      },
+      "attributes":
+      {
+        "name":"Acme Cloud Server (Medium)",
+        "enabled":true,
+        "values":
+        {
+          "disk_1_san":"25 GB (SAN)",
+          "disk_2_san":null,
+          "disk_3_san":null,
+          "disk_4_san":null,
+          "disk_5_san":null,
+          "disk_1_local":null,
+          "disk_2_local":null,
+          "disk_type":"san",
+          "datacenter":"wdc01",
+          "memory":"4 GB",
+          "processor":"8 x 2.0 GHz Cores",
+          "operating_system":"Debian - Latest (64 bit)",
+          "network_component":"1 Gbps Public \u0026 Private Network Uplinks"
+        },
+        "description":"Acme Cloud Server Medium Desc",
+        "long-description":"Acme Cloud Server Medium Long Desc",
+        "allow-custom":true,
+        "can-customize":["datacenter"],
+        "product-name":"cloud_server",
+        "product-provider":"softlayer"
+      },
+      "relationships":
+      {
+        "shop-group":
+        {
+          "links":
+          {
+            "self":"http://acme.lvh.me:3000/api/v1/admin/shop-plans/id-shop-plans/relationships/shop-group",
+            "related":"http://acme.lvh.me:3000/api/v1/admin/shop-plans/id-shop-plans/shop-group"
+          },
+          "data":
+          {
+            "type":"shop-groups",
+            "id":"id-shop-groups"
+          }
+        }
+      }
+    }
+  ]
+}
+```
+
+```ruby
+Not implemented
+```
+
+The admin can visualize all shop plans created by accessing the route below.
+
+Route: *`GET "/api/v1/admin/shop-plans"`*
+
 # Admin Shop Plan Softlayer Cloud Server
 
 When logged in, the admin can access information about the shop. This access allows him to create, update, show and list shop plans Softlayer cloud server.
@@ -5759,9 +6033,149 @@ The admin can list all SoftLayer Cloud Server plans accessing the route bellow.
 
 Route: *`GET "/api/v1/admin/shop-softlayer-cloud-server-plans"`*
 
+# Admin Shop Price
+
+When logged in, the admin can access information about the shop. This access allows him to verify a price for the custom plan.
+
+## Create
+
+> Create Shop Price
+
+```shell
+# INPUT
+curl --header "Content-Type: application/vnd.api+json" 
+  -H "Authorization: Bearer id-access-token" -X POST -d 
+'{ 
+  "data":
+  { 
+    "type":"shop-prices", 
+    "attributes":
+    { 
+      "components":
+      {
+        "disk-1-san":"25 GB (SAN)",
+        "disk-type":"san",
+        "datacenter":"wdc01",
+        "memory":"2 GB",
+        "processor":"4 x 2.0 GHz Cores",
+        "operating-system":"Debian - Latest (64 bit)",
+        "network-component":"1 Gbps Public & Private Network Uplinks"
+      },
+      "product":"cloud-server",
+      "provider":"softlayer"
+    }
+  }
+}' 
+http://smart.lvh.me:3000/api/v1/admin/shop-price
+
+# OUTPUT
+{
+  "data":
+  {
+    "id":null,
+    "type":"shop-prices",
+    "links":
+    {
+      "self":"http://smart.lvh.me:3000/api/v1/admin/shop-prices/"
+    },
+    "attributes":
+    {
+      "components":
+      {
+        "disk-1-san":"25 GB (SAN)",
+        "disk-type":"san",
+        "datacenter":"wdc01",
+        "memory":"2 GB",
+        "processor":"4 x 2.0 GHz Cores",
+        "operating-system":"Debian - Latest (64 bit)",
+        "network-component":"1 Gbps Public \u0026 Private Network Uplinks"
+      },
+      "hourly-price":"0.48",
+      "monthly-price":"300.0",
+      "product":"cloud-server",
+      "provider":"softlayer"
+    }
+  }
+}
+```
+
+```ruby
+Not implemented
+```
+
+The admin can create a Shop Price accessing the route below.
+
+Route: *`POST "/api/v1/admin/shop-price"`*
+
+Variable | Type | Value
+-------- | ---- | ----- 
+disk-1-san | String | 25 GB (SAN)
+disk-type | String | san
+datacenter | String | wdc01
+memory | String | 2 GB
+processor | String | 4 x 2.0 GHz Cores
+operating-system | String | Debian - Latest (64 bit)
+network-component | String | 1 Gbps Public & Private Network Uplinks
+product | String | product_example_cloud-server
+provider | String | provider_example_softlayer
+
 # Admin Shop Catalog Provider
 
-When logged in, the admin can access information about the catalog. This access allows him to list his catalog provider availables.
+When logged in, the admin can access information about the catalog. This access allows him to show and list his catalog provider availables.
+
+## Show
+
+> Show Shop Catalog Provider
+
+```shell
+# INPUT
+curl --header "Content-Type: application/vnd.api+json" 
+  -H "Authorization: Bearer id-access-token" -X GET -d 
+'{ 
+  "data":
+  { 
+    "type":"catalog-providers" 
+  }
+}' 
+http://smart.lvh.me:3000/api/v1/admin/catalog-providers/id-catalog-provider
+
+# OUTPUT
+{
+  "data":
+  {
+    "id":"id-catalog-provider",
+    "type":"catalog-providers",
+    "links":
+    {
+      "self":"http://smart.lvh.me:3000/api/v1/admin/catalog-providers/id-catalog-provider"
+    },
+    "attributes":
+    {
+      "name":"Provider",
+      "provider-name":"provider"
+    },
+    "relationships":
+    {
+      "catalog-products":
+      {
+        "links":
+        {
+          "self":"http://smart.lvh.me:3000/api/v1/admin/catalog-providers/id-catalog-provider/relationships/catalog-products",
+          "related":"http://smart.lvh.me:3000/api/v1/admin/catalog-providers/id-catalog-provider/catalog-products"
+        }
+      }
+    }
+  }
+}
+```
+
+```ruby
+Not implemented
+```
+
+When logged in, the admin can access information about the catalog. This access allows him to show catalog provider availables.
+
+route: *`GET "/api/v1/admin/catalog-providers/:id"`*
 
 ## List
 
@@ -5814,13 +6228,86 @@ http://smart.lvh.me:3000/api/v1/admin/catalog-providers
 Not implemented
 ```
 
-When logged in, the admin can access information about the catalog. This access allows him to list catalog provider availables.
+When logged in, the admin can access information about the catalog. This access allows him to show and list catalog provider availables.
 
 route: *`GET "/api/v1/admin/catalog-providers"`*
 
 # Admin Shop Catalog Provider Product
 
 When logged in, the admin can access information about the catalog. This access allows him to list catalog provider products.
+
+## Show
+
+> Show Shop Catalog Provider Product
+
+```shell
+# INPUT
+curl --header "Content-Type: application/vnd.api+json" 
+  -H "Authorization: Bearer id-access-token" -X GET -d 
+'{ 
+  "data":
+  { 
+    "type":"catalog-products" 
+  }
+}' 
+http://smart.lvh.me:3000/api/v1/admin/catalog-products/id-catalog-product
+
+# OUTPUT
+{
+  "data":
+  {
+    "id":"id-catalog-product",
+    "type":"catalog-products",
+    "links":
+    {
+      "self":"http://smart.lvh.me:3000/api/v1/admin/catalog-products/id-catalog-product"
+    },
+    "attributes":
+    {
+      "name":"Bare Metal",
+      "slug":"bare-metal",
+      "dynamic":true,
+      "hourly":true,
+      "version":1,
+      "allow-custom":true,
+      "product-name":"bare_metal",
+      "provider-name":"softlayer"
+    },
+    "relationships":
+    {
+      "catalog-provider":
+      {
+        "links":
+        {
+          "self":"http://smart.lvh.me:3000/api/v1/admin/catalog-products/id-catalog-product/relationships/catalog-provider",
+          "related":"http://smart.lvh.me:3000/api/v1/admin/catalog-products/id-catalog-product/catalog-provider"
+        },
+        "data":
+        {
+          "type":"catalog-providers",
+          "id":"id-catalog-provider"
+        }
+      },
+      "catalog-components":
+      {
+        "links":
+        {
+          "self":"http://smart.lvh.me:3000/api/v1/admin/catalog-products/id-catalog-product/relationships/catalog-components",
+          "related":"http://smart.lvh.me:3000/api/v1/admin/catalog-products/id-catalog-product/catalog-components"
+        }
+      }
+    }
+  }
+}
+```
+
+```ruby
+Not implemented
+```
+
+The user can visualize a specific provider products by accessing the route below.
+
+route: *`GET "/api/v1/admin/catalog-products/:id"`*
 
 ## List
 
@@ -5894,7 +6381,76 @@ route: *`GET "/api/v1/admin/catalog-products"`*
 
 # Admin Shop Catalog Provider Product Attribute
 
-When logged in, the admin can access information about the catalog. This access allows him to list catalog products attributes.
+When logged in, the admin can access information about the catalog. This access allows him to show and list catalog products attributes.
+
+## Show
+
+> Show Shop Catalog Provider Product Attributes
+
+```shell
+# INPUT
+curl --header "Content-Type: application/vnd.api+json" 
+  -H "Authorization: Bearer id-access-token" -X GET -d 
+'{ 
+  "data":
+  { 
+    "type":"catalog-components" 
+  }
+}' 
+http://smart.lvh.me:3000/api/v1/admin/catalog-components/id-catalog-components
+
+# OUTPUT
+{
+  "data":
+  {
+    "id":"id-catalog-components",
+    "type":"catalog-components",
+    "links":
+    {
+      "self":"http://smart.lvh.me:3000/api/v1/admin/catalog-components/id-catalog-components"
+    },
+    "attributes":
+    {
+      "name":"Disk 1 (Local)",
+      "system":false,
+      "allow-upgrade":true,
+      "allow-downgrade":false
+    },
+    "relationships":
+    {
+      "catalog-product":
+      {
+        "links":
+        {
+          "self":"http://smart.lvh.me:3000/api/v1/admin/catalog-components/id-catalog-components/relationships/catalog-product",
+          "related":"http://smart.lvh.me:3000/api/v1/admin/catalog-components/id-catalog-components/catalog-product"
+        },
+        "data":
+        {
+          "type":"catalog-products",
+          "id":"id-catalog-product"
+        }
+      },
+      "catalog-component-options":
+      {
+        "links":
+        {
+          "self":"http://smart.lvh.me:3000/api/v1/admin/catalog-components/id-catalog-components/relationships/catalog-component-options",
+          "related":"http://smart.lvh.me:3000/api/v1/admin/catalog-components/id-catalog-components/catalog-component-options"
+        }
+      }
+    }
+  }
+}
+```
+
+```ruby
+Not implemented
+```
+
+The admin can visualize a specific product attributes by accessing the route below.
+
+route: *`GET "/api/v1/admin/catalog-components/:id"`*
 
 ## List
 
@@ -6108,9 +6664,136 @@ The admin can visualize all providers products options by accessing the route be
 
 route: *`GET "/api/v1/admin/catalog-components/id-admin-catalog-provider-product-attribute/catalog-component-options"`*
 
+# Admin Filter
+
+When logged in, the admin can access information about the shop. This access allows him list a specific group through a filter in the end of the url.
+
+*`?filter%5Bvariable%5D=value`*
+
+## Shop Catalog Provider Product
+
+> Filter Shop Catalog Provider Product
+
+```shell
+# INPUT
+curl --header "Content-Type: application/vnd.api+json" 
+  -H "Authorization: Bearer id-access-token" -X GET -d 
+'{ 
+  "data":
+  { 
+    "type":"catalog-products" 
+  }
+}' 
+http://smart.lvh.me:3000/api/v1/admin/catalog-products?filter%5Bprovider_name%5D=softlayer
+
+# OUTPUT
+{
+  "data":
+  [
+    {
+      "id":"id-catalog-products",
+      "type":"catalog-products",
+      "links":
+      {
+        "self":"http://acme.lvh.me:3000/api/v1/admin/catalog-products/id-catalog-products"
+      },
+      "attributes":
+      {
+        "name":"Bare Metal",
+        "slug":"bare-metal",
+        "dynamic":true,
+        "hourly":true,
+        "version":1,
+        "allow-custom":true,
+        "product-name":"bare_metal",
+        "provider-name":"softlayer"
+      },
+      "relationships":
+      {
+        "catalog-provider":
+        {
+          "links":
+          {
+            "self":"http://acme.lvh.me:3000/api/v1/admin/catalog-products/id-catalog-products/relationships/catalog-provider",
+            "related":"http://acme.lvh.me:3000/api/v1/admin/catalog-products/id-catalog-products/catalog-provider"
+          },
+          "data":
+          {
+            "type":"catalog-providers",
+            "id":"id-catalog-provider"
+          }
+        },
+        "catalog-components":
+        {
+          "links":
+          {
+            "self":"http://acme.lvh.me:3000/api/v1/admin/catalog-products/id-catalog-products/relationships/catalog-components",
+            "related":"http://acme.lvh.me:3000/api/v1/admin/catalog-products/id-catalog-products/catalog-components"
+          }
+        }
+      }
+    },
+    {
+      "id":"id-catalog-products",
+      "type":"catalog-products",
+      "links":
+      {
+        "self":"http://acme.lvh.me:3000/api/v1/admin/catalog-products/id-catalog-products"
+      },
+      "attributes":
+      {
+        "name":"Cloud Server",
+        "slug":"cloud-server",
+        "dynamic":true,
+        "hourly":true,
+        "version":1,
+        "allow-custom":true,
+        "product-name":"cloud_server",
+        "provider-name":"softlayer"
+      },
+      "relationships":
+      {
+        "catalog-provider":
+        {
+          "links":
+          {
+            "self":"http://acme.lvh.me:3000/api/v1/admin/catalog-products/id-catalog-products/relationships/catalog-provider",
+            "related":"http://acme.lvh.me:3000/api/v1/admin/catalog-products/id-catalog-products9/catalog-provider"
+          },
+          "data":
+          {
+            "type":"catalog-providers",
+            "id":"id-catalog-provider"
+          }
+        },
+        "catalog-components":
+        {
+          "links":
+          {
+            "self":"http://acme.lvh.me:3000/api/v1/admin/catalog-products/id-catalog-products/relationships/catalog-components",
+            "related":"http://acme.lvh.me:3000/api/v1/admin/catalog-products/id-catalog-products/catalog-components"
+          }
+        }
+      }
+    }
+  ]
+}
+```
+
+```ruby
+Not implemented
+```
+
+The admin can filter a provider products by accessing the route below.
+
+Route: *`GET "/api/v1/admin/catalog-products?filter%5Bprovider_name%5D=softlayer"`*
+
+* product_name
+* provider_name
+
 # Manager Profile Account
 
-When logged in, the user admin access his own profile. This access allows him to show and update information about his account.
+When logged in, the user manager access his own profile. This access allows him to show and update information about his account.
 
 ## Show
 
@@ -7217,7 +7900,7 @@ horus-cli list users
 ]
 ```
 
-The admin can visualize all companies accounts by accessing the route below.
+The manager can visualize all companies accounts by accessing the route below.
 
 Route: *`GET "/api/v1/manager/client-users"`*
 
@@ -8414,6 +9097,482 @@ horus-cli list addresses
 The manager can visualize all addresses by accessing the route below.
 
 Route: *`GET "/api/v1/manager/client-addresses"`*
+
+# Manager Provider Softlayer Profile
+
+When logged in, the user manager access his own Softlayer profile. This access allows him to show and update information about his account.
+
+## Show
+
+> Show Softlayer Profile Account
+
+```shell
+# INPUT
+curl --header "Content-Type: application/vnd.api+json" 
+  -H "Authorization: Bearer id-access-token" -X GET -d 
+'{
+  "data":
+  {
+    "type":"provider-softlayer-profiles"
+  }
+}' 
+http://localhost:3000/api/v1/manager/provider-softlayer-profil
+
+# OUTPUT
+{
+  "data":
+  {
+    "id":"id-softlayer-profile",
+    "type":"provider-softlayer-profiles",
+    "links":
+    {
+      "self":"http://localhost:3000/api/v1/manager/provider-softlayer-profiles/id-softlayer-profile"
+    },
+    "attributes":
+    {
+      "softlayer-id":521069,
+      "brand-id":44443,
+      "account-status-id":1001,
+      "is-reseller":0,
+      "company-name":"Zertico Master Account",
+      "email":"fernandes@zertico.com",
+      "office-phone":"(+)55 35 9125-8952",
+      "first-name":"Celso",
+      "last-name":"Fernandes",
+      "address1":"Av Bps, 1303 Sl 10",
+      "address2":"Sl 10",
+      "postal-code":"37500-903",
+      "city":"Itajubá",
+      "state":"OT",
+      "country":"BR",
+      "create-date":"2015-04-28T19:52:36.000Z",
+      "modify-date":"2015-04-28T19:55:39.000Z"
+    }
+  }
+}
+```
+
+```ruby
+Not implemented
+```
+
+The manager can visualize his Softlayer profile account by accessing the route below.
+
+Route: *`GET "/api/v1/manager/provider-softlayer-profile"`*
+
+## Update
+
+> Update Softlayer Profile Account
+
+```shell
+# INPUT
+curl --header "Content-Type: application/vnd.api+json" 
+  -H "Authorization: Bearer id-access-token" -X GET -d 
+'{
+  "data":
+  {
+    "type":"provider-softlayer-profiles",
+    "id":"id-softlayer-profile", 
+    "attributes":
+    {
+      "company-name":"Growls"
+    }
+  }
+}' 
+http://localhost:3000/api/v1/manager/provider-softlayer-profile
+
+# OUTPUT
+{
+  "data":
+  {
+    "id":"id-softlayer-profile",
+    "type":"provider-softlayer-profiles",
+    "links":
+    {
+      "self":"http://localhost:3000/api/v1/manager/provider-softlayer-profiles/id-softlayer-profile"
+    },
+    "attributes":
+    {
+      "softlayer-id":521069,
+      "brand-id":44443,
+      "account-status-id":1001,
+      "is-reseller":0,
+      "company-name":"Zertico Master Account",
+      "email":"fernandes@zertico.com",
+      "office-phone":"(+)55 35 9125-8952",
+      "first-name":"Celso",
+      "last-name":"Fernandes",
+      "address1":"Av Bps, 1303 Sl 10",
+      "address2":"Sl 10",
+      "postal-code":"37500-903",
+      "city":"Itajubá",
+      "state":"OT",
+      "country":"BR",
+      "create-date":"2015-04-28T19:52:36.000Z",
+      "modify-date":"2015-04-28T19:55:39.000Z"
+    }
+  }
+}
+```
+
+```ruby
+Not implemented
+```
+
+The manager can edit the information contained in his own Softlayer profile account by accessing the route below.
+
+Route: *`PATCH "/api/v1/manager/provider-softlayer-profile"`*
+
+Variable | Type | Value
+---------- | ---- | ----- 
+company-name | String | Growls
+
+# Manager Provider Softlayer Profile Clients
+
+When logged in, the manager can access information about softlayer clients account. This access allows him to create, update, show and list them.
+
+## Create
+
+> Create Softlayer Clients Account
+
+```shell
+# INPUT
+curl --header "Content-Type: application/vnd.api+json" 
+  -H "Authorization: Bearer id-access-token" -X POST -d 
+'{ 
+  "data":
+  { 
+    "type":"provider-softlayer-profile-clients", 
+    "attributes":
+    { 
+      "company-name":"Apple Inc"
+    }
+  }
+}' 
+http://localhost:3000/api/v1/manager/provider-softlayer-profile-clients
+
+# OUTPUT
+{
+  "data":
+  {
+    "id":"id-softlayer-clients",
+    "type":"provider-softlayer-profile-clients",
+    "links":
+    {
+      "self":"http://localhost:3000/api/v1/manager/provider-softlayer-profile-clients/id-softlayer-clients"
+    },
+    "attributes":
+    {
+      "softlayer-id":null,
+      "brand-id":null,
+      "account-status-id":null,
+      "is-reseller":null,
+      "company-name":"Apple Inc",
+      "email":null,
+      "office-phone":null,
+      "first-name":null,
+      "last-name":null,
+      "address1":null,
+      "address2":null,
+      "postal-code":null,
+      "city":null,
+      "state":null,
+      "country":null,
+      "create-date":null,
+      "modify-date":null
+    },
+    "relationships":
+    {
+      "client":
+      {
+        "links":
+        {
+          "self":"http://localhost:3000/api/v1/manager/provider-softlayer-profile-clients/id-softlayer-clients/relationships/client",
+          "related":"http://localhost:3000/api/v1/manager/provider-softlayer-profile-clients/id-softlayer-clients/client"
+        },
+        "data":null
+      }
+    }
+  }
+}
+```
+
+```ruby
+Not implemented
+```
+
+The manager can create a softlayer client account by accessing the route below.
+
+Route: *`POST "/api/v1/manager/provider-softlayer-profile-clients"`*
+
+Variable | Type | Value
+-------- | ---- | ----- 
+company-name | String | Apple Inc
+
+## Update
+
+> Update Softlayer Clients Account
+
+```shell
+# INPUT
+curl --header "Content-Type: application/vnd.api+json" 
+  -H "Authorization: Bearer id-access-token" -X PATCH -d 
+'{ 
+  "data":
+  { 
+    "type":"provider-softlayer-profile-clients", 
+    "id":"id-softlayer-clients", 
+    "attributes":
+    { 
+      "company-name":"Boom"
+    }
+  }
+}' 
+http://localhost:3000/api/v1/manager/provider-softlayer-profile-clients/id-softlayer-clients
+
+# OUTPUT
+{
+  "data":
+  {
+    "id":"id-softlayer-clients",
+    "type":"provider-softlayer-profile-clients",
+    "links":
+    {
+      "self":"http://localhost:3000/api/v1/manager/provider-softlayer-profile-clients/id-softlayer-clients"
+    },
+    "attributes":
+    {
+      "softlayer-id":null,
+      "brand-id":null,
+      "account-status-id":null,
+      "is-reseller":null,
+      "company-name":"Boom",
+      "email":null,
+      "office-phone":null,
+      "first-name":null,
+      "last-name":null,
+      "address1":null,
+      "address2":null,
+      "postal-code":null,
+      "city":null,
+      "state":null,
+      "country":null,
+      "create-date":null,
+      "modify-date":null
+    },
+    "relationships":
+    {
+      "client":
+      {
+        "links":
+        {
+          "self":"http://localhost:3000/api/v1/manager/provider-softlayer-profile-clients/id-softlayer-clients/relationships/client",
+          "related":"http://localhost:3000/api/v1/manager/provider-softlayer-profile-clients/id-softlayer-clients/client"
+        },
+        "data":null
+      }
+    }
+  }
+} 
+```
+
+```ruby
+Not implemented
+```
+
+The manager can edit information contained in a softlayer client account by accessing the route below.
+
+Route: *`GET "/api/v1/manager/provider-softlayer-profile-clients/:id"`*
+
+Variable | Type | Value
+-------- | ---- | ----- 
+company-name | String | Boom
+
+## Show
+
+> Show Softlayer Clients Account
+
+```shell
+# INPUT
+curl --header "Content-Type: application/vnd.api+json" 
+  -H "Authorization: Bearer id-access-token" -X GET -d 
+'{
+  "data":
+  {
+    "type":"provider-softlayer-profile-clients"
+  }
+}' 
+http://localhost:3000/api/v1/manager/provider-softlayer-profile-clients/id-softlayer-clients
+
+# OUTPUT
+{
+  "data":
+  {
+    "id":"id-softlayer-clients",
+    "type":"provider-softlayer-profile-clients",
+    "links":
+    {
+      "self":"http://localhost:3000/api/v1/manager/provider-softlayer-profile-clients/id-softlayer-clients"
+    },
+    "attributes":
+    {
+      "softlayer-id":null,
+      "brand-id":null,
+      "account-status-id":null,
+      "is-reseller":null,
+      "company-name":"Boom",
+      "email":null,
+      "office-phone":null,
+      "first-name":null,
+      "last-name":null,
+      "address1":null,
+      "address2":null,
+      "postal-code":null,
+      "city":null,
+      "state":null,
+      "country":null,
+      "create-date":null,
+      "modify-date":null
+    },
+    "relationships":
+    {
+      "client":
+      {
+        "links":
+        {
+          "self":"http://localhost:3000/api/v1/manager/provider-softlayer-profile-clients/id-softlayer-clients/relationships/client",
+          "related":"http://localhost:3000/api/v1/manager/provider-softlayer-profile-clients/id-softlayer-clients/client"
+        },
+        "data":null
+      }
+    }
+  }
+}
+```
+
+```ruby
+Not implemented
+```
+
+The manager can visualize a specific softlayer client account by accessing the route below.
+
+Route: *`GET "/api/v1/manager/provider-softlayer-profile-clients/:id"`*
+
+## List
+
+> List Softlayer Clients Account
+
+```shell
+# INPUT
+curl --header "Content-Type: application/vnd.api+json" 
+  -H "Authorization: Bearer id-access-token" -X GET -d 
+'{
+  "data":
+  {
+    "type":"provider-softlayer-profile-clients"
+  }
+}' 
+http://localhost:3000/api/v1/manager/provider-softlayer-profile-clients
+
+# OUTPUT
+{
+  "data":
+  [
+    {
+      "id":"id-softlayer-clients",
+      "type":"provider-softlayer-profile-clients",
+      "links":
+      {
+        "self":"http://localhost:3000/api/v1/manager/provider-softlayer-profile-clients/id-softlayer-clients"
+      },
+      "attributes":
+      {
+        "softlayer-id":null,
+        "brand-id":null,
+        "account-status-id":null,
+        "is-reseller":null,
+        "company-name":"Boom",
+        "email":null,
+        "office-phone":null,
+        "first-name":null,
+        "last-name":null,
+        "address1":null,
+        "address2":null,
+        "postal-code":null,
+        "city":null,
+        "state":null,
+        "country":null,
+        "create-date":null,
+        "modify-date":null
+      },
+      "relationships":
+      {
+        "client":
+        {
+          "links":
+          {
+            "self":"http://localhost:3000/api/v1/manager/provider-softlayer-profile-clients/id-softlayer-clients/relationships/client",
+            "related":"http://localhost:3000/api/v1/manager/provider-softlayer-profile-clients/id-softlayer-clients/client"
+          },
+          "data":null
+        }
+      }
+    },
+    {
+      "id":"id-softlayer-clients",
+      "type":"provider-softlayer-profile-clients",
+      "links":
+      {
+        "self":"http://localhost:3000/api/v1/manager/provider-softlayer-profile-clients/id-softlayer-clients"
+      },
+      "attributes":
+      {
+        "softlayer-id":760935,
+        "brand-id":64603,
+        "account-status-id":1001,
+        "is-reseller":0,
+        "company-name":"Test Example",
+        "email":"test@example.com",
+        "office-phone":"35 3623-9833",
+        "first-name":"Test First Name",
+        "last-name":"Test Last Name",
+        "address1":"Test Street",
+        "address2":null,
+        "postal-code":"0000-000",
+        "city":"Test City",
+        "state":"TO",
+        "country":"BR",
+        "create-date":"2015-10-22T16:45:10.000Z",
+        "modify-date":"2015-10-22T16:50:41.000Z"
+      },
+      "relationships":
+      {
+        "client":
+        {
+          "links":
+          {
+            "self":"http://localhost:3000/api/v1/manager/provider-softlayer-profile-clients/id-softlayer-clients/relationships/client",
+            "related":"http://localhost:3000/api/v1/manager/provider-softlayer-profile-clients/id-softlayer-clients/client"
+          },
+          "data":
+          {
+            "type":"clients",
+            "id":"id-client"
+          }
+        }
+      }
+    }
+  ]
+}
+```
+
+```ruby
+Not implemented
+```
+
+The manager can visualize all softlayer clients account by accessing the route below.
+
+Route: *`GET "/api/v1/manager/provider-softlayer-profile-clients"`*
 
 # License
 
